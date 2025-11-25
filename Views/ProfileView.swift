@@ -11,8 +11,9 @@ struct ProfileView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var chapterManager: ChapterManager
     @State private var showingEditProfile = false
+    @State private var showingDeleteConfirmation = false
     
-    var body: some View {
+    var body: some View:
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
@@ -134,13 +135,27 @@ struct ProfileView: View {
                             .cornerRadius(10)
                         }
                         .foregroundColor(.red)
+                        
+                        Button(action: {
+                            showingDeleteConfirmation = true
+                        }) {
+                            HStack {
+                                Image(systemName: "trash.circle.fill")
+                                Text("Delete Account")
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color.red.opacity(0.2))
+                            .cornerRadius(10)
+                        }
+                        .foregroundColor(.red)
                     }
                     
                     // App Information
                     VStack(spacing: 10) {
-                        Text("SwiftChapter USA Finder")
+                        Text("Chapter Locator USA")
                             .font(.headline)
-                        Text("Version 1.0")
+                        Text("Version 2.0")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         
@@ -162,6 +177,14 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             .sheet(isPresented: $showingEditProfile) {
                 EditProfileView()
+            }
+            .alert("Delete Account", isPresented: $showingDeleteConfirmation) {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    authManager.deleteAccount()
+                }
+            } message: {
+                Text("Are you sure you want to permanently delete your account? This action cannot be undone. All your data, including profile information, posts, and chapter membership will be permanently removed.")
             }
         }
     }

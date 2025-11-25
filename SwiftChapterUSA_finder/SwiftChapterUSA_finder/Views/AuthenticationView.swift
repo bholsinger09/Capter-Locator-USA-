@@ -25,7 +25,7 @@ struct AuthenticationView: View {
                     .foregroundColor(.white)
                     .padding(.bottom, 20)
                 
-                Text("SwiftChapter USA Finder")
+                Text("Chapter Locator USA")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -66,7 +66,6 @@ struct LoginView: View {
             
             SecureField("Password", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .textContentType(.oneTimeCode)
             
             if let errorMessage = authManager.errorMessage {
                 Text(errorMessage)
@@ -131,11 +130,9 @@ struct RegistrationView: View {
                 
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .textContentType(.oneTimeCode)
                 
                 SecureField("Confirm Password", text: $confirmPassword)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .textContentType(.oneTimeCode)
                 
                 Picker("State", selection: $selectedState) {
                     ForEach(usStates, id: \.self) { state in

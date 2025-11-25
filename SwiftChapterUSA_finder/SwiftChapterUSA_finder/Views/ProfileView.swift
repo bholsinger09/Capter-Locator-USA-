@@ -11,87 +11,53 @@ struct ProfileView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var chapterManager: ChapterManager
     @State private var showingEditProfile = false
+    @State private var showingDeleteConfirmation = false
     
     var body: some View {
         NavigationView {
-            Group {
-                if let user = authManager.currentUser {
-                    profileContent(for: user)
-                } else {
-                    VStack(spacing: 20) {
-                        Image(systemName: "person.crop.circle.badge.exclamationmark")
-                            .font(.system(size: 80))
-                            .foregroundColor(.gray)
-                        Text("No User Profile")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                        Text("Please log out and sign in again")
+            ScrollView {
+                VStack(spacing: 20) {
+                    // Profile Header
+                    VStack(spacing: 15) {
+                        Image(systemName: "person.circle.fill")
+                            .font(.system(size: 100))
+                            .foregroundColor(.blue)
+                        
+                        Text(authManager.currentUser?.fullName ?? "User")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                        Text(authManager.currentUser?.email ?? "")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        Button("Logout") {
-                            authManager.logout()
-                        }
-                        .padding()
-                        .background(Color.red)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
                     }
                     .padding()
-                }
-            }
-            .navigationTitle("Profile")
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .sheet(isPresented: $showingEditProfile) {
-            EditProfileView()
-        }
-    }
-    
-    @ViewBuilder
-    private func profileContent(for user: User) -> some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                // Profile Header
-                VStack(spacing: 15) {
-                    Image(systemName: "person.circle.fill")
-                        .font(.system(size: 100))
-                        .foregroundColor(.blue)
+                    .frame(maxWidth: .infinity)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(15)
                     
-                    Text(user.fullName)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    Text(user.email)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color(.systemGray6))
-                .cornerRadius(15)
-                    
-                // Profile Information
-                VStack(alignment: .leading, spacing: 15) {
-                    Text("Profile Information")
-                        .font(.headline)
-                    
-                    ProfileInfoRow(icon: "envelope.fill", label: "Email", value: user.email)
-                    
-                    ProfileInfoRow(icon: "map.fill", label: "State", value: user.state)
-                    
-                    if let university = user.university {
-                        ProfileInfoRow(icon: "graduationcap.fill", label: "University", value: university)
-                    }
-                    
-                    ProfileInfoRow(icon: "calendar", label: "Member Since", value: user.dateJoined.formatted(date: .long, time: .omitted))
+                    // Profile Information
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Profile Information")
+                            .font(.headline)
+                        
+                        ProfileInfoRow(icon: "envelope.fill", label: "Email", value: authManager.currentUser?.email ?? "")
+                        
+                        ProfileInfoRow(icon: "map.fill", label: "State", value: authManager.currentUser?.state ?? "")
+                        
+                        if let university = authManager.currentUser?.university {
+                            ProfileInfoRow(icon: "graduationcap.fill", label: "University", value: university)
+                        }
+                        
+                        ProfileInfoRow(icon: "calendar", label: "Member Since", value: authManager.currentUser?.dateJoined.formatted(date: .long, time: .omitted) ?? "")
                     }
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(15)
                     
-                // Chapter Membership
-                if let chapterId = user.chapterId,
-                   let chapter = chapterManager.chapters.first(where: { $0.id == chapterId }) {
+                    // Chapter Membership
+                    if let chapterId = authManager.currentUser?.chapterId,
+                       let chapter = chapterManager.chapters.first(where: { $0.id == chapterId }) {
                         VStack(alignment: .leading, spacing: 15) {
                             HStack {
                                 Image(systemName: "building.2.fill")
@@ -169,13 +135,27 @@ struct ProfileView: View {
                             .cornerRadius(10)
                         }
                         .foregroundColor(.red)
+                        
+                        Button(action: {
+                            showingDeleteConfirmation = true
+                        }) {
+                            HStack {
+                                Image(systemName: "trash.circle.fill")
+                                Text("Delete Account")
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color.red.opacity(0.2))
+                            .cornerRadius(10)
+                        }
+                        .foregroundColor(.red)
                     }
                     
                     // App Information
                     VStack(spacing: 10) {
-                        Text("SwiftChapter USA Finder")
+                        Text("Chapter Locator USA")
                             .font(.headline)
-                        Text("Version 1.0")
+                        Text("Version 2.0")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         
@@ -194,15 +174,21 @@ struct ProfileView: View {
                 }
                 .padding()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Edit") {
-                        showingEditProfile = true
-                    }
+            .navigationTitle("Profile")
+            .sheet(isPresented: $showingEditProfile) {
+                EditProfileView()
+            }
+            .alert("Delete Account", isPresented: $showingDeleteConfirmation) {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    authManager.deleteAccount()
                 }
+            } message: {
+                Text("Are you sure you want to permanently delete your account? This action cannot be undone. All your data, including profile information, posts, and chapter membership will be permanently removed.")
             }
         }
     }
+}
 
 struct ProfileInfoRow: View {
     let icon: String

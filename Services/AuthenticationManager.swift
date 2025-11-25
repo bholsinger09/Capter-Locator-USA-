@@ -40,6 +40,21 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         // In a real app, this would authenticate with a backend
         // For now, we'll simulate login
         
+        // Demo account for App Store review
+        if email == "demo@appstore.com" && password == "AppReview2025" {
+            let demoUser = User(
+                email: "demo@appstore.com",
+                firstName: "Demo",
+                lastName: "Reviewer",
+                state: "California",
+                university: "Stanford University"
+            )
+            currentUser = demoUser
+            isAuthenticated = true
+            errorMessage = nil
+            return
+        }
+        
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
            let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
            savedUser.email == email {

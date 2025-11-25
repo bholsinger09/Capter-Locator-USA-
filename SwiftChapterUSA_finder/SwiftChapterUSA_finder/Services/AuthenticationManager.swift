@@ -40,11 +40,11 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         // In a real app, this would authenticate with a backend
         // For now, we'll simulate login
         
-        // Demo account for App Store Review
-        if email.lowercased() == "demo@appstore.com" && password == "AppReview2025" {
+        // Demo account for App Store review
+        if email == "demo@appstore.com" && password == "AppReview2025" {
             let demoUser = User(
                 email: "demo@appstore.com",
-                firstName: "App Store",
+                firstName: "Demo",
                 lastName: "Reviewer",
                 state: "California",
                 university: "Stanford University"
@@ -89,5 +89,18 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
     func updateUser(_ user: User) {
         currentUser = user
         saveUser()
+    }
+    
+    func deleteAccount() {
+        // Remove all user data from UserDefaults
+        UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+        
+        // Clear any other user-related data
+        // In a real app with a backend, this would make an API call to delete server-side data
+        
+        // Log out the user
+        isAuthenticated = false
+        currentUser = nil
+        errorMessage = nil
     }
 }

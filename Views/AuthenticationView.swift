@@ -25,7 +25,7 @@ struct AuthenticationView: View {
                     .foregroundColor(.white)
                     .padding(.bottom, 20)
                 
-                Text("SwiftChapter USA Finder")
+                Text("Chapter Locator USA")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)

@@ -1,4 +1,4 @@
-# SwiftChapter USA Finder
+# Chapter Locator USA
 
 A SwiftUI application for iOS (11-16) and macOS that helps users find and connect with Turning Point USA chapters across the United States.
 
@@ -14,7 +14,7 @@ A SwiftUI application for iOS (11-16) and macOS that helps users find and connec
 - Profile management
 - State and university selection
 
-### 🏛️ Chapter Finder
+### 🏛️ Chapter Locator
 - 50+ pre-loaded chapters across multiple states
 - Search chapters by name, city, state, or university
 - Filter by state

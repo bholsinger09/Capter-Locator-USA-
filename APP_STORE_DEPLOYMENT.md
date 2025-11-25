@@ -1,8 +1,8 @@
 # App Store Deployment Guide
-## SwiftChapter USA Finder
+## Chapter Locator USA
 
 ### Current App Configuration
-- **App Name**: Chapter Finder
+- **App Name**: Chapter Locator USA
 - **Bundle Identifier**: com.Ben.SwiftChapterUSA-finder
 - **Version**: 1.0
 - **Build**: 1
@@ -41,7 +41,7 @@ Minimum: 3-10 screenshots per device size
 
 #### Required Metadata
 ```
-App Name: SwiftChapter USA Finder (or "Chapter Finder")
+App Name: Chapter Locator USA
 Subtitle: Find TPUSA Chapters Near You
 Category: Social Networking or Education
 Age Rating: 4+ (or appropriate rating)
@@ -51,7 +51,7 @@ Support URL: [Required - must provide]
 
 #### Description Template
 ```
-SwiftChapter USA Finder helps you discover and connect with Turning Point USA (TPUSA) chapters across the United States. 
+Chapter Locator USA helps you discover and connect with Turning Point USA (TPUSA) chapters across the United States. 
 
 FEATURES:
 • Browse chapters by state and university
@@ -61,7 +61,7 @@ FEATURES:
 • Stay updated with chapter blogs and activities
 • Find universities with active TPUSA presence
 
-Whether you're a student looking to get involved or simply interested in connecting with like-minded individuals, SwiftChapter USA Finder makes it easy to find and join your local chapter.
+Whether you're a student looking to get involved or simply interested in connecting with like-minded individuals, Chapter Locator USA makes it easy to find and join your local chapter.
 
 DISCLAIMER: This is an unofficial community tool. For official TPUSA information, visit tpusa.com.
 ```
@@ -183,12 +183,12 @@ In the Organizer:
 You'll need a privacy policy URL. Here's a basic template:
 
 ```markdown
-# Privacy Policy for SwiftChapter USA Finder
+# Privacy Policy for Chapter Locator USA
 
 Last updated: November 16, 2025
 
 ## Information We Collect
-SwiftChapter USA Finder stores the following information locally on your device:
+Chapter Locator USA stores the following information locally on your device:
 - Your name and email address
 - Your selected state and university
 - Your chapter membership selection

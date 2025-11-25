@@ -17,4 +17,5 @@ protocol AuthenticationServiceProtocol: AnyObject {
     func login(email: String, password: String)
     func logout()
     func updateUser(_ user: User)
+    func deleteAccount()
 }
