@@ -90,4 +90,29 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         currentUser = user
         saveUser()
     }
+    
+    func deleteAccount() {
+        // PERMANENT ACCOUNT DELETION
+        // This permanently deletes all user data from the device.
+        // There is no recovery or restoration possible after this action.
+        
+        // Remove user account data
+        UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+        
+        // Clear all user-related preferences and cached data
+        UserDefaults.standard.removeObject(forKey: "userPosts")
+        UserDefaults.standard.removeObject(forKey: "userChapterMembership")
+        UserDefaults.standard.removeObject(forKey: "userPreferences")
+        
+        // Clear app state
+        isAuthenticated = false
+        currentUser = nil
+        errorMessage = nil
+        
+        // Note: In a production app with backend services, this would also:
+        // - Make an API call to delete all server-side user data
+        // - Remove user from all chapters and groups
+        // - Delete user-generated content (posts, comments, etc.)
+        // - Permanently remove the account from the system
+    }
 }

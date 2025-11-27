@@ -141,7 +141,7 @@ struct ProfileView: View {
                         }) {
                             HStack {
                                 Image(systemName: "trash.circle.fill")
-                                Text("Delete Account")
+                                Text("Delete Account Permanently")
                                 Spacer()
                             }
                             .padding()
@@ -155,7 +155,7 @@ struct ProfileView: View {
                     VStack(spacing: 10) {
                         Text("Chapter Locator USA")
                             .font(.headline)
-                        Text("Version 2.0")
+                        Text("Version 2.0 (Build 3)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         
@@ -178,13 +178,13 @@ struct ProfileView: View {
             .sheet(isPresented: $showingEditProfile) {
                 EditProfileView()
             }
-            .alert("Delete Account", isPresented: $showingDeleteConfirmation) {
+            .alert("Permanently Delete Account?", isPresented: $showingDeleteConfirmation) {
                 Button("Cancel", role: .cancel) { }
-                Button("Delete", role: .destructive) {
+                Button("Delete Permanently", role: .destructive) {
                     authManager.deleteAccount()
                 }
             } message: {
-                Text("Are you sure you want to permanently delete your account? This action cannot be undone. All your data, including profile information, posts, and chapter membership will be permanently removed.")
+                Text("This will PERMANENTLY DELETE your account and all associated data. This action is IRREVERSIBLE.\n\nAll of the following will be permanently deleted:\n• Your profile and account information\n• All posts and content you've created\n• Your chapter membership\n• All app preferences and settings\n\nYou will NOT be able to recover this account or data.")
             }
         }
     }
