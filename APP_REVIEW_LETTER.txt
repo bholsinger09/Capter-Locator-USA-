@@ -22,7 +22,7 @@ The demo account provides full access to all features including:
 • Create and view community posts
 • Full profile management
 
-The account has been tested and verified working in our latest build (Version 2.0, Build 3).
+The account has been tested and verified working in our latest build (Version 2.0, Build 4).
 
 
 ISSUE 2 - GUIDELINE 5.1.1(v): ACCOUNT DELETION
@@ -64,7 +64,14 @@ This is TRUE permanent deletion, NOT:
 ✗ Data anonymization with account retention
 ✗ Requiring external processes (website, email, phone)
 
-This fully complies with Apple's Guideline 5.1.1(v) requiring apps to offer account deletion within the app itself without requiring external customer service interactions.
+USER TRANSPARENCY (Build 4 Enhancement):
+To meet Apple's requirement for keeping users informed, we now show:
+  - Confirmation alert stating deletion will be completed "IMMEDIATELY"
+  - Success alert after deletion confirming: "Your account has been permanently deleted"
+  - Clear notice that user will be logged out
+  - Explicit list of what was deleted and that it cannot be recovered
+
+This fully complies with Apple's Guideline 5.1.1(v) requiring apps to offer account deletion within the app itself without requiring external customer service interactions, and keeps users fully informed throughout the process.
 
 
 ISSUE 3 - GUIDELINE 5.2.5: APPLE TRADEMARK VIOLATION
@@ -92,7 +99,7 @@ ADDITIONAL IMPROVEMENTS IN VERSION 2.0:
 BUILD INFORMATION:
 • App Name: Chapter Locator USA
 • Version: 2.0
-• Build: 3
+• Build: 4
 • Bundle ID: com.holsinger.chapterfinder
 • Support URL: https://bholsinger09.github.io/Capter-Locator-USA-/support.html
 • Support Email: bholsinger@hotmail.com

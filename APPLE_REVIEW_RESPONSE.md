@@ -1,9 +1,9 @@
 # Response to App Review - Account Deletion Clarification
 
 ## Submission ID: a013b326-d921-4c38-a0b1-af12523f5d8f
-**Date**: November 27, 2025
+**Date**: November 29, 2025
 **App**: Chapter Locator USA
-**Version**: 2.0 (Build 3)
+**Version**: 2.0 (Build 4)
 
 ---
 
@@ -54,8 +54,12 @@ Our app provides **complete, permanent, irreversible account deletion** that mee
    - Chapter membership
    - All user-generated content
    - All app preferences and settings
-10. User is automatically logged out
-11. Account is completely removed and cannot be restored
+10. Success alert appears titled "Account Deleted" confirming:
+    - Account has been permanently deleted
+    - All data removed and cannot be recovered
+    - User will now be logged out
+11. User taps "OK" and is automatically logged out
+12. Account is completely removed and cannot be restored
 
 ---
 
@@ -99,9 +103,11 @@ For testing purposes, the demo account (`demo@appstore.com`) is hardcoded and wi
 
 ---
 
-### Changes in Build 3
+### Changes in Build 4
 
-We have enhanced the account deletion feature with:
+We have enhanced the account deletion feature to meet all transparency requirements:
+
+**Build 3 Enhancements:**
 - More explicit button text: "Delete Account **Permanently**"
 - Enhanced confirmation dialog title: "**Permanently** Delete Account?"
 - Stronger warning language using "IRREVERSIBLE" in capitals
@@ -109,14 +115,21 @@ We have enhanced the account deletion feature with:
 - Explicit statement that data cannot be recovered
 - Enhanced code comments documenting permanent deletion behavior
 
-These changes make it crystal clear to users that this is permanent deletion, not temporary deactivation.
+**Build 4 Additional Enhancements (Transparency):**
+- Confirmation alert now states deletion will be completed "IMMEDIATELY"
+- NEW: Success alert after deletion confirming "Your account has been permanently deleted"
+- NEW: Success alert lists what was deleted (profile, posts, chapter membership, app settings)
+- NEW: Success alert explicitly states data "cannot be recovered"
+- NEW: Success alert informs user they will be logged out
+
+These changes ensure users are fully informed throughout the deletion process, from initiation to completion, meeting Apple's requirement to "keep users informed."
 
 ---
 
 ### Build Information
 - **App Name**: Chapter Locator USA
 - **Version**: 2.0
-- **Build**: 3
+- **Build**: 4
 - **Bundle ID**: com.holsinger.chapterfinder
 - **Demo Credentials**: demo@appstore.com / AppReview2025
 

@@ -12,6 +12,7 @@ struct ProfileView: View {
     @EnvironmentObject var chapterManager: ChapterManager
     @State private var showingEditProfile = false
     @State private var showingDeleteConfirmation = false
+    @State private var showingDeletionComplete = false
     
     var body: some View:
         NavigationView {
@@ -155,7 +156,7 @@ struct ProfileView: View {
                     VStack(spacing: 10) {
                         Text("Chapter Locator USA")
                             .font(.headline)
-                        Text("Version 2.0 (Build 3)")
+                        Text("Version 2.0 (Build 4)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         
@@ -182,9 +183,15 @@ struct ProfileView: View {
                 Button("Cancel", role: .cancel) { }
                 Button("Delete Permanently", role: .destructive) {
                     authManager.deleteAccount()
+                    showingDeletionComplete = true
                 }
             } message: {
-                Text("This will PERMANENTLY DELETE your account and all associated data. This action is IRREVERSIBLE.\n\nAll of the following will be permanently deleted:\n• Your profile and account information\n• All posts and content you've created\n• Your chapter membership\n• All app preferences and settings\n\nYou will NOT be able to recover this account or data.")
+                Text("This will PERMANENTLY DELETE your account and all associated data. This action is IRREVERSIBLE and will be completed IMMEDIATELY.\n\nAll of the following will be permanently deleted:\n• Your profile and account information\n• All posts and content you've created\n• Your chapter membership\n• All app preferences and settings\n\nYou will NOT be able to recover this account or data.")
+            }
+            .alert("Account Deleted", isPresented: $showingDeletionComplete) {
+                Button("OK", role: .cancel) { }
+            } message: {
+                Text("Your account has been permanently deleted. All your data, including your profile, posts, chapter membership, and app settings have been removed and cannot be recovered.\n\nYou will now be logged out.")
             }
         }
     }
