@@ -1,0 +1,206 @@
+Response to App Review - Guideline 5.1.1(v) Account Deletion
+Submission ID: a013b326-d921-4c38-a0b1-af12523f5d8f
+Date: November 29, 2025
+App: Chapter Locator USA
+Version: 2.0 (Build 4)
+
+---
+
+Dear App Review Team,
+
+Thank you for your feedback. We want to confirm that our app DOES support permanent account deletion. We have implemented comprehensive account deletion functionality that fully complies with all requirements outlined in Guideline 5.1.1(v).
+
+ADDRESSING YOUR SPECIFIC REQUIREMENTS:
+
+1. ✅ PERMANENT DELETION (Not Temporary Deactivation)
+   
+   Requirement: "Only offering to temporarily deactivate or disable an account is insufficient."
+   
+   Our Implementation:
+   - We offer PERMANENT, IRREVERSIBLE account deletion
+   - We do NOT offer temporary deactivation, suspension, or account disabling
+   - All user data is immediately and permanently erased
+   - Deleted accounts CANNOT be recovered or restored
+   - The UI explicitly states "Delete Account Permanently" and "IRREVERSIBLE"
+
+2. ✅ NO WEBSITE REQUIRED (Completes In-App)
+   
+   Requirement: "If users need to visit a website to finish deleting their account, include a link directly to the website page where they can complete the process."
+   
+   Our Implementation:
+   - Account deletion completes ENTIRELY within the app
+   - No website visit required
+   - No external steps of any kind
+   - Users tap button, confirm, and deletion is complete
+   - This requirement does not apply to our app
+
+3. ✅ NO CUSTOMER SERVICE REQUIRED (Confirmation Only)
+   
+   Requirement: "Only apps in highly-regulated industries may require users to use customer service resources, such as making a phone call or sending an email, to complete account deletion."
+   
+   Our Implementation:
+   - No phone calls required
+   - No emails required
+   - No customer service interaction required
+   - We include appropriate confirmation steps (two-step alert confirmation)
+   - Deletion executes immediately after user confirms
+   - We are not in a highly-regulated industry
+
+---
+
+HOW TO LOCATE THE ACCOUNT DELETION FEATURE:
+
+Step-by-Step Instructions:
+1. Launch the app
+2. Log in with demo account: demo@appstore.com / AppReview2025
+3. Navigate to the Profile tab (rightmost tab icon at bottom)
+4. Scroll down to the "Actions" section (below Edit Profile and Logout buttons)
+5. You will see "Delete Account Permanently" button with red background
+6. Tap "Delete Account Permanently"
+
+The Deletion Process (User Experience):
+7. First Alert - "Permanently Delete Account?" appears with:
+   • Warning: "This action is IRREVERSIBLE and will be completed IMMEDIATELY"
+   • Complete list of all data that will be permanently deleted
+   • Explicit statement: "You will NOT be able to recover this account or data"
+   • Two buttons: "Cancel" or "Delete Permanently"
+
+8. User taps "Delete Permanently"
+
+9. Second Alert - "Account Deleted" appears confirming:
+   • "Your account has been permanently deleted"
+   • "All your data...have been removed and cannot be recovered"
+   • "You will now be logged out"
+
+10. User taps "OK" and is immediately logged out
+
+11. Account and all associated data are permanently erased
+
+---
+
+WHAT GETS PERMANENTLY DELETED:
+
+All user data is immediately and permanently removed:
+• User account credentials (cannot sign in again)
+• Profile information (name, email, state, university)
+• Chapter membership and associations
+• All user-generated content (posts, comments)
+• All app preferences and settings
+• All locally stored user data
+
+This is true permanent deletion - the account cannot be recovered, reactivated, or restored.
+
+---
+
+USER TRANSPARENCY & COMMUNICATION:
+
+Build 4 includes enhanced user communication throughout the deletion process:
+
+Before Deletion:
+✓ Button clearly labeled "Delete Account Permanently"
+✓ Confirmation alert titled "Permanently Delete Account?"
+✓ Warning states action is "IRREVERSIBLE" and "IMMEDIATE"
+✓ Complete list of what will be deleted
+✓ Explicit notice that data cannot be recovered
+
+After Deletion:
+✓ Success alert titled "Account Deleted"
+✓ Confirmation that deletion is complete
+✓ Reminder of what was deleted
+✓ Notice that user will be logged out
+
+This keeps users fully informed throughout the entire process, meeting Apple's requirement to "keep users informed."
+
+---
+
+TECHNICAL IMPLEMENTATION:
+
+Location in Code: ProfileView.swift, AuthenticationManager.swift
+Method: deleteAccount()
+
+The deletion process:
+1. Removes user account data (UserDefaults: "currentUser")
+2. Removes all user posts (UserDefaults: "userPosts")
+3. Removes chapter membership (UserDefaults: "userChapterMembership")
+4. Removes user preferences (UserDefaults: "userPreferences")
+5. Clears authentication state
+6. Clears current user object
+7. Logs user out automatically
+
+This is NOT a soft delete - all data is completely erased from the device with no possibility of recovery.
+
+---
+
+DEMO ACCOUNT NOTE:
+
+The demo account (demo@appstore.com) is hardcoded and will be recreated on next login for testing purposes ONLY. This allows you to test the deletion feature multiple times. Regular user accounts are permanently deleted and cannot be recreated or restored.
+
+---
+
+BUILD 4 ENHANCEMENTS:
+
+We have made the following improvements to ensure full compliance:
+
+Build 3:
+• Button text: "Delete Account Permanently" (not just "Delete Account")
+• Alert title: "Permanently Delete Account?"
+• Alert button: "Delete Permanently"
+• Enhanced warning language with "IRREVERSIBLE" in capitals
+• Detailed list of what will be deleted
+
+Build 4:
+• Added "IMMEDIATELY" to confirmation alert (sets timing expectations)
+• NEW: Success alert after deletion confirming completion
+• NEW: Success alert lists what was deleted
+• NEW: Success alert confirms data cannot be recovered
+• NEW: Success alert informs user they will be logged out
+
+These enhancements ensure complete transparency and keep users fully informed throughout the deletion process.
+
+---
+
+CONFIRMATION OF COMPLIANCE:
+
+✅ Account deletion option is included in the app
+✅ Account deletion is easy to find (Profile tab → Actions section)
+✅ We delete the ENTIRE account record with ALL associated personal data
+✅ This is PERMANENT deletion, NOT temporary deactivation
+✅ Deletion completes entirely within the app (no website required)
+✅ No customer service required (phone/email)
+✅ Appropriate confirmation steps included to prevent accidental deletion
+✅ Users are kept informed throughout the entire process
+✅ Clear messaging about timing (immediate) and irreversibility
+
+Our implementation fully complies with Apple's Guideline 5.1.1(v) and all account deletion requirements.
+
+---
+
+TESTING VERIFICATION:
+
+We have thoroughly tested the account deletion feature and confirm:
+✓ Button is visible and accessible in Profile tab
+✓ Two-step confirmation prevents accidental deletion
+✓ All data is immediately deleted upon confirmation
+✓ Success message confirms completion
+✓ User is automatically logged out
+✓ Account cannot be recovered
+✓ Feature works correctly with demo account
+
+Please test using the demo credentials above. The account deletion button is located in the Profile tab's Actions section, below the Logout button.
+
+We believe we have fully addressed all requirements and look forward to your approval.
+
+Best regards,
+Ben Holsinger
+Developer
+bholsinger@hotmail.com
+
+---
+
+App Information:
+• Name: Chapter Locator USA
+• Bundle ID: com.holsinger.chapterfinder
+• Version: 2.0
+• Build: 4
+• Demo Account: demo@appstore.com / AppReview2025
+• Support URL: https://bholsinger09.github.io/Capter-Locator-USA-/support.html
