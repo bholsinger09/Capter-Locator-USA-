@@ -17,6 +17,7 @@ struct User: Identifiable, Codable {
     var chapterId: UUID?
     var dateJoined: Date = Date()
     var isMember: Bool = false
+    var appleUserID: String? // For Sign in with Apple
     
     var fullName: String {
         "\(firstName) \(lastName)"

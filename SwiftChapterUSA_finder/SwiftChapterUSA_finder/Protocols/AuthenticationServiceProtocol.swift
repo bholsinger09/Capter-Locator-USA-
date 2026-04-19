@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import AuthenticationServices
 
 protocol AuthenticationServiceProtocol: AnyObject {
     var isAuthenticated: Bool { get }
@@ -18,4 +19,5 @@ protocol AuthenticationServiceProtocol: AnyObject {
     func logout()
     func updateUser(_ user: User)
     func deleteAccount()
+    func signInWithApple(authorization: ASAuthorization)
 }
