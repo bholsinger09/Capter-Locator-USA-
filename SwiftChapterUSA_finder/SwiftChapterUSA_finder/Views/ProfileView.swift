@@ -156,7 +156,7 @@ struct ProfileView: View {
                     VStack(spacing: 10) {
                         Text("Chapter Locator USA")
                             .font(.headline)
-                        Text("Version 2.0 (Build 4)")
+                        Text("Version 2.1 (Build 1)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                         

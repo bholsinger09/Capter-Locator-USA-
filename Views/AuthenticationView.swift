@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct AuthenticationView: View {
     @State private var isLoginMode = true
@@ -87,6 +88,27 @@ struct LoginView: View {
                     .fontWeight(.semibold)
             }
             .padding(.top, 10)
+            
+            Text("or")
+                .foregroundColor(.white)
+                .padding(.vertical, 5)
+            
+            SignInWithAppleButton(
+                .signIn,
+                onRequest: { request in
+                    request.requestedScopes = [.fullName, .email]
+                },
+                onCompletion: { result in
+                    switch result {
+                    case .success(let authorization):
+                        authManager.signInWithApple(authorization: authorization)
+                    case .failure(let error):
+                        authManager.errorMessage = error.localizedDescription
+                    }
+                }
+            )
+            .frame(height: 50)
+            .cornerRadius(10)
         }
         .padding()
         .background(Color.white.opacity(0.2))

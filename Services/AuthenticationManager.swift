@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import AuthenticationServices
 
 class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
     @Published var isAuthenticated = false
@@ -89,6 +90,42 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
     func updateUser(_ user: User) {
         currentUser = user
         saveUser()
+    }
+    
+    func signInWithApple(authorization: ASAuthorization) {
+        guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {
+            errorMessage = "Failed to get Apple ID credentials"
+            return
+        }
+        
+        let userID = appleIDCredential.user
+        let email = appleIDCredential.email ?? "apple.user@privaterelay.appleid.com"
+        let firstName = appleIDCredential.fullName?.givenName ?? "Apple"
+        let lastName = appleIDCredential.fullName?.familyName ?? "User"
+        
+        // Check if user already exists
+        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
+           savedUser.appleUserID == userID {
+            // Existing Apple Sign In user
+            currentUser = savedUser
+            isAuthenticated = true
+            errorMessage = nil
+        } else {
+            // New Apple Sign In user - create account with default state
+            let newUser = User(
+                email: email,
+                firstName: firstName,
+                lastName: lastName,
+                state: "California", // Default state, user can update in profile
+                university: nil,
+                appleUserID: userID
+            )
+            currentUser = newUser
+            isAuthenticated = true
+            saveUser()
+            errorMessage = nil
+        }
     }
     
     func deleteAccount() {

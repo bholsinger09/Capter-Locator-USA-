@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 @testable import SwiftChapterUSA_finder
 
 class MockAuthenticationService: AuthenticationServiceProtocol {
@@ -17,6 +18,7 @@ class MockAuthenticationService: AuthenticationServiceProtocol {
     var loginCalled = false
     var logoutCalled = false
     var updateUserCalled = false
+    var signInWithAppleCalled = false
     
     func register(email: String, password: String, firstName: String, lastName: String, state: String, university: String?) {
         registerCalled = true
@@ -45,5 +47,20 @@ class MockAuthenticationService: AuthenticationServiceProtocol {
     func updateUser(_ user: User) {
         updateUserCalled = true
         currentUser = user
+    }
+    
+    func signInWithApple(authorization: ASAuthorization) {
+        signInWithAppleCalled = true
+        // Mock Apple Sign In - create test user
+        let user = User(
+            email: "apple.user@privaterelay.appleid.com",
+            firstName: "Apple",
+            lastName: "User",
+            state: "California",
+            appleUserID: "test.apple.id"
+        )
+        currentUser = user
+        isAuthenticated = true
+        errorMessage = nil
     }
 }

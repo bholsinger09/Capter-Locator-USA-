@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import AuthenticationServices
 
 protocol AuthenticationServiceProtocol: AnyObject {
     var isAuthenticated: Bool { get }
@@ -17,4 +18,5 @@ protocol AuthenticationServiceProtocol: AnyObject {
     func login(email: String, password: String)
     func logout()
     func updateUser(_ user: User)
+    func signInWithApple(authorization: ASAuthorization)
 }

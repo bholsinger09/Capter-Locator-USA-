@@ -28,6 +28,11 @@ struct MainTabView: View {
                     Label("Members", systemImage: "person.3.fill")
                 }
             
+            ResourceLibraryView()
+                .tabItem {
+                    Label("Resources", systemImage: "books.vertical.fill")
+                }
+            
             BlogView()
                 .tabItem {
                     Label("Blog", systemImage: "bubble.left.and.bubble.right.fill")
