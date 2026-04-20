@@ -127,6 +127,12 @@ struct UniversityData {
         // Missouri
         University(name: "University of Missouri", state: "Missouri", city: "Columbia", hasChapter: true, studentPopulation: 31304, website: "missouri.edu"),
         University(name: "Washington University in St. Louis", state: "Missouri", city: "St. Louis", hasChapter: false, studentPopulation: 16550, website: "wustl.edu"),
-        University(name: "Missouri State University", state: "Missouri", city: "Springfield", hasChapter: false, studentPopulation: 24485, website: "missouristate.edu")
+        University(name: "Missouri State University", state: "Missouri", city: "Springfield", hasChapter: false, studentPopulation: 24485, website: "missouristate.edu"),
+        
+        // Alabama
+        University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
+        University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
+        University(name: "University of Alabama at Birmingham", state: "Alabama", city: "Birmingham", hasChapter: true, studentPopulation: 22563, website: "uab.edu"),
+        University(name: "Alabama State University", state: "Alabama", city: "Montgomery", hasChapter: true, studentPopulation: 4741, website: "alasu.edu")
     ]
 }
