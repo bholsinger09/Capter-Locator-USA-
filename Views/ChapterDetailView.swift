@@ -78,19 +78,30 @@ struct ChapterDetailView: View {
                                 .fontWeight(.semibold)
                             Text(chapter.presidentName)
                         }
-                        
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                            Link(chapter.contactEmail, destination: URL(string: "mailto:\(chapter.contactEmail)")!)
-                                .foregroundColor(.blue)
-                        }
-                        
-                        if let phone = chapter.phoneNumber {
-                            HStack {
-                                Image(systemName: "phone.fill")
-                                Link(phone, destination: URL(string: "tel:\(phone)")!)
+                    }
+                }
+                
+                // State Coordinator
+                if let coordinatorName = chapter.stateCoordinatorName {
+                    InfoSection(title: "State Coordinator", icon: "person.badge.shield.checkmark.fill") {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text(coordinatorName)
+                                .fontWeight(.semibold)
+                            
+                            if let linkedIn = chapter.stateCoordinatorLinkedIn {
+                                Link(destination: URL(string: linkedIn)!) {
+                                    HStack {
+                                        Image(systemName: "link.circle.fill")
+                                        Text("View LinkedIn Profile")
+                                    }
                                     .foregroundColor(.blue)
+                                }
                             }
+                            
+                            Text("Search LinkedIn for more information")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .italic()
                         }
                     }
                 }
