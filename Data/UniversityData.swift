@@ -103,6 +103,12 @@ struct UniversityData {
         University(name: "Colorado State University", state: "Colorado", city: "Fort Collins", hasChapter: true, studentPopulation: 34166, website: "colostate.edu"),
         University(name: "University of Denver", state: "Colorado", city: "Denver", hasChapter: false, studentPopulation: 14002, website: "du.edu"),
         
+        // Connecticut
+        University(name: "University of Connecticut", state: "Connecticut", city: "Storrs", hasChapter: true, studentPopulation: 32257, website: "uconn.edu"),
+        University(name: "Yale University", state: "Connecticut", city: "New Haven", hasChapter: true, studentPopulation: 13433, website: "yale.edu"),
+        University(name: "Quinnipiac University", state: "Connecticut", city: "Hamden", hasChapter: true, studentPopulation: 10112, website: "qu.edu"),
+        University(name: "University of New Haven", state: "Connecticut", city: "West Haven", hasChapter: true, studentPopulation: 6819, website: "newhaven.edu"),
+        
         // Wisconsin
         University(name: "University of Wisconsin-Madison", state: "Wisconsin", city: "Madison", hasChapter: true, studentPopulation: 48956, website: "wisc.edu"),
         University(name: "Marquette University", state: "Wisconsin", city: "Milwaukee", hasChapter: true, studentPopulation: 11396, website: "marquette.edu"),
