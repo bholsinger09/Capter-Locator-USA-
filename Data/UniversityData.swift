@@ -115,6 +115,11 @@ struct UniversityData {
         University(name: "Louisiana Tech University", state: "Louisiana", city: "Ruston", hasChapter: true, studentPopulation: 11520, website: "latech.edu"),
         University(name: "University of Louisiana at Lafayette", state: "Louisiana", city: "Lafayette", hasChapter: true, studentPopulation: 16973, website: "louisiana.edu"),
         
+        // Delaware
+        University(name: "University of Delaware", state: "Delaware", city: "Newark", hasChapter: true, studentPopulation: 24039, website: "udel.edu"),
+        University(name: "Delaware State University", state: "Delaware", city: "Dover", hasChapter: true, studentPopulation: 5826, website: "desu.edu"),
+        University(name: "Wilmington University", state: "Delaware", city: "New Castle", hasChapter: true, studentPopulation: 17490, website: "wilmu.edu"),
+        
         // Wisconsin
         University(name: "University of Wisconsin-Madison", state: "Wisconsin", city: "Madison", hasChapter: true, studentPopulation: 48956, website: "wisc.edu"),
         University(name: "Marquette University", state: "Wisconsin", city: "Milwaukee", hasChapter: true, studentPopulation: 11396, website: "marquette.edu"),
