@@ -133,6 +133,11 @@ struct UniversityData {
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
         University(name: "University of Alabama at Birmingham", state: "Alabama", city: "Birmingham", hasChapter: true, studentPopulation: 22563, website: "uab.edu"),
-        University(name: "Alabama State University", state: "Alabama", city: "Montgomery", hasChapter: true, studentPopulation: 4741, website: "alasu.edu")
+        University(name: "Alabama State University", state: "Alabama", city: "Montgomery", hasChapter: true, studentPopulation: 4741, website: "alasu.edu"),
+        
+        // Alaska
+        University(name: "University of Alaska Fairbanks", state: "Alaska", city: "Fairbanks", hasChapter: true, studentPopulation: 6607, website: "uaf.edu"),
+        University(name: "University of Alaska Anchorage", state: "Alaska", city: "Anchorage", hasChapter: true, studentPopulation: 13670, website: "uaa.alaska.edu"),
+        University(name: "University of Alaska Southeast", state: "Alaska", city: "Juneau", hasChapter: true, studentPopulation: 2047, website: "uas.alaska.edu")
     ]
 }
