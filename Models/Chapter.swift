@@ -25,7 +25,6 @@ struct Chapter: Identifiable, Codable {
     var latitude: Double?
     var longitude: Double?
     var stateCoordinatorName: String?
-    var stateCoordinatorEmail: String?
     var stateCoordinatorLinkedIn: String?
     
     var displayName: String {
