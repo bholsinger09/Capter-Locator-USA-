@@ -138,6 +138,12 @@ struct UniversityData {
         // Alaska
         University(name: "University of Alaska Fairbanks", state: "Alaska", city: "Fairbanks", hasChapter: true, studentPopulation: 6607, website: "uaf.edu"),
         University(name: "University of Alaska Anchorage", state: "Alaska", city: "Anchorage", hasChapter: true, studentPopulation: 13670, website: "uaa.alaska.edu"),
-        University(name: "University of Alaska Southeast", state: "Alaska", city: "Juneau", hasChapter: true, studentPopulation: 2047, website: "uas.alaska.edu")
+        University(name: "University of Alaska Southeast", state: "Alaska", city: "Juneau", hasChapter: true, studentPopulation: 2047, website: "uas.alaska.edu"),
+        
+        // Arkansas
+        University(name: "University of Arkansas", state: "Arkansas", city: "Fayetteville", hasChapter: true, studentPopulation: 30936, website: "uark.edu"),
+        University(name: "Arkansas State University", state: "Arkansas", city: "Jonesboro", hasChapter: true, studentPopulation: 13483, website: "astate.edu"),
+        University(name: "University of Central Arkansas", state: "Arkansas", city: "Conway", hasChapter: true, studentPopulation: 9913, website: "uca.edu"),
+        University(name: "University of Arkansas at Little Rock", state: "Arkansas", city: "Little Rock", hasChapter: true, studentPopulation: 8819, website: "ualr.edu")
     ]
 }
