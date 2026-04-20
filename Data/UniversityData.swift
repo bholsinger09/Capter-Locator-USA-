@@ -109,6 +109,12 @@ struct UniversityData {
         University(name: "Quinnipiac University", state: "Connecticut", city: "Hamden", hasChapter: true, studentPopulation: 10112, website: "qu.edu"),
         University(name: "University of New Haven", state: "Connecticut", city: "West Haven", hasChapter: true, studentPopulation: 6819, website: "newhaven.edu"),
         
+        // Louisiana
+        University(name: "Louisiana State University", state: "Louisiana", city: "Baton Rouge", hasChapter: true, studentPopulation: 34290, website: "lsu.edu"),
+        University(name: "Tulane University", state: "Louisiana", city: "New Orleans", hasChapter: true, studentPopulation: 14513, website: "tulane.edu"),
+        University(name: "Louisiana Tech University", state: "Louisiana", city: "Ruston", hasChapter: true, studentPopulation: 11520, website: "latech.edu"),
+        University(name: "University of Louisiana at Lafayette", state: "Louisiana", city: "Lafayette", hasChapter: true, studentPopulation: 16973, website: "louisiana.edu"),
+        
         // Wisconsin
         University(name: "University of Wisconsin-Madison", state: "Wisconsin", city: "Madison", hasChapter: true, studentPopulation: 48956, website: "wisc.edu"),
         University(name: "Marquette University", state: "Wisconsin", city: "Milwaukee", hasChapter: true, studentPopulation: 11396, website: "marquette.edu"),
