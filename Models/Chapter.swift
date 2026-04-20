@@ -24,6 +24,9 @@ struct Chapter: Identifiable, Codable {
     var isActive: Bool = true
     var latitude: Double?
     var longitude: Double?
+    var stateCoordinatorName: String?
+    var stateCoordinatorEmail: String?
+    var stateCoordinatorLinkedIn: String?
     
     var displayName: String {
         if let university = university {
