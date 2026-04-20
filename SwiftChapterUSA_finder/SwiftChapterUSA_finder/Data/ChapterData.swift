@@ -84,7 +84,7 @@ struct ChapterData {
         Chapter(name: "Wayne State TPUSA", state: "Michigan", city: "Detroit", university: "Wayne State University", presidentName: "Daniel Garcia", contactEmail: "wayne@tpusa.local", phoneNumber: "313-555-0803", description: "Warriors for freedom", memberCount: 95, meetingLocation: "Student Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1661990400)),
         
         // Arizona (3 chapters)
-        Chapter(name: "ASU TPUSA", state: "Arizona", city: "Tempe", university: "Arizona State University", presidentName: "Sofia Lopez", contactEmail: "asu@tpusa.local", phoneNumber: "480-555-0901", description: "Sun Devils for liberty", memberCount: 201, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1664582400)),
+        Chapter(name: "ASU TPUSA", state: "Arizona", city: "Tempe", university: "Arizona State University", presidentName: "Jonathan Coon", contactEmail: "jonathan.coon@tpusa.com", phoneNumber: "480-555-0901", description: "Sun Devils for liberty", memberCount: 201, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1664582400)),
         
         Chapter(name: "UofA TPUSA", state: "Arizona", city: "Tucson", university: "University of Arizona", presidentName: "Matthew Taylor", contactEmail: "uofa@tpusa.local", phoneNumber: "520-555-0902", description: "Wildcats for America", memberCount: 147, meetingLocation: "Student Union Memorial Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1667260800)),
         
