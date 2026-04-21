@@ -254,6 +254,13 @@ struct ChapterData {
         
         Chapter(name: "SNHU TPUSA", state: "New Hampshire", city: "Manchester", university: "Southern New Hampshire University", presidentName: "TBD", contactEmail: "snhu@tpusa.local", phoneNumber: "603-555-3103", description: "Penmen for America", memberCount: 95, meetingLocation: "Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1814572800), stateCoordinatorName: "Grace Mack", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-mack18/"),
         
+        // New Jersey (3 chapters)
+        Chapter(name: "Rutgers TPUSA", state: "New Jersey", city: "New Brunswick", university: "Rutgers University", presidentName: "TBD", contactEmail: "rutgers@tpusa.local", phoneNumber: "732-555-3201", description: "Scarlet Knights for freedom", memberCount: 156, meetingLocation: "Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1817164800), stateCoordinatorName: "Tanay Bhaskar", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/tanay-bhaskar-60ab84285/"),
+        
+        Chapter(name: "Princeton TPUSA", state: "New Jersey", city: "Princeton", university: "Princeton University", presidentName: "TBD", contactEmail: "princeton@tpusa.local", phoneNumber: "609-555-3202", description: "Tigers for conservative values", memberCount: 91, meetingLocation: "Frist Campus Center", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1819756800), stateCoordinatorName: "Tanay Bhaskar", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/tanay-bhaskar-60ab84285/"),
+        
+        Chapter(name: "TCNJ TPUSA", state: "New Jersey", city: "Ewing", university: "The College of New Jersey", presidentName: "TBD", contactEmail: "tcnj@tpusa.local", phoneNumber: "609-555-3203", description: "Lions for America", memberCount: 78, meetingLocation: "Brower Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1822435200), stateCoordinatorName: "Tanay Bhaskar", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/tanay-bhaskar-60ab84285/"),
+        
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
         

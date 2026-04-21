@@ -206,6 +206,11 @@ struct UniversityData {
         University(name: "Dartmouth College", state: "New Hampshire", city: "Hanover", hasChapter: true, studentPopulation: 6744, website: "dartmouth.edu"),
         University(name: "Southern New Hampshire University", state: "New Hampshire", city: "Manchester", hasChapter: true, studentPopulation: 164943, website: "snhu.edu"),
         
+        // New Jersey
+        University(name: "Rutgers University", state: "New Jersey", city: "New Brunswick", hasChapter: true, studentPopulation: 50637, website: "rutgers.edu"),
+        University(name: "Princeton University", state: "New Jersey", city: "Princeton", hasChapter: true, studentPopulation: 8842, website: "princeton.edu"),
+        University(name: "The College of New Jersey", state: "New Jersey", city: "Ewing", hasChapter: true, studentPopulation: 7539, website: "tcnj.edu"),
+        
         // Alabama
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
