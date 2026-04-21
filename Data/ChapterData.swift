@@ -195,6 +195,13 @@ struct ChapterData {
         
         Chapter(name: "WKU TPUSA", state: "Kentucky", city: "Bowling Green", university: "Western Kentucky University", presidentName: "TBD", contactEmail: "wku@tpusa.local", phoneNumber: "270-555-2303", description: "Hilltoppers for liberty", memberCount: 112, meetingLocation: "Downing Student Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1751587200), stateCoordinatorName: "Madeline Del Rio", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madeline-del-rio-26118b2b7/"),
         
+        // Maine (3 chapters)
+        Chapter(name: "UMaine TPUSA", state: "Maine", city: "Orono", university: "University of Maine", presidentName: "TBD", contactEmail: "tpusasmcc@gmail.com", phoneNumber: "207-555-2401", description: "Black Bears for freedom", memberCount: 95, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1754265600), stateCoordinatorName: "TPUSA Maine", stateCoordinatorLinkedIn: "https://tpusasmc.com/contact"),
+        
+        Chapter(name: "USM TPUSA", state: "Maine", city: "Portland", university: "University of Southern Maine", presidentName: "TBD", contactEmail: "tpusasmcc@gmail.com", phoneNumber: "207-555-2402", description: "Huskies for conservative values", memberCount: 68, meetingLocation: "Student Center", meetingSchedule: "Tuesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1756857600), stateCoordinatorName: "TPUSA Maine", stateCoordinatorLinkedIn: "https://tpusasmc.com/contact"),
+        
+        Chapter(name: "Bowdoin TPUSA", state: "Maine", city: "Brunswick", university: "Bowdoin College", presidentName: "TBD", contactEmail: "tpusasmcc@gmail.com", phoneNumber: "207-555-2403", description: "Polar Bears for liberty", memberCount: 52, meetingLocation: "Smith Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1759536000), stateCoordinatorName: "TPUSA Maine", stateCoordinatorLinkedIn: "https://tpusasmc.com/contact"),
+        
         // Missouri (2 chapters)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
         

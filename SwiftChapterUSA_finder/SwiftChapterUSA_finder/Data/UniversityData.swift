@@ -79,6 +79,11 @@ struct UniversityData {
         University(name: "University of Louisville", state: "Kentucky", city: "Louisville", hasChapter: true, studentPopulation: 22017, website: "louisville.edu"),
         University(name: "Western Kentucky University", state: "Kentucky", city: "Bowling Green", hasChapter: true, studentPopulation: 16493, website: "wku.edu"),
         
+        // Maine
+        University(name: "University of Maine", state: "Maine", city: "Orono", hasChapter: true, studentPopulation: 11741, website: "umaine.edu"),
+        University(name: "University of Southern Maine", state: "Maine", city: "Portland", hasChapter: true, studentPopulation: 7583, website: "usm.maine.edu"),
+        University(name: "Bowdoin College", state: "Maine", city: "Brunswick", hasChapter: true, studentPopulation: 1915, website: "bowdoin.edu"),
+        
         // Michigan
         University(name: "University of Michigan", state: "Michigan", city: "Ann Arbor", hasChapter: true, studentPopulation: 51225, website: "umich.edu"),
         University(name: "Michigan State University", state: "Michigan", city: "East Lansing", hasChapter: true, studentPopulation: 50023, website: "msu.edu"),
