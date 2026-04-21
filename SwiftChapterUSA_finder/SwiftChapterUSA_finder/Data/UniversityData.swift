@@ -122,6 +122,11 @@ struct UniversityData {
         University(name: "North Carolina State University", state: "North Carolina", city: "Raleigh", hasChapter: true, studentPopulation: 36304, website: "ncsu.edu"),
         University(name: "Wake Forest University", state: "North Carolina", city: "Winston-Salem", hasChapter: false, studentPopulation: 9000, website: "wfu.edu"),
         
+        // North Dakota
+        University(name: "University of North Dakota", state: "North Dakota", city: "Grand Forks", hasChapter: true, studentPopulation: 13376, website: "und.edu"),
+        University(name: "North Dakota State University", state: "North Dakota", city: "Fargo", hasChapter: true, studentPopulation: 14358, website: "ndsu.edu"),
+        University(name: "Minot State University", state: "North Dakota", city: "Minot", hasChapter: true, studentPopulation: 3042, website: "minotstateu.edu"),
+        
         // Virginia
         University(name: "University of Virginia", state: "Virginia", city: "Charlottesville", hasChapter: true, studentPopulation: 25628, website: "virginia.edu"),
         University(name: "Virginia Tech", state: "Virginia", city: "Blacksburg", hasChapter: true, studentPopulation: 37024, website: "vt.edu"),

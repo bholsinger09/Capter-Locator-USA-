@@ -104,6 +104,13 @@ struct ChapterData {
         
         Chapter(name: "NC State TPUSA", state: "North Carolina", city: "Raleigh", university: "North Carolina State University", presidentName: "Harper Clark", contactEmail: "ncsu@tpusa.local", phoneNumber: "919-555-1103", description: "Wolfpack for liberty", memberCount: 143, meetingLocation: "Talley Student Union", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1685577600), stateCoordinatorName: "Morgan Bergoon", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/morgan-bergoon-02868483/"),
         
+        // North Dakota (3 chapters)
+        Chapter(name: "UND TPUSA", state: "North Dakota", city: "Grand Forks", university: "University of North Dakota", presidentName: "TBD", contactEmail: "und@tpusa.local", phoneNumber: "701-555-1401", description: "Fighting Hawks for freedom", memberCount: 45, meetingLocation: "Memorial Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1672531200), stateCoordinatorName: "Madison Steffens", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madison-steffens-41b426290/"),
+        
+        Chapter(name: "NDSU TPUSA", state: "North Dakota", city: "Fargo", university: "North Dakota State University", presidentName: "TBD", contactEmail: "ndsu@tpusa.local", phoneNumber: "701-555-1402", description: "Bison for conservative values", memberCount: 52, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1675209600), stateCoordinatorName: "Madison Steffens", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madison-steffens-41b426290/"),
+        
+        Chapter(name: "Minot State TPUSA", state: "North Dakota", city: "Minot", university: "Minot State University", presidentName: "TBD", contactEmail: "minot@tpusa.local", phoneNumber: "701-555-1403", description: "Beavers for America", memberCount: 28, meetingLocation: "Student Center", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "Madison Steffens", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madison-steffens-41b426290/"),
+        
         // Virginia (3 chapters)
         Chapter(name: "UVA TPUSA", state: "Virginia", city: "Charlottesville", university: "University of Virginia", presidentName: "Evelyn Walker", contactEmail: "uva@tpusa.local", phoneNumber: "434-555-1201", description: "Cavaliers for freedom", memberCount: 136, meetingLocation: "Newcomb Hall", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1688169600), stateCoordinatorName: "Emily DeYoung", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/emily-deyoung-64b6b1302/"),
         
