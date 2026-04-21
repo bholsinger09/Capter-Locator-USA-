@@ -146,6 +146,13 @@ struct ChapterData {
         
         Chapter(name: "Wilmington University TPUSA", state: "Delaware", city: "New Castle", university: "Wilmington University", presidentName: "TBD", contactEmail: "wilmu@tpusa.local", phoneNumber: "302-555-1803", description: "Wildcats for liberty", memberCount: 52, meetingLocation: "Main Campus Building", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1711929600), stateCoordinatorName: "Maggie Boyd", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/maggieboyd3/"),
         
+        // Hawaii (3 chapters)
+        Chapter(name: "UH Manoa TPUSA", state: "Hawaii", city: "Honolulu", university: "University of Hawaii at Manoa", presidentName: "TBD", contactEmail: "uhmanoa@tpusa.local", phoneNumber: "808-555-1901", description: "Rainbow Warriors for freedom", memberCount: 102, meetingLocation: "Campus Center", meetingSchedule: "Wednesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1706659200), stateCoordinatorName: "Teagan Miley", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/teagan-miley-0297a8335/"),
+        
+        Chapter(name: "UH Hilo TPUSA", state: "Hawaii", city: "Hilo", university: "University of Hawaii at Hilo", presidentName: "TBD", contactEmail: "uhhilo@tpusa.local", phoneNumber: "808-555-1902", description: "Vulcans for conservative values", memberCount: 58, meetingLocation: "Student Life Center", meetingSchedule: "Thursdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1709251200), stateCoordinatorName: "Teagan Miley", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/teagan-miley-0297a8335/"),
+        
+        Chapter(name: "HPU TPUSA", state: "Hawaii", city: "Honolulu", university: "Hawaii Pacific University", presidentName: "TBD", contactEmail: "hpu@tpusa.local", phoneNumber: "808-555-1903", description: "Sharks for America", memberCount: 71, meetingLocation: "Aloha Tower Marketplace", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1711929600), stateCoordinatorName: "Teagan Miley", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/teagan-miley-0297a8335/"),
+        
         // Wisconsin (2 chapters)
         Chapter(name: "UW Madison TPUSA", state: "Wisconsin", city: "Madison", university: "University of Wisconsin-Madison", presidentName: "Jackson Taylor", contactEmail: "uwmadison@tpusa.local", phoneNumber: "608-555-1501", description: "Badgers for freedom", memberCount: 168, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1706659200)),
         

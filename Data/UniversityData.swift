@@ -120,6 +120,11 @@ struct UniversityData {
         University(name: "Delaware State University", state: "Delaware", city: "Dover", hasChapter: true, studentPopulation: 5826, website: "desu.edu"),
         University(name: "Wilmington University", state: "Delaware", city: "New Castle", hasChapter: true, studentPopulation: 17490, website: "wilmu.edu"),
         
+        // Hawaii
+        University(name: "University of Hawaii at Manoa", state: "Hawaii", city: "Honolulu", hasChapter: true, studentPopulation: 18056, website: "manoa.hawaii.edu"),
+        University(name: "University of Hawaii at Hilo", state: "Hawaii", city: "Hilo", hasChapter: true, studentPopulation: 3142, website: "hilo.hawaii.edu"),
+        University(name: "Hawaii Pacific University", state: "Hawaii", city: "Honolulu", hasChapter: true, studentPopulation: 5674, website: "hpu.edu"),
+        
         // Wisconsin
         University(name: "University of Wisconsin-Madison", state: "Wisconsin", city: "Madison", hasChapter: true, studentPopulation: 48956, website: "wisc.edu"),
         University(name: "Marquette University", state: "Wisconsin", city: "Milwaukee", hasChapter: true, studentPopulation: 11396, website: "marquette.edu"),
