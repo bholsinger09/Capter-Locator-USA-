@@ -174,6 +174,13 @@ struct ChapterData {
         
         Chapter(name: "Purdue TPUSA", state: "Indiana", city: "West Lafayette", university: "Purdue University", presidentName: "Nora Walker", contactEmail: "purdue@tpusa.local", phoneNumber: "765-555-1802", description: "Boilermakers for freedom", memberCount: 145, meetingLocation: "PMU", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1725148800), stateCoordinatorName: "Josh Lippe", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/josh-lippe-035312332/"),
         
+        // Iowa (3 chapters)
+        Chapter(name: "Iowa TPUSA", state: "Iowa", city: "Iowa City", university: "University of Iowa", presidentName: "TBD", contactEmail: "iowa@tpusa.local", phoneNumber: "319-555-2101", description: "Hawkeyes for conservative principles", memberCount: 118, meetingLocation: "Iowa Memorial Union", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200), stateCoordinatorName: "Jordyn Landau", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jordyn-landau/"),
+        
+        Chapter(name: "Iowa State TPUSA", state: "Iowa", city: "Ames", university: "Iowa State University", presidentName: "TBD", contactEmail: "iastate@tpusa.local", phoneNumber: "515-555-2102", description: "Cyclones standing for freedom", memberCount: 134, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1733011200), stateCoordinatorName: "Jordyn Landau", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jordyn-landau/"),
+        
+        Chapter(name: "UNI TPUSA", state: "Iowa", city: "Cedar Falls", university: "University of Northern Iowa", presidentName: "TBD", contactEmail: "uni@tpusa.local", phoneNumber: "319-555-2103", description: "Panthers for liberty", memberCount: 89, meetingLocation: "Maucker Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1735689600), stateCoordinatorName: "Jordyn Landau", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jordyn-landau/"),
+        
         // Missouri (2 chapters)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
         

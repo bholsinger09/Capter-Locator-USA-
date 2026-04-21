@@ -64,6 +64,11 @@ struct UniversityData {
         University(name: "DePaul University", state: "Illinois", city: "Chicago", hasChapter: false, studentPopulation: 21900, website: "depaul.edu"),
         University(name: "Loyola University Chicago", state: "Illinois", city: "Chicago", hasChapter: false, studentPopulation: 17358, website: "luc.edu"),
         
+        // Iowa
+        University(name: "University of Iowa", state: "Iowa", city: "Iowa City", hasChapter: true, studentPopulation: 30318, website: "uiowa.edu"),
+        University(name: "Iowa State University", state: "Iowa", city: "Ames", hasChapter: true, studentPopulation: 33391, website: "iastate.edu"),
+        University(name: "University of Northern Iowa", state: "Iowa", city: "Cedar Falls", hasChapter: true, studentPopulation: 10497, website: "uni.edu"),
+        
         // Michigan
         University(name: "University of Michigan", state: "Michigan", city: "Ann Arbor", hasChapter: true, studentPopulation: 51225, website: "umich.edu"),
         University(name: "Michigan State University", state: "Michigan", city: "East Lansing", hasChapter: true, studentPopulation: 50023, website: "msu.edu"),
