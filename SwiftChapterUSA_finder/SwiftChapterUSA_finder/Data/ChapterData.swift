@@ -146,6 +146,13 @@ struct ChapterData {
         
         Chapter(name: "Minot State TPUSA", state: "North Dakota", city: "Minot", university: "Minot State University", presidentName: "TBD", contactEmail: "minot@tpusa.local", phoneNumber: "701-555-1403", description: "Beavers for America", memberCount: 28, meetingLocation: "Student Center", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "Madison Steffens", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madison-steffens-41b426290/"),
         
+        // Utah (3 chapters)
+        Chapter(name: "Utah TPUSA", state: "Utah", city: "Salt Lake City", university: "University of Utah", presidentName: "TBD", contactEmail: "utah@tpusa.local", phoneNumber: "801-555-1401", description: "Utes for freedom", memberCount: 62, meetingLocation: "Union Building", meetingSchedule: "Wednesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1680048000), stateCoordinatorName: "Nikkelle Hudak", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/nikkellehudak/"),
+        
+        Chapter(name: "BYU TPUSA", state: "Utah", city: "Provo", university: "Brigham Young University", presidentName: "TBD", contactEmail: "byu@tpusa.local", phoneNumber: "801-555-1402", description: "Cougars for conservative values", memberCount: 78, meetingLocation: "Wilkinson Center", meetingSchedule: "Thursdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1682640000), stateCoordinatorName: "Nikkelle Hudak", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/nikkellehudak/"),
+        
+        Chapter(name: "USU TPUSA", state: "Utah", city: "Logan", university: "Utah State University", presidentName: "TBD", contactEmail: "usu@tpusa.local", phoneNumber: "435-555-1403", description: "Aggies for America", memberCount: 51, meetingLocation: "TSC", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1685318400), stateCoordinatorName: "Nikkelle Hudak", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/nikkellehudak/"),
+        
         // Virginia (3 chapters)
         Chapter(name: "UVA TPUSA", state: "Virginia", city: "Charlottesville", university: "University of Virginia", presidentName: "Evelyn Walker", contactEmail: "uva@tpusa.local", phoneNumber: "434-555-1201", description: "Cavaliers for freedom", memberCount: 136, meetingLocation: "Newcomb Hall", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1688169600), stateCoordinatorName: "Emily DeYoung", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/emily-deyoung-64b6b1302/"),
         

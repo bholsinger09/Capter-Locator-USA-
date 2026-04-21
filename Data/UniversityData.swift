@@ -152,6 +152,11 @@ struct UniversityData {
         University(name: "North Dakota State University", state: "North Dakota", city: "Fargo", hasChapter: true, studentPopulation: 14358, website: "ndsu.edu"),
         University(name: "Minot State University", state: "North Dakota", city: "Minot", hasChapter: true, studentPopulation: 3042, website: "minotstateu.edu"),
         
+        // Utah
+        University(name: "University of Utah", state: "Utah", city: "Salt Lake City", hasChapter: true, studentPopulation: 33081, website: "utah.edu"),
+        University(name: "Brigham Young University", state: "Utah", city: "Provo", hasChapter: true, studentPopulation: 33365, website: "byu.edu"),
+        University(name: "Utah State University", state: "Utah", city: "Logan", hasChapter: true, studentPopulation: 27691, website: "usu.edu"),
+        
         // Virginia
         University(name: "University of Virginia", state: "Virginia", city: "Charlottesville", hasChapter: true, studentPopulation: 25628, website: "virginia.edu"),
         University(name: "Virginia Tech", state: "Virginia", city: "Blacksburg", hasChapter: true, studentPopulation: 37024, website: "vt.edu"),
