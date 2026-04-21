@@ -84,6 +84,11 @@ struct UniversityData {
         University(name: "University of Southern Maine", state: "Maine", city: "Portland", hasChapter: true, studentPopulation: 7583, website: "usm.maine.edu"),
         University(name: "Bowdoin College", state: "Maine", city: "Brunswick", hasChapter: true, studentPopulation: 1915, website: "bowdoin.edu"),
         
+        // Maryland
+        University(name: "University of Maryland", state: "Maryland", city: "College Park", hasChapter: true, studentPopulation: 41200, website: "umd.edu"),
+        University(name: "Johns Hopkins University", state: "Maryland", city: "Baltimore", hasChapter: true, studentPopulation: 28890, website: "jhu.edu"),
+        University(name: "Towson University", state: "Maryland", city: "Towson", hasChapter: true, studentPopulation: 19793, website: "towson.edu"),
+        
         // Michigan
         University(name: "University of Michigan", state: "Michigan", city: "Ann Arbor", hasChapter: true, studentPopulation: 51225, website: "umich.edu"),
         University(name: "Michigan State University", state: "Michigan", city: "East Lansing", hasChapter: true, studentPopulation: 50023, website: "msu.edu"),
