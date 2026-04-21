@@ -226,6 +226,13 @@ struct ChapterData {
         // Missouri (1 chapter)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800), stateCoordinatorName: "Paige Schulte", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/paige-schulte-bb5040336/"),
         
+        // Montana (3 chapters)
+        Chapter(name: "UM TPUSA", state: "Montana", city: "Missoula", university: "University of Montana", presidentName: "TBD", contactEmail: "montana@tpusa.local", phoneNumber: "406-555-2801", description: "Grizzlies for freedom", memberCount: 95, meetingLocation: "University Center", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1785715200), stateCoordinatorName: "Kayla C", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/kayla-c-904a1224a/"),
+        
+        Chapter(name: "Montana State TPUSA", state: "Montana", city: "Bozeman", university: "Montana State University", presidentName: "TBD", contactEmail: "msu@tpusa.local", phoneNumber: "406-555-2802", description: "Bobcats for conservative values", memberCount: 112, meetingLocation: "Strand Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1788307200), stateCoordinatorName: "Kayla C", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/kayla-c-904a1224a/"),
+        
+        Chapter(name: "Montana Tech TPUSA", state: "Montana", city: "Butte", university: "Montana Tech", presidentName: "TBD", contactEmail: "mtech@tpusa.local", phoneNumber: "406-555-2803", description: "Orediggers for America", memberCount: 67, meetingLocation: "SUB Building", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1790985600), stateCoordinatorName: "Kayla C", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/kayla-c-904a1224a/"),
+        
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
         

@@ -186,6 +186,11 @@ struct UniversityData {
         University(name: "Washington University in St. Louis", state: "Missouri", city: "St. Louis", hasChapter: false, studentPopulation: 16550, website: "wustl.edu"),
         University(name: "Missouri State University", state: "Missouri", city: "Springfield", hasChapter: false, studentPopulation: 24485, website: "missouristate.edu"),
         
+        // Montana
+        University(name: "University of Montana", state: "Montana", city: "Missoula", hasChapter: true, studentPopulation: 9955, website: "umt.edu"),
+        University(name: "Montana State University", state: "Montana", city: "Bozeman", hasChapter: true, studentPopulation: 16902, website: "montana.edu"),
+        University(name: "Montana Tech", state: "Montana", city: "Butte", hasChapter: true, studentPopulation: 2256, website: "mtech.edu"),
+        
         // Alabama
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
