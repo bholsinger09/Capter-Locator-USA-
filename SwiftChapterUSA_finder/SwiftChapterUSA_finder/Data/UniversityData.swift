@@ -57,6 +57,11 @@ struct UniversityData {
         University(name: "Ohio University", state: "Ohio", city: "Athens", hasChapter: false, studentPopulation: 28990, website: "ohio.edu"),
         University(name: "Kent State University", state: "Ohio", city: "Kent", hasChapter: false, studentPopulation: 34284, website: "kent.edu"),
         
+        // Oklahoma
+        University(name: "University of Oklahoma", state: "Oklahoma", city: "Norman", hasChapter: true, studentPopulation: 28840, website: "ou.edu"),
+        University(name: "Oklahoma State University", state: "Oklahoma", city: "Stillwater", hasChapter: true, studentPopulation: 25372, website: "okstate.edu"),
+        University(name: "University of Tulsa", state: "Oklahoma", city: "Tulsa", hasChapter: true, studentPopulation: 4228, website: "utulsa.edu"),
+        
         // Illinois
         University(name: "University of Illinois at Urbana-Champaign", state: "Illinois", city: "Champaign", hasChapter: true, studentPopulation: 56607, website: "illinois.edu"),
         University(name: "Northwestern University", state: "Illinois", city: "Evanston", hasChapter: true, studentPopulation: 23466, website: "northwestern.edu"),

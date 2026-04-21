@@ -69,6 +69,13 @@ struct ChapterData {
         
         Chapter(name: "Miami OH TPUSA", state: "Ohio", city: "Oxford", university: "Miami University", presidentName: "Charlotte Walker", contactEmail: "miamioh@tpusa.local", phoneNumber: "513-555-0604", description: "RedHawks standing for freedom", memberCount: 83, meetingLocation: "Armstrong Student Center", meetingSchedule: "Mondays 6PM", dateEstablished: Date(timeIntervalSince1970: 1646179200), stateCoordinatorName: "Jake Poling", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jake-poling-55010112a/"),
         
+        // Oklahoma (3 chapters)
+        Chapter(name: "OU TPUSA", state: "Oklahoma", city: "Norman", university: "University of Oklahoma", presidentName: "TBD", contactEmail: "ou@tpusa.local", phoneNumber: "405-555-1501", description: "Sooners for freedom", memberCount: 87, meetingLocation: "Oklahoma Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1672531200), stateCoordinatorName: "TPUSA Oklahoma", stateCoordinatorLinkedIn: "https://campuslink.okstate.edu/organization/tpusaosu"),
+        
+        Chapter(name: "OSU TPUSA", state: "Oklahoma", city: "Stillwater", university: "Oklahoma State University", presidentName: "TBD", contactEmail: "okstate@tpusa.local", phoneNumber: "405-555-1502", description: "Cowboys for America", memberCount: 94, meetingLocation: "Student Union", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1675209600), stateCoordinatorName: "TPUSA Oklahoma", stateCoordinatorLinkedIn: "https://campuslink.okstate.edu/organization/tpusaosu"),
+        
+        Chapter(name: "Tulsa TPUSA", state: "Oklahoma", city: "Tulsa", university: "University of Tulsa", presidentName: "TBD", contactEmail: "tulsa@tpusa.local", phoneNumber: "918-555-1503", description: "Golden Hurricane for liberty", memberCount: 38, meetingLocation: "Lorton Performance Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "TPUSA Oklahoma", stateCoordinatorLinkedIn: "https://campuslink.okstate.edu/organization/tpusaosu"),
+        
         // Illinois (3 chapters)
         Chapter(name: "UIUC TPUSA", state: "Illinois", city: "Champaign", university: "University of Illinois at Urbana-Champaign", presidentName: "William Martinez", contactEmail: "uiuc@tpusa.local", phoneNumber: "217-555-0701", description: "Fighting Illini for liberty", memberCount: 156, meetingLocation: "Illini Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1648771200), stateCoordinatorName: "Jessica Burback", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jessicaburback2/"),
         
