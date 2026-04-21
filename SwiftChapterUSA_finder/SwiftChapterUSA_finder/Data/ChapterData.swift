@@ -261,6 +261,13 @@ struct ChapterData {
         
         Chapter(name: "TCNJ TPUSA", state: "New Jersey", city: "Ewing", university: "The College of New Jersey", presidentName: "TBD", contactEmail: "tcnj@tpusa.local", phoneNumber: "609-555-3203", description: "Lions for America", memberCount: 78, meetingLocation: "Brower Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1822435200), stateCoordinatorName: "Tanay Bhaskar", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/tanay-bhaskar-60ab84285/"),
         
+        // New Mexico (3 chapters)
+        Chapter(name: "NMSU TPUSA", state: "New Mexico", city: "Las Cruces", university: "New Mexico State University", presidentName: "TBD", contactEmail: "ryan2005@nmsu.edu", phoneNumber: "575-555-3301", description: "Aggies for freedom", memberCount: 118, meetingLocation: "Corbett Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1825027200), stateCoordinatorName: "TPUSA New Mexico", stateCoordinatorLinkedIn: "https://crimsonconnection.nmsu.edu/organization/tpusastudents"),
+        
+        Chapter(name: "UNM TPUSA", state: "New Mexico", city: "Albuquerque", university: "University of New Mexico", presidentName: "TBD", contactEmail: "ryan2005@nmsu.edu", phoneNumber: "505-555-3302", description: "Lobos for conservative values", memberCount: 135, meetingLocation: "Student Union Building", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1827619200), stateCoordinatorName: "TPUSA New Mexico", stateCoordinatorLinkedIn: "https://crimsonconnection.nmsu.edu/organization/tpusastudents"),
+        
+        Chapter(name: "New Mexico Tech TPUSA", state: "New Mexico", city: "Socorro", university: "New Mexico Institute of Mining and Technology", presidentName: "TBD", contactEmail: "ryan2005@nmsu.edu", phoneNumber: "575-555-3303", description: "Miners for America", memberCount: 64, meetingLocation: "Fidel Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1830297600), stateCoordinatorName: "TPUSA New Mexico", stateCoordinatorLinkedIn: "https://crimsonconnection.nmsu.edu/organization/tpusastudents"),
+        
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
         

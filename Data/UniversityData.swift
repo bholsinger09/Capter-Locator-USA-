@@ -211,6 +211,11 @@ struct UniversityData {
         University(name: "Princeton University", state: "New Jersey", city: "Princeton", hasChapter: true, studentPopulation: 8842, website: "princeton.edu"),
         University(name: "The College of New Jersey", state: "New Jersey", city: "Ewing", hasChapter: true, studentPopulation: 7539, website: "tcnj.edu"),
         
+        // New Mexico
+        University(name: "New Mexico State University", state: "New Mexico", city: "Las Cruces", hasChapter: true, studentPopulation: 14268, website: "nmsu.edu"),
+        University(name: "University of New Mexico", state: "New Mexico", city: "Albuquerque", hasChapter: true, studentPopulation: 22261, website: "unm.edu"),
+        University(name: "New Mexico Institute of Mining and Technology", state: "New Mexico", city: "Socorro", hasChapter: true, studentPopulation: 1831, website: "nmt.edu"),
+        
         // Alabama
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
