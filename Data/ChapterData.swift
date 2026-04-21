@@ -240,6 +240,13 @@ struct ChapterData {
         
         Chapter(name: "UNO TPUSA", state: "Nebraska", city: "Omaha", university: "University of Nebraska Omaha", presidentName: "TBD", contactEmail: "uno@tpusa.local", phoneNumber: "402-555-2903", description: "Mavericks for America", memberCount: 96, meetingLocation: "Milo Bail Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1798848000), stateCoordinatorName: "Hannah Sobczyk", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/hannah-sobczyk-02aa802a2/"),
         
+        // Nevada (3 chapters)
+        Chapter(name: "UNLV TPUSA", state: "Nevada", city: "Las Vegas", university: "University of Nevada, Las Vegas", presidentName: "TBD", contactEmail: "unlv@tpusa.local", phoneNumber: "702-555-3001", description: "Rebels for freedom", memberCount: 142, meetingLocation: "Student Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1801440000), stateCoordinatorName: "Brandon Shubert", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/brandon-shubert-9534086a/"),
+        
+        Chapter(name: "UNR TPUSA", state: "Nevada", city: "Reno", university: "University of Nevada, Reno", presidentName: "TBD", contactEmail: "unr@tpusa.local", phoneNumber: "775-555-3002", description: "Wolf Pack for conservative values", memberCount: 128, meetingLocation: "Joe Crowley Student Union", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1804032000), stateCoordinatorName: "Brandon Shubert", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/brandon-shubert-9534086a/"),
+        
+        Chapter(name: "Nevada State TPUSA", state: "Nevada", city: "Henderson", university: "Nevada State College", presidentName: "TBD", contactEmail: "nevadastate@tpusa.local", phoneNumber: "702-555-3003", description: "Scorpions for America", memberCount: 73, meetingLocation: "Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1806710400), stateCoordinatorName: "Brandon Shubert", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/brandon-shubert-9534086a/"),
+        
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
         

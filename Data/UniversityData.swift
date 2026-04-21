@@ -196,6 +196,11 @@ struct UniversityData {
         University(name: "Creighton University", state: "Nebraska", city: "Omaha", hasChapter: true, studentPopulation: 8997, website: "creighton.edu"),
         University(name: "University of Nebraska Omaha", state: "Nebraska", city: "Omaha", hasChapter: true, studentPopulation: 15211, website: "unomaha.edu"),
         
+        // Nevada
+        University(name: "University of Nevada, Las Vegas", state: "Nevada", city: "Las Vegas", hasChapter: true, studentPopulation: 30660, website: "unlv.edu"),
+        University(name: "University of Nevada, Reno", state: "Nevada", city: "Reno", hasChapter: true, studentPopulation: 21657, website: "unr.edu"),
+        University(name: "Nevada State College", state: "Nevada", city: "Henderson", hasChapter: true, studentPopulation: 7200, website: "nsc.edu"),
+        
         // Alabama
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
