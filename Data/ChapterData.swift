@@ -181,6 +181,13 @@ struct ChapterData {
         
         Chapter(name: "UNI TPUSA", state: "Iowa", city: "Cedar Falls", university: "University of Northern Iowa", presidentName: "TBD", contactEmail: "uni@tpusa.local", phoneNumber: "319-555-2103", description: "Panthers for liberty", memberCount: 89, meetingLocation: "Maucker Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1735689600), stateCoordinatorName: "Jordyn Landau", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jordyn-landau/"),
         
+        // Kansas (3 chapters)
+        Chapter(name: "Kansas TPUSA", state: "Kansas", city: "Lawrence", university: "University of Kansas", presidentName: "TBD", contactEmail: "ku@tpusa.local", phoneNumber: "785-555-2201", description: "Jayhawks for freedom", memberCount: 142, meetingLocation: "Kansas Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1738368000), stateCoordinatorName: "Makaylee Hawkins", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/makaylee-hawkins-20a986326/"),
+        
+        Chapter(name: "K-State TPUSA", state: "Kansas", city: "Manhattan", university: "Kansas State University", presidentName: "TBD", contactEmail: "ksu@tpusa.local", phoneNumber: "785-555-2202", description: "Wildcats for liberty", memberCount: 127, meetingLocation: "K-State Student Union", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1741046400), stateCoordinatorName: "Makaylee Hawkins", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/makaylee-hawkins-20a986326/"),
+        
+        Chapter(name: "Wichita State TPUSA", state: "Kansas", city: "Wichita", university: "Wichita State University", presidentName: "TBD", contactEmail: "wsu@tpusa.local", phoneNumber: "316-555-2203", description: "Shockers for conservative values", memberCount: 103, meetingLocation: "Rhatigan Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1743638400), stateCoordinatorName: "Makaylee Hawkins", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/makaylee-hawkins-20a986326/"),
+        
         // Missouri (2 chapters)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
         
