@@ -67,6 +67,13 @@ struct ChapterData {
         
         Chapter(name: "Providence TPUSA", state: "Rhode Island", city: "Providence", university: "Providence College", presidentName: "TBD", contactEmail: "providence@tpusa.local", phoneNumber: "401-555-1703", description: "Friars for conservative values", memberCount: 35, meetingLocation: "Slavin Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "TPUSA Rhode Island", stateCoordinatorLinkedIn: "https://anthonyd30811.wixsite.com/mysite-1/about-us"),
         
+        // South Carolina (3 chapters)
+        Chapter(name: "USC TPUSA", state: "South Carolina", city: "Columbia", university: "University of South Carolina", presidentName: "TBD", contactEmail: "usc@tpusa.local", phoneNumber: "803-555-1801", description: "Gamecocks for freedom", memberCount: 112, meetingLocation: "Russell House", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1672531200), stateCoordinatorName: "Renata DaSilva", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/renata-dasilva-646a8331/"),
+        
+        Chapter(name: "Clemson TPUSA", state: "South Carolina", city: "Clemson", university: "Clemson University", presidentName: "TBD", contactEmail: "clemson@tpusa.local", phoneNumber: "864-555-1802", description: "Tigers for America", memberCount: 128, meetingLocation: "Hendrix Student Center", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1675209600), stateCoordinatorName: "Renata DaSilva", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/renata-dasilva-646a8331/"),
+        
+        Chapter(name: "Charleston TPUSA", state: "South Carolina", city: "Charleston", university: "College of Charleston", presidentName: "TBD", contactEmail: "charleston@tpusa.local", phoneNumber: "843-555-1803", description: "Cougars for conservative values", memberCount: 73, meetingLocation: "Stern Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "Renata DaSilva", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/renata-dasilva-646a8331/"),
+        
         // Ohio (4 chapters)
         Chapter(name: "Ohio State TPUSA", state: "Ohio", city: "Columbus", university: "Ohio State University", presidentName: "Liam Johnson", contactEmail: "osu@tpusa.local", phoneNumber: "614-555-0601", description: "Buckeyes for America", memberCount: 195, meetingLocation: "Ohio Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1638316800), stateCoordinatorName: "Jake Poling", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jake-poling-55010112a/"),
         

@@ -54,6 +54,11 @@ struct UniversityData {
         University(name: "University of Rhode Island", state: "Rhode Island", city: "Kingston", hasChapter: true, studentPopulation: 17649, website: "uri.edu"),
         University(name: "Providence College", state: "Rhode Island", city: "Providence", hasChapter: true, studentPopulation: 4747, website: "providence.edu"),
         
+        // South Carolina
+        University(name: "University of South Carolina", state: "South Carolina", city: "Columbia", hasChapter: true, studentPopulation: 35364, website: "sc.edu"),
+        University(name: "Clemson University", state: "South Carolina", city: "Clemson", hasChapter: true, studentPopulation: 27341, website: "clemson.edu"),
+        University(name: "College of Charleston", state: "South Carolina", city: "Charleston", hasChapter: true, studentPopulation: 10885, website: "cofc.edu"),
+        
         // Ohio
         University(name: "Ohio State University", state: "Ohio", city: "Columbus", hasChapter: true, studentPopulation: 66444, website: "osu.edu"),
         University(name: "University of Cincinnati", state: "Ohio", city: "Cincinnati", hasChapter: true, studentPopulation: 46388, website: "uc.edu"),
