@@ -209,6 +209,13 @@ struct ChapterData {
         
         Chapter(name: "HPU TPUSA", state: "Hawaii", city: "Honolulu", university: "Hawaii Pacific University", presidentName: "TBD", contactEmail: "hpu@tpusa.local", phoneNumber: "808-555-1903", description: "Sharks for America", memberCount: 71, meetingLocation: "Aloha Tower Marketplace", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1711929600), stateCoordinatorName: "Teagan Miley", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/teagan-miley-0297a8335/"),
         
+        // West Virginia (3 chapters)
+        Chapter(name: "WVU TPUSA", state: "West Virginia", city: "Morgantown", university: "West Virginia University", presidentName: "TBD", contactEmail: "wvu@tpusa.local", phoneNumber: "304-555-1901", description: "Mountaineers for freedom", memberCount: 147, meetingLocation: "Mountainlair", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1700524800), stateCoordinatorName: "Grace Leeann Peelish", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-leeann-peelish-947702255/"),
+        
+        Chapter(name: "Marshall TPUSA", state: "West Virginia", city: "Huntington", university: "Marshall University", presidentName: "TBD", contactEmail: "marshall@tpusa.local", phoneNumber: "304-555-1902", description: "Thundering Herd for conservative values", memberCount: 89, meetingLocation: "Memorial Student Center", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1703203200), stateCoordinatorName: "Grace Leeann Peelish", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-leeann-peelish-947702255/"),
+        
+        Chapter(name: "WVSU TPUSA", state: "West Virginia", city: "Institute", university: "West Virginia State University", presidentName: "TBD", contactEmail: "wvsu@tpusa.local", phoneNumber: "304-555-1903", description: "Yellow Jackets for America", memberCount: 54, meetingLocation: "Wilson Student Union", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1705881600), stateCoordinatorName: "Grace Leeann Peelish", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-leeann-peelish-947702255/"),
+        
         // Wisconsin (2 chapters)
         Chapter(name: "UW Madison TPUSA", state: "Wisconsin", city: "Madison", university: "University of Wisconsin-Madison", presidentName: "Jackson Taylor", contactEmail: "uwmadison@tpusa.local", phoneNumber: "608-555-1501", description: "Badgers for freedom", memberCount: 168, meetingLocation: "Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1706659200)),
         

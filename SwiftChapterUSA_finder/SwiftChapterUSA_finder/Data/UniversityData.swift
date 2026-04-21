@@ -200,6 +200,11 @@ struct UniversityData {
         University(name: "University of Hawaii at Hilo", state: "Hawaii", city: "Hilo", hasChapter: true, studentPopulation: 3142, website: "hilo.hawaii.edu"),
         University(name: "Hawaii Pacific University", state: "Hawaii", city: "Honolulu", hasChapter: true, studentPopulation: 5674, website: "hpu.edu"),
         
+        // West Virginia
+        University(name: "West Virginia University", state: "West Virginia", city: "Morgantown", hasChapter: true, studentPopulation: 28776, website: "wvu.edu"),
+        University(name: "Marshall University", state: "West Virginia", city: "Huntington", hasChapter: true, studentPopulation: 11652, website: "marshall.edu"),
+        University(name: "West Virginia State University", state: "West Virginia", city: "Institute", hasChapter: true, studentPopulation: 3942, website: "wvstateu.edu"),
+        
         // Wisconsin
         University(name: "University of Wisconsin-Madison", state: "Wisconsin", city: "Madison", hasChapter: true, studentPopulation: 48956, website: "wisc.edu"),
         University(name: "Marquette University", state: "Wisconsin", city: "Milwaukee", hasChapter: true, studentPopulation: 11396, website: "marquette.edu"),
