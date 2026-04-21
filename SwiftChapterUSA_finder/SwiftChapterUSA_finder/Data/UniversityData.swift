@@ -157,6 +157,11 @@ struct UniversityData {
         University(name: "Brigham Young University", state: "Utah", city: "Provo", hasChapter: true, studentPopulation: 33365, website: "byu.edu"),
         University(name: "Utah State University", state: "Utah", city: "Logan", hasChapter: true, studentPopulation: 27691, website: "usu.edu"),
         
+        // Vermont
+        University(name: "University of Vermont", state: "Vermont", city: "Burlington", hasChapter: true, studentPopulation: 11136, website: "uvm.edu"),
+        University(name: "Middlebury College", state: "Vermont", city: "Middlebury", hasChapter: true, studentPopulation: 2773, website: "middlebury.edu"),
+        University(name: "Norwich University", state: "Vermont", city: "Northfield", hasChapter: true, studentPopulation: 3543, website: "norwich.edu"),
+        
         // Virginia
         University(name: "University of Virginia", state: "Virginia", city: "Charlottesville", hasChapter: true, studentPopulation: 25628, website: "virginia.edu"),
         University(name: "Virginia Tech", state: "Virginia", city: "Blacksburg", hasChapter: true, studentPopulation: 37024, website: "vt.edu"),
