@@ -49,6 +49,11 @@ struct UniversityData {
         University(name: "Carnegie Mellon University", state: "Pennsylvania", city: "Pittsburgh", hasChapter: false, studentPopulation: 15818, website: "cmu.edu"),
         University(name: "Drexel University", state: "Pennsylvania", city: "Philadelphia", hasChapter: false, studentPopulation: 22344, website: "drexel.edu"),
         
+        // Rhode Island
+        University(name: "Brown University", state: "Rhode Island", city: "Providence", hasChapter: true, studentPopulation: 10696, website: "brown.edu"),
+        University(name: "University of Rhode Island", state: "Rhode Island", city: "Kingston", hasChapter: true, studentPopulation: 17649, website: "uri.edu"),
+        University(name: "Providence College", state: "Rhode Island", city: "Providence", hasChapter: true, studentPopulation: 4747, website: "providence.edu"),
+        
         // Ohio
         University(name: "Ohio State University", state: "Ohio", city: "Columbus", hasChapter: true, studentPopulation: 66444, website: "osu.edu"),
         University(name: "University of Cincinnati", state: "Ohio", city: "Cincinnati", hasChapter: true, studentPopulation: 46388, website: "uc.edu"),

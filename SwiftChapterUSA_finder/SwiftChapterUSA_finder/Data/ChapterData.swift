@@ -60,6 +60,13 @@ struct ChapterData {
         
         Chapter(name: "Temple TPUSA", state: "Pennsylvania", city: "Philadelphia", university: "Temple University", presidentName: "Emma White", contactEmail: "temple@tpusa.local", phoneNumber: "215-555-0504", description: "Owls for liberty", memberCount: 94, meetingLocation: "Student Center", meetingSchedule: "Mondays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1635638400), stateCoordinatorName: "The James Wilson Society", stateCoordinatorLinkedIn: "https://pennclubs.com/club/university-of-pennsylvania-turning-point-usa/"),
         
+        // Rhode Island (3 chapters)
+        Chapter(name: "Brown TPUSA", state: "Rhode Island", city: "Providence", university: "Brown University", presidentName: "TBD", contactEmail: "brown@tpusa.local", phoneNumber: "401-555-1701", description: "Bears for freedom", memberCount: 42, meetingLocation: "Faunce House", meetingSchedule: "Wednesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1672531200), stateCoordinatorName: "TPUSA Rhode Island", stateCoordinatorLinkedIn: "https://anthonyd30811.wixsite.com/mysite-1/about-us"),
+        
+        Chapter(name: "URI TPUSA", state: "Rhode Island", city: "Kingston", university: "University of Rhode Island", presidentName: "TBD", contactEmail: "uri@tpusa.local", phoneNumber: "401-555-1702", description: "Rams for America", memberCount: 68, meetingLocation: "Memorial Union", meetingSchedule: "Thursdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1675209600), stateCoordinatorName: "TPUSA Rhode Island", stateCoordinatorLinkedIn: "https://anthonyd30811.wixsite.com/mysite-1/about-us"),
+        
+        Chapter(name: "Providence TPUSA", state: "Rhode Island", city: "Providence", university: "Providence College", presidentName: "TBD", contactEmail: "providence@tpusa.local", phoneNumber: "401-555-1703", description: "Friars for conservative values", memberCount: 35, meetingLocation: "Slavin Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "TPUSA Rhode Island", stateCoordinatorLinkedIn: "https://anthonyd30811.wixsite.com/mysite-1/about-us"),
+        
         // Ohio (4 chapters)
         Chapter(name: "Ohio State TPUSA", state: "Ohio", city: "Columbus", university: "Ohio State University", presidentName: "Liam Johnson", contactEmail: "osu@tpusa.local", phoneNumber: "614-555-0601", description: "Buckeyes for America", memberCount: 195, meetingLocation: "Ohio Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1638316800), stateCoordinatorName: "Jake Poling", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jake-poling-55010112a/"),
         
