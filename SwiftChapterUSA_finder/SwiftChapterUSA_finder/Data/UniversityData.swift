@@ -100,6 +100,11 @@ struct UniversityData {
         University(name: "Minnesota State University, Mankato", state: "Minnesota", city: "Mankato", hasChapter: true, studentPopulation: 14568, website: "mnsu.edu"),
         University(name: "St. Cloud State University", state: "Minnesota", city: "St. Cloud", hasChapter: true, studentPopulation: 10187, website: "stcloudstate.edu"),
         
+        // Mississippi
+        University(name: "University of Southern Mississippi", state: "Mississippi", city: "Hattiesburg", hasChapter: true, studentPopulation: 14478, website: "usm.edu"),
+        University(name: "Mississippi State University", state: "Mississippi", city: "Starkville", hasChapter: true, studentPopulation: 23086, website: "msstate.edu"),
+        University(name: "University of Mississippi", state: "Mississippi", city: "Oxford", hasChapter: true, studentPopulation: 23780, website: "olemiss.edu"),
+        
         // Arizona
         University(name: "Arizona State University", state: "Arizona", city: "Tempe", hasChapter: true, studentPopulation: 80065, website: "asu.edu"),
         University(name: "University of Arizona", state: "Arizona", city: "Tucson", hasChapter: true, studentPopulation: 49471, website: "arizona.edu"),

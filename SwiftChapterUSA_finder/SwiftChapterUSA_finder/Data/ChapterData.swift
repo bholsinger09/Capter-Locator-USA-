@@ -216,6 +216,13 @@ struct ChapterData {
         
         Chapter(name: "SCSU TPUSA", state: "Minnesota", city: "St. Cloud", university: "St. Cloud State University", presidentName: "TBD", contactEmail: "scsu@tpusa.local", phoneNumber: "320-555-2603", description: "Huskies for liberty", memberCount: 82, meetingLocation: "Atwood Memorial Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1775260800), stateCoordinatorName: "Maxx Beeler", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/maxx-beeler-013223337/"),
         
+        // Mississippi (3 chapters)
+        Chapter(name: "Southern Miss TPUSA", state: "Mississippi", city: "Hattiesburg", university: "University of Southern Mississippi", presidentName: "TBD", contactEmail: "ireland.austin@usm.edu", phoneNumber: "601-555-2701", description: "Golden Eagles for freedom", memberCount: 102, meetingLocation: "Thad Cochran Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1777852800), stateCoordinatorName: "TPUSA Mississippi", stateCoordinatorLinkedIn: "https://usm.campusgroups.com/tpusa/home/"),
+        
+        Chapter(name: "Mississippi State TPUSA", state: "Mississippi", city: "Starkville", university: "Mississippi State University", presidentName: "TBD", contactEmail: "ireland.austin@usm.edu", phoneNumber: "662-555-2702", description: "Bulldogs for conservative values", memberCount: 118, meetingLocation: "Colvard Student Union", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1780531200), stateCoordinatorName: "TPUSA Mississippi", stateCoordinatorLinkedIn: "https://usm.campusgroups.com/tpusa/home/"),
+        
+        Chapter(name: "Ole Miss TPUSA", state: "Mississippi", city: "Oxford", university: "University of Mississippi", presidentName: "TBD", contactEmail: "ireland.austin@usm.edu", phoneNumber: "662-555-2703", description: "Rebels for liberty", memberCount: 126, meetingLocation: "Student Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1783123200), stateCoordinatorName: "TPUSA Mississippi", stateCoordinatorLinkedIn: "https://usm.campusgroups.com/tpusa/home/"),
+        
         // Missouri (2 chapters)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
         
