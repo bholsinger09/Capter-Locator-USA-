@@ -276,6 +276,11 @@ struct UniversityData {
         University(name: "University of Arkansas", state: "Arkansas", city: "Fayetteville", hasChapter: true, studentPopulation: 30936, website: "uark.edu"),
         University(name: "Arkansas State University", state: "Arkansas", city: "Jonesboro", hasChapter: true, studentPopulation: 13483, website: "astate.edu"),
         University(name: "University of Central Arkansas", state: "Arkansas", city: "Conway", hasChapter: true, studentPopulation: 9913, website: "uca.edu"),
-        University(name: "University of Arkansas at Little Rock", state: "Arkansas", city: "Little Rock", hasChapter: true, studentPopulation: 8819, website: "ualr.edu")
+        University(name: "University of Arkansas at Little Rock", state: "Arkansas", city: "Little Rock", hasChapter: true, studentPopulation: 8819, website: "ualr.edu"),
+        
+        // Wyoming
+        University(name: "University of Wyoming", state: "Wyoming", city: "Laramie", hasChapter: true, studentPopulation: 11829, website: "uwyo.edu"),
+        University(name: "Casper College", state: "Wyoming", city: "Casper", hasChapter: true, studentPopulation: 3651, website: "caspercollege.edu"),
+        University(name: "Laramie County Community College", state: "Wyoming", city: "Cheyenne", hasChapter: true, studentPopulation: 4214, website: "lccc.wy.edu")
     ]
 }
