@@ -233,6 +233,13 @@ struct ChapterData {
         
         Chapter(name: "Montana Tech TPUSA", state: "Montana", city: "Butte", university: "Montana Tech", presidentName: "TBD", contactEmail: "mtech@tpusa.local", phoneNumber: "406-555-2803", description: "Orediggers for America", memberCount: 67, meetingLocation: "SUB Building", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1790985600), stateCoordinatorName: "Kayla C", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/kayla-c-904a1224a/"),
         
+        // Nebraska (3 chapters)
+        Chapter(name: "Nebraska TPUSA", state: "Nebraska", city: "Lincoln", university: "University of Nebraska-Lincoln", presidentName: "TBD", contactEmail: "nebraska@tpusa.local", phoneNumber: "402-555-2901", description: "Cornhuskers for freedom", memberCount: 134, meetingLocation: "Nebraska Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1793577600), stateCoordinatorName: "Hannah Sobczyk", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/hannah-sobczyk-02aa802a2/"),
+        
+        Chapter(name: "Creighton TPUSA", state: "Nebraska", city: "Omaha", university: "Creighton University", presidentName: "TBD", contactEmail: "creighton@tpusa.local", phoneNumber: "402-555-2902", description: "Bluejays for conservative values", memberCount: 89, meetingLocation: "Harper Center", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1796169600), stateCoordinatorName: "Hannah Sobczyk", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/hannah-sobczyk-02aa802a2/"),
+        
+        Chapter(name: "UNO TPUSA", state: "Nebraska", city: "Omaha", university: "University of Nebraska Omaha", presidentName: "TBD", contactEmail: "uno@tpusa.local", phoneNumber: "402-555-2903", description: "Mavericks for America", memberCount: 96, meetingLocation: "Milo Bail Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1798848000), stateCoordinatorName: "Hannah Sobczyk", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/hannah-sobczyk-02aa802a2/"),
+        
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
         

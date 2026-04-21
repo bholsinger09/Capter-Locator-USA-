@@ -191,6 +191,11 @@ struct UniversityData {
         University(name: "Montana State University", state: "Montana", city: "Bozeman", hasChapter: true, studentPopulation: 16902, website: "montana.edu"),
         University(name: "Montana Tech", state: "Montana", city: "Butte", hasChapter: true, studentPopulation: 2256, website: "mtech.edu"),
         
+        // Nebraska
+        University(name: "University of Nebraska-Lincoln", state: "Nebraska", city: "Lincoln", hasChapter: true, studentPopulation: 25820, website: "unl.edu"),
+        University(name: "Creighton University", state: "Nebraska", city: "Omaha", hasChapter: true, studentPopulation: 8997, website: "creighton.edu"),
+        University(name: "University of Nebraska Omaha", state: "Nebraska", city: "Omaha", hasChapter: true, studentPopulation: 15211, website: "unomaha.edu"),
+        
         // Alabama
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),
