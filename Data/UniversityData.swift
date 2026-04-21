@@ -95,6 +95,11 @@ struct UniversityData {
         University(name: "Wayne State University", state: "Michigan", city: "Detroit", hasChapter: true, studentPopulation: 26251, website: "wayne.edu"),
         University(name: "Western Michigan University", state: "Michigan", city: "Kalamazoo", hasChapter: false, studentPopulation: 22960, website: "wmich.edu"),
         
+        // Minnesota
+        University(name: "University of Minnesota", state: "Minnesota", city: "Minneapolis", hasChapter: true, studentPopulation: 51848, website: "umn.edu"),
+        University(name: "Minnesota State University, Mankato", state: "Minnesota", city: "Mankato", hasChapter: true, studentPopulation: 14568, website: "mnsu.edu"),
+        University(name: "St. Cloud State University", state: "Minnesota", city: "St. Cloud", hasChapter: true, studentPopulation: 10187, website: "stcloudstate.edu"),
+        
         // Arizona
         University(name: "Arizona State University", state: "Arizona", city: "Tempe", hasChapter: true, studentPopulation: 80065, website: "asu.edu"),
         University(name: "University of Arizona", state: "Arizona", city: "Tucson", hasChapter: true, studentPopulation: 49471, website: "arizona.edu"),

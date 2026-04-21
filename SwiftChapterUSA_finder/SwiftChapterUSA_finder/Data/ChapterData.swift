@@ -209,6 +209,13 @@ struct ChapterData {
         
         Chapter(name: "Towson TPUSA", state: "Maryland", city: "Towson", university: "Towson University", presidentName: "TBD", contactEmail: "hrvwall@terpmail.umd.edu", phoneNumber: "410-555-2503", description: "Tigers for liberty", memberCount: 108, meetingLocation: "University Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1767398400), stateCoordinatorName: "TPUSA Maryland", stateCoordinatorLinkedIn: "mailto:hrvwall@terpmail.umd.edu"),
         
+        // Minnesota (3 chapters)
+        Chapter(name: "UMN TPUSA", state: "Minnesota", city: "Minneapolis", university: "University of Minnesota", presidentName: "TBD", contactEmail: "umn@tpusa.local", phoneNumber: "612-555-2601", description: "Golden Gophers for freedom", memberCount: 158, meetingLocation: "Coffman Memorial Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1769990400), stateCoordinatorName: "Maxx Beeler", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/maxx-beeler-013223337/"),
+        
+        Chapter(name: "Mankato TPUSA", state: "Minnesota", city: "Mankato", university: "Minnesota State University, Mankato", presidentName: "TBD", contactEmail: "mankato@tpusa.local", phoneNumber: "507-555-2602", description: "Mavericks for conservative values", memberCount: 96, meetingLocation: "Centennial Student Union", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1772668800), stateCoordinatorName: "Maxx Beeler", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/maxx-beeler-013223337/"),
+        
+        Chapter(name: "SCSU TPUSA", state: "Minnesota", city: "St. Cloud", university: "St. Cloud State University", presidentName: "TBD", contactEmail: "scsu@tpusa.local", phoneNumber: "320-555-2603", description: "Huskies for liberty", memberCount: 82, meetingLocation: "Atwood Memorial Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1775260800), stateCoordinatorName: "Maxx Beeler", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/maxx-beeler-013223337/"),
+        
         // Missouri (2 chapters)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
         
