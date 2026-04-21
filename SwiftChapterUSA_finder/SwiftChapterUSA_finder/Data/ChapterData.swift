@@ -223,8 +223,8 @@ struct ChapterData {
         
         Chapter(name: "Ole Miss TPUSA", state: "Mississippi", city: "Oxford", university: "University of Mississippi", presidentName: "TBD", contactEmail: "ireland.austin@usm.edu", phoneNumber: "662-555-2703", description: "Rebels for liberty", memberCount: 126, meetingLocation: "Student Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1783123200), stateCoordinatorName: "TPUSA Mississippi", stateCoordinatorLinkedIn: "https://usm.campusgroups.com/tpusa/home/"),
         
-        // Missouri (2 chapters)
-        Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
+        // Missouri (1 chapter)
+        Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800), stateCoordinatorName: "Paige Schulte", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/paige-schulte-bb5040336/"),
         
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
