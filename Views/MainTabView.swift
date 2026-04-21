@@ -38,6 +38,11 @@ struct MainTabView: View {
                     Label("Blog", systemImage: "bubble.left.and.bubble.right.fill")
                 }
             
+            ContactDeveloperView()
+                .tabItem {
+                    Label("Contact", systemImage: "envelope.fill")
+                }
+            
             ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person.circle.fill")
