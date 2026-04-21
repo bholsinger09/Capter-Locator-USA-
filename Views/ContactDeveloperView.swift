@@ -120,7 +120,7 @@ struct ContactDeveloperView: View {
     }
     
     private func submitUpdate() {
-        guard let userEmail = authManager.userEmail else {
+        guard let userEmail = authManager.currentUser?.email else {
             alertMessage = "Please sign in to submit updates"
             showingAlert = true
             return
