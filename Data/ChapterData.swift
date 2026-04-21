@@ -188,6 +188,13 @@ struct ChapterData {
         
         Chapter(name: "Wichita State TPUSA", state: "Kansas", city: "Wichita", university: "Wichita State University", presidentName: "TBD", contactEmail: "wsu@tpusa.local", phoneNumber: "316-555-2203", description: "Shockers for conservative values", memberCount: 103, meetingLocation: "Rhatigan Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1743638400), stateCoordinatorName: "Makaylee Hawkins", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/makaylee-hawkins-20a986326/"),
         
+        // Kentucky (3 chapters)
+        Chapter(name: "Kentucky TPUSA", state: "Kentucky", city: "Lexington", university: "University of Kentucky", presidentName: "TBD", contactEmail: "uky@tpusa.local", phoneNumber: "859-555-2301", description: "Wildcats for freedom", memberCount: 148, meetingLocation: "Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1746316800), stateCoordinatorName: "Madeline Del Rio", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madeline-del-rio-26118b2b7/"),
+        
+        Chapter(name: "Louisville TPUSA", state: "Kentucky", city: "Louisville", university: "University of Louisville", presidentName: "TBD", contactEmail: "uofl@tpusa.local", phoneNumber: "502-555-2302", description: "Cardinals for conservative values", memberCount: 135, meetingLocation: "SAC Building", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1748995200), stateCoordinatorName: "Madeline Del Rio", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madeline-del-rio-26118b2b7/"),
+        
+        Chapter(name: "WKU TPUSA", state: "Kentucky", city: "Bowling Green", university: "Western Kentucky University", presidentName: "TBD", contactEmail: "wku@tpusa.local", phoneNumber: "270-555-2303", description: "Hilltoppers for liberty", memberCount: 112, meetingLocation: "Downing Student Union", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1751587200), stateCoordinatorName: "Madeline Del Rio", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/madeline-del-rio-26118b2b7/"),
+        
         // Missouri (2 chapters)
         Chapter(name: "Mizzou TPUSA", state: "Missouri", city: "Columbia", university: "University of Missouri", presidentName: "Leo Martinez", contactEmail: "mizzou@tpusa.local", phoneNumber: "573-555-1901", description: "Tigers for conservative values", memberCount: 121, meetingLocation: "MU Student Center", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1727740800)),
         

@@ -74,6 +74,11 @@ struct UniversityData {
         University(name: "Kansas State University", state: "Kansas", city: "Manhattan", hasChapter: true, studentPopulation: 19472, website: "ksu.edu"),
         University(name: "Wichita State University", state: "Kansas", city: "Wichita", hasChapter: true, studentPopulation: 16216, website: "wichita.edu"),
         
+        // Kentucky
+        University(name: "University of Kentucky", state: "Kentucky", city: "Lexington", hasChapter: true, studentPopulation: 30545, website: "uky.edu"),
+        University(name: "University of Louisville", state: "Kentucky", city: "Louisville", hasChapter: true, studentPopulation: 22017, website: "louisville.edu"),
+        University(name: "Western Kentucky University", state: "Kentucky", city: "Bowling Green", hasChapter: true, studentPopulation: 16493, website: "wku.edu"),
+        
         // Michigan
         University(name: "University of Michigan", state: "Michigan", city: "Ann Arbor", hasChapter: true, studentPopulation: 51225, website: "umich.edu"),
         University(name: "Michigan State University", state: "Michigan", city: "East Lansing", hasChapter: true, studentPopulation: 50023, website: "msu.edu"),
