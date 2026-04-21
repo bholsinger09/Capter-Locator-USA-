@@ -201,6 +201,11 @@ struct UniversityData {
         University(name: "University of Nevada, Reno", state: "Nevada", city: "Reno", hasChapter: true, studentPopulation: 21657, website: "unr.edu"),
         University(name: "Nevada State College", state: "Nevada", city: "Henderson", hasChapter: true, studentPopulation: 7200, website: "nsc.edu"),
         
+        // New Hampshire
+        University(name: "University of New Hampshire", state: "New Hampshire", city: "Durham", hasChapter: true, studentPopulation: 13953, website: "unh.edu"),
+        University(name: "Dartmouth College", state: "New Hampshire", city: "Hanover", hasChapter: true, studentPopulation: 6744, website: "dartmouth.edu"),
+        University(name: "Southern New Hampshire University", state: "New Hampshire", city: "Manchester", hasChapter: true, studentPopulation: 164943, website: "snhu.edu"),
+        
         // Alabama
         University(name: "University of Alabama", state: "Alabama", city: "Tuscaloosa", hasChapter: true, studentPopulation: 38644, website: "ua.edu"),
         University(name: "Auburn University", state: "Alabama", city: "Auburn", hasChapter: true, studentPopulation: 31764, website: "auburn.edu"),

@@ -247,6 +247,13 @@ struct ChapterData {
         
         Chapter(name: "Nevada State TPUSA", state: "Nevada", city: "Henderson", university: "Nevada State College", presidentName: "TBD", contactEmail: "nevadastate@tpusa.local", phoneNumber: "702-555-3003", description: "Scorpions for America", memberCount: 73, meetingLocation: "Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1806710400), stateCoordinatorName: "Brandon Shubert", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/brandon-shubert-9534086a/"),
         
+        // New Hampshire (3 chapters)
+        Chapter(name: "UNH TPUSA", state: "New Hampshire", city: "Durham", university: "University of New Hampshire", presidentName: "TBD", contactEmail: "unh@tpusa.local", phoneNumber: "603-555-3101", description: "Wildcats for freedom", memberCount: 108, meetingLocation: "Memorial Union Building", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1809302400), stateCoordinatorName: "Grace Mack", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-mack18/"),
+        
+        Chapter(name: "Dartmouth TPUSA", state: "New Hampshire", city: "Hanover", university: "Dartmouth College", presidentName: "TBD", contactEmail: "dartmouth@tpusa.local", phoneNumber: "603-555-3102", description: "Big Green for conservative values", memberCount: 82, meetingLocation: "Collis Center", meetingSchedule: "Tuesdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1811894400), stateCoordinatorName: "Grace Mack", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-mack18/"),
+        
+        Chapter(name: "SNHU TPUSA", state: "New Hampshire", city: "Manchester", university: "Southern New Hampshire University", presidentName: "TBD", contactEmail: "snhu@tpusa.local", phoneNumber: "603-555-3103", description: "Penmen for America", memberCount: 95, meetingLocation: "Student Center", meetingSchedule: "Thursdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1814572800), stateCoordinatorName: "Grace Mack", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/grace-mack18/"),
+        
         // Idaho (3 chapters)
         Chapter(name: "Boise State TPUSA", state: "Idaho", city: "Boise", university: "Boise State University", presidentName: "Cade Syvock", contactEmail: "cade.syvock@tpusa.com", phoneNumber: "208-555-2001", description: "Broncos for freedom and conservative values", memberCount: 156, meetingLocation: "Student Union Building", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1730419200)),
         
