@@ -59,6 +59,11 @@ struct UniversityData {
         University(name: "Clemson University", state: "South Carolina", city: "Clemson", hasChapter: true, studentPopulation: 27341, website: "clemson.edu"),
         University(name: "College of Charleston", state: "South Carolina", city: "Charleston", hasChapter: true, studentPopulation: 10885, website: "cofc.edu"),
         
+        // South Dakota
+        University(name: "South Dakota State University", state: "South Dakota", city: "Brookings", hasChapter: true, studentPopulation: 12131, website: "sdstate.edu"),
+        University(name: "University of South Dakota", state: "South Dakota", city: "Vermillion", hasChapter: true, studentPopulation: 9491, website: "usd.edu"),
+        University(name: "South Dakota School of Mines", state: "South Dakota", city: "Rapid City", hasChapter: true, studentPopulation: 2492, website: "sdsmt.edu"),
+        
         // Ohio
         University(name: "Ohio State University", state: "Ohio", city: "Columbus", hasChapter: true, studentPopulation: 66444, website: "osu.edu"),
         University(name: "University of Cincinnati", state: "Ohio", city: "Cincinnati", hasChapter: true, studentPopulation: 46388, website: "uc.edu"),

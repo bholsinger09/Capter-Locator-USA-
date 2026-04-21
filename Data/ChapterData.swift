@@ -74,6 +74,13 @@ struct ChapterData {
         
         Chapter(name: "Charleston TPUSA", state: "South Carolina", city: "Charleston", university: "College of Charleston", presidentName: "TBD", contactEmail: "charleston@tpusa.local", phoneNumber: "843-555-1803", description: "Cougars for conservative values", memberCount: 73, meetingLocation: "Stern Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "Renata DaSilva", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/renata-dasilva-646a8331/"),
         
+        // South Dakota (3 chapters)
+        Chapter(name: "SDSU TPUSA", state: "South Dakota", city: "Brookings", university: "South Dakota State University", presidentName: "TBD", contactEmail: "sdsu@tpusa.local", phoneNumber: "605-555-1901", description: "Jackrabbits for freedom", memberCount: 58, meetingLocation: "Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1672531200), stateCoordinatorName: "Anna Hundt", stateCoordinatorLinkedIn: "https://sdstate.campuslabs.com/engage/organization/tpusa/contact"),
+        
+        Chapter(name: "USD TPUSA", state: "South Dakota", city: "Vermillion", university: "University of South Dakota", presidentName: "TBD", contactEmail: "usd@tpusa.local", phoneNumber: "605-555-1902", description: "Coyotes for America", memberCount: 43, meetingLocation: "Muenster University Center", meetingSchedule: "Thursdays 6:30PM", dateEstablished: Date(timeIntervalSince1970: 1675209600), stateCoordinatorName: "Anna Hundt", stateCoordinatorLinkedIn: "https://sdstate.campuslabs.com/engage/organization/tpusa/contact"),
+        
+        Chapter(name: "Mines TPUSA", state: "South Dakota", city: "Rapid City", university: "South Dakota School of Mines", presidentName: "TBD", contactEmail: "mines@tpusa.local", phoneNumber: "605-555-1903", description: "Hardrockers for conservative values", memberCount: 32, meetingLocation: "Surbeck Center", meetingSchedule: "Tuesdays 6PM", dateEstablished: Date(timeIntervalSince1970: 1677628800), stateCoordinatorName: "Anna Hundt", stateCoordinatorLinkedIn: "https://sdstate.campuslabs.com/engage/organization/tpusa/contact"),
+        
         // Ohio (4 chapters)
         Chapter(name: "Ohio State TPUSA", state: "Ohio", city: "Columbus", university: "Ohio State University", presidentName: "Liam Johnson", contactEmail: "osu@tpusa.local", phoneNumber: "614-555-0601", description: "Buckeyes for America", memberCount: 195, meetingLocation: "Ohio Union", meetingSchedule: "Wednesdays 7PM", dateEstablished: Date(timeIntervalSince1970: 1638316800), stateCoordinatorName: "Jake Poling", stateCoordinatorLinkedIn: "https://www.linkedin.com/in/jake-poling-55010112a/"),
         
