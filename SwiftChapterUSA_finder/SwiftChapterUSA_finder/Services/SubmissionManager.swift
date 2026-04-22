@@ -19,7 +19,7 @@ class SubmissionManager: ObservableObject {
     private let publicDatabase: CKDatabase
     
     init() {
-        container = CKContainer(identifier: "iCloud.com.yourcompany.SwiftChapterUSA")
+        container = CKContainer(identifier: "iCloud.ChapterFinder")
         privateDatabase = container.privateCloudDatabase
         publicDatabase = container.publicCloudDatabase
     }
