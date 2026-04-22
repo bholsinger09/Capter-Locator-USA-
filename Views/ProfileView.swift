@@ -20,7 +20,8 @@ struct ProfileView: View {
         let adminEmails = ["bholsinger@gmail.com"]
         return adminEmails.contains(email)
     }
-        var body: some View:
+    
+    var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
