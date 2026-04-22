@@ -17,7 +17,7 @@ struct ProfileView: View {
     private var isAdmin: Bool {
         guard let email = authManager.currentUser?.email else { return false }
         // Add your admin emails here
-        let adminEmails = ["your-admin@email.com", "admin@swiftchapterusa.com"]
+        let adminEmails = ["bholsinger@gmail.com"]
         return adminEmails.contains(email)
     }
         var body: some View:
