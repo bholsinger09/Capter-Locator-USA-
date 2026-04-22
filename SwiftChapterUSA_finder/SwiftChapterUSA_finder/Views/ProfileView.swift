@@ -13,8 +13,14 @@ struct ProfileView: View {
     @State private var showingEditProfile = false
     @State private var showingDeleteConfirmation = false
     @State private var showingDeletionComplete = false
-    
-    var body: some View {
+        // Admin check - add your admin email here or implement admin flag in User model
+    private var isAdmin: Bool {
+        guard let email = authManager.currentUser?.email else { return false }
+        // Add your admin emails here
+        let adminEmails = ["bholsinger@gmail.com"]
+        return adminEmails.contains(email)
+    }
+        var body: some View:
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
@@ -150,6 +156,43 @@ struct ProfileView: View {
                             .cornerRadius(10)
                         }
                         .foregroundColor(.red)
+                    }
+                    
+                    // Admin Section (only visible to admins)
+                    if isAdmin {
+                        VStack(alignment: .leading, spacing: 15) {
+                            HStack {
+                                Image(systemName: "shield.fill")
+                                    .foregroundColor(.purple)
+                                Text("Admin Tools")
+                                    .font(.headline)
+                            }
+                            
+                            NavigationLink(destination: AdminSubmissionsView()) {
+                                HStack {
+                                    Image(systemName: "tray.full.fill")
+                                        .foregroundColor(.purple)
+                                    VStack(alignment: .leading) {
+                                        Text("Chapter Update Submissions")
+                                            .font(.subheadline)
+                                            .fontWeight(.semibold)
+                                        Text("Review user-submitted contact updates")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                                .background(Color.purple.opacity(0.1))
+                                .cornerRadius(10)
+                            }
+                            .foregroundColor(.primary)
+                        }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(15)
                     }
                     
                     // App Information
@@ -342,7 +385,6 @@ struct EditProfileView: View {
                 }
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func saveProfile() {
