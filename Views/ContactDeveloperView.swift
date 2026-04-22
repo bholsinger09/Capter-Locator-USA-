@@ -30,7 +30,7 @@ struct ContactDeveloperView: View {
     private var universities: [String] {
         guard !selectedState.isEmpty else { return [] }
         let chaptersInState = ChapterData.sampleChapters.filter { $0.state == selectedState }
-        return chaptersInState.map { $0.university }.sorted()
+        return chaptersInState.compactMap { $0.university }.sorted()
     }
     
     var body: some View {
