@@ -18,7 +18,7 @@ struct ProfileView: View {
         guard let email = authManager.currentUser?.email else { return false }
         // Add your admin emails here
         let adminEmails = ["bholsinger@gmail.com"]
-        return adminEmails.contains(email)
+        return adminEmails.contains { $0.lowercased() == email.lowercased() }
     }
     
     var body: some View {
