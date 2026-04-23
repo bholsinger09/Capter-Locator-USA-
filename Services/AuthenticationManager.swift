@@ -24,8 +24,19 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         // In a real app, this would connect to a backend API
         // For now, we'll simulate registration
         
+        // Normalize email to lowercase
+        let normalizedEmail = email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Check if user already exists (case-insensitive)
+        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
+           savedUser.email.lowercased() == normalizedEmail {
+            errorMessage = "An account with this email already exists. Please sign in."
+            return
+        }
+        
         let newUser = User(
-            email: email,
+            email: normalizedEmail,
             firstName: firstName,
             lastName: lastName,
             state: state,
@@ -34,6 +45,7 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         
         currentUser = newUser
         isAuthenticated = true
+        errorMessage = nil
         saveUser()
     }
     
@@ -41,8 +53,11 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         // In a real app, this would authenticate with a backend
         // For now, we'll simulate login
         
+        // Normalize email to lowercase
+        let normalizedEmail = email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
         // Demo account for App Store review
-        if email == "demo@appstore.com" && password == "AppReview2025" {
+        if normalizedEmail == "demo@appstore.com" && password == "AppReview2025" {
             let demoUser = User(
                 email: "demo@appstore.com",
                 firstName: "Demo",
@@ -58,7 +73,7 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         
         if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
            let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
-           savedUser.email == email {
+           savedUser.email.lowercased() == normalizedEmail {
             currentUser = savedUser
             isAuthenticated = true
             errorMessage = nil
