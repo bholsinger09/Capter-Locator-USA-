@@ -14,7 +14,7 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
     @Published var currentUser: User?
     @Published var errorMessage: String?
     
-    private let userDefaultsKey = "currentUser"
+    private let lastLoggedInEmailKey = "lastLoggedInEmail"
     
     init() {
         loadUser()
@@ -28,9 +28,9 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         let normalizedEmail = email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
         // Check if user already exists (case-insensitive)
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
-           let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
-           savedUser.email.lowercased() == normalizedEmail {
+        let userKey = "user_\(normalizedEmail)"
+        if let savedData = UserDefaults.standard.data(forKey: userKey),
+           let _ = try? JSONDecoder().decode(User.self, from: savedData) {
             errorMessage = "An account with this email already exists. Please sign in."
             return
         }
@@ -71,12 +71,15 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
             return
         }
         
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
-           let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
-           savedUser.email.lowercased() == normalizedEmail {
+        // Load user data for this email
+        let userKey = "user_\(normalizedEmail)"
+        if let savedData = UserDefaults.standard.data(forKey: userKey),
+           let savedUser = try? JSONDecoder().decode(User.self, from: savedData) {
             currentUser = savedUser
             isAuthenticated = true
             errorMessage = nil
+            // Update last logged in user
+            UserDefaults.standard.set(normalizedEmail, forKey: lastLoggedInEmailKey)
         } else {
             errorMessage = "Invalid credentials. Please register first."
         }
@@ -89,13 +92,25 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
     }
     
     private func saveUser() {
-        if let encoded = try? JSONEncoder().encode(currentUser) {
-            UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
+        guard let user = currentUser else { return }
+        
+        // Save user data with email as key
+        let userKey = "user_\(user.email)"
+        if let encoded = try? JSONEncoder().encode(user) {
+            UserDefaults.standard.set(encoded, forKey: userKey)
+            // Track last logged in user
+            UserDefaults.standard.set(user.email, forKey: lastLoggedInEmailKey)
         }
     }
     
     private func loadUser() {
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
+        // Load the last logged in user
+        guard let lastEmail = UserDefaults.standard.string(forKey: lastLoggedInEmailKey) else {
+            return
+        }
+        
+        let userKey = "user_\(lastEmail)"
+        if let savedData = UserDefaults.standard.data(forKey: userKey),
            let savedUser = try? JSONDecoder().decode(User.self, from: savedData) {
             currentUser = savedUser
             isAuthenticated = true
@@ -118,8 +133,12 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         let firstName = appleIDCredential.fullName?.givenName ?? "Apple"
         let lastName = appleIDCredential.fullName?.familyName ?? "User"
         
-        // Check if user already exists
-        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey),
+        // Normalize email to lowercase
+        let normalizedEmail = email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Check if user already exists with this Apple ID
+        let userKey = "user_\(normalizedEmail)"
+        if let savedData = UserDefaults.standard.data(forKey: userKey),
            let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
            savedUser.appleUserID == userID {
             // Existing Apple Sign In user
@@ -129,7 +148,7 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         } else {
             // New Apple Sign In user - create account with default state
             let newUser = User(
-                email: email,
+                email: normalizedEmail,
                 firstName: firstName,
                 lastName: lastName,
                 state: "California", // Default state, user can update in profile
@@ -148,13 +167,21 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
         // This permanently deletes all user data from the device.
         // There is no recovery or restoration possible after this action.
         
-        // Remove user account data
-        UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+        guard let user = currentUser else { return }
         
-        // Clear all user-related preferences and cached data
-        UserDefaults.standard.removeObject(forKey: "userPosts")
-        UserDefaults.standard.removeObject(forKey: "userChapterMembership")
-        UserDefaults.standard.removeObject(forKey: "userPreferences")
+        // Remove this specific user's account data
+        let userKey = "user_\(user.email)"
+        UserDefaults.standard.removeObject(forKey: userKey)
+        
+        // Clear last logged in if this was the last user
+        if UserDefaults.standard.string(forKey: lastLoggedInEmailKey) == user.email {
+            UserDefaults.standard.removeObject(forKey: lastLoggedInEmailKey)
+        }
+        
+        // Clear all user-related preferences and cached data for this account
+        UserDefaults.standard.removeObject(forKey: "userPosts_\(user.email)")
+        UserDefaults.standard.removeObject(forKey: "userChapterMembership_\(user.email)")
+        UserDefaults.standard.removeObject(forKey: "userPreferences_\(user.email)")
         
         // Clear app state
         isAuthenticated = false
