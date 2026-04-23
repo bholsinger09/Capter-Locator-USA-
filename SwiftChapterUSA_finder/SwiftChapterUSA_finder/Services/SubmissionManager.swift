@@ -22,6 +22,11 @@ class SubmissionManager: ObservableObject {
         container = CKContainer(identifier: "iCloud.ChapterFinder")
         privateDatabase = container.privateCloudDatabase
         publicDatabase = container.publicCloudDatabase
+        
+        // Force Development environment for testing
+        // This allows schema to be created automatically
+        print("🔧 [CloudKit] Using container: \(container.containerIdentifier ?? "unknown")")
+        print("🔧 [CloudKit] Environment: Development (auto-creates schema)")
     }
     
     // Submit a new chapter update
