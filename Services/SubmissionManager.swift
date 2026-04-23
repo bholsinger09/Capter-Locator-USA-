@@ -29,14 +29,25 @@ class SubmissionManager: ObservableObject {
         isLoading = true
         defer { isLoading = false }
         
+        print("📤 [CloudKit] Attempting to submit update...")
+        print("📤 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
+        print("📤 [CloudKit] Submission ID: \(submission.id)")
+        print("📤 [CloudKit] State: \(submission.state), University: \(submission.university)")
+        
         let record = submission.toRecord()
         
         do {
-            _ = try await publicDatabase.save(record)
+            let savedRecord = try await publicDatabase.save(record)
+            print("✅ [CloudKit] Successfully saved record: \(savedRecord.recordID.recordName)")
             await MainActor.run {
                 errorMessage = nil
             }
         } catch {
+            print("❌ [CloudKit] Save failed: \(error)")
+            if let ckError = error as? CKError {
+                print("❌ [CloudKit] CKError code: \(ckError.code.rawValue)")
+                print("❌ [CloudKit] CKError description: \(ckError.localizedDescription)")
+            }
             await MainActor.run {
                 errorMessage = "Failed to submit update: \(error.localizedDescription)"
             }
@@ -49,21 +60,38 @@ class SubmissionManager: ObservableObject {
         isLoading = true
         defer { isLoading = false }
         
+        print("📥 [CloudKit] Fetching all submissions...")
+        print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
+        
         let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: "submittedAt", ascending: false)]
         
         do {
             let results = try await publicDatabase.records(matching: query)
+            print("📥 [CloudKit] Query executed successfully")
+            print("📥 [CloudKit] Match results count: \(results.matchResults.count)")
+            
             let fetchedSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
-                guard case .success(let record) = result else { return nil }
+                guard case .success(let record) = result else { 
+                    print("⚠️ [CloudKit] Failed to get record from result")
+                    return nil 
+                }
+                print("📥 [CloudKit] Processing record: \(record.recordID.recordName)")
                 return ChapterUpdateSubmission.fromRecord(record)
             }
+            
+            print("✅ [CloudKit] Processed \(fetchedSubmissions.count) submissions")
             
             await MainActor.run {
                 self.submissions = fetchedSubmissions
                 self.errorMessage = nil
             }
         } catch {
+            print("❌ [CloudKit] Fetch failed: \(error)")
+            if let ckError = error as? CKError {
+                print("❌ [CloudKit] CKError code: \(ckError.code.rawValue)")
+                print("❌ [CloudKit] CKError description: \(ckError.localizedDescription)")
+            }
             await MainActor.run {
                 self.errorMessage = "Failed to fetch submissions: \(error.localizedDescription)"
             }
