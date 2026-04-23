@@ -85,7 +85,7 @@ class AuthenticationManager: ObservableObject, AuthenticationServiceProtocol {
     func logout() {
         isAuthenticated = false
         currentUser = nil
-        UserDefaults.standard.removeObject(forKey: userDefaultsKey)
+        // Don't delete user data - they should be able to log back in
     }
     
     private func saveUser() {
