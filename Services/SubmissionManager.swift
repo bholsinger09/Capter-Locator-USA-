@@ -68,28 +68,30 @@ class SubmissionManager: ObservableObject {
         print("📥 [CloudKit] Fetching all submissions...")
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
         
-        let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: NSPredicate(value: true))
-        // Temporarily remove sorting until schema is configured
-        // query.sortDescriptors = [NSSortDescriptor(key: "submittedAt", ascending: false)]
-        
         do {
-            let results = try await publicDatabase.records(matching: query)
-            print("📥 [CloudKit] Query executed successfully")
-            print("📥 [CloudKit] Match results count: \(results.matchResults.count)")
+            var allSubmissions: [ChapterUpdateSubmission] = []
             
-            let fetchedSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
-                guard case .success(let record) = result else { 
-                    print("⚠️ [CloudKit] Failed to get record from result")
-                    return nil 
+            // Query each status separately since we can't use NSPredicate(value: true)
+            for status in ChapterUpdateSubmission.SubmissionStatus.allCases {
+                let predicate = NSPredicate(format: "status == %@", status.rawValue)
+                let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
+                
+                print("📥 [CloudKit] Querying status: \(status.rawValue)")
+                let results = try await publicDatabase.records(matching: query)
+                print("📥 [CloudKit] Found \(results.matchResults.count) records with status \(status.rawValue)")
+                
+                let statusSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
+                    guard case .success(let record) = result else { return nil }
+                    return ChapterUpdateSubmission.fromRecord(record)
                 }
-                print("📥 [CloudKit] Processing record: \(record.recordID.recordName)")
-                return ChapterUpdateSubmission.fromRecord(record)
+                
+                allSubmissions.append(contentsOf: statusSubmissions)
             }
             
-            // Sort in memory instead
-            let sortedSubmissions = fetchedSubmissions.sorted { $0.submittedAt > $1.submittedAt }
+            // Sort in memory by date
+            let sortedSubmissions = allSubmissions.sorted { $0.submittedAt > $1.submittedAt }
             
-            print("✅ [CloudKit] Processed \(sortedSubmissions.count) submissions")
+            print("✅ [CloudKit] Processed \(sortedSubmissions.count) total submissions")
             
             await MainActor.run {
                 self.submissions = sortedSubmissions
