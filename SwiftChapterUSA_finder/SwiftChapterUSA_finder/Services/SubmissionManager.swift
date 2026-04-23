@@ -64,7 +64,8 @@ class SubmissionManager: ObservableObject {
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
         
         let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: NSPredicate(value: true))
-        query.sortDescriptors = [NSSortDescriptor(key: "submittedAt", ascending: false)]
+        // Temporarily remove sorting until schema is configured
+        // query.sortDescriptors = [NSSortDescriptor(key: "submittedAt", ascending: false)]
         
         do {
             let results = try await publicDatabase.records(matching: query)
@@ -80,10 +81,13 @@ class SubmissionManager: ObservableObject {
                 return ChapterUpdateSubmission.fromRecord(record)
             }
             
-            print("✅ [CloudKit] Processed \(fetchedSubmissions.count) submissions")
+            // Sort in memory instead
+            let sortedSubmissions = fetchedSubmissions.sorted { $0.submittedAt > $1.submittedAt }
+            
+            print("✅ [CloudKit] Processed \(sortedSubmissions.count) submissions")
             
             await MainActor.run {
-                self.submissions = fetchedSubmissions
+                self.submissions = sortedSubmissions
                 self.errorMessage = nil
             }
         } catch {
