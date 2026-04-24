@@ -69,27 +69,33 @@ class SubmissionManager: ObservableObject {
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
         
         do {
-            // Use TRUEPREDICATE to fetch all records without requiring any field to be queryable
-            // This works because we're not filtering on any custom fields
-            let predicate = NSPredicate(value: true)
+            // Query using CreationDate which is always indexed and available
+            let predicate = NSPredicate(format: "creationDate != nil")
             let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
+            // Sort by creation date (newest first)
+            query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             
             print("📥 [CloudKit] Fetching all ChapterUpdateSubmission records...")
             let results = try await publicDatabase.records(matching: query)
             print("📥 [CloudKit] Found \(results.matchResults.count) total records")
             
             let allSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
-                guard case .success(let record) = result else { return nil }
-                return ChapterUpdateSubmission.fromRecord(record)
+                guard case .success(let record) = result else { 
+                    print("⚠️ [CloudKit] Failed to unwrap record result")
+                    return nil 
+                }
+                let submission = ChapterUpdateSubmission.fromRecord(record)
+                if submission == nil {
+                    print("⚠️ [CloudKit] Failed to parse record: \(record.recordID.recordName)")
+                }
+                return submission
             }
             
-            // Sort in memory by date (newest first)
-            let sortedSubmissions = allSubmissions.sorted { $0.submittedAt > $1.submittedAt }
-            
-            print("✅ [CloudKit] Processed \(sortedSubmissions.count) total submissions")
+            // Already sorted by CloudKit query
+            print("✅ [CloudKit] Processed \(allSubmissions.count) total submissions")
             
             await MainActor.run {
-                self.submissions = sortedSubmissions
+                self.submissions = allSubmissions
                 self.errorMessage = nil
             }
         } catch {
