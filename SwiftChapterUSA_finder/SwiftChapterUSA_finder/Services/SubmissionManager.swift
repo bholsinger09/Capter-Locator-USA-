@@ -69,32 +69,33 @@ class SubmissionManager: ObservableObject {
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
         
         do {
-            var allSubmissions: [ChapterUpdateSubmission] = []
+            // Query using CreationDate which is always indexed and available
+            let predicate = NSPredicate(format: "creationDate != nil")
+            let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
+            // Sort by creation date (newest first)
+            query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             
-            // Query each status separately since we can't use NSPredicate(value: true)
-            for status in ChapterUpdateSubmission.SubmissionStatus.allCases {
-                let predicate = NSPredicate(format: "status == %@", status.rawValue)
-                let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
-                
-                print("📥 [CloudKit] Querying status: \(status.rawValue)")
-                let results = try await publicDatabase.records(matching: query)
-                print("📥 [CloudKit] Found \(results.matchResults.count) records with status \(status.rawValue)")
-                
-                let statusSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
-                    guard case .success(let record) = result else { return nil }
-                    return ChapterUpdateSubmission.fromRecord(record)
+            print("📥 [CloudKit] Fetching all ChapterUpdateSubmission records...")
+            let results = try await publicDatabase.records(matching: query)
+            print("📥 [CloudKit] Found \(results.matchResults.count) total records")
+            
+            let allSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
+                guard case .success(let record) = result else { 
+                    print("⚠️ [CloudKit] Failed to unwrap record result")
+                    return nil 
                 }
-                
-                allSubmissions.append(contentsOf: statusSubmissions)
+                let submission = ChapterUpdateSubmission.fromRecord(record)
+                if submission == nil {
+                    print("⚠️ [CloudKit] Failed to parse record: \(record.recordID.recordName)")
+                }
+                return submission
             }
             
-            // Sort in memory by date
-            let sortedSubmissions = allSubmissions.sorted { $0.submittedAt > $1.submittedAt }
-            
-            print("✅ [CloudKit] Processed \(sortedSubmissions.count) total submissions")
+            // Already sorted by CloudKit query
+            print("✅ [CloudKit] Processed \(allSubmissions.count) total submissions")
             
             await MainActor.run {
-                self.submissions = sortedSubmissions
+                self.submissions = allSubmissions
                 self.errorMessage = nil
             }
         } catch {
@@ -114,15 +115,19 @@ class SubmissionManager: ObservableObject {
         isLoading = true
         defer { isLoading = false }
         
-        let predicate = NSPredicate(format: "id == %@", submission.id)
-        let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
+        guard let recordName = submission.recordName else {
+            let error = NSError(domain: "SubmissionManager", code: -1, 
+                              userInfo: [NSLocalizedDescriptionKey: "Record name not available"])
+            await MainActor.run {
+                errorMessage = "Failed to update status: Record name missing"
+            }
+            throw error
+        }
         
         do {
-            let results = try await publicDatabase.records(matching: query)
-            guard let firstResult = results.matchResults.first,
-                  case .success(let record) = firstResult.1 else {
-                throw NSError(domain: "SubmissionManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Record not found"])
-            }
+            // Use recordName directly - no query needed!
+            let recordID = CKRecord.ID(recordName: recordName)
+            let record = try await publicDatabase.record(for: recordID)
             
             record["status"] = status.rawValue as CKRecordValue
             _ = try await publicDatabase.save(record)
@@ -141,17 +146,20 @@ class SubmissionManager: ObservableObject {
         isLoading = true
         defer { isLoading = false }
         
-        let predicate = NSPredicate(format: "id == %@", submission.id)
-        let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
+        guard let recordName = submission.recordName else {
+            let error = NSError(domain: "SubmissionManager", code: -1, 
+                              userInfo: [NSLocalizedDescriptionKey: "Record name not available"])
+            await MainActor.run {
+                errorMessage = "Failed to delete submission: Record name missing"
+            }
+            throw error
+        }
         
         do {
-            let results = try await publicDatabase.records(matching: query)
-            guard let firstResult = results.matchResults.first,
-                  case .success(let record) = firstResult.1 else {
-                throw NSError(domain: "SubmissionManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Record not found"])
-            }
+            // Use recordName directly - no query needed!
+            let recordID = CKRecord.ID(recordName: recordName)
+            _ = try await publicDatabase.deleteRecord(withID: recordID)
             
-            _ = try await publicDatabase.deleteRecord(withID: record.recordID)
             await fetchAllSubmissions()
         } catch {
             await MainActor.run {
