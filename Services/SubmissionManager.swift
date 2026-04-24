@@ -68,45 +68,63 @@ class SubmissionManager: ObservableObject {
         print("📥 [CloudKit] Fetching all submissions...")
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
         
-        do {
-            // Query using CreationDate which is always indexed and available
-            let predicate = NSPredicate(format: "creationDate != nil")
-            let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
-            // Sort by creation date (newest first)
-            query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            
-            print("📥 [CloudKit] Fetching all ChapterUpdateSubmission records...")
-            let results = try await publicDatabase.records(matching: query)
-            print("📥 [CloudKit] Found \(results.matchResults.count) total records")
-            
-            let allSubmissions = results.matchResults.compactMap { _, result -> ChapterUpdateSubmission? in
-                guard case .success(let record) = result else { 
-                    print("⚠️ [CloudKit] Failed to unwrap record result")
-                    return nil 
+        await MainActor.run {
+            self.submissions = []
+        }
+        
+        // Use CKQueryOperation to fetch all records with cursor-based pagination
+        // This doesn't require any queryable fields
+        let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: NSPredicate(value: true))
+        
+        var allRecords: [CKRecord] = []
+        var queryCursor: CKQueryOperation.Cursor? = nil
+        
+        repeat {
+            do {
+                let result: (matchResults: [(CKRecord.ID, Result<CKRecord, Error>)], queryCursor: CKQueryOperation.Cursor?)
+                
+                if let cursor = queryCursor {
+                    // Continue from cursor
+                    result = try await publicDatabase.records(continuingMatchFrom: cursor)
+                } else {
+                    // Initial query
+                    result = try await publicDatabase.records(matching: query)
                 }
-                let submission = ChapterUpdateSubmission.fromRecord(record)
-                if submission == nil {
-                    print("⚠️ [CloudKit] Failed to parse record: \(record.recordID.recordName)")
+                
+                // Extract successful records
+                let records = result.matchResults.compactMap { _, recordResult -> CKRecord? in
+                    guard case .success(let record) = recordResult else { return nil }
+                    return record
                 }
-                return submission
+                
+                allRecords.append(contentsOf: records)
+                queryCursor = result.queryCursor
+                
+                print("📥 [CloudKit] Fetched \(records.count) records, total so far: \(allRecords.count)")
+                
+            } catch {
+                print("❌ [CloudKit] Fetch failed: \(error)")
+                if let ckError = error as? CKError {
+                    print("❌ [CloudKit] CKError code: \(ckError.code.rawValue)")
+                    print("❌ [CloudKit] CKError description: \(ckError.localizedDescription)")
+                }
+                await MainActor.run {
+                    self.errorMessage = "Failed to fetch submissions: \(error.localizedDescription)"
+                }
+                return
             }
-            
-            // Already sorted by CloudKit query
-            print("✅ [CloudKit] Processed \(allSubmissions.count) total submissions")
-            
-            await MainActor.run {
-                self.submissions = allSubmissions
-                self.errorMessage = nil
-            }
-        } catch {
-            print("❌ [CloudKit] Fetch failed: \(error)")
-            if let ckError = error as? CKError {
-                print("❌ [CloudKit] CKError code: \(ckError.code.rawValue)")
-                print("❌ [CloudKit] CKError description: \(ckError.localizedDescription)")
-            }
-            await MainActor.run {
-                self.errorMessage = "Failed to fetch submissions: \(error.localizedDescription)"
-            }
+        } while queryCursor != nil
+        
+        // Convert to our model and sort
+        let allSubmissions = allRecords.compactMap { record in
+            ChapterUpdateSubmission.fromRecord(record)
+        }.sorted { $0.submittedAt > $1.submittedAt }
+        
+        print("✅ [CloudKit] Processed \(allSubmissions.count) total submissions")
+        
+        await MainActor.run {
+            self.submissions = allSubmissions
+            self.errorMessage = nil
         }
     }
     
