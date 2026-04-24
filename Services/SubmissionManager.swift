@@ -15,24 +15,17 @@ class SubmissionManager: ObservableObject {
     @Published var errorMessage: String?
     
     private let container: CKContainer
-    private let privateDatabase: CKDatabase
     private let publicDatabase: CKDatabase
     
     init() {
         container = CKContainer(identifier: "iCloud.ChapterFinder")
-        privateDatabase = container.privateCloudDatabase
         publicDatabase = container.publicCloudDatabase
-        
-        // Force Development environment for testing
-        // This allows schema to be created automatically
-        print("🔧 [CloudKit] Using container: \(container.containerIdentifier ?? "unknown")")
-        print("🔧 [CloudKit] Environment: Development (auto-creates schema)")
     }
     
     // Submit a new chapter update
     func submitUpdate(_ submission: ChapterUpdateSubmission) async throws {
-        isLoading = true
-        defer { isLoading = false }
+        await MainActor.run { isLoading = true }
+        defer { Task { @MainActor in isLoading = false } }
         
         print("📤 [CloudKit] Attempting to submit update...")
         print("📤 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
@@ -62,8 +55,8 @@ class SubmissionManager: ObservableObject {
     
     // Fetch all submissions (admin only)
     func fetchAllSubmissions() async {
-        isLoading = true
-        defer { isLoading = false }
+        await MainActor.run { isLoading = true }
+        defer { Task { @MainActor in isLoading = false } }
         
         print("📥 [CloudKit] Fetching all submissions...")
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
@@ -130,8 +123,8 @@ class SubmissionManager: ObservableObject {
     
     // Update submission status
     func updateSubmissionStatus(_ submission: ChapterUpdateSubmission, status: ChapterUpdateSubmission.SubmissionStatus) async throws {
-        isLoading = true
-        defer { isLoading = false }
+        await MainActor.run { isLoading = true }
+        defer { Task { @MainActor in isLoading = false } }
         
         guard let recordName = submission.recordName else {
             let error = NSError(domain: "SubmissionManager", code: -1, 
@@ -161,8 +154,8 @@ class SubmissionManager: ObservableObject {
     
     // Delete a submission
     func deleteSubmission(_ submission: ChapterUpdateSubmission) async throws {
-        isLoading = true
-        defer { isLoading = false }
+        await MainActor.run { isLoading = true }
+        defer { Task { @MainActor in isLoading = false } }
         
         guard let recordName = submission.recordName else {
             let error = NSError(domain: "SubmissionManager", code: -1, 
