@@ -10,6 +10,7 @@ import CloudKit
 
 struct ChapterUpdateSubmission: Identifiable, Codable {
     var id: String
+    var recordName: String? // CloudKit record name for updates/deletes
     var state: String
     var university: String
     var contactName: String
@@ -26,6 +27,7 @@ struct ChapterUpdateSubmission: Identifiable, Codable {
     }
     
     init(id: String = UUID().uuidString,
+         recordName: String? = nil,
          state: String,
          university: String,
          contactName: String,
@@ -34,6 +36,7 @@ struct ChapterUpdateSubmission: Identifiable, Codable {
          submittedAt: Date = Date(),
          status: SubmissionStatus = .pending) {
         self.id = id
+        self.recordName = recordName
         self.state = state
         self.university = university
         self.contactName = contactName
@@ -73,6 +76,7 @@ struct ChapterUpdateSubmission: Identifiable, Codable {
         
         return ChapterUpdateSubmission(
             id: id,
+            recordName: record.recordID.recordName, // Store CloudKit record name
             state: state,
             university: university,
             contactName: contactName,
