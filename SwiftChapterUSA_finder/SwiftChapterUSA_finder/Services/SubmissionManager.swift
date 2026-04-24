@@ -69,8 +69,10 @@ class SubmissionManager: ObservableObject {
         print("📥 [CloudKit] Container: \(container.containerIdentifier ?? "unknown")")
         
         do {
-            // Query using CreationDate which is always indexed and available
-            let predicate = NSPredicate(format: "creationDate != nil")
+            // Query using creationDate with a date range (all records since a very old date)
+            // This works because creationDate is always indexed
+            let veryOldDate = Date(timeIntervalSince1970: 0) // Jan 1, 1970
+            let predicate = NSPredicate(format: "creationDate > %@", veryOldDate as CVarArg)
             let query = CKQuery(recordType: "ChapterUpdateSubmission", predicate: predicate)
             // Sort by creation date (newest first)
             query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
