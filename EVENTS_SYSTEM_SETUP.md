@@ -42,36 +42,49 @@ Click **"+"** to create a new record type named `Event`
 
 Add the following fields:
 
-| Field Name | Field Type | Indexed | Sortable | Queryable | Notes |
-|------------|------------|---------|----------|-----------|-------|
-| id | String | ✓ Yes | No | ✓ Yes | UUID for event |
-| title | String | ✓ Yes | Yes | ✓ Yes | Event title |
-| description | String | No | No | No | Event details |
-| eventDate | Date/Time | ✓ Yes | Yes | ✓ Yes | Start date/time |
-| endDate | Date/Time | No | No | No | Optional end time |
-| location | String | ✓ Yes | No | ✓ Yes | Location name |
-| address | String | No | No | No | Full address |
-| latitude | Double | No | No | No | Map coordinates |
-| longitude | Double | No | No | No | Map coordinates |
-| chapterID | String | ✓ Yes | No | ✓ Yes | Associated chapter UUID |
-| chapterName | String | ✓ Yes | Yes | ✓ Yes | Chapter name |
-| state | String | ✓ Yes | Yes | ✓ Yes | State for filtering |
-| university | String | ✓ Yes | No | ✓ Yes | University name |
-| organizerName | String | No | No | No | Event organizer |
-| organizerEmail | String | ✓ Yes | No | ✓ Yes | Contact email |
-| imageURL | String | No | No | No | Event image (future) |
-| capacity | Int(64) | No | No | No | Max attendees |
-| rsvpCount | Int(64) | No | No | No | Current RSVPs |
-| eventType | String | ✓ Yes | No | ✓ Yes | Event category |
-| isVirtual | Int(64) | ✓ Yes | No | ✓ Yes | 1 = virtual, 0 = in-person |
-| virtualMeetingURL | String | No | No | No | Zoom/Teams link |
-| requiresRSVP | Int(64) | No | No | No | 1 = yes, 0 = no |
-| createdAt | Date/Time | ✓ Yes | Yes | ✓ Yes | Creation timestamp |
-| createdBy | String | ✓ Yes | No | ✓ Yes | Creator email |
-| isActive | Int(64) | ✓ Yes | No | ✓ Yes | 1 = active, 0 = deleted |
-| tags | String | No | No | No | Comma-separated tags |
+| Field Name | Field Type | Add Index? | Index Type | Notes |
+|------------|------------|------------|------------|-------|
+| id | String | ✓ Yes | QUERYABLE | UUID for event |
+| title | String | ✓ Yes | QUERYABLE + SORTABLE | Event title - needs sorting |
+| description | String | No | - | Event details |
+| eventDate | Date/Time | ✓ Yes | QUERYABLE + SORTABLE | Start date/time - needs sorting |
+| endDate | Date/Time | No | - | Optional end time |
+| location | String | ✓ Yes | QUERYABLE | Location name |
+| address | String | No | - | Full address |
+| latitude | Double | No | - | Map coordinates (optional, not queried) |
+| longitude | Double | No | - | Map coordinates (optional, not queried) |
+| chapterID | String | ✓ Yes | QUERYABLE | Associated chapter UUID |
+| chapterName | String | ✓ Yes | QUERYABLE + SORTABLE | Chapter name |
+| state | String | ✓ Yes | QUERYABLE + SORTABLE | State for filtering |
+| university | String | ✓ Yes | QUERYABLE | University name |
+| organizerName | String | No | - | Event organizer |
+| organizerEmail | String | ✓ Yes | QUERYABLE | Contact email |
+| imageURL | String | No | - | Event image (future) |
+| capacity | Int(64) | No | - | Max attendees |
+| rsvpCount | Int(64) | No | - | Current RSVPs |
+| eventType | String | ✓ Yes | QUERYABLE | Event category |
+| isVirtual | Int(64) | ✓ Yes | QUERYABLE | 1 = virtual, 0 = in-person |
+| virtualMeetingURL | String | No | - | Zoom/Teams link |
+| requiresRSVP | Int(64) | No | - | 1 = yes, 0 = no |
+| createdAt | Date/Time | ✓ Yes | QUERYABLE + SORTABLE | Creation timestamp |
+| createdBy | String | ✓ Yes | QUERYABLE | Creator email |
+| isActive | Int(64) | ✓ Yes | QUERYABLE | 1 = active, 0 = deleted |
+| tags | String | No | - | Comma-separated tags |
 
-**Important**: Make sure to check **Indexed**, **Sortable**, and **Queryable** as indicated above!
+**How to Add Indexes**:
+1. After creating all fields, go to the **Indexes** section
+2. For each field marked "Add Index? ✓ Yes" above:
+   - Click **"Add Index"**
+   - Select **Record Type**: Event
+   - Enter **Name**: fieldName (e.g., "title")
+   - Select **Type**: As specified in "Index Type" column
+   - Select **Field**: The field to index
+   - Click **"Add"**
+3. If a field needs multiple index types (e.g., "QUERYABLE + SORTABLE"):
+   - Add the QUERYABLE index first
+   - Then add a separate SORTABLE index for the same field
+
+**Important**: Do NOT use SEARCHABLE for Int64 or Double fields - use QUERYABLE instead!
 
 #### 1.3 Create EventRSVP Record Type
 
@@ -79,18 +92,18 @@ Click **"+"** to create a new record type named `EventRSVP`
 
 Add the following fields:
 
-| Field Name | Field Type | Indexed | Sortable | Queryable | Notes |
-|------------|------------|---------|----------|-----------|-------|
-| id | String | ✓ Yes | No | ✓ Yes | UUID for RSVP |
-| eventID | String | ✓ Yes | No | ✓ Yes | Associated event UUID |
-| eventTitle | String | No | No | No | Event name |
-| userEmail | String | ✓ Yes | No | ✓ Yes | User's email |
-| userName | String | No | No | No | User's full name |
-| rsvpDate | Date/Time | ✓ Yes | Yes | ✓ Yes | When RSVP was made |
-| status | String | ✓ Yes | No | ✓ Yes | Confirmed/Waitlist/Cancelled |
-| guestCount | Int(64) | No | No | No | Number of guests |
-| checkedIn | Int(64) | No | No | No | 1 = checked in, 0 = not |
-| checkedInAt | Date/Time | No | No | No | Check-in timestamp |
+| Field Name | Field Type | Add Index? | Index Type | Notes |
+|------------|------------|------------|------------|-------|
+| id | String | ✓ Yes | QUERYABLE | UUID for RSVP |
+| eventID | String | ✓ Yes | QUERYABLE | Associated event UUID |
+| eventTitle | String | No | - | Event name |
+| userEmail | String | ✓ Yes | QUERYABLE | User's email |
+| userName | String | No | - | User's full name |
+| rsvpDate | Date/Time | ✓ Yes | QUERYABLE + SORTABLE | When RSVP was made |
+| status | String | ✓ Yes | QUERYABLE | Confirmed/Waitlist/Cancelled |
+| guestCount | Int(64) | No | - | Number of guests |
+| checkedIn | Int(64) | No | - | 1 = checked in, 0 = not |
+| checkedInAt | Date/Time | No | - | Check-in timestamp |
 | notes | String | No | No | No | User notes |
 
 **Important**: Make sure **eventID** and **userEmail** are indexed and queryable for fast lookups!
@@ -338,6 +351,23 @@ Events automatically filter to show:
    - Event discussion thread
 
 ## 🐛 Troubleshooting
+
+### CloudKit Schema Errors
+
+**Problem**: "invalid attempt to set field flags for field 'latitude', flags are not compatible with type NUMBER_DOUBLE"
+
+**Solution**: 
+1. Double and Int64 fields **cannot** be marked as **SEARCHABLE**
+2. Only mark them as **INDEXED** and **SORTABLE**
+3. Use **QUERYABLE** index type (not SEARCHABLE) when adding indexes
+4. For the error shown:
+   - Field: `latitude`
+   - Type: SEARCHABLE ❌ (Wrong!)
+   - Should be: Leave index type blank or use QUERYABLE ✅
+
+**How to Fix**:
+1. Don't add any index for `latitude` and `longitude` (they're optional for our queries)
+2. Or if you need them indexed, use type **QUERYABLE** (not SEARCHABLE)
 
 ### Events Not Showing
 
