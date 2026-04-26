@@ -59,6 +59,11 @@ struct LoginView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @State private var email = ""
     @State private var password = ""
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case email, password
+    }
     
     var body: some View {
         VStack(spacing: 15) {
@@ -66,9 +71,18 @@ struct LoginView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .textInputAutocapitalization(.never)
                 .keyboardType(.emailAddress)
+                .focused($focusedField, equals: .email)
+                .submitLabel(.next)
+                .onSubmit { focusedField = .password }
             
             SecureField("Password", text: $password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($focusedField, equals: .password)
+                .submitLabel(.done)
+                .onSubmit { 
+                    focusedField = nil
+                    authManager.login(email: email, password: password)
+                }
             
             if let errorMessage = authManager.errorMessage {
                 Text(errorMessage)
@@ -77,6 +91,7 @@ struct LoginView: View {
             }
             
             Button(action: {
+                focusedField = nil
                 authManager.login(email: email, password: password)
             }) {
                 Text("Login")
@@ -113,6 +128,17 @@ struct LoginView: View {
         .padding()
         .background(Color.white.opacity(0.2))
         .cornerRadius(15)
+        .onTapGesture {
+            focusedField = nil
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    focusedField = nil
+                }
+            }
+        }
     }
 }
 
@@ -126,6 +152,11 @@ struct RegistrationView: View {
     @State private var selectedState = "Alabama"
     @State private var university = ""
     @State private var errorMessage: String?
+    @FocusState private var focusedField: Field?
+    
+    enum Field {
+        case firstName, lastName, email, password, confirmPassword, university
+    }
     
     let usStates = [
         "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -145,20 +176,35 @@ struct RegistrationView: View {
             VStack(spacing: 15) {
                 TextField("First Name", text: $firstName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($focusedField, equals: .firstName)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .lastName }
                 
                 TextField("Last Name", text: $lastName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($focusedField, equals: .lastName)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .email }
                 
                 TextField("Email", text: $email)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .textInputAutocapitalization(.never)
                     .keyboardType(.emailAddress)
+                    .focused($focusedField, equals: .email)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .password }
                 
                 SecureField("Password", text: $password)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($focusedField, equals: .password)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .confirmPassword }
                 
                 SecureField("Confirm Password", text: $confirmPassword)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($focusedField, equals: .confirmPassword)
+                    .submitLabel(.next)
+                    .onSubmit { focusedField = .university }
                 
                 Picker("State", selection: $selectedState) {
                     ForEach(usStates, id: \.self) { state in
@@ -172,6 +218,9 @@ struct RegistrationView: View {
                 
                 TextField("University (Optional)", text: $university)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .focused($focusedField, equals: .university)
+                    .submitLabel(.done)
+                    .onSubmit { focusedField = nil }
                 
                 if let error = errorMessage {
                     Text(error)
@@ -180,6 +229,7 @@ struct RegistrationView: View {
                 }
                 
                 Button(action: {
+                    focusedField = nil
                     validateAndRegister()
                 }) {
                     Text("Register")
@@ -194,9 +244,21 @@ struct RegistrationView: View {
             }
             .padding()
         }
+        .scrollDismissesKeyboard(.interactively)
         .background(Color.white.opacity(0.2))
         .cornerRadius(15)
         .frame(maxHeight: 500)
+        .onTapGesture {
+            focusedField = nil
+        }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    focusedField = nil
+                }
+            }
+        }
     }
     
     private func validateAndRegister() {
