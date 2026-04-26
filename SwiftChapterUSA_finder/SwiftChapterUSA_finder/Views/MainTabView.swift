@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var chapterManager: ChapterManager
+    @EnvironmentObject var eventManager: EventManager
     
     var body: some View {
         TabView {
@@ -21,6 +22,11 @@ struct MainTabView: View {
             UniversitiesView()
                 .tabItem {
                     Label("Universities", systemImage: "graduationcap.fill")
+                }
+            
+            EventsView(eventManager: eventManager, authManager: authManager)
+                .tabItem {
+                    Label("Events", systemImage: "calendar.badge.clock")
                 }
             
             MembersView()

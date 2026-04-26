@@ -11,6 +11,7 @@ struct ProfileView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var chapterManager: ChapterManager
     @State private var showingEditProfile = false
+    @State private var showingNotificationSettings = false
     @State private var showingDeleteConfirmation = false
     @State private var showingDeletionComplete = false
         // Admin check - add your admin email here or implement admin flag in User model
@@ -131,6 +132,22 @@ struct ProfileView: View {
                         .foregroundColor(.primary)
                         
                         Button(action: {
+                            showingNotificationSettings = true
+                        }) {
+                            HStack {
+                                Image(systemName: "bell.badge.fill")
+                                    .foregroundColor(.orange)
+                                Text("Notification Settings")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
+                        }
+                        .foregroundColor(.primary)
+                        
+                        Button(action: {
                             authManager.logout()
                         }) {
                             HStack {
@@ -207,7 +224,10 @@ struct ProfileView: View {
                         Link(destination: URL(string: "https://www.tpusa.com")!) {
                             HStack {
                                 Image(systemName: "link.circle.fill")
-                                Text("Visit Official TPUSA Website")
+             sheet(isPresented: $showingNotificationSettings) {
+                NotificationSettingsView()
+            }
+            .                   Text("Visit Official TPUSA Website")
                             }
                             .font(.caption)
                             .foregroundColor(.blue)
