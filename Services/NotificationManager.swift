@@ -69,10 +69,10 @@ class NotificationManager: ObservableObject {
     /// Schedule reminder notifications for an event
     func scheduleEventReminders(for event: Event, userRSVP: EventRSVP?) async throws {
         guard preferences.eventReminders else { return }
-        guard let userRSVP = userRSVP, userRSVP.status == "Confirmed" else { return }
+        guard let userRSVP = userRSVP, userRSVP.status == .confirmed else { return }
         
         // Cancel any existing reminders for this event
-        await cancelEventReminders(eventID: event.id)
+        await cancelEventReminders(eventID: event.id.uuidString)
         
         let now = Date()
         guard event.eventDate > now else { return }
@@ -82,11 +82,11 @@ class NotificationManager: ObservableObject {
             let reminderDate = event.eventDate.addingTimeInterval(-24 * 60 * 60)
             if reminderDate > now {
                 try await scheduleNotification(
-                    id: "\(event.id)-24hr",
+                    id: "\(event.id.uuidString)-24hr",
                     title: "Event Tomorrow! 📅",
                     body: "\(event.title) starts tomorrow at \(formatTime(event.eventDate))",
                     date: reminderDate,
-                    eventID: event.id
+                    eventID: event.id.uuidString
                 )
             }
         }
@@ -96,11 +96,11 @@ class NotificationManager: ObservableObject {
             let reminderDate = event.eventDate.addingTimeInterval(-60 * 60)
             if reminderDate > now {
                 try await scheduleNotification(
-                    id: "\(event.id)-1hr",
+                    id: "\(event.id.uuidString)-1hr",
                     title: "Event Starting Soon! ⏰",
                     body: "\(event.title) starts in 1 hour",
                     date: reminderDate,
-                    eventID: event.id
+                    eventID: event.id.uuidString
                 )
             }
         }
@@ -240,7 +240,17 @@ class NotificationManager: ObservableObject {
         let subscriptionID = "event-updates-\(eventID)"
         
         do {
-            try await container.publicCloudDatabase.delete(withSubscriptionID: subscriptionID)
+            _ = try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<String, Error>) in
+                container.publicCloudDatabase.delete(withSubscriptionID: subscriptionID) { subscriptionID, error in
+                    if let error = error {
+                        continuation.resume(throwing: error)
+                    } else if let subscriptionID = subscriptionID {
+                        continuation.resume(returning: subscriptionID)
+                    } else {
+                        continuation.resume(throwing: NSError(domain: "NotificationManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown error deleting subscription"]))
+                    }
+                }
+            }
             print("🗑️ [NotificationManager] Unsubscribed from event: \(eventID)")
         } catch {
             print("⚠️ [NotificationManager] Failed to unsubscribe: \(error.localizedDescription)")

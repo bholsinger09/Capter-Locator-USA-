@@ -5,8 +5,11 @@
 //  Created on 4/26/26.
 //
 
-import UIKit
+import Foundation
 import UserNotifications
+#if canImport(UIKit)
+import UIKit
+#endif
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     let notificationManager = NotificationManager.shared

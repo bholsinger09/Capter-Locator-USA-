@@ -224,10 +224,7 @@ struct ProfileView: View {
                         Link(destination: URL(string: "https://www.tpusa.com")!) {
                             HStack {
                                 Image(systemName: "link.circle.fill")
-             sheet(isPresented: $showingNotificationSettings) {
-                NotificationSettingsView()
-            }
-            .                   Text("Visit Official TPUSA Website")
+                                Text("Visit Official TPUSA Website")
                             }
                             .font(.caption)
                             .foregroundColor(.blue)
@@ -242,6 +239,9 @@ struct ProfileView: View {
             .navigationTitle("Profile")
             .sheet(isPresented: $showingEditProfile) {
                 EditProfileView()
+            }
+            .sheet(isPresented: $showingNotificationSettings) {
+                NotificationSettingsView()
             }
             .alert("Permanently Delete Account?", isPresented: $showingDeleteConfirmation) {
                 Button("Cancel", role: .cancel) { }

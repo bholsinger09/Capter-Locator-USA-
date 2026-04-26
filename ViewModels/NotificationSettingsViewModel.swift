@@ -8,6 +8,9 @@
 import Foundation
 import UserNotifications
 import Combine
+#if canImport(UIKit)
+import UIKit
+#endif
 
 @MainActor
 class NotificationSettingsViewModel: ObservableObject {

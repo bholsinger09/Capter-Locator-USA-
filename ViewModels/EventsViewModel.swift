@@ -177,15 +177,8 @@ class EventsViewModel: ObservableObject {
         // Send RSVP confirmation notification
         try await notificationManager.sendRSVPConfirmation(for: event, guestCount: guestCount)
         
-        
-        // Cancel event reminders
-        let notificationManager = NotificationManager.shared
-        await notificationManager.cancelEventReminders(eventID: event.id)
-        
-        // Unsubscribe from event updates
-        await notificationManager.unsubscribeFromEventUpdates(eventID: event.id)
         // Subscribe to event updates
-        try await notificationManager.subscribeToEventUpdates(eventID: event.id)
+        try await notificationManager.subscribeToEventUpdates(eventID: event.id.uuidString)
     }
     
     func cancelRSVP(_ rsvp: EventRSVP) async throws {
@@ -194,6 +187,13 @@ class EventsViewModel: ObservableObject {
         }
         
         try await eventManager.cancelRSVP(rsvp, for: event)
+        
+        // Cancel event reminders
+        let notificationManager = NotificationManager.shared
+        await notificationManager.cancelEventReminders(eventID: event.id.uuidString)
+        
+        // Unsubscribe from event updates
+        await notificationManager.unsubscribeFromEventUpdates(eventID: event.id.uuidString)
     }
     
     func hasUserRSVP(for event: Event) -> EventRSVP? {
