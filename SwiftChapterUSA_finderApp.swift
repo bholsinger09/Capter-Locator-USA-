@@ -11,12 +11,14 @@ import SwiftUI
 struct SwiftChapterUSA_finderApp: App {
     @StateObject private var authManager = AuthenticationManager()
     @StateObject private var chapterManager = ChapterManager()
+    @StateObject private var eventManager = EventManager()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(authManager)
                 .environmentObject(chapterManager)
+                .environmentObject(eventManager)
         }
     }
 }
