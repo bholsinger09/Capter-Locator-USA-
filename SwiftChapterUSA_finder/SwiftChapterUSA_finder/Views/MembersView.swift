@@ -44,7 +44,7 @@ struct MembersView: View {
                         }
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                     
                     // Membership Status

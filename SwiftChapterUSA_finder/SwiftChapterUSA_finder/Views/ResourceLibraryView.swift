@@ -104,6 +104,7 @@ struct ResourceLibraryView: View {
             }
             .navigationTitle("Resource Library")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showingFilters = true
@@ -111,6 +112,15 @@ struct ResourceLibraryView: View {
                         Image(systemName: "line.3.horizontal.decrease.circle")
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        showingFilters = true
+                    }) {
+                        Image(systemName: "line.3.horizontal.decrease.circle")
+                    }
+                }
+                #endif
             }
             .sheet(item: $selectedResource) { resource in
                 ResourceDetailView(resource: resource, viewModel: viewModel)
@@ -162,7 +172,7 @@ struct FilterPillButton: View {
                 .fontWeight(isSelected ? .semibold : .regular)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 8)
-                .background(isSelected ? Color.blue : Color(.systemGray6))
+                .background(isSelected ? Color.blue : Color.gray.opacity(0.1))
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(20)
         }
@@ -359,13 +369,23 @@ struct FilterSheet: View {
                 }
             }
             .navigationTitle("Filters")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                }
+                #endif
             }
         }
     }

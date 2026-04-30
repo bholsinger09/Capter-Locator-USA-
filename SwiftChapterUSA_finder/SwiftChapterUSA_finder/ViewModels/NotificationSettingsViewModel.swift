@@ -11,6 +11,9 @@ import Combine
 #if canImport(UIKit)
 import UIKit
 #endif
+#if canImport(AppKit)
+import AppKit
+#endif
 
 @MainActor
 class NotificationSettingsViewModel: ObservableObject {
@@ -61,11 +64,18 @@ class NotificationSettingsViewModel: ObservableObject {
     
     /// Open app settings
     func openAppSettings() {
+        #if os(iOS)
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
         
         if UIApplication.shared.canOpenURL(settingsUrl) {
             UIApplication.shared.open(settingsUrl)
         }
+        #elseif os(macOS)
+        // On macOS, open System Settings
+        if let url = URL(string: "x-apple.systempreferences:com.apple.preference.notifications") {
+            NSWorkspace.shared.open(url)
+        }
+        #endif
     }
     
     // MARK: - Preferences Management

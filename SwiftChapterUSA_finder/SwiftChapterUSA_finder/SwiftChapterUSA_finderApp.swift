@@ -9,7 +9,9 @@ import SwiftUI
 
 @main
 struct SwiftChapterUSA_finderApp: App {
+    #if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    #endif
     
     @StateObject private var authManager = AuthenticationManager()
     @StateObject private var chapterManager = ChapterManager()

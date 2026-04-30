@@ -188,7 +188,11 @@ struct ResourceDetailView: View {
                         }
                         
                         Button(action: {
+                            #if os(iOS)
                             showingShareSheet = true
+                            #else
+                            copyToClipboard()
+                            #endif
                         }) {
                             Label("Share", systemImage: "square.and.arrow.up")
                         }
@@ -208,9 +212,11 @@ struct ResourceDetailView: View {
                     }
                 }
             }
+            #if os(iOS)
             .sheet(isPresented: $showingShareSheet) {
                 ShareSheet(items: [resource.content])
             }
+            #endif
             .alert("Copied!", isPresented: $copiedToClipboard) {
                 Button("OK", role: .cancel) {
                     copiedToClipboard = false
@@ -251,6 +257,7 @@ struct ResourceDetailView: View {
 }
 
 // MARK: - Share Sheet
+#if os(iOS)
 struct ShareSheet: UIViewControllerRepresentable {
     let items: [Any]
     
@@ -264,6 +271,7 @@ struct ShareSheet: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
+#endif
 
 struct ResourceDetailView_Previews: PreviewProvider {
     static var previews: some View {

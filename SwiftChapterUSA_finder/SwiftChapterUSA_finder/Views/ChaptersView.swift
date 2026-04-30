@@ -56,7 +56,7 @@ struct ChaptersView: View {
                             .textFieldStyle(PlainTextFieldStyle())
                     }
                     .padding(10)
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
                     .padding(.horizontal)
                     
@@ -69,7 +69,7 @@ struct ChaptersView: View {
                     .padding(.horizontal)
                 }
                 .padding(.vertical, 10)
-                .background(Color(.systemBackground))
+                .background(Color(white: 0.98))
                 
                 // Chapter List
                 if filteredChapters.isEmpty {

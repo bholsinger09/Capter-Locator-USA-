@@ -207,7 +207,7 @@ struct CreateEventView: View {
                         
                         ProgressView("Creating event...")
                             .padding()
-                            .background(Color(.systemBackground))
+                            .background(Color(white: 0.98))
                             .cornerRadius(12)
                     }
                 }

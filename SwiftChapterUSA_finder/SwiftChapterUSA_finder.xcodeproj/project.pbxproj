@@ -6,13 +6,36 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		205C949B2C4BB3FFD172949C /* IncidentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */; };
+		2F2850E76E5D30330A8A5C33 /* IncidentsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB9BF2EE3C01B3C2587BFB /* IncidentsMapView.swift */; };
+		67F66330B4CD4EC2B2848DCF /* IncidentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B0C52A2FB7B62539A428B /* IncidentListView.swift */; };
+		6FA4FD1F6F88B9E18D833867 /* Incident.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFF7F0139394C2626140A6E /* Incident.swift */; };
+		721D871A1DB56BBD1E3207CA /* IncidentManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19219E73BB772264A3AB48B3 /* IncidentManagerProtocol.swift */; };
+		7E2919C308F6C9F6BA484A62 /* FreeSpeechHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311978F16A336C7342F6E881 /* FreeSpeechHubView.swift */; };
+		82B920D033840115D89A2A5B /* IncidentsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */; };
+		846C62F25DE6A39B1943566A /* IncidentReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */; };
+		C32BFA8875A277C4385942F2 /* ReportIncidentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541A5EDAD7786164923E667C /* ReportIncidentView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapViewModel.swift; path = SwiftChapterUSA_finder/ViewModels/IncidentsMapViewModel.swift; sourceTree = "<group>"; };
+		19219E73BB772264A3AB48B3 /* IncidentManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentManagerProtocol.swift; path = SwiftChapterUSA_finder/Protocols/IncidentManagerProtocol.swift; sourceTree = "<group>"; };
+		311978F16A336C7342F6E881 /* FreeSpeechHubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FreeSpeechHubView.swift; path = SwiftChapterUSA_finder/Views/FreeSpeechHubView.swift; sourceTree = "<group>"; };
 		363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChapterUSA_finder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		541A5EDAD7786164923E667C /* ReportIncidentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReportIncidentView.swift; path = SwiftChapterUSA_finder/Views/ReportIncidentView.swift; sourceTree = "<group>"; };
+		66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentReporterViewModel.swift; path = SwiftChapterUSA_finder/ViewModels/IncidentReporterViewModel.swift; sourceTree = "<group>"; };
+		8D6B0C52A2FB7B62539A428B /* IncidentListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentListView.swift; path = SwiftChapterUSA_finder/Views/IncidentListView.swift; sourceTree = "<group>"; };
+		A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentManager.swift; path = SwiftChapterUSA_finder/Services/IncidentManager.swift; sourceTree = "<group>"; };
+		CAFF7F0139394C2626140A6E /* Incident.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Incident.swift; path = SwiftChapterUSA_finder/Models/Incident.swift; sourceTree = "<group>"; };
+		CCDB9BF2EE3C01B3C2587BFB /* IncidentsMapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapView.swift; path = SwiftChapterUSA_finder/Views/IncidentsMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		363AB59E2EC931FE0045BF69 /* SwiftChapterUSA_finder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = SwiftChapterUSA_finder;
 			sourceTree = "<group>";
 		};
@@ -29,11 +52,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A54942FC05D68F6BA201939 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		363AB5932EC931FE0045BF69 = {
 			isa = PBXGroup;
 			children = (
 				363AB59E2EC931FE0045BF69 /* SwiftChapterUSA_finder */,
 				363AB59D2EC931FE0045BF69 /* Products */,
+				7206AB93320D23D670560817 /* Models */,
+				A56386778176F2422436946B /* Protocols */,
+				1A54942FC05D68F6BA201939 /* Services */,
+				60AEAE860139E988092F1CFC /* ViewModels */,
+				4BA602015C4B354E81ADA123 /* Views */,
+				93FFA12860EAEC4FA20AB274 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -43,6 +80,49 @@
 				363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4BA602015C4B354E81ADA123 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				311978F16A336C7342F6E881 /* FreeSpeechHubView.swift */,
+				541A5EDAD7786164923E667C /* ReportIncidentView.swift */,
+				8D6B0C52A2FB7B62539A428B /* IncidentListView.swift */,
+				CCDB9BF2EE3C01B3C2587BFB /* IncidentsMapView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		60AEAE860139E988092F1CFC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */,
+				05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		7206AB93320D23D670560817 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAFF7F0139394C2626140A6E /* Incident.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		93FFA12860EAEC4FA20AB274 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+		A56386778176F2422436946B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				19219E73BB772264A3AB48B3 /* IncidentManagerProtocol.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -64,8 +144,6 @@
 				363AB59E2EC931FE0045BF69 /* SwiftChapterUSA_finder */,
 			);
 			name = SwiftChapterUSA_finder;
-			packageProductDependencies = (
-			);
 			productName = SwiftChapterUSA_finder;
 			productReference = 363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +197,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FA4FD1F6F88B9E18D833867 /* Incident.swift in Sources */,
+				721D871A1DB56BBD1E3207CA /* IncidentManagerProtocol.swift in Sources */,
+				205C949B2C4BB3FFD172949C /* IncidentManager.swift in Sources */,
+				846C62F25DE6A39B1943566A /* IncidentReporterViewModel.swift in Sources */,
+				82B920D033840115D89A2A5B /* IncidentsMapViewModel.swift in Sources */,
+				7E2919C308F6C9F6BA484A62 /* FreeSpeechHubView.swift in Sources */,
+				C32BFA8875A277C4385942F2 /* ReportIncidentView.swift in Sources */,
+				67F66330B4CD4EC2B2848DCF /* IncidentListView.swift in Sources */,
+				2F2850E76E5D30330A8A5C33 /* IncidentsMapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +360,7 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;
@@ -312,7 +399,7 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;

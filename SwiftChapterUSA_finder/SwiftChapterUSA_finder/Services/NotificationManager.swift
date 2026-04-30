@@ -9,6 +9,9 @@ import Foundation
 import UserNotifications
 import CloudKit
 import Combine
+#if canImport(UIKit)
+import UIKit
+#endif
 
 /// Manages all push and local notifications for the app
 class NotificationManager: ObservableObject {
@@ -57,10 +60,10 @@ class NotificationManager: ObservableObject {
     /// Register for remote (push) notifications
     @MainActor
     private func registerForRemoteNotifications() {
-        #if !targetEnvironment(simulator)
+        #if os(iOS) && !targetEnvironment(simulator)
         UIApplication.shared.registerForRemoteNotifications()
         #else
-        print("📱 [NotificationManager] Skipping remote notifications on simulator")
+        print("📱 [NotificationManager] Skipping remote notifications on simulator/macOS")
         #endif
     }
     
@@ -272,7 +275,9 @@ class NotificationManager: ObservableObject {
     /// Clear app badge
     func clearBadge() {
         Task { @MainActor in
+            #if os(iOS)
             UIApplication.shared.applicationIconBadgeNumber = 0
+            #endif
         }
     }
     

@@ -42,7 +42,7 @@ struct ProfileView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                     
                     // Profile Information
@@ -61,7 +61,7 @@ struct ProfileView: View {
                         ProfileInfoRow(icon: "calendar", label: "Member Since", value: authManager.currentUser?.dateJoined.formatted(date: .long, time: .omitted) ?? "")
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                     
                     // Chapter Membership
@@ -110,7 +110,7 @@ struct ProfileView: View {
                             }
                         }
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                     }
                     

@@ -53,7 +53,7 @@ struct ChapterDetailView: View {
                     .foregroundColor(.secondary)
                 }
                 .padding()
-                .background(Color(.systemGray6))
+                .background(Color.gray.opacity(0.1))
                 .cornerRadius(15)
                 
                 // University Info

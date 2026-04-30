@@ -68,7 +68,7 @@ struct UniversitiesView: View {
                             .textFieldStyle(PlainTextFieldStyle())
                     }
                     .padding(10)
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(10)
                     .padding(.horizontal)
                     
@@ -86,7 +86,7 @@ struct UniversitiesView: View {
                     .padding(.horizontal)
                 }
                 .padding(.vertical, 10)
-                .background(Color(.systemBackground))
+                .background(Color(white: 0.98))
                 
                 // University List
                 if filteredUniversities.isEmpty {
@@ -111,12 +111,18 @@ struct UniversitiesView: View {
                             }
                         }
                     }
+                    #if os(iOS)
                     .listStyle(InsetGroupedListStyle())
+                    #else
+                    .listStyle(.inset)
+                    #endif
                 }
             }
             .navigationTitle("Universities")
         }
+        #if os(iOS)
         .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
 }
 
@@ -200,7 +206,7 @@ struct UniversityDetailView: View {
                     .foregroundColor(.secondary)
                 }
                 .padding()
-                .background(Color(.systemGray6))
+                .background(Color.gray.opacity(0.1))
                 .cornerRadius(15)
                 
                 // Student Population
@@ -264,6 +270,8 @@ struct UniversityDetailView: View {
             .padding()
         }
         .navigationTitle("University Details")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }

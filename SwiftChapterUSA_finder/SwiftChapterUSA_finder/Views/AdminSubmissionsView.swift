@@ -68,6 +68,7 @@ struct AdminSubmissionsView: View {
             }
             .navigationTitle("Chapter Updates")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         Task {
@@ -78,6 +79,18 @@ struct AdminSubmissionsView: View {
                     }
                     .disabled(submissionManager.isLoading)
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        Task {
+                            await submissionManager.fetchAllSubmissions()
+                        }
+                    }) {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .disabled(submissionManager.isLoading)
+                }
+                #endif
             }
             .alert("Delete Submission", isPresented: $showingDeleteAlert) {
                 Button("Cancel", role: .cancel) { }

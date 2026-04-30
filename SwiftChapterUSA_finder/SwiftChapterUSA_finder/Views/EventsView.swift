@@ -125,7 +125,7 @@ struct EventsView: View {
                         .textFieldStyle(PlainTextFieldStyle())
                 }
                 .padding(8)
-                .background(Color(.systemGray6))
+                .background(Color.gray.opacity(0.1))
                 .cornerRadius(8)
                 .frame(width: 200)
                 
@@ -145,7 +145,7 @@ struct EventsView: View {
                     .font(.subheadline)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(viewModel.selectedState != "All States" ? Color.blue : Color(.systemGray6))
+                    .background(viewModel.selectedState != "All States" ? Color.blue : Color.gray.opacity(0.1))
                     .foregroundColor(viewModel.selectedState != "All States" ? .white : .primary)
                     .cornerRadius(8)
                 }
@@ -175,7 +175,7 @@ struct EventsView: View {
                     .font(.subheadline)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(viewModel.selectedEventType != nil ? Color.blue : Color(.systemGray6))
+                    .background(viewModel.selectedEventType != nil ? Color.blue : Color.gray.opacity(0.1))
                     .foregroundColor(viewModel.selectedEventType != nil ? .white : .primary)
                     .cornerRadius(8)
                 }
@@ -191,7 +191,7 @@ struct EventsView: View {
                     .font(.subheadline)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 8)
-                    .background(viewModel.showPastEvents ? Color.blue : Color(.systemGray6))
+                    .background(viewModel.showPastEvents ? Color.blue : Color.gray.opacity(0.1))
                     .foregroundColor(viewModel.showPastEvents ? .white : .primary)
                     .cornerRadius(8)
                 }
@@ -234,7 +234,7 @@ struct EventsView: View {
             }
         }
         .padding(.vertical, 12)
-        .background(Color(.systemGray6).opacity(0.5))
+        .background(Color.gray.opacity(0.05))
     }
     
     // MARK: - Empty/No Results Views

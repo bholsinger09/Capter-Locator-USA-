@@ -11,6 +11,7 @@ import UserNotifications
 import UIKit
 #endif
 
+#if os(iOS)
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     let notificationManager = NotificationManager.shared
     
@@ -99,3 +100,4 @@ extension Notification.Name {
     static let navigateToEvent = Notification.Name("navigateToEvent")
     static let navigateToChapter = Notification.Name("navigateToChapter")
 }
+#endif
