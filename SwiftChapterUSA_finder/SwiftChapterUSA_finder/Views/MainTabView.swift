@@ -29,6 +29,11 @@ struct MainTabView: View {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
+            FreeSpeechHubView()
+                .tabItem {
+                    Label("Free Speech", systemImage: "megaphone.fill")
+                }
+            
             MembersView()
                 .tabItem {
                     Label("Members", systemImage: "person.3.fill")
