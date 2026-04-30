@@ -61,12 +61,9 @@ struct ContactDeveloperView: View {
                 Section(header: Text("Contact Information")) {
                     TextField("Contact Name", text: $contactName)
                         .textContentType(.name)
-                        .textInputAutocapitalization(.words)
                     
                     TextField("Contact Email", text: $contactEmail)
                         .textContentType(.emailAddress)
-                        .keyboardType(.emailAddress)
-                        .textInputAutocapitalization(.never)
                 }
                 
                 Section(header: Text("About This Feature")) {

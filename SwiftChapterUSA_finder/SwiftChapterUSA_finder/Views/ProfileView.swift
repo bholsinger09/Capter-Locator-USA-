@@ -126,7 +126,7 @@ struct ProfileView: View {
                                 Image(systemName: "chevron.right")
                             }
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color.gray.opacity(0.1))
                             .cornerRadius(10)
                         }
                         .foregroundColor(.primary)
@@ -142,7 +142,7 @@ struct ProfileView: View {
                                 Image(systemName: "chevron.right")
                             }
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(Color.gray.opacity(0.1))
                             .cornerRadius(10)
                         }
                         .foregroundColor(.primary)
@@ -209,7 +209,7 @@ struct ProfileView: View {
                             .foregroundColor(.primary)
                         }
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                     }
                     
@@ -231,7 +231,7 @@ struct ProfileView: View {
                         }
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                 }
                 .padding()
@@ -388,9 +388,11 @@ struct EditProfileView: View {
                 }
             }
             .navigationTitle("Edit Profile")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     }

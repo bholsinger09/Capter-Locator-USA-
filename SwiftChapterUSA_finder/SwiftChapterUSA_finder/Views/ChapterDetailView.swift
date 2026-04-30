@@ -133,7 +133,9 @@ struct ChapterDetailView: View {
             .padding()
         }
         .navigationTitle("Chapter Details")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }
 
@@ -162,7 +164,7 @@ struct InfoSection<Content: View>: View {
                 .padding(.leading, 28)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.gray.opacity(0.1))
         .cornerRadius(15)
     }
 }

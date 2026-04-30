@@ -86,7 +86,7 @@ struct ResourceDetailView: View {
                         }
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                     
                     // Action Buttons
@@ -127,7 +127,7 @@ struct ResourceDetailView: View {
                             .textSelection(.enabled)
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                     
                     // Related Resources
@@ -161,7 +161,7 @@ struct ResourceDetailView: View {
                                             .foregroundColor(.secondary)
                                     }
                                     .padding()
-                                    .background(Color(.systemGray6))
+                                    .background(Color.gray.opacity(0.1))
                                     .cornerRadius(10)
                                 }
                             }
@@ -171,15 +171,17 @@ struct ResourceDetailView: View {
                 .padding()
             }
             .navigationTitle("Resource")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Done") {
                         dismiss()
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .automatic) {
                     Menu {
                         Button(action: {
                             copyToClipboard()

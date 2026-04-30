@@ -108,9 +108,7 @@ struct CreateEventView: View {
                     
                     if isVirtual {
                         TextField("Meeting Link (Zoom, Teams, etc.)", text: $virtualMeetingURL)
-                            .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
-                            .keyboardType(.URL)
                     }
                     
                     TextField("Location Name", text: $location)
@@ -120,7 +118,6 @@ struct CreateEventView: View {
                     
                     if !isVirtual {
                         TextField("Full Address (Optional)", text: $address)
-                            .textInputAutocapitalization(.words)
                     }
                 }
                 
@@ -140,7 +137,6 @@ struct CreateEventView: View {
                 // Additional Info
                 Section("Additional Info") {
                     TextField("Tags (comma-separated)", text: $tags)
-                        .textInputAutocapitalization(.words)
                     
                     Text("Examples: Networking, Fundraiser, Social")
                         .font(.caption)
@@ -175,15 +171,17 @@ struct CreateEventView: View {
                 }
             }
             .navigationTitle("Create Event")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
                         dismiss()
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button("Create") {
                         Task {
                             await createEvent()

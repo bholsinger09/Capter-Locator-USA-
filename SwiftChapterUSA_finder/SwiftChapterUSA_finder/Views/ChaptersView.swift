@@ -100,7 +100,8 @@ struct ChaptersView: View {
             }
             .navigationTitle("Chapters")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                #if os(iOS)
+                ToolbarItem(placement: .automatic) {
                     Button(action: {
                         showingCreateChapter = true
                     }) {
@@ -108,12 +109,24 @@ struct ChaptersView: View {
                             .font(.title2)
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        showingCreateChapter = true
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                    }
+                }
+                #endif
             }
             .sheet(isPresented: $showingCreateChapter) {
                 CreateChapterView()
             }
         }
+        #if os(iOS)
         .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
 }
 

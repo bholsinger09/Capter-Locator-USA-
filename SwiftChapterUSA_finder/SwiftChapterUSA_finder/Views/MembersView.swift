@@ -95,7 +95,7 @@ struct MembersView: View {
                         }
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                     
                     // Your Chapter
@@ -138,7 +138,7 @@ struct MembersView: View {
                             }
                         }
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                     } else {
                         VStack(alignment: .leading, spacing: 15) {
@@ -201,7 +201,7 @@ struct MembersView: View {
                             }
                         }
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(Color.gray.opacity(0.1))
                         .cornerRadius(15)
                     }
                     
@@ -231,14 +231,16 @@ struct MembersView: View {
                         }
                     }
                     .padding()
-                    .background(Color(.systemGray6))
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(15)
                 }
                 .padding()
             }
             .navigationTitle("Members")
         }
+        #if os(iOS)
         .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
 }
 

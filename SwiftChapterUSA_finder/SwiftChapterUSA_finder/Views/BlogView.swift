@@ -49,7 +49,7 @@ struct BlogView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                .background(Color(.systemBackground))
+                .background(Color(white: 0.98))
                 
                 // Posts List
                 if filteredPosts.isEmpty {
@@ -78,6 +78,7 @@ struct BlogView: View {
             }
             .navigationTitle("Blog")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showingCreatePost = true
@@ -86,12 +87,24 @@ struct BlogView: View {
                             .font(.title2)
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        showingCreatePost = true
+                    }) {
+                        Image(systemName: "plus.circle.fill")
+                            .font(.title2)
+                    }
+                }
+                #endif
             }
             .sheet(isPresented: $showingCreatePost) {
                 CreatePostView()
             }
         }
+        #if os(iOS)
         .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
 }
 
@@ -180,7 +193,7 @@ struct BlogPostCard: View {
             }
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.gray.opacity(0.1))
         .cornerRadius(15)
     }
     
@@ -223,7 +236,7 @@ struct ReplyCard: View {
             }
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color(white: 0.98))
         .cornerRadius(10)
     }
 }
@@ -261,13 +274,23 @@ struct CreatePostView: View {
                 }
             }
             .navigationTitle("Create Post")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+                #endif
             }
         }
     }

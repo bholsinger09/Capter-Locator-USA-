@@ -69,7 +69,7 @@ struct AdminSubmissionsView: View {
             .navigationTitle("Chapter Updates")
             .toolbar {
                 #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .automatic) {
                     Button(action: {
                         Task {
                             await submissionManager.fetchAllSubmissions()

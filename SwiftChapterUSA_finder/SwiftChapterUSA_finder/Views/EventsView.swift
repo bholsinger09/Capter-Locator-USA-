@@ -30,6 +30,7 @@ struct EventsView: View {
             }
             .navigationTitle("Events")
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     viewModeMenu
                 }
@@ -43,6 +44,21 @@ struct EventsView: View {
                         }
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    viewModeMenu
+                }
+                
+                ToolbarItem(placement: .automatic) {
+                    if viewModel.canCreateEvent() {
+                        Button(action: {
+                            viewModel.showingCreateEvent = true
+                        }) {
+                            Image(systemName: "plus")
+                        }
+                    }
+                }
+                #endif
             }
             .refreshable {
                 await viewModel.refreshEvents()
@@ -208,7 +224,7 @@ struct EventsView: View {
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
-        .background(Color(.systemBackground))
+        .background(Color(white: 0.98))
     }
     
     // MARK: - My RSVPs Section
@@ -400,7 +416,7 @@ struct EventRowView: View {
                 .font(.caption)
         }
         .padding()
-        .background(Color(.systemBackground))
+        .background(Color(white: 0.98))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
@@ -446,7 +462,7 @@ struct MyRSVPCard: View {
         }
         .padding()
         .frame(width: 200)
-        .background(Color(.systemBackground))
+        .background(Color(white: 0.98))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }

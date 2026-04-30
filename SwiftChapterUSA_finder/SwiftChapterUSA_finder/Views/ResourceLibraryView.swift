@@ -105,7 +105,7 @@ struct ResourceLibraryView: View {
             .navigationTitle("Resource Library")
             .toolbar {
                 #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .automatic) {
                     Button(action: {
                         showingFilters = true
                     }) {
@@ -154,7 +154,7 @@ struct SearchBarView: View {
             }
         }
         .padding(10)
-        .background(Color(.systemGray6))
+        .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
     }
 }
@@ -224,7 +224,7 @@ struct FeaturedResourceCard: View {
         }
         .padding()
         .frame(width: 280)
-        .background(Color(.systemGray6))
+        .background(Color.gray.opacity(0.1))
         .cornerRadius(15)
     }
 }
@@ -298,7 +298,7 @@ struct ResourceCard: View {
                 .foregroundColor(.secondary)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
     }
 }
@@ -374,7 +374,7 @@ struct FilterSheet: View {
             #endif
             .toolbar {
                 #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .automatic) {
                     Button("Done") {
                         dismiss()
                     }

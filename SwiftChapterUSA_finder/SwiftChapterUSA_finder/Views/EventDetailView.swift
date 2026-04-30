@@ -7,6 +7,12 @@
 
 import SwiftUI
 import MapKit
+#if canImport(AppKit)
+import AppKit
+#endif
+#if canImport(UIKit)
+import UIKit
+#endif
 
 struct EventDetailView: View {
     let event: Event
@@ -66,14 +72,25 @@ struct EventDetailView: View {
                 .padding()
             }
             .navigationTitle(event.title)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Close") {
                         dismiss()
                     }
                 }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Close") {
+                        dismiss()
+                    }
+                }
+                #endif
                 
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Menu {
                         Button(action: { showingShareSheet = true }) {
@@ -97,6 +114,31 @@ struct EventDetailView: View {
                         Image(systemName: "ellipsis.circle")
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Menu {
+                        Button(action: { showingShareSheet = true }) {
+                            Label("Share Event", systemImage: "square.and.arrow.up")
+                        }
+                        
+                        Button(action: { addToCalendar() }) {
+                            Label("Add to Calendar", systemImage: "calendar.badge.plus")
+                        }
+                        
+                        if viewModel.canEditEvent(event) {
+                            Button(action: { /* Edit event */ }) {
+                                Label("Edit Event", systemImage: "pencil")
+                            }
+                            
+                            Button(role: .destructive, action: { deleteEvent() }) {
+                                Label("Delete Event", systemImage: "trash")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                }
+                #endif
             }
             .safeAreaInset(edge: .bottom) {
                 if !event.isPast {
@@ -277,7 +319,11 @@ struct EventDetailView: View {
                     
                     Button(action: {
                         if let url = URL(string: "mailto:\(event.organizerEmail)") {
+                            #if os(iOS)
                             UIApplication.shared.open(url)
+                            #elseif os(macOS)
+                            NSWorkspace.shared.open(url)
+                            #endif
                         }
                     }) {
                         Text(event.organizerEmail)
@@ -449,14 +495,25 @@ struct EventDetailView: View {
                 }
             }
             .navigationTitle("Confirm RSVP")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
                         showingRSVPSheet = false
                     }
                 }
+                #else
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        showingRSVPSheet = false
+                    }
+                }
+                #endif
                 
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Confirm") {
                         Task {
@@ -470,6 +527,21 @@ struct EventDetailView: View {
                         return false
                     }())
                 }
+                #else
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Confirm") {
+                        Task {
+                            await confirmRSVP()
+                        }
+                    }
+                    .disabled({
+                        if let remaining = event.spotsRemaining {
+                            return guestCount > remaining
+                        }
+                        return false
+                    }())
+                }
+                #endif
             }
         }
     }

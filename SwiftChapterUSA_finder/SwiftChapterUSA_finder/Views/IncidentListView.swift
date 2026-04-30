@@ -34,6 +34,7 @@ struct IncidentListView: View {
             await viewModel.refreshData()
         }
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button {
@@ -51,6 +52,25 @@ struct IncidentListView: View {
                     Image(systemName: "ellipsis.circle")
                 }
             }
+            #else
+            ToolbarItem(placement: .automatic) {
+                Menu {
+                    Button {
+                        showingFilters.toggle()
+                    } label: {
+                        Label("Filters", systemImage: "line.3.horizontal.decrease.circle")
+                    }
+                    
+                    Button {
+                        showingReportIncident = true
+                    } label: {
+                        Label("Report Incident", systemImage: "plus.circle.fill")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+            }
+            #endif
         }
         .sheet(isPresented: $showingFilters) {
             IncidentFilterSheet(viewModel: viewModel)
@@ -254,8 +274,11 @@ struct IncidentDetailView: View {
             .padding()
         }
         .navigationTitle("Incident Detail")
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
         .toolbar {
+            #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     showingShareSheet = true
@@ -263,6 +286,15 @@ struct IncidentDetailView: View {
                     Image(systemName: "square.and.arrow.up")
                 }
             }
+            #else
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    showingShareSheet = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
+            #endif
         }
         .sheet(isPresented: $showingShareSheet) {
             IncidentShareSheet(text: viewModel.shareIncident(incident))
@@ -304,7 +336,7 @@ struct IncidentDetailView: View {
             .font(.subheadline)
             
             HStack {
-                Image(systemImage: "calendar")
+                Image(systemName: "calendar")
                 Text(incident.incidentDate, style: .date)
                 Text("at")
                 Text(incident.incidentDate, style: .time)
@@ -649,7 +681,9 @@ struct IncidentShareSheet: View {
                 }
             }
             .navigationTitle("Share Incident")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
         }
     }
 }
@@ -701,7 +735,9 @@ struct IncidentFilterSheet: View {
                 }
             }
             .navigationTitle("Filters")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {

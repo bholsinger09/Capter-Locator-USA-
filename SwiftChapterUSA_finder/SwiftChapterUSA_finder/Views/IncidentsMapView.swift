@@ -96,9 +96,6 @@ struct IncidentsMapView: View {
                 .animation(.spring(), value: viewModel.selectedIncident != nil)
             }
         }
-        .sheet(isPresented: $showingFilters) {
-            FilterSheet(viewModel: viewModel)
-        }
         .sheet(isPresented: $showingCampusStats) {
             CampusStatisticsSheet(viewModel: viewModel)
         }
@@ -358,7 +355,9 @@ struct CampusStatisticsSheet: View {
                 }
             }
             .navigationTitle("Campus Statistics")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {

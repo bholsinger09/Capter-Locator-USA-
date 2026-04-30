@@ -59,11 +59,8 @@ struct CreateChapterView: View {
                     TextField("President Name", text: $presidentName)
                     
                     TextField("Contact Email", text: $contactEmail)
-                        .autocapitalization(.none)
-                        .keyboardType(.emailAddress)
                     
                     TextField("Phone Number (Optional)", text: $phoneNumber)
-                        .keyboardType(.phonePad)
                 }
                 
                 Section(header: Text("Chapter Details")) {
@@ -93,9 +90,11 @@ struct CreateChapterView: View {
                 }
             }
             .navigationTitle("Create Chapter")
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .automatic) {
                     Button("Cancel") {
                         presentationMode.wrappedValue.dismiss()
                     }
@@ -109,7 +108,9 @@ struct CreateChapterView: View {
                 Text(alertMessage)
             }
         }
+        #if os(iOS)
         .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
     
     private var isFormValid: Bool {

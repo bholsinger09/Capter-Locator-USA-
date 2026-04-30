@@ -46,8 +46,11 @@ struct FreeSpeechHubView: View {
                     .tag(3)
             }
             .navigationTitle(tabTitle)
+            #if os(iOS)
             .navigationBarTitleDisplayMode(.inline)
+            #endif
             .toolbar {
+                #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingReportIncident = true
@@ -57,6 +60,17 @@ struct FreeSpeechHubView: View {
                             .font(.title2)
                     }
                 }
+                #else
+                ToolbarItem(placement: .automatic) {
+                    Button {
+                        showingReportIncident = true
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.red)
+                            .font(.title2)
+                    }
+                }
+                #endif
             }
             .sheet(isPresented: $showingReportIncident) {
                 ReportIncidentView(incidentManager: incidentManager, authManager: authManager)
