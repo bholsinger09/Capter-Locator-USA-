@@ -17,21 +17,21 @@ struct MainTabView: View {
     
     init() {
         #if os(iOS)
-        // Configure tab bar appearance for better contrast
+        // Configure tab bar appearance for better contrast in both light and dark modes
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = UIColor.systemBackground
         
-        // Selected tab - bright blue
+        // Selected tab - bright blue (works well in both modes)
         appearance.stackedLayoutAppearance.selected.iconColor = UIColor.systemBlue
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
             .foregroundColor: UIColor.systemBlue
         ]
         
-        // Unselected tab - medium gray for visibility
-        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
+        // Unselected tab - adaptive gray with good contrast
+        // Uses lighter gray in dark mode, darker gray in light mode
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.secondaryLabel
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
-            .foregroundColor: UIColor.systemGray
+            .foregroundColor: UIColor.secondaryLabel
         ]
         
         UITabBar.appearance().standardAppearance = appearance
