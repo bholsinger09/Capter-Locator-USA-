@@ -61,7 +61,7 @@ struct CreateEventView: View {
                             Group {
                                 if description.isEmpty {
                                     Text("Event Description")
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.secondary)
                                         .padding(.leading, 5)
                                         .padding(.top, 8)
                                 }
@@ -205,7 +205,7 @@ struct CreateEventView: View {
                         
                         ProgressView("Creating event...")
                             .padding()
-                            .background(Color(white: 0.98))
+                            .background(Color.white)
                             .cornerRadius(12)
                     }
                 }

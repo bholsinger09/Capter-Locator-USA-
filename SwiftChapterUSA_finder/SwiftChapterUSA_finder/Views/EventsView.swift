@@ -224,7 +224,7 @@ struct EventsView: View {
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
-        .background(Color(white: 0.98))
+        .background(Color.gray.opacity(0.05))
     }
     
     // MARK: - My RSVPs Section
@@ -416,7 +416,7 @@ struct EventRowView: View {
                 .font(.caption)
         }
         .padding()
-        .background(Color(white: 0.98))
+        .background(Color.gray.opacity(0.05))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }
@@ -462,7 +462,7 @@ struct MyRSVPCard: View {
         }
         .padding()
         .frame(width: 200)
-        .background(Color(white: 0.98))
+        .background(Color.gray.opacity(0.05))
         .cornerRadius(12)
         .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 2)
     }

@@ -49,20 +49,20 @@ struct BlogView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                .background(Color(white: 0.98))
+                .background(Color.gray.opacity(0.05))
                 
                 // Posts List
                 if filteredPosts.isEmpty {
                     VStack(spacing: 20) {
                         Image(systemName: "bubble.left.and.bubble.right")
                             .font(.system(size: 60))
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Text("No posts yet")
                             .font(.headline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Text("Be the first to start a conversation!")
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
@@ -236,7 +236,7 @@ struct ReplyCard: View {
             }
         }
         .padding()
-        .background(Color(white: 0.98))
+        .background(Color.gray.opacity(0.05))
         .cornerRadius(10)
     }
 }

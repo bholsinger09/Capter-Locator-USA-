@@ -51,7 +51,7 @@ struct ChaptersView: View {
                 VStack(spacing: 10) {
                     HStack {
                         Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         TextField("Search chapters...", text: $searchText)
                             .textFieldStyle(PlainTextFieldStyle())
                     }
@@ -69,20 +69,20 @@ struct ChaptersView: View {
                     .padding(.horizontal)
                 }
                 .padding(.vertical, 10)
-                .background(Color(white: 0.98))
+                .background(Color.gray.opacity(0.05))
                 
                 // Chapter List
                 if filteredChapters.isEmpty {
                     VStack(spacing: 20) {
                         Image(systemName: "building.2")
                             .font(.system(size: 60))
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Text("No chapters found")
                             .font(.headline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Text("Try adjusting your search or create a new chapter")
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
                     }

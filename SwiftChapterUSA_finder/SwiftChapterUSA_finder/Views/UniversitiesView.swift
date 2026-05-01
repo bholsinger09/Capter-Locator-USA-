@@ -63,7 +63,7 @@ struct UniversitiesView: View {
                 VStack(spacing: 10) {
                     HStack {
                         Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         TextField("Search universities...", text: $searchText)
                             .textFieldStyle(PlainTextFieldStyle())
                     }
@@ -86,17 +86,17 @@ struct UniversitiesView: View {
                     .padding(.horizontal)
                 }
                 .padding(.vertical, 10)
-                .background(Color(white: 0.98))
+                .background(Color.gray.opacity(0.05))
                 
                 // University List
                 if filteredUniversities.isEmpty {
                     VStack(spacing: 20) {
                         Image(systemName: "graduationcap")
                             .font(.system(size: 60))
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Text("No universities found")
                             .font(.headline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
