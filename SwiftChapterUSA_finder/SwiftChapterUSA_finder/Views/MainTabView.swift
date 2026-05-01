@@ -6,11 +6,40 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 struct MainTabView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var chapterManager: ChapterManager
     @EnvironmentObject var eventManager: EventManager
+    
+    init() {
+        #if os(iOS)
+        // Configure tab bar appearance for better contrast
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor.systemBackground
+        
+        // Selected tab - bright blue
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor.systemBlue
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [
+            .foregroundColor: UIColor.systemBlue
+        ]
+        
+        // Unselected tab - medium gray for visibility
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.systemGray
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
+            .foregroundColor: UIColor.systemGray
+        ]
+        
+        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        #endif
+    }
     
     var body: some View {
         TabView {
@@ -59,5 +88,6 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person.circle.fill")
                 }
         }
+        .accentColor(.blue)
     }
 }
