@@ -56,7 +56,7 @@ class IncidentsMapViewModelTests: XCTestCase {
     
     func testFetchCampusStatistics() async {
         // Given
-        let ucla1 = create SampleIncident(university: "UCLA", severity: .high)
+        let ucla1 = createSampleIncident(university: "UCLA", severity: .high)
         let ucla2 = createSampleIncident(university: "UCLA", severity: .critical)
         let usc = createSampleIncident(university: "USC", severity: .moderate)
         mockIncidentManager.incidents = [ucla1, ucla2, usc]

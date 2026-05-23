@@ -246,3 +246,37 @@ For the official Turning Point USA website and resources:
 ## License
 
 This project is for educational and community purposes. Always refer to and respect Turning Point USA's official policies and trademarks.
+
+## Congress API Setup (api.congress.gov preferred)
+
+This project can fetch elected-official contact information. The service will prefer the official Congress.gov API (`api.congress.gov`) using an `api.data.gov` API key; if that call fails it will try ProPublica and finally fall back to the bundled sample data in `Data/AdvocacyData.swift`.
+
+- Info.plist key: `CONGRESS_API_KEY` (String)
+
+Add the key to your app `Info.plist` in Xcode (or edit the XML directly). Example XML snippet:
+
+```xml
+<key>CONGRESS_API_KEY</key>
+<string>YOUR_API_DATA_GOV_KEY_HERE</string>
+```
+
+How to obtain a Congress.gov `api.data.gov` key:
+- Sign up at: https://api.congress.gov/sign-up/ (this provides an `api.data.gov` API key used for Congress.gov endpoints)
+
+Quick curl examples (replace `YOUR_API_KEY_HERE` and `CA` with your key and two-letter state code):
+
+Fetch members for a state (Congress.gov):
+
+```bash
+curl -s "https://api.congress.gov/member/CA?api_key=YOUR_API_KEY_HERE" | jq
+```
+
+Fetch a specific district via Congress.gov:
+
+```bash
+curl -s "https://api.congress.gov/member/CA/12?api_key=YOUR_API_KEY_HERE" | jq
+```
+
+If Congress.gov is unavailable or returns no usable contact data, the app will try ProPublica (if a key is present) and then use the local sample dataset so the Advocacy UI remains functional.
+
+Security note: keep API keys out of source control. Use Xcode build settings, environment variables, or CI secret stores in production.

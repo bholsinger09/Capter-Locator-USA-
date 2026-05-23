@@ -53,6 +53,11 @@ struct MainTabView: View {
                     Label("Universities", systemImage: "graduationcap.fill")
                 }
             
+            AdvocacyView(viewModel: AdvocacyViewModel(chapterService: chapterManager))
+                .tabItem {
+                    Label("Advocacy", systemImage: "hand.raised.fill")
+                }
+            
             EventsView(eventManager: eventManager, authManager: authManager)
                 .tabItem {
                     Label("Events", systemImage: "calendar.badge.clock")

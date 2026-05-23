@@ -17,6 +17,21 @@
 		846C62F25DE6A39B1943566A /* IncidentReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */; };
 		C32BFA8875A277C4385942F2 /* ReportIncidentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541A5EDAD7786164923E667C /* ReportIncidentView.swift */; };
 /* End PBXBuildFile section */
+		B20000000000000000000001 /* AdvocacyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* AdvocacyViewModelTests.swift */; };
+		B20000000000000000000002 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* AuthenticationViewModelTests.swift */; };
+		B20000000000000000000003 /* BlogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* BlogViewModelTests.swift */; };
+		B20000000000000000000004 /* ChaptersViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000004 /* ChaptersViewModelTests.swift */; };
+		B20000000000000000000005 /* CongressServiceFallbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000005 /* CongressServiceFallbackTests.swift */; };
+		B20000000000000000000006 /* CreateChapterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000006 /* CreateChapterViewModelTests.swift */; };
+		B20000000000000000000007 /* IncidentManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000007 /* IncidentManagerTests.swift */; };
+		B20000000000000000000008 /* IncidentReporterViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000008 /* IncidentReporterViewModelTests.swift */; };
+		B20000000000000000000009 /* IncidentsMapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000009 /* IncidentsMapViewModelTests.swift */; };
+		B2000000000000000000000A /* MockAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000A /* MockAuthenticationService.swift */; };
+		B2000000000000000000000B /* MockChapterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000B /* MockChapterService.swift */; };
+		B2000000000000000000000C /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000C /* ModelTests.swift */; };
+		B2000000000000000000000D /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000D /* ProfileViewModelTests.swift */; };
+		B2000000000000000000000E /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000E /* ServiceTests.swift */; };
+		B2000000000000000000000F /* UniversitiesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000F /* UniversitiesViewModelTests.swift */; };
 
 /* Begin PBXFileReference section */
 		05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapViewModel.swift; path = SwiftChapterUSA_finder/ViewModels/IncidentsMapViewModel.swift; sourceTree = "<group>"; };
@@ -29,13 +44,27 @@
 		A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentManager.swift; path = SwiftChapterUSA_finder/Services/IncidentManager.swift; sourceTree = "<group>"; };
 		CAFF7F0139394C2626140A6E /* Incident.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Incident.swift; path = SwiftChapterUSA_finder/Models/Incident.swift; sourceTree = "<group>"; };
 		CCDB9BF2EE3C01B3C2587BFB /* IncidentsMapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapView.swift; path = SwiftChapterUSA_finder/Views/IncidentsMapView.swift; sourceTree = "<group>"; };
+		F10000000000000000000001 /* AdvocacyViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdvocacyViewModelTests.swift; path = ../Tests/AdvocacyViewModelTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000002 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationViewModelTests.swift; path = ../Tests/AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000003 /* BlogViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlogViewModelTests.swift; path = ../Tests/BlogViewModelTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000004 /* ChaptersViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChaptersViewModelTests.swift; path = ../Tests/ChaptersViewModelTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000005 /* CongressServiceFallbackTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CongressServiceFallbackTests.swift; path = ../Tests/CongressServiceFallbackTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000006 /* CreateChapterViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CreateChapterViewModelTests.swift; path = ../Tests/CreateChapterViewModelTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000007 /* IncidentManagerTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentManagerTests.swift; path = ../Tests/IncidentManagerTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000008 /* IncidentReporterViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentReporterViewModelTests.swift; path = ../Tests/IncidentReporterViewModelTests.swift; sourceTree = "<group>"; };
+		F10000000000000000000009 /* IncidentsMapViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapViewModelTests.swift; path = ../Tests/IncidentsMapViewModelTests.swift; sourceTree = "<group>"; };
+		F1000000000000000000000A /* MockAuthenticationService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockAuthenticationService.swift; path = ../Tests/MockAuthenticationService.swift; sourceTree = "<group>"; };
+		F1000000000000000000000B /* MockChapterService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MockChapterService.swift; path = ../Tests/MockChapterService.swift; sourceTree = "<group>"; };
+		F1000000000000000000000C /* ModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModelTests.swift; path = ../Tests/ModelTests.swift; sourceTree = "<group>"; };
+		F1000000000000000000000D /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProfileViewModelTests.swift; path = ../Tests/ProfileViewModelTests.swift; sourceTree = "<group>"; };
+		F1000000000000000000000E /* ServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceTests.swift; path = ../Tests/ServiceTests.swift; sourceTree = "<group>"; };
+		F1000000000000000000000F /* UniversitiesViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UniversitiesViewModelTests.swift; path = ../Tests/UniversitiesViewModelTests.swift; sourceTree = "<group>"; };
+		PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChapterUSA_finderTests.xctest; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		363AB59E2EC931FE0045BF69 /* SwiftChapterUSA_finder */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = SwiftChapterUSA_finder;
 			sourceTree = "<group>";
 		};
@@ -60,6 +89,24 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
+
+/* Begin PBXContainerItemProxy section */
+		CP600000000000000000001 /* SwiftChapterUSA_finder app proxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 363AB5942EC931FE0045BF69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 363AB59B2EC931FE0045BF69;
+			remoteInfo = SwiftChapterUSA_finder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		D50000000000000000000001 /* SwiftChapterUSA_finderTests -> SwiftChapterUSA_finder */ = {
+			isa = PBXTargetDependency;
+			target = 363AB59B2EC931FE0045BF69 /* SwiftChapterUSA_finder */;
+			targetProxy = CP600000000000000000001 /* SwiftChapterUSA_finder app proxy */;
+		};
+/* End PBXTargetDependency section */
 		363AB5932EC931FE0045BF69 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */,
+				PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,6 +161,21 @@
 		93FFA12860EAEC4FA20AB274 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				F10000000000000000000001 /* AdvocacyViewModelTests.swift */,
+				F10000000000000000000002 /* AuthenticationViewModelTests.swift */,
+				F10000000000000000000003 /* BlogViewModelTests.swift */,
+				F10000000000000000000004 /* ChaptersViewModelTests.swift */,
+				F10000000000000000000005 /* CongressServiceFallbackTests.swift */,
+				F10000000000000000000006 /* CreateChapterViewModelTests.swift */,
+				F10000000000000000000007 /* IncidentManagerTests.swift */,
+				F10000000000000000000008 /* IncidentReporterViewModelTests.swift */,
+				F10000000000000000000009 /* IncidentsMapViewModelTests.swift */,
+				F1000000000000000000000A /* MockAuthenticationService.swift */,
+				F1000000000000000000000B /* MockChapterService.swift */,
+				F1000000000000000000000C /* ModelTests.swift */,
+				F1000000000000000000000D /* ProfileViewModelTests.swift */,
+				F1000000000000000000000E /* ServiceTests.swift */,
+				F1000000000000000000000F /* UniversitiesViewModelTests.swift */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -148,6 +211,22 @@
 			productReference = 363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */;
 			productType = "com.apple.product-type.application";
 		};
+		T40000000000000000000001 /* SwiftChapterUSA_finderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C60000000000000000000001 /* Build configuration list for PBXNativeTarget "SwiftChapterUSA_finderTests" */;
+			buildPhases = (
+				P30000000000000000000001 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D50000000000000000000001 /* Dependency on app target */,
+			);
+			name = SwiftChapterUSA_finderTests;
+			productName = SwiftChapterUSA_finderTests;
+			productReference = PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -178,6 +257,7 @@
 			projectRoot = "";
 			targets = (
 				363AB59B2EC931FE0045BF69 /* SwiftChapterUSA_finder */,
+				T40000000000000000000001 /* SwiftChapterUSA_finderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +267,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+
+		P30000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B20000000000000000000001 /* AdvocacyViewModelTests.swift in Sources */,
+				B20000000000000000000002 /* AuthenticationViewModelTests.swift in Sources */,
+				B20000000000000000000003 /* BlogViewModelTests.swift in Sources */,
+				B20000000000000000000004 /* ChaptersViewModelTests.swift in Sources */,
+				B20000000000000000000005 /* CongressServiceFallbackTests.swift in Sources */,
+				B20000000000000000000006 /* CreateChapterViewModelTests.swift in Sources */,
+				B20000000000000000000007 /* IncidentManagerTests.swift in Sources */,
+				B20000000000000000000008 /* IncidentReporterViewModelTests.swift in Sources */,
+				B20000000000000000000009 /* IncidentsMapViewModelTests.swift in Sources */,
+				B2000000000000000000000A /* MockAuthenticationService.swift in Sources */,
+				B2000000000000000000000B /* MockChapterService.swift in Sources */,
+				B2000000000000000000000C /* ModelTests.swift in Sources */,
+				B2000000000000000000000D /* ProfileViewModelTests.swift in Sources */,
+				B2000000000000000000000E /* ServiceTests.swift in Sources */,
+				B2000000000000000000000F /* UniversitiesViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +529,35 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C60000000000000000000001 /* Build configuration list for PBXNativeTarget "SwiftChapterUSA_finderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C70000000000000000000001 /* Debug */,
+				C70000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C70000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftChapterUSA_finder.app/SwiftChapterUSA_finder";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C70000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftChapterUSA_finder.app/SwiftChapterUSA_finder";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
 		};
 /* End XCConfigurationList section */
 	};
