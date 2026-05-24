@@ -63,6 +63,13 @@
             ReferencedContainer = "container:SwiftChapterUSA_finder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "CONGRESS_API_KEY"
+            value = "hZgOeK9roCq6b1Py7CdImpCdXlLvkIG0Ub0H5dF4"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

@@ -17,6 +17,10 @@ struct ElectedOfficial: Identifiable, Codable, Hashable {
     let email: String?
     let website: String?
 
+    private enum CodingKeys: String, CodingKey {
+        case name, office, chamber, party, state, district, phone, email, website
+    }
+
     var displayTitle: String {
         if let district = district {
             return "\(office) • \(district)"

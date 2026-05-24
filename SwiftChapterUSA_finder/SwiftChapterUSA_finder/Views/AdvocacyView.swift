@@ -12,7 +12,7 @@ struct AdvocacyView: View {
     @Environment(\.openURL) private var openURL
 
     @State private var selectedState = "All States"
-    @State private var selectedUniversity: University?
+    @State private var selectedUniversityId: UUID?
     @State private var selectedIssue: AdvocacyIssue = .campusFreeSpeech
 
     private var userState: String? {
@@ -28,6 +28,11 @@ struct AdvocacyView: View {
 
     private var universities: [University] {
         viewModel.filteredUniversities(state: effectiveState, query: "")
+    }
+
+    private var selectedUniversity: University? {
+        guard let selectedUniversityId else { return nil }
+        return universities.first { $0.id == selectedUniversityId }
     }
 
     private var topOfficials: [ElectedOfficial] {
@@ -73,10 +78,10 @@ struct AdvocacyView: View {
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     } else {
-                        Picker("Campus", selection: $selectedUniversity) {
-                            Text("Select a campus").tag(nil as University?)
+                        Picker("Campus", selection: $selectedUniversityId) {
+                            Text("Select a campus").tag(nil as UUID?)
                             ForEach(universities) { university in
-                                Text(university.name).tag(university as University?)
+                                Text(university.name).tag(university.id as UUID?)
                             }
                         }
                         .pickerStyle(MenuPickerStyle())
@@ -208,17 +213,17 @@ struct AdvocacyView: View {
                 if selectedState == "All States", let state = currentUser?.state {
                     selectedState = state
                 }
-                if selectedUniversity == nil, let universityName = currentUser?.university {
-                    selectedUniversity = chapterManager.universities.first { $0.name == universityName }
+                if selectedUniversityId == nil, let universityName = currentUser?.university {
+                    selectedUniversityId = chapterManager.universities.first { $0.name == universityName }?.id
                 }
             }
             .onChange(of: selectedState) { _ in
-                selectedUniversity = nil
+                selectedUniversityId = nil
                 Task {
                     officials = await viewModel.fetchOfficials(for: effectiveState, university: nil)
                 }
             }
-            .onChange(of: selectedUniversity) { _ in
+            .onChange(of: selectedUniversityId) { _ in
                 Task {
                     officials = await viewModel.fetchOfficials(for: effectiveState, university: selectedUniversity)
                 }

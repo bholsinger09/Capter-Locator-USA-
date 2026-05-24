@@ -60,6 +60,7 @@
 		F1000000000000000000000E /* ServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceTests.swift; path = ../Tests/ServiceTests.swift; sourceTree = "<group>"; };
 		F1000000000000000000000F /* UniversitiesViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UniversitiesViewModelTests.swift; path = ../Tests/UniversitiesViewModelTests.swift; sourceTree = "<group>"; };
 		PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChapterUSA_finderTests.xctest; sourceTree = "<group>"; };
+		LCL0000000000000000000001 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text; name = Local.xcconfig; path = "../Config/Local.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -375,6 +376,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Debug;
 		};
 		363AB5A72EC931FF0045BF69 /* Release */ = {
@@ -429,6 +431,7 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Release;
 		};
 		363AB5A92EC931FF0045BF69 /* Debug */ = {
@@ -442,7 +445,8 @@
 				DEVELOPMENT_TEAM = PL58734CZ4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "../Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -468,6 +472,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Debug;
 		};
 		363AB5AA2EC931FF0045BF69 /* Release */ = {
@@ -481,7 +486,8 @@
 				DEVELOPMENT_TEAM = PL58734CZ4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "../Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -507,6 +513,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
