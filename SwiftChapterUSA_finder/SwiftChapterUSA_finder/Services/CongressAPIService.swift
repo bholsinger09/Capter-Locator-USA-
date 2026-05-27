@@ -39,8 +39,11 @@ final class CongressAPIService: CongressServiceProtocol {
         guard !trimmed.isEmpty else {
             return nil
         }
-        // Ignore placeholder build expressions and placeholder defaults.
+        // Ignore unresolved build expressions and placeholder defaults.
         if trimmed.hasPrefix("$(") && trimmed.hasSuffix(")") {
+            return nil
+        }
+        if trimmed.lowercased().contains("your_") && trimmed.lowercased().contains("api_key") {
             return nil
         }
         return trimmed
@@ -52,10 +55,12 @@ final class CongressAPIService: CongressServiceProtocol {
         let cgKey = congressGovKey?.trimmingCharacters(in: .whitespacesAndNewlines)
         let ppKey = propublicaKey?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        // If no keys configured, fall back to bundled sample data
+        // If no keys are configured, let the view model decide how to fall back and report diagnostics.
         if (cgKey == nil || cgKey == "") && (ppKey == nil || ppKey == "") {
-            return AdvocacyData.officials(forState: state, university: university)
+            throw CongressServiceError.missingAPIKey
         }
+
+        var lastError: Error?
 
         // Prefer the official Congress.gov API (api.congress.gov) when a key is present.
         if let cg = cgKey, !cg.isEmpty {
@@ -63,7 +68,8 @@ final class CongressAPIService: CongressServiceProtocol {
                 let cgMembers = try await fetchCongressGovMembers(state: state, apiKey: cg)
                 if !cgMembers.isEmpty { return cgMembers }
             } catch {
-                print("CongressGov fetch failed: \(error). Falling back to ProPublica/local data.")
+                lastError = error
+                print("CongressGov fetch failed: \(error). Trying secondary sources.")
             }
         }
 
@@ -76,11 +82,15 @@ final class CongressAPIService: CongressServiceProtocol {
                 let combined = s + r
                 if !combined.isEmpty { return combined }
             } catch {
-                print("ProPublica fetch failed: \(error). Falling back to local data.")
+                lastError = error
+                print("ProPublica fetch failed: \(error).")
             }
         }
 
-        return AdvocacyData.officials(forState: state, university: university)
+        if let lastError {
+            throw lastError
+        }
+        throw CongressServiceError.networkError(NSError(domain: "Congress", code: 204, userInfo: nil))
     }
 
     private func fetchCongressGovMembers(state: String, apiKey: String) async throws -> [ElectedOfficial] {

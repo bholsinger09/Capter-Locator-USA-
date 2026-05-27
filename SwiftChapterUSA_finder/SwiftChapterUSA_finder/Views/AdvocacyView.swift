@@ -15,6 +15,10 @@ struct AdvocacyView: View {
     @State private var selectedUniversityId: UUID?
     @State private var selectedIssue: AdvocacyIssue = .campusFreeSpeech
 
+    @State private var showDiagnostics = false
+    @State private var lastFetchSource: String = ""
+    @State private var lastResultCount: Int = 0
+
     private var userState: String? {
         authManager.currentUser?.state
     }
@@ -48,6 +52,81 @@ struct AdvocacyView: View {
 
     private var currentUser: User? {
         authManager.currentUser
+    }
+
+    private func fetchAndRecord(state: String, university: University?) async {
+        let result = await viewModel.fetchOfficialsResult(for: state, university: university)
+        await MainActor.run {
+            self.officials = result.officials
+            self.lastResultCount = result.officials.count
+            self.lastFetchSource = result.sourceDescription
+        }
+    }
+
+    @ViewBuilder
+    private func officialRow(for official: ElectedOfficial) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(official.name.isEmpty ? "Unnamed Official" : official.name)
+                        .font(.headline)
+                    Text(official.displayTitle.isEmpty ? "Title unavailable" : official.displayTitle)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    Text(official.locationText.isEmpty ? "Location unavailable" : official.locationText)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+            }
+
+            if let phone = official.phone {
+                ContactRow(systemImage: "phone.fill", text: phone)
+            }
+
+            if let email = official.email {
+                ContactRow(systemImage: "envelope.fill", text: email)
+            }
+
+            officialWebsiteLink(for: official)
+
+            HStack {
+                if let email = official.email,
+                   let url = viewModel.makeMailURL(
+                    to: email,
+                    subject: viewModel.emailSubject(for: selectedIssue, official: official),
+                    body: viewModel.emailBody(for: selectedIssue, user: currentUser, university: selectedUniversity, official: official)
+                   ) {
+                    Button(action: {
+                        openURL(url)
+                    }) {
+                        Label("Email", systemImage: "envelope")
+                    }
+                }
+
+                if let phone = official.phone,
+                   let dialURL = URL(string: "tel:\(phone.filter { $0.isNumber })") {
+                    Button(action: {
+                        openURL(dialURL)
+                    }) {
+                        Label("Call", systemImage: "phone")
+                    }
+                }
+            }
+            .buttonStyle(BorderlessButtonStyle())
+        }
+        .padding(.vertical, 8)
+    }
+
+    @ViewBuilder
+    private func officialWebsiteLink(for official: ElectedOfficial) -> some View {
+        if let website = official.website {
+            let urlString = website.lowercased().hasPrefix("http://") || website.lowercased().hasPrefix("https://") ? website : "https://\(website)"
+            if let url = URL(string: urlString) {
+                Link("Official website", destination: url)
+                    .font(.subheadline)
+            }
+        }
     }
 
     var body: some View {
@@ -130,83 +209,42 @@ struct AdvocacyView: View {
                             .foregroundColor(.secondary)
 
                         ForEach(officials) { official in
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack(alignment: .top) {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text(official.name)
-                                            .font(.headline)
-                                        Text(official.displayTitle)
-                                            .font(.subheadline)
-                                            .foregroundColor(.secondary)
-                                        Text(official.locationText)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                    Spacer()
-                                }
-
-                                if let phone = official.phone {
-                                    HStack(spacing: 8) {
-                                        Image(systemName: "phone.fill")
-                                        Text(phone)
-                                            .font(.subheadline)
-                                            .foregroundColor(.blue)
-                                    }
-                                }
-
-                                if let email = official.email {
-                                    HStack(spacing: 8) {
-                                        Image(systemName: "envelope.fill")
-                                        Text(email)
-                                            .font(.subheadline)
-                                            .foregroundColor(.blue)
-                                    }
-                                }
-
-                                if let website = official.website,
-                                   let url = URL(string: "https://\(website)") {
-                                    Link("Official website", destination: url)
-                                        .font(.subheadline)
-                                }
-
-                                HStack {
-                                    if let email = official.email,
-                                       let url = viewModel.makeMailURL(
-                                        to: email,
-                                        subject: viewModel.emailSubject(for: selectedIssue, official: official),
-                                        body: viewModel.emailBody(for: selectedIssue, user: currentUser, university: selectedUniversity, official: official)
-                                       ) {
-                                        Button(action: {
-                                            openURL(url)
-                                        }) {
-                                            Label("Email", systemImage: "envelope")
-                                        }
-                                    }
-
-                                    if let phone = official.phone,
-                                       let dialURL = URL(string: "tel:\(phone.filter { $0.isNumber })") {
-                                        Button(action: {
-                                            openURL(dialURL)
-                                        }) {
-                                            Label("Call", systemImage: "phone")
-                                        }
-                                    }
-                                }
-                                .buttonStyle(BorderlessButtonStyle())
-                            }
-                            .padding(.vertical, 8)
+                            officialRow(for: official)
                         }
                     }
                 }
 
+                let draftMessage = viewModel.emailBody(
+                    for: selectedIssue,
+                    user: currentUser,
+                    university: selectedUniversity,
+                    official: officials.first
+                )
+
                 Section(header: Text("Draft Advocacy Message")) {
-                    Text(viewModel.emailBody(for: selectedIssue, user: currentUser, university: selectedUniversity, official: officials.first))
+                    Text(draftMessage)
                         .font(.callout)
                         .foregroundColor(.primary)
                         .padding(10)
-                        .background(Color(.systemGray6))
+                        .background(Color.gray.opacity(0.15))
                         .cornerRadius(12)
                 }
+
+//                Section {
+//                    Toggle("Show Diagnostics", isOn: $showDiagnostics)
+//                    if showDiagnostics {
+//                        VStack(alignment: .leading, spacing: 6) {
+//                            Text("Effective state: \(effectiveState)")
+//                            Text("Selected campus: \(selectedUniversity?.name ?? "nil")")
+//                            Text("Last result count: \(lastResultCount)")
+//                            Text("Last fetch source: \(lastFetchSource)")
+//                        }
+//                        .font(.caption)
+//                        .foregroundColor(.secondary)
+//                    }
+//                } header: {
+//                    Text("Diagnostics")
+//                }
             }
             .navigationTitle("Advocacy")
             .onAppear {
@@ -216,22 +254,45 @@ struct AdvocacyView: View {
                 if selectedUniversityId == nil, let universityName = currentUser?.university {
                     selectedUniversityId = chapterManager.universities.first { $0.name == universityName }?.id
                 }
+                Task {
+                    officials = []
+                    await fetchAndRecord(state: effectiveState, university: selectedUniversity)
+                }
             }
             .onChange(of: selectedState) { _ in
                 selectedUniversityId = nil
                 Task {
-                    officials = await viewModel.fetchOfficials(for: effectiveState, university: nil)
+                    officials = []
+                    await fetchAndRecord(state: effectiveState, university: nil)
                 }
             }
             .onChange(of: selectedUniversityId) { _ in
                 Task {
-                    officials = await viewModel.fetchOfficials(for: effectiveState, university: selectedUniversity)
+                    officials = []
+                    await fetchAndRecord(state: effectiveState, university: selectedUniversity)
                 }
             }
-            .task {
-                // initial load
-                officials = await viewModel.fetchOfficials(for: effectiveState, university: selectedUniversity)
+            .onChange(of: universities.count) { newCount in
+                guard newCount > 0 else { return }
+                Task {
+                    await fetchAndRecord(state: effectiveState, university: selectedUniversity)
+                }
             }
+        }
+    }
+}
+private struct ContactRow: View {
+    let systemImage: String
+    let text: String
+
+    var body: some View {
+        Label {
+            Text(text)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        } icon: {
+            Image(systemName: systemImage)
+                .foregroundColor(.secondary)
         }
     }
 }

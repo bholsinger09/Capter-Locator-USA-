@@ -39,6 +39,10 @@ enum AdvocacyIssue: String, CaseIterable, Identifiable {
         }
     }
 }
+struct AdvocacyFetchResult {
+    let officials: [ElectedOfficial]
+    let sourceDescription: String
+}
 
 class AdvocacyViewModel: ObservableObject {
     private let chapterService: ChapterServiceProtocol
@@ -78,14 +82,28 @@ class AdvocacyViewModel: ObservableObject {
         return AdvocacyData.officials(forState: selectedState, university: university)
     }
 
-    /// Async public API that will attempt to fetch real data via configured `CongressServiceProtocol`, falling back to sample data.
-    func fetchOfficials(for state: String, university: University?) async -> [ElectedOfficial] {
+    /// Async public API that attempts to fetch live data, then reports whether local fallback data was used.
+    func fetchOfficialsResult(for state: String, university: University?) async -> AdvocacyFetchResult {
         do {
             let officials = try await congressService.fetchOfficials(forState: state, university: university)
-            return officials
+            print("[Advocacy] Congress fetch succeeded. state=\(state), university=\(university?.name ?? "nil"), count=\(officials.count)")
+            for (idx, o) in officials.prefix(3).enumerated() {
+                print("[Advocacy] Official[\(idx)] name=\(o.name), title=\(o.displayTitle), location=\(o.locationText), phone=\(o.phone ?? "nil"), email=\(o.email ?? "nil"), website=\(o.website ?? "nil")")
+            }
+            return AdvocacyFetchResult(officials: officials, sourceDescription: "live Congress API")
+        } catch CongressServiceError.missingAPIKey {
+            let fallback = electedOfficials(for: state, university: university)
+            print("[Advocacy] Missing Congress API key. Using local fallback. state=\(state), university=\(university?.name ?? "nil"), fallbackCount=\(fallback.count)")
+            return AdvocacyFetchResult(officials: fallback, sourceDescription: "local fallback (missing API key)")
         } catch {
-            return electedOfficials(for: state, university: university)
+            let fallback = electedOfficials(for: state, university: university)
+            print("[Advocacy] Congress fetch failed. Using local fallback. state=\(state), university=\(university?.name ?? "nil"), fallbackCount=\(fallback.count), error=\(error)")
+            return AdvocacyFetchResult(officials: fallback, sourceDescription: "local fallback (API error)")
         }
+    }
+
+    func fetchOfficials(for state: String, university: University?) async -> [ElectedOfficial] {
+        await fetchOfficialsResult(for: state, university: university).officials
     }
 
     func emailSubject(for issue: AdvocacyIssue, official: ElectedOfficial?) -> String {
