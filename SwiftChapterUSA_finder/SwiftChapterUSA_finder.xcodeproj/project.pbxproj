@@ -7,16 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		205C949B2C4BB3FFD172949C /* IncidentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */; };
-		2F2850E76E5D30330A8A5C33 /* IncidentsMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB9BF2EE3C01B3C2587BFB /* IncidentsMapView.swift */; };
-		67F66330B4CD4EC2B2848DCF /* IncidentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6B0C52A2FB7B62539A428B /* IncidentListView.swift */; };
-		6FA4FD1F6F88B9E18D833867 /* Incident.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFF7F0139394C2626140A6E /* Incident.swift */; };
-		721D871A1DB56BBD1E3207CA /* IncidentManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19219E73BB772264A3AB48B3 /* IncidentManagerProtocol.swift */; };
-		7E2919C308F6C9F6BA484A62 /* FreeSpeechHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311978F16A336C7342F6E881 /* FreeSpeechHubView.swift */; };
-		82B920D033840115D89A2A5B /* IncidentsMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */; };
-		846C62F25DE6A39B1943566A /* IncidentReporterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */; };
-		C32BFA8875A277C4385942F2 /* ReportIncidentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541A5EDAD7786164923E667C /* ReportIncidentView.swift */; };
-/* End PBXBuildFile section */
 		B20000000000000000000001 /* AdvocacyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000001 /* AdvocacyViewModelTests.swift */; };
 		B20000000000000000000002 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000002 /* AuthenticationViewModelTests.swift */; };
 		B20000000000000000000003 /* BlogViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10000000000000000000003 /* BlogViewModelTests.swift */; };
@@ -32,6 +22,17 @@
 		B2000000000000000000000D /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000D /* ProfileViewModelTests.swift */; };
 		B2000000000000000000000E /* ServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000E /* ServiceTests.swift */; };
 		B2000000000000000000000F /* UniversitiesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1000000000000000000000F /* UniversitiesViewModelTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CP600000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 363AB5942EC931FE0045BF69 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 363AB59B2EC931FE0045BF69;
+			remoteInfo = SwiftChapterUSA_finder;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapViewModel.swift; path = SwiftChapterUSA_finder/ViewModels/IncidentsMapViewModel.swift; sourceTree = "<group>"; };
@@ -59,8 +60,8 @@
 		F1000000000000000000000D /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProfileViewModelTests.swift; path = ../Tests/ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		F1000000000000000000000E /* ServiceTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceTests.swift; path = ../Tests/ServiceTests.swift; sourceTree = "<group>"; };
 		F1000000000000000000000F /* UniversitiesViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UniversitiesViewModelTests.swift; path = ../Tests/UniversitiesViewModelTests.swift; sourceTree = "<group>"; };
-		PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChapterUSA_finderTests.xctest; sourceTree = "<group>"; };
-		LCL0000000000000000000001 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text; name = Local.xcconfig; path = "../Config/Local.xcconfig"; sourceTree = "<group>"; };
+		LCL0000000000000000000001 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text; name = Local.xcconfig; path = ../Config/Local.xcconfig; sourceTree = "<group>"; };
+		PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftChapterUSA_finderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -90,24 +91,14 @@
 			name = Services;
 			sourceTree = "<group>";
 		};
-
-/* Begin PBXContainerItemProxy section */
-		CP600000000000000000001 /* SwiftChapterUSA_finder app proxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 363AB5942EC931FE0045BF69 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 363AB59B2EC931FE0045BF69;
-			remoteInfo = SwiftChapterUSA_finder;
+		3627E4CB2FED68FE00D95472 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				LCL0000000000000000000001 /* Local.xcconfig */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
 		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXTargetDependency section */
-		D50000000000000000000001 /* SwiftChapterUSA_finderTests -> SwiftChapterUSA_finder */ = {
-			isa = PBXTargetDependency;
-			target = 363AB59B2EC931FE0045BF69 /* SwiftChapterUSA_finder */;
-			targetProxy = CP600000000000000000001 /* SwiftChapterUSA_finder app proxy */;
-		};
-/* End PBXTargetDependency section */
 		363AB5932EC931FE0045BF69 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +110,7 @@
 				60AEAE860139E988092F1CFC /* ViewModels */,
 				4BA602015C4B354E81ADA123 /* Views */,
 				93FFA12860EAEC4FA20AB274 /* Tests */,
+				3627E4CB2FED68FE00D95472 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,7 +213,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D50000000000000000000001 /* Dependency on app target */,
+				D50000000000000000000001 /* PBXTargetDependency */,
 			);
 			name = SwiftChapterUSA_finderTests;
 			productName = SwiftChapterUSA_finderTests;
@@ -271,7 +263,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
 
+/* Begin PBXSourcesBuildPhase section */
+		363AB5982EC931FE0045BF69 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FA4FD1F6F88B9E18D833867 /* Incident.swift in Sources */,
+				721D871A1DB56BBD1E3207CA /* IncidentManagerProtocol.swift in Sources */,
+				205C949B2C4BB3FFD172949C /* IncidentManager.swift in Sources */,
+				846C62F25DE6A39B1943566A /* IncidentReporterViewModel.swift in Sources */,
+				82B920D033840115D89A2A5B /* IncidentsMapViewModel.swift in Sources */,
+				7E2919C308F6C9F6BA484A62 /* FreeSpeechHubView.swift in Sources */,
+				C32BFA8875A277C4385942F2 /* ReportIncidentView.swift in Sources */,
+				67F66330B4CD4EC2B2848DCF /* IncidentListView.swift in Sources */,
+				2F2850E76E5D30330A8A5C33 /* IncidentsMapView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		P30000000000000000000001 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,30 +304,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		363AB5982EC931FE0045BF69 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6FA4FD1F6F88B9E18D833867 /* Incident.swift in Sources */,
-				721D871A1DB56BBD1E3207CA /* IncidentManagerProtocol.swift in Sources */,
-				205C949B2C4BB3FFD172949C /* IncidentManager.swift in Sources */,
-				846C62F25DE6A39B1943566A /* IncidentReporterViewModel.swift in Sources */,
-				82B920D033840115D89A2A5B /* IncidentsMapViewModel.swift in Sources */,
-				7E2919C308F6C9F6BA484A62 /* FreeSpeechHubView.swift in Sources */,
-				C32BFA8875A277C4385942F2 /* ReportIncidentView.swift in Sources */,
-				67F66330B4CD4EC2B2848DCF /* IncidentListView.swift in Sources */,
-				2F2850E76E5D30330A8A5C33 /* IncidentsMapView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D50000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 363AB59B2EC931FE0045BF69 /* SwiftChapterUSA_finder */;
+			targetProxy = CP600000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		363AB5A62EC931FF0045BF69 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -376,11 +376,11 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Debug;
 		};
 		363AB5A72EC931FF0045BF69 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -431,11 +431,11 @@
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
-			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Release;
 		};
 		363AB5A92EC931FF0045BF69 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -446,7 +446,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "../Info.plist";
+				INFOPLIST_FILE = ../Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -472,11 +472,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
-			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			name = Debug;
 		};
 		363AB5AA2EC931FF0045BF69 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -487,7 +487,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = "../Info.plist";
+				INFOPLIST_FILE = ../Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -513,7 +513,26 @@
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
-			baseConfigurationReference = LCL0000000000000000000001 /* Local.xcconfig */;
+			name = Release;
+		};
+		C70000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftChapterUSA_finder.app/SwiftChapterUSA_finder";
+			};
+			name = Debug;
+		};
+		C70000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftChapterUSA_finder.app/SwiftChapterUSA_finder";
+			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
@@ -545,26 +564,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		C70000000000000000000001 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftChapterUSA_finder.app/SwiftChapterUSA_finder";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				ENABLE_TESTABILITY = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		C70000000000000000000002 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftChapterUSA_finder.app/SwiftChapterUSA_finder";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				ENABLE_TESTABILITY = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
 		};
 /* End XCConfigurationList section */
 	};
