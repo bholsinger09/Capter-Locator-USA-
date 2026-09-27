@@ -6,20 +6,24 @@
 //
 
 import SwiftUI
+import Authentication
+import App
 
 struct ContentView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @State private var showDisclaimer = true
+    let container: DependencyContainer
     
     var body: some View {
         Group {
             if showDisclaimer {
                 DisclaimerView(isPresented: $showDisclaimer)
             } else if authManager.isAuthenticated {
-                MainTabView()
+                MainTabView(container: container)
             } else {
                 AuthenticationView()
             }
         }
     }
 }
+

@@ -6,48 +6,54 @@
 //
 
 import SwiftUI
+import App
+import Chapters
+import Events
+import Geospatial
+import Advocacy
+import Resources
+import Notifications
 
 struct MainTabView: View {
+    // App layer services (monolithic)
     @EnvironmentObject var authManager: AuthenticationManager
     @EnvironmentObject var chapterManager: ChapterManager
     @EnvironmentObject var eventManager: EventManager
-    @StateObject private var geospatialService = GeospatialService()
-    @StateObject private var locationViewModel: LocationViewModel
     
-    init() {
-        let geospatialService = GeospatialService()
-        _geospatialService = StateObject(wrappedValue: geospatialService)
-        _locationViewModel = StateObject(wrappedValue: LocationViewModel(geospatialService: geospatialService))
+    // Package services and ViewModels
+    @EnvironmentObject var chaptersViewModel: ChaptersViewModel
+    @EnvironmentObject var eventsViewModel: EventsViewModel
+    @EnvironmentObject var advocacyViewModel: AdvocacyViewModel
+    @EnvironmentObject var geospatialService: GeospatialService
+    
+    let container: DependencyContainer
+    
+    init(container: DependencyContainer) {
+        self.container = container
     }
     
     var body: some View {
         TabView {
+            // Chapters Tab - from Chapters package
             ChaptersView()
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }
             
-            EventsView(eventManager: eventManager, authManager: authManager)
+            // Events Tab - from Events package
+            EventsView()
                 .tabItem {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
-            NearbyChaptersView(viewModel: locationViewModel)
-                .environmentObject(authManager)
-                .environmentObject(chapterManager)
-                .environmentObject(eventManager)
+            // Geospatial Tab - from Geospatial package
+            LocationAnalyticsView()
                 .tabItem {
                     Label("Nearby", systemImage: "location.fill")
                 }
             
-            LocationAnalyticsView(viewModel: locationViewModel)
-                .environmentObject(chapterManager)
-                .environmentObject(eventManager)
-                .tabItem {
-                    Label("Analytics", systemImage: "chart.bar.fill")
-                }
-            
-            AdvocacyView(viewModel: AdvocacyViewModel(chapterService: chapterManager))
+            // Advocacy Tab - from Advocacy package
+            AdvocacyView()
                 .tabItem {
                     Label("Advocacy", systemImage: "hand.raised.fill")
                 }
@@ -55,32 +61,24 @@ struct MainTabView: View {
             // More tab for secondary features
             NavigationView {
                 List {
-                    NavigationLink(destination: UniversitiesView()) {
-                        Label("Universities", systemImage: "graduationcap.fill")
+                    NavigationLink(destination: ResourceLibraryView()) {
+                        Label("Resources", systemImage: "books.vertical.fill")
                     }
                     
-                    NavigationLink(destination: FreeSpeechHubView()) {
-                        Label("Free Speech", systemImage: "megaphone.fill")
+                    NavigationLink(destination: UniversitiesView()) {
+                        Label("Universities", systemImage: "graduationcap.fill")
                     }
                     
                     NavigationLink(destination: MembersView()) {
                         Label("Members", systemImage: "person.3.fill")
                     }
                     
-                    NavigationLink(destination: ResourceLibraryView()) {
-                        Label("Resources", systemImage: "books.vertical.fill")
-                    }
-                    
-                    NavigationLink(destination: BlogView()) {
-                        Label("Blog", systemImage: "bubble.left.and.bubble.right.fill")
-                    }
-                    
-                    NavigationLink(destination: ContactDeveloperView()) {
-                        Label("Contact", systemImage: "envelope.fill")
-                    }
-                    
                     NavigationLink(destination: ProfileView()) {
                         Label("Profile", systemImage: "person.circle.fill")
+                    }
+                    
+                    NavigationLink(destination: NotificationSettingsView()) {
+                        Label("Notifications", systemImage: "bell.fill")
                     }
                 }
                 .navigationTitle("More")
