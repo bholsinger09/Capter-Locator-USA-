@@ -6,7 +6,16 @@ let package = Package(
     platforms: [
         .iOS(.v16)
     ],
-    products: [],
-    dependencies: [],
-    targets: []
+    dependencies: [
+        .package(path: "Packages/Common"),
+        .package(path: "Packages/App"),
+        .package(path: "Packages/Authentication"),
+        .package(path: "Packages/Chapters"),
+        .package(path: "Packages/Events"),
+        .package(path: "Packages/Geospatial"),
+        .package(path: "Packages/Advocacy"),
+        .package(path: "Packages/Resources"),
+        .package(path: "Packages/Notifications"),
+        .package(path: "Packages/AppUI"),
+    ]
 )
