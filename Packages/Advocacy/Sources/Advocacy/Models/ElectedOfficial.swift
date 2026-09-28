@@ -8,7 +8,7 @@
 import Foundation
 
 public struct ElectedOfficial: Identifiable, Codable, Hashable {
-    public let id = UUID()
+    public var id: UUID
     public let name: String
     public let office: String
     public let chamber: String
@@ -20,6 +20,7 @@ public struct ElectedOfficial: Identifiable, Codable, Hashable {
     public let website: String?
 
     public init(
+        id: UUID = UUID(),
         name: String,
         office: String,
         chamber: String,
@@ -30,6 +31,7 @@ public struct ElectedOfficial: Identifiable, Codable, Hashable {
         email: String? = nil,
         website: String? = nil
     ) {
+        self.id = id
         self.name = name
         self.office = office
         self.chamber = chamber
