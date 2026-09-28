@@ -17,17 +17,9 @@ struct SwiftChapterUSA_finderApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject private var dependencyContainer = DependencyContainer()
     
-    // Monolithic services (will be migrated in future phases)
-    @StateObject private var authManager = AuthenticationManager()
-    @StateObject private var chapterManager = ChapterManager()
-    @StateObject private var eventManager = EventManager()
-    
     var body: some Scene {
         WindowGroup {
             ContentView(container: dependencyContainer)
-                .environmentObject(authManager)
-                .environmentObject(chapterManager)
-                .environmentObject(eventManager)
                 .environmentObject(dependencyContainer.authenticationManager)
                 .environmentObject(dependencyContainer.chaptersViewModel)
                 .environmentObject(dependencyContainer.eventsViewModel)

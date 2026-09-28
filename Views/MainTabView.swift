@@ -15,11 +15,6 @@ import Resources
 import Notifications
 
 struct MainTabView: View {
-    // App layer services (monolithic)
-    @EnvironmentObject var authManager: AuthenticationManager
-    @EnvironmentObject var chapterManager: ChapterManager
-    @EnvironmentObject var eventManager: EventManager
-    
     // Package services and ViewModels
     @EnvironmentObject var chaptersViewModel: ChaptersViewModel
     @EnvironmentObject var eventsViewModel: EventsViewModel

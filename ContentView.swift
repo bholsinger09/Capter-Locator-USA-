@@ -10,7 +10,6 @@ import Authentication
 import App
 
 struct ContentView: View {
-    @EnvironmentObject var authManager: AuthenticationManager
     @State private var showDisclaimer = true
     let container: DependencyContainer
     
@@ -18,7 +17,7 @@ struct ContentView: View {
         Group {
             if showDisclaimer {
                 DisclaimerView(isPresented: $showDisclaimer)
-            } else if authManager.isAuthenticated {
+            } else if container.authenticationManager.isAuthenticated {
                 MainTabView(container: container)
             } else {
                 AuthenticationView()
