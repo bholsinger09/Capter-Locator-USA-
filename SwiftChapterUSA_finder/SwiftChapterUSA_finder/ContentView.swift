@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Authentication
 
 struct ContentView: View {
     let container: DependencyContainer
@@ -23,7 +22,8 @@ struct ContentView: View {
             } else if isAuthenticated {
                 MainTabView(container: container)
             } else {
-                AuthenticationView(container: container)
+                // Placeholder - in real app would show AuthenticationView from package
+                Text("Authentication Required")
             }
         }
     }

@@ -6,11 +6,6 @@
 //
 
 import SwiftUI
-import Chapters
-import Events
-import Geospatial
-import Advocacy
-import AppUI
 #if canImport(UIKit)
 import UIKit
 #endif
@@ -47,26 +42,26 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            // Tab 1: Chapters (from Chapters package)
-            ChaptersView(container: container)
+            // Tab 1: Chapters
+            Text("Chapters View")
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }
             
-            // Tab 2: Events (from Events package)
-            EventsView(container: container)
+            // Tab 2: Events  
+            Text("Events View")
                 .tabItem {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
-            // Tab 3: Geospatial (from Geospatial package)
-            LocationAnalyticsView(container: container)
+            // Tab 3: Geospatial
+            Text("Nearby View")
                 .tabItem {
                     Label("Nearby", systemImage: "location.fill")
                 }
             
-            // Tab 4: Advocacy (from Advocacy package)
-            AdvocacyView(container: container)
+            // Tab 4: Advocacy
+            Text("Advocacy View")
                 .tabItem {
                     Label("Advocacy", systemImage: "hand.raised.fill")
                 }
