@@ -6,13 +6,21 @@
 //
 
 import SwiftUI
+import App
 
 struct UniversitiesView: View {
-    @EnvironmentObject var chapterManager: ChapterManager
-    @EnvironmentObject var authManager: AuthenticationManager
+    let container: DependencyContainer
     @State private var searchText = ""
     @State private var selectedState = "All States"
     @State private var showOnlyWithChapters = false
+    
+    private var chapterManager: ChapterManager {
+        ChapterManager() // Fallback for chapter lookup
+    }
+    
+    private var authManager: AuthenticationManager {
+        container.authenticationManager
+    }
     
     let usStates = ["All States", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
         "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",

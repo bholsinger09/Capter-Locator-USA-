@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import App
 
 struct MembersView: View {
-    @EnvironmentObject var authManager: AuthenticationManager
-    @EnvironmentObject var chapterManager: ChapterManager
+    let container: DependencyContainer
+    
+    private var authManager: AuthenticationManager {
+        container.authenticationManager
+    }
+    
+    private var chapterManager: ChapterManager {
+        ChapterManager() // Fallback for chapter lookup
+    }
     
     var userChapter: Chapter? {
         if let chapterId = authManager.currentUser?.chapterId {

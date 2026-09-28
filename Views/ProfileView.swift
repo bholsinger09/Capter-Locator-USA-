@@ -6,14 +6,23 @@
 //
 
 import SwiftUI
+import App
 
 struct ProfileView: View {
-    @EnvironmentObject var authManager: AuthenticationManager
-    @EnvironmentObject var chapterManager: ChapterManager
+    let container: DependencyContainer
     @State private var showingEditProfile = false
     @State private var showingNotificationSettings = false
     @State private var showingDeleteConfirmation = false
     @State private var showingDeletionComplete = false
+    
+    private var authManager: AuthenticationManager {
+        container.authenticationManager
+    }
+    
+    private var chapterManager: ChapterManager {
+        ChapterManager() // Fallback for chapter lookup
+    }
+    
         // Admin check - add your admin email here or implement admin flag in User model
     private var isAdmin: Bool {
         guard let email = authManager.currentUser?.email else { return false }
@@ -238,7 +247,7 @@ struct ProfileView: View {
             }
             .navigationTitle("Profile")
             .sheet(isPresented: $showingEditProfile) {
-                EditProfileView()
+                EditProfileView(container: container)
             }
             .sheet(isPresented: $showingNotificationSettings) {
                 NotificationSettingsView()
@@ -286,9 +295,16 @@ struct ProfileInfoRow: View {
 }
 
 struct EditProfileView: View {
-    @EnvironmentObject var authManager: AuthenticationManager
-    @EnvironmentObject var chapterManager: ChapterManager
+    let container: DependencyContainer
     @Environment(\.presentationMode) var presentationMode
+    
+    private var authManager: AuthenticationManager {
+        container.authenticationManager
+    }
+    
+    private var chapterManager: ChapterManager {
+        ChapterManager() // Fallback for chapter lookup
+    }
     
     @State private var firstName = ""
     @State private var lastName = ""

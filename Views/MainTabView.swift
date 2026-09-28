@@ -60,15 +60,15 @@ struct MainTabView: View {
                         Label("Resources", systemImage: "books.vertical.fill")
                     }
                     
-                    NavigationLink(destination: UniversitiesView()) {
+                    NavigationLink(destination: UniversitiesView(container: container)) {
                         Label("Universities", systemImage: "graduationcap.fill")
                     }
                     
-                    NavigationLink(destination: MembersView()) {
+                    NavigationLink(destination: MembersView(container: container)) {
                         Label("Members", systemImage: "person.3.fill")
                     }
                     
-                    NavigationLink(destination: ProfileView()) {
+                    NavigationLink(destination: ProfileView(container: container)) {
                         Label("Profile", systemImage: "person.circle.fill")
                     }
                     
