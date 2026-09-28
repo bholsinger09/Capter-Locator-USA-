@@ -5,6 +5,36 @@
       location = "group:../../../Package.swift">
    </FileRef>
    <FileRef
+      location = "group:../../../Packages/Common">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/App">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Authentication">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Chapters">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Events">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Geospatial">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Advocacy">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Resources">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/Notifications">
+   </FileRef>
+   <FileRef
+      location = "group:../../../Packages/AppUI">
+   </FileRef>
+   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
