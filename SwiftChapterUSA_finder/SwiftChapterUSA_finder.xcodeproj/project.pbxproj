@@ -35,15 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapViewModel.swift; path = SwiftChapterUSA_finder/ViewModels/IncidentsMapViewModel.swift; sourceTree = "<group>"; };
-		19219E73BB772264A3AB48B3 /* IncidentManagerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentManagerProtocol.swift; path = SwiftChapterUSA_finder/Protocols/IncidentManagerProtocol.swift; sourceTree = "<group>"; };
 		311978F16A336C7342F6E881 /* FreeSpeechHubView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FreeSpeechHubView.swift; path = SwiftChapterUSA_finder/Views/FreeSpeechHubView.swift; sourceTree = "<group>"; };
 		363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChapterUSA_finder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		541A5EDAD7786164923E667C /* ReportIncidentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReportIncidentView.swift; path = SwiftChapterUSA_finder/Views/ReportIncidentView.swift; sourceTree = "<group>"; };
-		66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentReporterViewModel.swift; path = SwiftChapterUSA_finder/ViewModels/IncidentReporterViewModel.swift; sourceTree = "<group>"; };
 		8D6B0C52A2FB7B62539A428B /* IncidentListView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentListView.swift; path = SwiftChapterUSA_finder/Views/IncidentListView.swift; sourceTree = "<group>"; };
-		A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentManager.swift; path = SwiftChapterUSA_finder/Services/IncidentManager.swift; sourceTree = "<group>"; };
-		CAFF7F0139394C2626140A6E /* Incident.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Incident.swift; path = SwiftChapterUSA_finder/Models/Incident.swift; sourceTree = "<group>"; };
 		CCDB9BF2EE3C01B3C2587BFB /* IncidentsMapView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IncidentsMapView.swift; path = SwiftChapterUSA_finder/Views/IncidentsMapView.swift; sourceTree = "<group>"; };
 		F10000000000000000000001 /* AdvocacyViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AdvocacyViewModelTests.swift; path = ../Tests/AdvocacyViewModelTests.swift; sourceTree = "<group>"; };
 		F10000000000000000000002 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationViewModelTests.swift; path = ../Tests/AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
@@ -85,14 +80,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A54942FC05D68F6BA201939 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				A5640D72B50EA5AAB66CE587 /* IncidentManager.swift */,
-			);
-			name = Services;
-			sourceTree = "<group>";
-		};
 		3627E4CB2FED68FE00D95472 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,10 +93,6 @@
 			children = (
 				363AB59E2EC931FE0045BF69 /* SwiftChapterUSA_finder */,
 				363AB59D2EC931FE0045BF69 /* Products */,
-				7206AB93320D23D670560817 /* Models */,
-				A56386778176F2422436946B /* Protocols */,
-				1A54942FC05D68F6BA201939 /* Services */,
-				60AEAE860139E988092F1CFC /* ViewModels */,
 				4BA602015C4B354E81ADA123 /* Views */,
 				93FFA12860EAEC4FA20AB274 /* Tests */,
 				3627E4CB2FED68FE00D95472 /* Recovered References */,
@@ -136,23 +119,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		60AEAE860139E988092F1CFC /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				66980C920D6888E9CBFD603A /* IncidentReporterViewModel.swift */,
-				05FD544F928F14149AFCFBF7 /* IncidentsMapViewModel.swift */,
-			);
-			name = ViewModels;
-			sourceTree = "<group>";
-		};
-		7206AB93320D23D670560817 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CAFF7F0139394C2626140A6E /* Incident.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		93FFA12860EAEC4FA20AB274 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,14 +139,6 @@
 				F1000000000000000000000F /* UniversitiesViewModelTests.swift */,
 			);
 			name = Tests;
-			sourceTree = "<group>";
-		};
-		A56386778176F2422436946B /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				19219E73BB772264A3AB48B3 /* IncidentManagerProtocol.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,22 +163,6 @@
 			productName = SwiftChapterUSA_finder;
 			productReference = 363AB59C2EC931FE0045BF69 /* SwiftChapterUSA_finder.app */;
 			productType = "com.apple.product-type.application";
-		};
-		T40000000000000000000001 /* SwiftChapterUSA_finderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C60000000000000000000001 /* Build configuration list for PBXNativeTarget "SwiftChapterUSA_finderTests" */;
-			buildPhases = (
-				P30000000000000000000001 /* Sources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D50000000000000000000001 /* PBXTargetDependency */,
-			);
-			name = SwiftChapterUSA_finderTests;
-			productName = SwiftChapterUSA_finderTests;
-			productReference = PR50000000000000000000001 /* SwiftChapterUSA_finderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -252,7 +194,6 @@
 			projectRoot = "";
 			targets = (
 				363AB59B2EC931FE0045BF69 /* SwiftChapterUSA_finder */,
-				T40000000000000000000001 /* SwiftChapterUSA_finderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -549,7 +490,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C60000000000000000000001 /* Build configuration list for PBXNativeTarget "SwiftChapterUSA_finderTests" */ = {
+		C60000000000000000000001 /* Build configuration list for <deleted target> */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C70000000000000000000001 /* Debug */,
