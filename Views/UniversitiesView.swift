@@ -112,7 +112,7 @@ struct UniversitiesView: View {
                         ForEach(sortedStateKeys, id: \.self) { state in
                             Section(header: Text(state).font(.headline)) {
                                 ForEach(groupedUniversities[state] ?? []) { university in
-                                    NavigationLink(destination: UniversityDetailView(university: university)) {
+                                    NavigationLink(destination: UniversityDetailView(university: university, container: container)) {
                                         UniversityRowView(university: university)
                                     }
                                 }
@@ -163,7 +163,11 @@ struct UniversityRowView: View {
 
 struct UniversityDetailView: View {
     let university: University
-    @EnvironmentObject var chapterManager: ChapterManager
+    let container: DependencyContainer
+    
+    private var chapterManager: ChapterManager {
+        ChapterManager() // Fallback for chapter lookup
+    }
     
     var associatedChapter: Chapter? {
         if let chapterId = university.chapterId {
