@@ -6,21 +6,21 @@
 //
 
 import SwiftUI
+import Chapters
+import Events
+import Geospatial
+import Advocacy
+import AppUI
 #if canImport(UIKit)
 import UIKit
 #endif
 
 struct MainTabView: View {
-    @EnvironmentObject var authManager: AuthenticationManager
-    @EnvironmentObject var chapterManager: ChapterManager
-    @EnvironmentObject var eventManager: EventManager
-    @StateObject private var geospatialService = GeospatialService()
-    @StateObject private var locationViewModel: LocationViewModel
+    let container: DependencyContainer
     
-    init() {
-        let geospatialService = GeospatialService()
-        _geospatialService = StateObject(wrappedValue: geospatialService)
-        _locationViewModel = StateObject(wrappedValue: LocationViewModel(geospatialService: geospatialService))
+    init(container: DependencyContainer) {
+        self.container = container
+        
         #if os(iOS)
         // Configure tab bar appearance for better contrast in both light and dark modes
         let appearance = UITabBarAppearance()
@@ -33,7 +33,6 @@ struct MainTabView: View {
         ]
         
         // Unselected tab - adaptive gray with good contrast
-        // Uses lighter gray in dark mode, darker gray in light mode
         appearance.stackedLayoutAppearance.normal.iconColor = UIColor.secondaryLabel
         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [
             .foregroundColor: UIColor.secondaryLabel
@@ -48,65 +47,47 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            ChaptersView()
+            // Tab 1: Chapters (from Chapters package)
+            ChaptersView(container: container)
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }
             
-            EventsView(eventManager: eventManager, authManager: authManager)
+            // Tab 2: Events (from Events package)
+            EventsView(container: container)
                 .tabItem {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
-            NearbyChaptersView(viewModel: locationViewModel)
-                .environmentObject(authManager)
-                .environmentObject(chapterManager)
-                .environmentObject(eventManager)
+            // Tab 3: Geospatial (from Geospatial package)
+            LocationAnalyticsView(container: container)
                 .tabItem {
                     Label("Nearby", systemImage: "location.fill")
                 }
             
-            LocationAnalyticsView(viewModel: locationViewModel)
-                .environmentObject(chapterManager)
-                .environmentObject(eventManager)
-                .tabItem {
-                    Label("Analytics", systemImage: "chart.bar.fill")
-                }
-            
-            AdvocacyView(viewModel: AdvocacyViewModel(chapterService: chapterManager))
+            // Tab 4: Advocacy (from Advocacy package)
+            AdvocacyView(container: container)
                 .tabItem {
                     Label("Advocacy", systemImage: "hand.raised.fill")
                 }
             
-            // More tab for secondary features
+            // Tab 5: More (monolithic views via container pattern)
             NavigationView {
                 List {
-                    NavigationLink(destination: UniversitiesView()) {
+                    NavigationLink(destination: UniversitiesView(container: container)) {
                         Label("Universities", systemImage: "graduationcap.fill")
                     }
                     
-                    NavigationLink(destination: FreeSpeechHubView()) {
-                        Label("Free Speech", systemImage: "megaphone.fill")
-                    }
-                    
-                    NavigationLink(destination: MembersView()) {
+                    NavigationLink(destination: MembersView(container: container)) {
                         Label("Members", systemImage: "person.3.fill")
                     }
                     
-                    NavigationLink(destination: ResourceLibraryView()) {
-                        Label("Resources", systemImage: "books.vertical.fill")
-                    }
-                    
-                    NavigationLink(destination: BlogView()) {
-                        Label("Blog", systemImage: "bubble.left.and.bubble.right.fill")
-                    }
-                    
-                    NavigationLink(destination: ContactDeveloperView()) {
-                        Label("Contact", systemImage: "envelope.fill")
-                    }
-                    
-                    NavigationLink(destination: ProfileView()) {
+                    NavigationLink(destination: ProfileView(container: container)) {
                         Label("Profile", systemImage: "person.circle.fill")
+                    }
+                    
+                    NavigationLink(destination: ContactDeveloperView(container: container)) {
+                        Label("Contact", systemImage: "envelope.fill")
                     }
                 }
                 .navigationTitle("More")
