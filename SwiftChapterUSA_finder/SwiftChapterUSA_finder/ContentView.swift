@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    let container: DependencyContainer
     @State private var showDisclaimer = true
-    
-    private var isAuthenticated: Bool {
-        container.authenticationManager.isAuthenticated
-    }
+    @State private var isAuthenticated = false
     
     var body: some View {
         Group {
             if showDisclaimer {
                 DisclaimerView(isPresented: $showDisclaimer)
             } else if isAuthenticated {
-                MainTabView(container: container)
+                MainTabView()
             } else {
-                // Placeholder - in real app would show AuthenticationView from package
-                Text("Authentication Required")
+                VStack {
+                    Text("Authentication Required")
+                        .font(.title)
+                    Spacer()
+                }
             }
         }
     }

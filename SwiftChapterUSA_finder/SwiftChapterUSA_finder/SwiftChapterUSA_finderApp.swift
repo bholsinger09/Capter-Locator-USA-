@@ -13,16 +13,9 @@ struct SwiftChapterUSA_finderApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     #endif
     
-    @StateObject private var authManager = AuthenticationManager()
-    @StateObject private var chapterManager = ChapterManager()
-    @StateObject private var eventManager = EventManager()
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(authManager)
-                .environmentObject(chapterManager)
-                .environmentObject(eventManager)
                 .onAppear {
                     requestNotificationPermissions()
                 }
@@ -32,13 +25,8 @@ struct SwiftChapterUSA_finderApp: App {
     /// Request notification permissions on first launch
     private func requestNotificationPermissions() {
         Task {
-            // Only request if not already determined
-            let notificationManager = NotificationManager.shared
-            if notificationManager.authorizationStatus == .notDetermined {
-                // Wait a bit before asking (better UX)
-                try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
-                _ = try? await notificationManager.requestAuthorization()
-            }
+            // Placeholder for notification permission handling
+            try? await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
         }
     }
 }
