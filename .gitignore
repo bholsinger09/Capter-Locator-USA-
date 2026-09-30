@@ -117,3 +117,5 @@ iOSInjectionProject/
 Network Trash Folder
 Temporary Items
 .apdisk
+# Ignore inner project workspace files (only use root workspace)
+*.xcodeproj/project.xcworkspace
