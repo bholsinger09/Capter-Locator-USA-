@@ -7,8 +7,8 @@ let package = Package(
         .iOS(.v16)
     ],
     products: [
-        .library(
-            name: "App",
+        .executable(
+            name: "SwiftChapterUSA_finder",
             targets: ["App"]
         ),
     ],
@@ -24,7 +24,7 @@ let package = Package(
         .package(path: "../Notifications"),
     ],
     targets: [
-        .target(
+        .executableTarget(
             name: "App",
             dependencies: [
                 .product(name: "Common", package: "Common"),
