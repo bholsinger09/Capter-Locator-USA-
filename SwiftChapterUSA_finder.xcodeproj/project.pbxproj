@@ -5,29 +5,32 @@
 	};
 	objectVersion = 77;
 	objects = {
+
 /* Begin PBXBuildFile section */
-		E9476E500EE14F54ACA09A83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52D39AAEABF4A51AA4A89FC; };
-		3A8B1C3229E8A4F000D2F1A2 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3129E8A4F000D2F1A2; };
-		3A8B1C3429E8A4F000D2F1A2 /* App in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3329E8A4F000D2F1A2; };
-		3A8B1C3629E8A4F000D2F1A2 /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3529E8A4F000D2F1A2; };
-		3A8B1C3829E8A4F000D2F1A2 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3729E8A4F000D2F1A2; };
-		3A8B1C3A29E8A4F000D2F1A2 /* Chapters in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3929E8A4F000D2F1A2; };
-		3A8B1C3C29E8A4F000D2F1A2 /* Events in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3B29E8A4F000D2F1A2; };
-		3A8B1C3E29E8A4F000D2F1A2 /* Geospatial in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3D29E8A4F000D2F1A2; };
-		3A8B1C4029E8A4F000D2F1A2 /* Advocacy in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3F29E8A4F000D2F1A2; };
-		3A8B1C4229E8A4F000D2F1A2 /* Resources in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4129E8A4F000D2F1A2; };
-		3A8B1C4429E8A4F000D2F1A2 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4329E8A4F000D2F1A2; };
+		3A8B1C3229E8A4F000D2F1A2 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3129E8A4F000D2F1A2 /* Common */; };
+		3A8B1C3429E8A4F000D2F1A2 /* App in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3329E8A4F000D2F1A2 /* App */; };
+		3A8B1C3629E8A4F000D2F1A2 /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3529E8A4F000D2F1A2 /* AppUI */; };
+		3A8B1C3829E8A4F000D2F1A2 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3729E8A4F000D2F1A2 /* Authentication */; };
+		3A8B1C3A29E8A4F000D2F1A2 /* Chapters in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3929E8A4F000D2F1A2 /* Chapters */; };
+		3A8B1C3C29E8A4F000D2F1A2 /* Events in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3B29E8A4F000D2F1A2 /* Events */; };
+		3A8B1C3E29E8A4F000D2F1A2 /* Geospatial in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3D29E8A4F000D2F1A2 /* Geospatial */; };
+		3A8B1C4029E8A4F000D2F1A2 /* Advocacy in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3F29E8A4F000D2F1A2 /* Advocacy */; };
+		3A8B1C4229E8A4F000D2F1A2 /* Resources in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4129E8A4F000D2F1A2 /* Resources */; };
+		3A8B1C4429E8A4F000D2F1A2 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4329E8A4F000D2F1A2 /* Notifications */; };
+		E9476E500EE14F54ACA09A83 /* SwiftChapterUSA_finder/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E52D39AAEABF4A51AA4A89FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SwiftChapterUSA_finder/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		3A8B1BF729E8A45700D2F1A2 /* SwiftChapterUSA_finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChapterUSA_finder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A8B1C0729E8A4F000D2F1A2 /* SwiftChapterUSA_finder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftChapterUSA_finder.entitlements; sourceTree = SOURCE_ROOT; };
-
+		E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SwiftChapterUSA_finder/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3A8B1BFF29E8A4F000D2F1A2 /* SwiftChapterUSA_finder */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = (); explicitFolders = (E52D39AAEABF4A51AA4A89FC); path = SwiftChapterUSA_finder; sourceTree = SOURCE_ROOT; };
+		3A8B1BFF29E8A4F000D2F1A2 /* SwiftChapterUSA_finder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SwiftChapterUSA_finder;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,11 +54,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3675228D3071BEB900130B04 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		3A8B1BED29E8A45700D2F1A2 = {
 			isa = PBXGroup;
 			children = (
 				3A8B1BFF29E8A4F000D2F1A2 /* SwiftChapterUSA_finder */,
 				3A8B1BF829E8A45700D2F1A2 /* Products */,
+				3675228D3071BEB900130B04 /* Recovered References */,
 			);
 			sourceTree = SOURCE_ROOT;
 		};
@@ -149,7 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9476E500EE14F54ACA09A83 /* Assets.xcassets in Resources */,
+				E9476E500EE14F54ACA09A83 /* SwiftChapterUSA_finder/Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,13 +313,14 @@
 		3A8B1C1229E8A45800D2F1A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PL58734CZ4;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,13 +338,14 @@
 		3A8B1C1329E8A45800D2F1A2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = PL58734CZ4;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -372,7 +386,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		3A8B1C4529E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Common" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Common";
+			repositoryURL = ../../Packages/Common;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -380,7 +394,7 @@
 		};
 		3A8B1C4629E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "App" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/App";
+			repositoryURL = ../../Packages/App;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -388,7 +402,7 @@
 		};
 		3A8B1C4729E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "AppUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/AppUI";
+			repositoryURL = ../../Packages/AppUI;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -396,7 +410,7 @@
 		};
 		3A8B1C4829E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Authentication" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Authentication";
+			repositoryURL = ../../Packages/Authentication;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -404,7 +418,7 @@
 		};
 		3A8B1C4929E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Chapters" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Chapters";
+			repositoryURL = ../../Packages/Chapters;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -412,7 +426,7 @@
 		};
 		3A8B1C4A29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Events" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Events";
+			repositoryURL = ../../Packages/Events;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -420,7 +434,7 @@
 		};
 		3A8B1C4B29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Geospatial" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Geospatial";
+			repositoryURL = ../../Packages/Geospatial;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -428,7 +442,7 @@
 		};
 		3A8B1C4C29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Advocacy" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Advocacy";
+			repositoryURL = ../../Packages/Advocacy;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -436,7 +450,7 @@
 		};
 		3A8B1C4D29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Resources" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Resources";
+			repositoryURL = ../../Packages/Resources;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -444,7 +458,7 @@
 		};
 		3A8B1C4E29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Notifications" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "../../Packages/Notifications";
+			repositoryURL = ../../Packages/Notifications;
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
@@ -455,53 +469,53 @@
 /* Begin XCSwiftPackageProductDependency section */
 		3A8B1C3129E8A4F000D2F1A2 /* Common */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Common;
 			package = 3A8B1C4529E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Common" */;
+			productName = Common;
 		};
 		3A8B1C3329E8A4F000D2F1A2 /* App */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = App;
 			package = 3A8B1C4629E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "App" */;
+			productName = App;
 		};
 		3A8B1C3529E8A4F000D2F1A2 /* AppUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppUI;
 			package = 3A8B1C4729E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "AppUI" */;
+			productName = AppUI;
 		};
 		3A8B1C3729E8A4F000D2F1A2 /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Authentication;
 			package = 3A8B1C4829E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Authentication" */;
+			productName = Authentication;
 		};
 		3A8B1C3929E8A4F000D2F1A2 /* Chapters */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Chapters;
 			package = 3A8B1C4929E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Chapters" */;
+			productName = Chapters;
 		};
 		3A8B1C3B29E8A4F000D2F1A2 /* Events */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Events;
 			package = 3A8B1C4A29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Events" */;
+			productName = Events;
 		};
 		3A8B1C3D29E8A4F000D2F1A2 /* Geospatial */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Geospatial;
 			package = 3A8B1C4B29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Geospatial" */;
+			productName = Geospatial;
 		};
 		3A8B1C3F29E8A4F000D2F1A2 /* Advocacy */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Advocacy;
 			package = 3A8B1C4C29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Advocacy" */;
+			productName = Advocacy;
 		};
 		3A8B1C4129E8A4F000D2F1A2 /* Resources */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Resources;
 			package = 3A8B1C4D29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Resources" */;
+			productName = Resources;
 		};
 		3A8B1C4329E8A4F000D2F1A2 /* Notifications */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Notifications;
 			package = 3A8B1C4E29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Notifications" */;
+			productName = Notifications;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
