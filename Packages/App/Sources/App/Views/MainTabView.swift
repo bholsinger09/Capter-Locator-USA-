@@ -60,6 +60,12 @@ struct MainTabView: View {
             // Tab 5: More
             NavigationView {
                 List {
+                    NavigationLink(destination: PathSelectionView()) {
+                        Label("My 30-Day Path", systemImage: "bolt.circle.fill")
+                    }
+                    
+                    Divider()
+                    
                     NavigationLink(destination: UniversitiesView()) {
                         Label("Universities", systemImage: "graduationcap.fill")
                     }
