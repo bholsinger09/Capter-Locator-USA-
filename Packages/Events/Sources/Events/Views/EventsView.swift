@@ -57,7 +57,7 @@ public struct EventDetailView: View {
                     }
                 }
                 .padding()
-                .background(Color(.systemGray5))
+                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                 .cornerRadius(12)
                 
                 Text(event.description)

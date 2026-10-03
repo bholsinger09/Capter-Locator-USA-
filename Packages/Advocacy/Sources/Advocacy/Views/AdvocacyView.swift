@@ -98,7 +98,7 @@ struct OfficialDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(.systemGray5))
+                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                 .cornerRadius(12)
                 
                 // Contact Info
@@ -132,7 +132,7 @@ struct OfficialDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(.systemGray5))
+                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                 .cornerRadius(12)
                 
                 // Message Preview
@@ -147,7 +147,7 @@ struct OfficialDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(.systemGray5))
+                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                 .cornerRadius(12)
                 
                 // Send Button
