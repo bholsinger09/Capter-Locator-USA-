@@ -51,8 +51,6 @@ struct LoginView: View {
                             .padding(12)
                             .background(Color.white.opacity(0.9))
                             .cornerRadius(8)
-                            .keyboardType(.emailAddress)
-                            .autocapitalization(.none)
                     }
                     
                     // Password Field

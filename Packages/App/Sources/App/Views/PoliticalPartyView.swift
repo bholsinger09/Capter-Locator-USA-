@@ -56,7 +56,6 @@ struct PoliticalPartyView: View {
                     }
                 }
             }
-            .navigationBarHidden(true)
         }
     }
 }
@@ -215,7 +214,6 @@ struct PoliticalPartyDetailView: View {
                 }
             }
         }
-        .navigationBarHidden(true)
     }
 }
 

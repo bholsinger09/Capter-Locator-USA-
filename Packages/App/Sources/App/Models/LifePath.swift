@@ -330,7 +330,7 @@ struct PathContent {
 // MARK: - Political Party Guidance
 
 struct PoliticalParty: Codable, Identifiable {
-    let id = UUID()
+    var id: UUID = UUID()
     let name: String
     let emoji: String
     let color: String

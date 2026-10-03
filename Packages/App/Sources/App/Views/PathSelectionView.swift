@@ -40,7 +40,6 @@ struct PathSelectionView: View {
                     .padding(16)
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
@@ -67,7 +66,7 @@ struct PathSelectionCard: View {
         .frame(maxWidth: .infinity)
         .frame(minHeight: 160)
         .padding(12)
-        .background(Color(.systemBackground))
+        .background(Color.white.opacity(0.1))
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)

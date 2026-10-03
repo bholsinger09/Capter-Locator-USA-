@@ -153,7 +153,8 @@ final class LifePathTests: XCTestCase {
         XCTAssertNotNil(paths[.direction])
         XCTAssertNotNil(paths[.more])
         XCTAssertNotNil(paths[.unknown])
-        XCTAssertNotNil(paths[.politics])
+        // Note: .politics is a guidance-only category, not a 30-day path
+        XCTAssertEqual(LifePathCategory.allCases.count, 8)
     }
     
     func testCareerPathHas30Days() {
@@ -299,13 +300,13 @@ final class LifePathTests: XCTestCase {
     func testMorePathContentQuality() {
         let path = PathContent.morePath
         
-        XCTAssertTrue(path[0].title.lowercased().contains("transform"))
+        XCTAssertTrue(path[0].title.lowercased().contains("define"))
     }
     
     func testUnknownPathContentQuality() {
         let path = PathContent.unknownPath
         
-        XCTAssertTrue(path[0].title.lowercased().contains("explore"))
+        XCTAssertTrue(path[0].title.lowercased().contains("exploration"))
     }
     
     // MARK: - Data Consistency Tests

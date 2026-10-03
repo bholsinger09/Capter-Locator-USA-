@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+#if os(iOS)
 @main
+#endif
 struct SwiftChapterUSA_finderApp: App {
     var body: some Scene {
         WindowGroup {

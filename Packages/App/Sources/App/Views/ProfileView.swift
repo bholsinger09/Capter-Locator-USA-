@@ -96,7 +96,6 @@ struct ProfileView: View {
                 .padding(.vertical)
             }
             .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $isEditingProfile) {
                 EditProfileView(userName: $userName, userEmail: $userEmail, userChapter: $userChapter)
             }
@@ -166,9 +165,8 @@ struct EditProfileView: View {
                 }
             }
             .navigationTitle("Edit Profile")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .primaryAction) {
                     Button("Done") {
                         dismiss()
                     }

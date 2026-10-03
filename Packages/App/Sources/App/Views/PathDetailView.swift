@@ -115,13 +115,6 @@ struct PathDetailView: View {
                 }
                 .listStyle(.plain)
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("30-Day Path")
-                        .font(.headline)
-                }
-            }
             .sheet(isPresented: $showChangePath) {
                 PathSelectionView()
             }
@@ -200,7 +193,7 @@ struct MilestoneRow: View {
                             .font(.body)
                             .foregroundColor(.primary)
                             .padding(8)
-                            .background(Color(.systemGray6))
+                            .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                             .cornerRadius(6)
                     }
                 }
