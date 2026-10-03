@@ -1,13 +1,11 @@
 // App Package - Main application
-import SwiftUI
-import Common
-import AppUI
-import Authentication
-import Chapters
-import Events
-import Geospatial
-import Advocacy
-import Resources
-import Notifications
+import Foundation
+
+private struct AppDebug {
+    static let initialized: Void = {
+        print("📦 [DEBUG] App package initializing")
+        return ()
+    }()
+}
 
 // Placeholder for package compilation

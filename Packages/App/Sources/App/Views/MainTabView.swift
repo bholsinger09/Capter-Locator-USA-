@@ -1,4 +1,9 @@
 import SwiftUI
+import Chapters
+import Events
+import Geospatial
+import Advocacy
+
 #if canImport(UIKit)
 import UIKit
 #endif
@@ -28,26 +33,31 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            Text("Chapters View")
+            // Tab 1: Chapters
+            ChaptersView()
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }
             
-            Text("Events View")
+            // Tab 2: Events
+            EventsView()
                 .tabItem {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
-            Text("Nearby View")
+            // Tab 3: Nearby (Geospatial)
+            LocationAnalyticsView()
                 .tabItem {
                     Label("Nearby", systemImage: "location.fill")
                 }
             
-            Text("Advocacy View")
+            // Tab 4: Advocacy
+            AdvocacyView()
                 .tabItem {
                     Label("Advocacy", systemImage: "hand.raised.fill")
                 }
             
+            // Tab 5: More
             NavigationView {
                 List {
                     NavigationLink(destination: UniversitiesView()) {

@@ -101,7 +101,7 @@ struct SearchBar: View {
             }
         }
         .padding(10)
-        .background(Color(nsColor: .controlBackgroundColor))
+        .background(Color(.systemGray5))
         .cornerRadius(10)
     }
 }
@@ -119,7 +119,7 @@ struct FilterPill: View {
                 .fontWeight(isSelected ? .semibold : .regular)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 8)
-                .background(isSelected ? Color.blue : Color(nsColor: .controlBackgroundColor))
+                .background(isSelected ? Color.blue : Color(.systemGray5))
                 .foregroundColor(isSelected ? .white : .primary)
                 .cornerRadius(20)
         }
@@ -160,7 +160,7 @@ struct ResourceCard: View {
                 .lineLimit(2)
         }
         .padding()
-        .background(Color(nsColor: .controlBackgroundColor))
+        .background(Color(.systemGray5))
         .cornerRadius(12)
     }
 }
@@ -207,7 +207,7 @@ struct ResourceDetailView: View {
                         .foregroundColor(.secondary)
                     }
                     .padding()
-                    .background(Color(nsColor: .controlBackgroundColor))
+                    .background(Color(.systemGray5))
                     .cornerRadius(12)
                     
                     // Content
@@ -221,7 +221,7 @@ struct ResourceDetailView: View {
                             .font(.body)
                     }
                     .padding()
-                    .background(Color(nsColor: .controlBackgroundColor))
+                    .background(Color(.systemGray5))
                     .cornerRadius(12)
                 }
                 .padding()

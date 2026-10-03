@@ -6,21 +6,21 @@
 //
 
 import Foundation
-import UserNotifications
 #if canImport(UIKit)
 import UIKit
 #endif
 
 #if os(iOS)
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-    let notificationManager = NotificationManager.shared
+    // Temporarily disabled to debug crash
+    // let notificationManager = NotificationManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Set notification delegate
         UNUserNotificationCenter.current().delegate = self
         
         // Check authorization status on launch
-        notificationManager.checkAuthorizationStatus()
+        // notificationManager.checkAuthorizationStatus()
         
         return true
     }
@@ -28,11 +28,11 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     // MARK: - Remote Notification Registration
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        notificationManager.didRegisterForRemoteNotifications(withDeviceToken: deviceToken)
+        // TODO: Implement device token registration when NotificationManager supports it
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        notificationManager.didFailToRegisterForRemoteNotifications(with: error)
+        // TODO: Implement remote notification error handling
     }
     
     // MARK: - Notification Handling

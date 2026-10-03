@@ -31,7 +31,7 @@ public struct ChaptersView: View {
                         TextField("Search chapters...", text: $viewModel.searchText)
                     }
                     .padding(10)
-                    .background(Color(nsColor: .controlBackgroundColor))
+                    .background(Color(.systemGray5))
                     .cornerRadius(10)
                 }
                 
@@ -94,7 +94,7 @@ public struct ChapterDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(nsColor: .controlBackgroundColor))
+                .background(Color(.systemGray5))
                 .cornerRadius(12)
                 
                 // Info
@@ -108,7 +108,7 @@ public struct ChapterDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(nsColor: .controlBackgroundColor))
+                .background(Color(.systemGray5))
                 .cornerRadius(12)
                 
                 // Description
@@ -122,7 +122,7 @@ public struct ChapterDetailView: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color(nsColor: .controlBackgroundColor))
+                    .background(Color(.systemGray5))
                     .cornerRadius(12)
                 }
                 
