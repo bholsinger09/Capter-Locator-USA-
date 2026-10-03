@@ -33,92 +33,98 @@ struct PathDetailView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Header with category info
-            VStack(spacing: 12) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack(spacing: 8) {
-                            Text(category.emoji)
-                                .font(.title)
-                            Text(category.title)
-                                .font(.title2)
-                                .fontWeight(.bold)
+        // Special handling for politics category
+        if category == .politics {
+            PoliticalPartyView()
+        } else {
+            // Standard 30-day path view
+            VStack(spacing: 0) {
+                // Header with category info
+                VStack(spacing: 12) {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack(spacing: 8) {
+                                Text(category.emoji)
+                                    .font(.title)
+                                Text(category.title)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                            }
+                            
+                            Text(category.description)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
                         }
                         
-                        Text(category.description)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                        Spacer()
+                        
+                        Button(action: { showChangePath = true }) {
+                            Image(systemName: "arrow.2.circlepath")
+                                .font(.title3)
+                                .foregroundColor(.blue)
+                        }
                     }
                     
-                    Spacer()
-                    
-                    Button(action: { showChangePath = true }) {
-                        Image(systemName: "arrow.2.circlepath")
-                            .font(.title3)
-                            .foregroundColor(.blue)
+                    // Progress Bar
+                    VStack(spacing: 8) {
+                        HStack {
+                            Text("Progress")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                            
+                            Spacer()
+                            
+                            Text("\(Int(progressPercentage))%")
+                                .font(.caption)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.blue)
+                        }
+                        
+                        ProgressView(value: progressPercentage, total: 100)
+                            .tint(.blue)
+                        
+                        HStack {
+                            Text("\(completedCount) of \(milestones.count) days completed")
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
+                            
+                            Spacer()
+                        }
                     }
+                    .padding(.top, 4)
                 }
+                .padding(16)
+                .background(LinearGradient(
+                    gradient: Gradient(colors: [Color.blue.opacity(0.05), Color.purple.opacity(0.05)]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ))
                 
-                // Progress Bar
-                VStack(spacing: 8) {
-                    HStack {
-                        Text("Progress")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                        
-                        Spacer()
-                        
-                        Text("\(Int(progressPercentage))%")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.blue)
-                    }
-                    
-                    ProgressView(value: progressPercentage, total: 100)
-                        .tint(.blue)
-                    
-                    HStack {
-                        Text("\(completedCount) of \(milestones.count) days completed")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
+                // Milestones List
+                List {
+                    ForEach(Array(milestones.enumerated()), id: \.offset) { index, milestone in
+                        MilestoneRow(
+                            milestone: milestone,
+                            isCompleted: milestones[index].completed,
+                            onToggle: {
+                                milestones[index].completed.toggle()
+                                saveMilestones()
+                            }
+                        )
                     }
                 }
-                .padding(.top, 4)
+                .listStyle(.plain)
             }
-            .padding(16)
-            .background(LinearGradient(
-                gradient: Gradient(colors: [Color.blue.opacity(0.05), Color.purple.opacity(0.05)]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            ))
-            
-            // Milestones List
-            List {
-                ForEach(Array(milestones.enumerated()), id: \.offset) { index, milestone in
-                    MilestoneRow(
-                        milestone: milestone,
-                        isCompleted: milestones[index].completed,
-                        onToggle: {
-                            milestones[index].completed.toggle()
-                            saveMilestones()
-                        }
-                    )
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("30-Day Path")
+                        .font(.headline)
                 }
             }
-            .listStyle(.plain)
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .principal) {
-                Text("30-Day Path")
-                    .font(.headline)
+            .sheet(isPresented: $showChangePath) {
+                PathSelectionView()
             }
-        }
-        .sheet(isPresented: $showChangePath) {
-            PathSelectionView()
         }
     }
     

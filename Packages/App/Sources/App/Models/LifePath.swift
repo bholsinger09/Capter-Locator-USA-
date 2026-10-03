@@ -7,6 +7,7 @@ enum LifePathCategory: String, Codable, CaseIterable {
     case living = "living"
     case direction = "direction"
     case more = "more"
+    case politics = "politics"
     case unknown = "unknown"
     
     var emoji: String {
@@ -17,6 +18,7 @@ enum LifePathCategory: String, Codable, CaseIterable {
         case .living: return "🏠"
         case .direction: return "🧠"
         case .more: return "🚀"
+        case .politics: return "🗳️"
         case .unknown: return "❓"
         }
     }
@@ -29,6 +31,7 @@ enum LifePathCategory: String, Codable, CaseIterable {
         case .living: return "My Living Situation"
         case .direction: return "My Direction"
         case .more: return "I Want Something More"
+        case .politics: return "Choose My Political Party"
         case .unknown: return "I Don't Know Yet"
         }
     }
@@ -41,6 +44,7 @@ enum LifePathCategory: String, Codable, CaseIterable {
         case .living: return "Improve home, better environment, stability"
         case .direction: return "Clarify goals, find purpose, navigate life decisions"
         case .more: return "Transform yourself, exceed expectations, reach potential"
+        case .politics: return "Align with your political values, find where you fit"
         case .unknown: return "Explore your options, find what matters"
         }
     }
@@ -320,5 +324,80 @@ struct PathContent {
         DailyMilestone(day: 28, title: "Next Steps Planning", description: "How to continue?", action: "Create a plan to deepen exploration of top options"),
         DailyMilestone(day: 29, title: "Commitment to Growth", description: "Keep exploring", action: "Commit to continued discovery and growth"),
         DailyMilestone(day: 30, title: "Choose Your Next Path", description: "Pick a direction", action: "Choose one of the other 6 paths to explore next")
+    ]
+}
+
+// MARK: - Political Party Guidance
+
+struct PoliticalParty: Codable, Identifiable {
+    let id = UUID()
+    let name: String
+    let emoji: String
+    let color: String
+    let tagline: String
+    let coreValues: [String]
+    let economicApproach: String
+    let socialApproach: String
+    let environmentalApproach: String
+    let description: String
+}
+
+struct PoliticalPartyGuidance {
+    static let parties: [PoliticalParty] = [
+        PoliticalParty(
+            name: "Democratic Party",
+            emoji: "🔵",
+            color: "blue",
+            tagline: "Progress, Equality, Community",
+            coreValues: ["Social equality", "Economic opportunity for all", "Environmental protection", "Government assistance for those in need", "Progressive taxation"],
+            economicApproach: "Emphasizes regulation to protect workers and consumers. Supports progressive taxation, strong social safety net, and government programs. Advocates for raising minimum wage and worker protections.",
+            socialApproach: "Supports civil rights, LGBTQ+ equality, reproductive rights, and diversity. Advocates for inclusive policies and equal access to opportunities.",
+            environmentalApproach: "Strong environmental protection advocate. Supports climate change action, renewable energy investment, and environmental regulations.",
+            description: "The Democratic Party generally advocates for a larger government role in social and economic issues, progressive taxation, environmental protection, and social justice initiatives."
+        ),
+        PoliticalParty(
+            name: "Republican Party",
+            emoji: "🔴",
+            color: "red",
+            tagline: "Liberty, Limited Government, Tradition",
+            coreValues: ["Individual liberty", "Limited government", "Free market capitalism", "Traditional values", "Strong national defense"],
+            economicApproach: "Emphasizes free market capitalism, lower taxes, less regulation, and individual responsibility. Supports business growth and entrepreneurship with minimal government interference.",
+            socialApproach: "Generally conservative on social issues, emphasizing traditional family values and individual choice. Supports religious freedom and personal liberty.",
+            environmentalApproach: "Balances economic growth with environmental concerns. Emphasizes market-based solutions and private sector innovation for environmental issues.",
+            description: "The Republican Party generally advocates for limited government, free market economics, lower taxes, traditional values, and strong national defense."
+        ),
+        PoliticalParty(
+            name: "Libertarian Party",
+            emoji: "🟡",
+            color: "yellow",
+            tagline: "Maximum Freedom, Minimum Government",
+            coreValues: ["Individual liberty", "Non-aggression principle", "Free market economy", "Personal responsibility", "Limited government"],
+            economicApproach: "Strong free market advocate with minimal government regulation. Opposes taxation, supports ending most government programs and replacing them with private alternatives.",
+            socialApproach: "Progressive on social freedoms - supports LGBTQ+ rights, drug legalization, and personal choice. Opposes both social and economic coercion.",
+            environmentalApproach: "Market-based solutions to environmental problems. Supports property rights and private conservation efforts over government mandates.",
+            description: "The Libertarian Party advocates for maximum individual liberty and minimal government intervention in both social and economic matters. Emphasizes personal responsibility and free market solutions."
+        ),
+        PoliticalParty(
+            name: "Green Party",
+            emoji: "🟢",
+            color: "green",
+            tagline: "Ecology, Social Justice, Democracy",
+            coreValues: ["Environmental sustainability", "Social justice", "Grassroots democracy", "Peace", "Fair economics"],
+            economicApproach: "Supports cooperative economics, fair wages, workers' rights, and local business. Advocates for sustainable practices over traditional GDP growth.",
+            socialApproach: "Strongly progressive on social issues, supporting LGBTQ+ rights, immigrant rights, racial justice, and affordable housing.",
+            environmentalApproach: "Primary focus on environmental protection and climate action. Advocates for renewable energy, sustainable agriculture, and strong environmental regulations.",
+            description: "The Green Party prioritizes environmental sustainability and social justice. Advocates for grassroots democracy, fair economics, and holistic solutions to interconnected problems."
+        ),
+        PoliticalParty(
+            name: "Independent / No Affiliation",
+            emoji: "⚪",
+            color: "gray",
+            tagline: "Choose Issues, Not Labels",
+            coreValues: ["Critical thinking", "Issue-based voting", "Pragmatism", "Independence", "Open-mindedness"],
+            economicApproach: "Evaluates economic policies on individual merit rather than party doctrine. May support some market solutions and some government programs depending on effectiveness.",
+            socialApproach: "Evaluates social policies on their individual merits. May support progressive and conservative positions on different issues.",
+            environmentalApproach: "Environmental stance depends on individual priorities and beliefs about balance between ecology and other concerns.",
+            description: "Independents choose not to affiliate with any party, evaluating candidates and issues on their individual merits. This path emphasizes critical thinking, pragmatism, and voting your values rather than party loyalty."
+        )
     ]
 }
