@@ -9,11 +9,13 @@ import SwiftUI
 
 #if os(iOS)
 @main
-#endif
 struct SwiftChapterUSA_finderApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
     }
 }
+#endif
