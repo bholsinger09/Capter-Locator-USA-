@@ -249,9 +249,10 @@ public struct ChapterDetailView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("About")
                             .font(.headline)
+                            .foregroundColor(.black)
                         Text(chapter.description)
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.black)
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -275,11 +276,11 @@ public struct ChapterDetailView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(label)
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
                 Text(value)
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.black)
             }
             
             Spacer()
