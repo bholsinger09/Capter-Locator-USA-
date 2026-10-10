@@ -38,6 +38,9 @@ public class ChaptersViewModel: ObservableObject {
             self.cacheService = UserDefaultsCacheService()
         }
         
+        // Clear stale cache to force loading fresh chapter data
+        self.cacheService.clear(key: self.cacheKey)
+        
         if let favoritesService = favoritesService {
             self.favoritesService = favoritesService
         } else {
