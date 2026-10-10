@@ -1,935 +1,526 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>77</string>
-	<key>objects</key>
-	<dict>
-		<key>003CBB7B0220414323AD30A0</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>01B23F369493D2483A8FA9FA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>003CBB7B0220414323AD30A0</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>3675228D3071BEB900130B04</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E52D39AAEABF4A51AA4A89FC</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Recovered References</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A8B1BED29E8A45700D2F1A2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A8B1BFF29E8A4F000D2F1A2</string>
-				<string>3A8B1BF829E8A45700D2F1A2</string>
-				<string>3675228D3071BEB900130B04</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>3A8B1BEE29E8A45700D2F1A2</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>BuildIndependentTargetsInParallel</key>
-				<string>1</string>
-				<key>LastSwiftUpdateCheck</key>
-				<string>1600</string>
-				<key>LastUpgradeCheck</key>
-				<string>1600</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>3A8B1BF529E8A45700D2F1A2</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>16.0</string>
-						<key>DevelopmentTeam</key>
-						<string>PL58734CZ4</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>3A8B1BF129E8A45700D2F1A2</string>
-			<key>developmentRegion</key>
-			<string>en</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>3A8B1BED29E8A45700D2F1A2</string>
-			<key>packageReferences</key>
-			<array>
-				<string>3A8B1C4529E8A4F000D2F1A2</string>
-				<string>3A8B1C4629E8A4F000D2F1A2</string>
-				<string>3A8B1C4729E8A4F000D2F1A2</string>
-				<string>3A8B1C4829E8A4F000D2F1A2</string>
-				<string>3A8B1C4929E8A4F000D2F1A2</string>
-				<string>3A8B1C4A29E8A4F000D2F1A2</string>
-				<string>3A8B1C4B29E8A4F000D2F1A2</string>
-				<string>3A8B1C4C29E8A4F000D2F1A2</string>
-				<string>3A8B1C4D29E8A4F000D2F1A2</string>
-				<string>3A8B1C4E29E8A4F000D2F1A2</string>
-			</array>
-			<key>preferredProjectObjectVersion</key>
-			<string>77</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>3A8B1BF529E8A45700D2F1A2</string>
-			</array>
-		</dict>
-		<key>3A8B1BF129E8A45700D2F1A2</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>3A8B1C0F29E8A45800D2F1A2</string>
-				<string>3A8B1C1029E8A45800D2F1A2</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>3A8B1BF229E8A45700D2F1A2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>01B23F369493D2483A8FA9FA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A8B1BF429E8A45700D2F1A2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>3A8B1C3229E8A4F000D2F1A2</string>
-				<string>3A8B1C3429E8A4F000D2F1A2</string>
-				<string>3A8B1C3629E8A4F000D2F1A2</string>
-				<string>3A8B1C3829E8A4F000D2F1A2</string>
-				<string>3A8B1C3A29E8A4F000D2F1A2</string>
-				<string>3A8B1C3C29E8A4F000D2F1A2</string>
-				<string>3A8B1C3E29E8A4F000D2F1A2</string>
-				<string>3A8B1C4029E8A4F000D2F1A2</string>
-				<string>3A8B1C4229E8A4F000D2F1A2</string>
-				<string>3A8B1C4429E8A4F000D2F1A2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A8B1BF529E8A45700D2F1A2</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>3A8B1C1129E8A45800D2F1A2</string>
-			<key>buildPhases</key>
-			<array>
-				<string>3A8B1BF229E8A45700D2F1A2</string>
-				<string>3A8B1BF429E8A45700D2F1A2</string>
-				<string>3A8B1BF629E8A45700D2F1A2</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>SwiftChapterUSA_finder</string>
-			<key>packageProductDependencies</key>
-			<array>
-				<string>3A8B1C3129E8A4F000D2F1A2</string>
-				<string>3A8B1C3329E8A4F000D2F1A2</string>
-				<string>3A8B1C3529E8A4F000D2F1A2</string>
-				<string>3A8B1C3729E8A4F000D2F1A2</string>
-				<string>3A8B1C3929E8A4F000D2F1A2</string>
-				<string>3A8B1C3B29E8A4F000D2F1A2</string>
-				<string>3A8B1C3D29E8A4F000D2F1A2</string>
-				<string>3A8B1C3F29E8A4F000D2F1A2</string>
-				<string>3A8B1C4129E8A4F000D2F1A2</string>
-				<string>3A8B1C4329E8A4F000D2F1A2</string>
-			</array>
-			<key>productName</key>
-			<string>SwiftChapterUSA_finder</string>
-			<key>productReference</key>
-			<string>3A8B1BF729E8A45700D2F1A2</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>3A8B1BF629E8A45700D2F1A2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>E9476E500EE14F54ACA09A83</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>3A8B1BF729E8A45700D2F1A2</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>SwiftChapterUSA_finder.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>3A8B1BF829E8A45700D2F1A2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3A8B1BF729E8A45700D2F1A2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3A8B1BFF29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileSystemSynchronizedRootGroup</string>
-			<key>path</key>
-			<string>SwiftChapterUSA_finder</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>3A8B1C0F29E8A45800D2F1A2</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS</key>
-				<string>YES</string>
-				<key>CLANG_ANALYZER_NONNULL</key>
-				<string>YES</string>
-				<key>CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>CLANG_CXX_LANGUAGE_DIALECT</key>
-				<string>c++20</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_COMMA</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INFINITE_RECURSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_NON_LITERAL_NULL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_LITERAL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER</key>
-				<string>YES</string>
-				<key>CLANG_WARN_RANGE_LOOP_ANALYSIS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_STRICT_PROTOTYPES</key>
-				<string>YES</string>
-				<key>CLANG_WARN_SUSPICIOUS_MOVE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_SUSPICIOUS_MOVES</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements</string>
-				<key>CODE_SIGN_STYLE</key>
-				<string>Automatic</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEVELOPMENT_TEAM</key>
-				<string>PL58734CZ4</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>ENABLE_TESTABILITY</key>
-				<string>NO</string>
-				<key>ENABLE_USER_SCRIPT_SANDBOXING</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_DIALECT</key>
-				<string>gnu17</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>GENERATE_INFOPLIST_FILE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>16.0</string>
-				<key>LOCALIZATION_PREFERS_STRING_CATALOGS</key>
-				<string>NO</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>INCLUDE_SOURCE</string>
-				<key>MTL_FAST_MATH</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_ACTIVE_COMPILATION_CONDITIONS</key>
-				<string>DEBUG $(inherited)</string>
-				<key>SWIFT_EMIT_LOC_STRINGS</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>SWIFT_VERSION</key>
-				<string>5.0</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>3A8B1C1029E8A45800D2F1A2</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS</key>
-				<string>YES</string>
-				<key>CLANG_ANALYZER_NONNULL</key>
-				<string>YES</string>
-				<key>CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>CLANG_CXX_LANGUAGE_DIALECT</key>
-				<string>c++20</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_COMMA</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_DOCUMENTATION_COMMENTS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INFINITE_RECURSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_NON_LITERAL_NULL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_LITERAL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER</key>
-				<string>YES</string>
-				<key>CLANG_WARN_RANGE_LOOP_ANALYSIS</key>
-				<string>YES</string>
-				<key>CLANG_WARN_STRICT_PROTOTYPES</key>
-				<string>YES</string>
-				<key>CLANG_WARN_SUSPICIOUS_MOVE</key>
-				<string>YES</string>
-				<key>CLANG_WARN_SUSPICIOUS_MOVES</key>
-				<string>YES</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements</string>
-				<key>CODE_SIGN_STYLE</key>
-				<string>Automatic</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>DEVELOPMENT_TEAM</key>
-				<string>PL58734CZ4</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>ENABLE_USER_SCRIPT_SANDBOXING</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_DIALECT</key>
-				<string>gnu17</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>GENERATE_INFOPLIST_FILE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>16.0</string>
-				<key>LOCALIZATION_PREFERS_STRING_CATALOGS</key>
-				<string>NO</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>MTL_FAST_MATH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_COMPILATION_MODE</key>
-				<string>wholemodule</string>
-				<key>SWIFT_EMIT_LOC_STRINGS</key>
-				<string>YES</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-O</string>
-				<key>SWIFT_VERSION</key>
-				<string>5.0</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>3A8B1C1129E8A45800D2F1A2</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>3A8B1C1229E8A45800D2F1A2</string>
-				<string>3A8B1C1329E8A45800D2F1A2</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>3A8B1C1229E8A45800D2F1A2</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME</key>
-				<string>AccentColor</string>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements</string>
-				<key>CODE_SIGN_STYLE</key>
-				<string>Automatic</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>12</string>
-				<key>DEVELOPMENT_TEAM</key>
-				<string>PL58734CZ4</string>
-				<key>GENERATE_INFOPLIST_FILE</key>
-				<string>NO</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>16.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-				</array>
-				<key>MARKETING_VERSION</key>
-				<string>12.0</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.holsinger.chapterfinder</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SWIFT_EMIT_LOC_STRINGS</key>
-				<string>YES</string>
-				<key>SWIFT_VERSION</key>
-				<string>5.0</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>3A8B1C1329E8A45800D2F1A2</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME</key>
-				<string>AccentColor</string>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements</string>
-				<key>CODE_SIGN_STYLE</key>
-				<string>Automatic</string>
-				<key>CURRENT_PROJECT_VERSION</key>
-				<string>12</string>
-				<key>DEVELOPMENT_TEAM</key>
-				<string>PL58734CZ4</string>
-				<key>GENERATE_INFOPLIST_FILE</key>
-				<string>NO</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>16.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<array>
-					<string>$(inherited)</string>
-					<string>@executable_path/Frameworks</string>
-				</array>
-				<key>MARKETING_VERSION</key>
-				<string>12.0</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.holsinger.chapterfinder</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SWIFT_EMIT_LOC_STRINGS</key>
-				<string>YES</string>
-				<key>SWIFT_VERSION</key>
-				<string>5.0</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>3A8B1C3129E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4529E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Common</string>
-		</dict>
-		<key>3A8B1C3229E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3129E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3329E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4629E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>App</string>
-		</dict>
-		<key>3A8B1C3429E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3329E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3529E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4729E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>AppUI</string>
-		</dict>
-		<key>3A8B1C3629E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3529E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3729E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4829E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Authentication</string>
-		</dict>
-		<key>3A8B1C3829E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3729E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3929E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4929E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Chapters</string>
-		</dict>
-		<key>3A8B1C3A29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3929E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3B29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4A29E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Events</string>
-		</dict>
-		<key>3A8B1C3C29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3B29E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3D29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4B29E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Geospatial</string>
-		</dict>
-		<key>3A8B1C3E29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3D29E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C3F29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4C29E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Advocacy</string>
-		</dict>
-		<key>3A8B1C4029E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C3F29E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C4129E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4D29E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Resources</string>
-		</dict>
-		<key>3A8B1C4229E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C4129E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C4329E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCSwiftPackageProductDependency</string>
-			<key>package</key>
-			<string>3A8B1C4E29E8A4F000D2F1A2</string>
-			<key>productName</key>
-			<string>Notifications</string>
-		</dict>
-		<key>3A8B1C4429E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>productRef</key>
-			<string>3A8B1C4329E8A4F000D2F1A2</string>
-		</dict>
-		<key>3A8B1C4529E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Common</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4629E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/App</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4729E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/AppUI</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4829E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Authentication</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4929E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Chapters</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4A29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Events</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4B29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Geospatial</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4C29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Advocacy</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4D29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Resources</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>3A8B1C4E29E8A4F000D2F1A2</key>
-		<dict>
-			<key>isa</key>
-			<string>XCRemoteSwiftPackageReference</string>
-			<key>repositoryURL</key>
-			<string>../../Packages/Notifications</string>
-			<key>requirement</key>
-			<dict>
-				<key>kind</key>
-				<string>upToNextMajorVersion</string>
-				<key>minimumVersion</key>
-				<string>1.0.0</string>
-			</dict>
-		</dict>
-		<key>E52D39AAEABF4A51AA4A89FC</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>SwiftChapterUSA_finder/Assets.xcassets</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>E9476E500EE14F54ACA09A83</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E52D39AAEABF4A51AA4A89FC</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>3A8B1BEE29E8A45700D2F1A2</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A8B1C3229E8A4F000D2F1A2 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3129E8A4F000D2F1A2 /* Common */; };
+		3A8B1C3429E8A4F000D2F1A2 /* App in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3329E8A4F000D2F1A2 /* App */; };
+		3A8B1C3629E8A4F000D2F1A2 /* AppUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3529E8A4F000D2F1A2 /* AppUI */; };
+		3A8B1C3829E8A4F000D2F1A2 /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3729E8A4F000D2F1A2 /* Authentication */; };
+		3A8B1C3A29E8A4F000D2F1A2 /* Chapters in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3929E8A4F000D2F1A2 /* Chapters */; };
+		3A8B1C3C29E8A4F000D2F1A2 /* Events in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3B29E8A4F000D2F1A2 /* Events */; };
+		3A8B1C3E29E8A4F000D2F1A2 /* Geospatial in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3D29E8A4F000D2F1A2 /* Geospatial */; };
+		3A8B1C4029E8A4F000D2F1A2 /* Advocacy in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C3F29E8A4F000D2F1A2 /* Advocacy */; };
+		3A8B1C4229E8A4F000D2F1A2 /* Resources in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4129E8A4F000D2F1A2 /* Resources */; };
+		3A8B1C4429E8A4F000D2F1A2 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4329E8A4F000D2F1A2 /* Notifications */; };
+		E9476E500EE14F54ACA09A83 /* SwiftChapterUSA_finder/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */; };
+		E9F8E7D6C5B4A3A2B1C0D9E8 /* SwiftChapterUSA_finderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finderApp.swift */; };
+	/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3A8B1BF729E8A45700D2F1A2 /* SwiftChapterUSA_finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChapterUSA_finder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SwiftChapterUSA_finder/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift"; sourceTree = SOURCE_ROOT; };
+	/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		3A8B1BFF29E8A4F000D2F1A2 /* SwiftChapterUSA_finder */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SwiftChapterUSA_finder;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3A8B1BF429E8A45700D2F1A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A8B1C3229E8A4F000D2F1A2 /* Common in Frameworks */,
+				3A8B1C3429E8A4F000D2F1A2 /* App in Frameworks */,
+				3A8B1C3629E8A4F000D2F1A2 /* AppUI in Frameworks */,
+				3A8B1C3829E8A4F000D2F1A2 /* Authentication in Frameworks */,
+				3A8B1C3A29E8A4F000D2F1A2 /* Chapters in Frameworks */,
+				3A8B1C3C29E8A4F000D2F1A2 /* Events in Frameworks */,
+				3A8B1C3E29E8A4F000D2F1A2 /* Geospatial in Frameworks */,
+				3A8B1C4029E8A4F000D2F1A2 /* Advocacy in Frameworks */,
+				3A8B1C4229E8A4F000D2F1A2 /* Resources in Frameworks */,
+				3A8B1C4429E8A4F000D2F1A2 /* Notifications in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3675228D3071BEB900130B04 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		3A8B1BED29E8A45700D2F1A2 = {
+			isa = PBXGroup;
+			children = (
+				3A8B1BFF29E8A4F000D2F1A2 /* SwiftChapterUSA_finder */,
+				3A8B1BF829E8A45700D2F1A2 /* Products */,
+				3675228D3071BEB900130B04 /* Recovered References */,
+			);
+			sourceTree = SOURCE_ROOT;
+		};
+		3A8B1BF829E8A45700D2F1A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3A8B1BF729E8A45700D2F1A2 /* SwiftChapterUSA_finder.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3A8B1BF529E8A45700D2F1A2 /* SwiftChapterUSA_finder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3A8B1C1129E8A45800D2F1A2 /* Build configuration list for PBXNativeTarget "SwiftChapterUSA_finder" */;
+			buildPhases = (
+				3A8B1BF229E8A45700D2F1A2 /* Sources */,
+				3A8B1BF429E8A45700D2F1A2 /* Frameworks */,
+				3A8B1BF629E8A45700D2F1A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftChapterUSA_finder;
+			packageProductDependencies = (
+				3A8B1C3129E8A4F000D2F1A2 /* Common */,
+				3A8B1C3329E8A4F000D2F1A2 /* App */,
+				3A8B1C3529E8A4F000D2F1A2 /* AppUI */,
+				3A8B1C3729E8A4F000D2F1A2 /* Authentication */,
+				3A8B1C3929E8A4F000D2F1A2 /* Chapters */,
+				3A8B1C3B29E8A4F000D2F1A2 /* Events */,
+				3A8B1C3D29E8A4F000D2F1A2 /* Geospatial */,
+				3A8B1C3F29E8A4F000D2F1A2 /* Advocacy */,
+				3A8B1C4129E8A4F000D2F1A2 /* Resources */,
+				3A8B1C4329E8A4F000D2F1A2 /* Notifications */,
+			);
+			productName = SwiftChapterUSA_finder;
+			productReference = 3A8B1BF729E8A45700D2F1A2 /* SwiftChapterUSA_finder.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3A8B1BEE29E8A45700D2F1A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					3A8B1BF529E8A45700D2F1A2 = {
+						CreatedOnToolsVersion = 16.0;
+						DevelopmentTeam = PL58734CZ4;
+					};
+				};
+			};
+			buildConfigurationList = 3A8B1BF129E8A45700D2F1A2 /* Build configuration list for PBXProject "SwiftChapterUSA_finder" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3A8B1BED29E8A45700D2F1A2;
+			packageReferences = (
+				3A8B1C4529E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Common" */,
+				3A8B1C4629E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "App" */,
+				3A8B1C4729E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "AppUI" */,
+				3A8B1C4829E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Authentication" */,
+				3A8B1C4929E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Chapters" */,
+				3A8B1C4A29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Events" */,
+				3A8B1C4B29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Geospatial" */,
+				3A8B1C4C29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Advocacy" */,
+				3A8B1C4D29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Resources" */,
+				3A8B1C4E29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Notifications" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3A8B1BF529E8A45700D2F1A2 /* SwiftChapterUSA_finder */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3A8B1BF629E8A45700D2F1A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9476E500EE14F54ACA09A83 /* SwiftChapterUSA_finder/Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3A8B1BF229E8A45700D2F1A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			
+			E9F8E7D6C5B4A3A2B1C0D9E8 /* SwiftChapterUSA_finderApp.swift in Sources */,);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3A8B1C0F29E8A45800D2F1A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_DIALECT = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PL58734CZ4;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_DIALECT = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3A8B1C1029E8A45800D2F1A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_DIALECT = "c++20";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PL58734CZ4;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_DIALECT = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = NO;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3A8B1C1229E8A45800D2F1A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = PL58734CZ4;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.holsinger.chapterfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3A8B1C1329E8A45800D2F1A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SwiftChapterUSA_finder/SwiftChapterUSA_finder.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 12;
+				DEVELOPMENT_TEAM = PL58734CZ4;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.holsinger.chapterfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3A8B1BF129E8A45700D2F1A2 /* Build configuration list for PBXProject "SwiftChapterUSA_finder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8B1C0F29E8A45800D2F1A2 /* Debug */,
+				3A8B1C1029E8A45800D2F1A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A8B1C1129E8A45800D2F1A2 /* Build configuration list for PBXNativeTarget "SwiftChapterUSA_finder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3A8B1C1229E8A45800D2F1A2 /* Debug */,
+				3A8B1C1329E8A45800D2F1A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A8B1C4529E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Common" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Common;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4629E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "App" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/App;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4729E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "AppUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/AppUI;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4829E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Authentication" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Authentication;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4929E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Chapters" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Chapters;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4A29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Events" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Events;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4B29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Geospatial" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Geospatial;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4C29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Advocacy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Advocacy;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4D29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Resources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Resources;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		3A8B1C4E29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Notifications" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = ../../Packages/Notifications;
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A8B1C3129E8A4F000D2F1A2 /* Common */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4529E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Common" */;
+			productName = Common;
+		};
+		3A8B1C3329E8A4F000D2F1A2 /* App */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4629E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "App" */;
+			productName = App;
+		};
+		3A8B1C3529E8A4F000D2F1A2 /* AppUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4729E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "AppUI" */;
+			productName = AppUI;
+		};
+		3A8B1C3729E8A4F000D2F1A2 /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4829E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Authentication" */;
+			productName = Authentication;
+		};
+		3A8B1C3929E8A4F000D2F1A2 /* Chapters */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4929E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Chapters" */;
+			productName = Chapters;
+		};
+		3A8B1C3B29E8A4F000D2F1A2 /* Events */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4A29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Events" */;
+			productName = Events;
+		};
+		3A8B1C3D29E8A4F000D2F1A2 /* Geospatial */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4B29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Geospatial" */;
+			productName = Geospatial;
+		};
+		3A8B1C3F29E8A4F000D2F1A2 /* Advocacy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4C29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Advocacy" */;
+			productName = Advocacy;
+		};
+		3A8B1C4129E8A4F000D2F1A2 /* Resources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4D29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Resources" */;
+			productName = Resources;
+		};
+		3A8B1C4329E8A4F000D2F1A2 /* Notifications */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A8B1C4E29E8A4F000D2F1A2 /* XCRemoteSwiftPackageReference "Notifications" */;
+			productName = Notifications;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 3A8B1BEE29E8A45700D2F1A2 /* Project object */;
+}
