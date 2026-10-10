@@ -199,6 +199,9 @@ public struct ChapterDetailView: View {
     }
     
     public var body: some View {
+        ZStack {
+            Color(red: 1, green: 1, blue: 1).ignoresSafeArea()
+            
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
                 // Header with favorite button
@@ -249,10 +252,10 @@ public struct ChapterDetailView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("About")
                             .font(.headline)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                         Text(chapter.description)
                             .font(.caption)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -265,6 +268,7 @@ public struct ChapterDetailView: View {
             .padding()
         }
         .navigationTitle("Chapter")
+        }
     }
     
     private func infoRow(icon: String, label: String, value: String) -> some View {
@@ -276,11 +280,11 @@ public struct ChapterDetailView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(label)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
                 Text(value)
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
             }
             
             Spacer()

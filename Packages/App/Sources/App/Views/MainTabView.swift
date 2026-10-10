@@ -41,6 +41,7 @@ public struct MainTabView: View {
             
             // Tab 2: Chapters
             ChaptersView()
+                .preferredColorScheme(.light)
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }

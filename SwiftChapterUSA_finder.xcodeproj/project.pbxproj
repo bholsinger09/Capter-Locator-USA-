@@ -18,14 +18,14 @@
 		3A8B1C4229E8A4F000D2F1A2 /* Resources in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4129E8A4F000D2F1A2 /* Resources */; };
 		3A8B1C4429E8A4F000D2F1A2 /* Notifications in Frameworks */ = {isa = PBXBuildFile; productRef = 3A8B1C4329E8A4F000D2F1A2 /* Notifications */; };
 		E9476E500EE14F54ACA09A83 /* SwiftChapterUSA_finder/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */; };
-		E9F8E7D6C5B4A3A2B1C0D9E8 /* SwiftChapterUSA_finderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finderApp.swift */; };
-	/* End PBXBuildFile section */
+		E9F8E7D6C5B4A3A2B1C0D9E8 /* SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A8B1BF729E8A45700D2F1A2 /* SwiftChapterUSA_finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChapterUSA_finder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift; sourceTree = SOURCE_ROOT; };
 		E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SwiftChapterUSA_finder/Assets.xcassets; sourceTree = SOURCE_ROOT; };
-		E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift"; sourceTree = SOURCE_ROOT; };
-	/* End PBXFileReference section */
+/* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3A8B1BFF29E8A4F000D2F1A2 /* SwiftChapterUSA_finder */ = {
@@ -60,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				E52D39AAEABF4A51AA4A89FC /* SwiftChapterUSA_finder/Assets.xcassets */,
+				E1A2B3C4D5E6F7A8B9C0D1E2 /* SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -174,8 +175,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			
-			E9F8E7D6C5B4A3A2B1C0D9E8 /* SwiftChapterUSA_finderApp.swift in Sources */,);
+				E9F8E7D6C5B4A3A2B1C0D9E8 /* SwiftChapterUSA_finder/SwiftChapterUSA_finderApp.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */

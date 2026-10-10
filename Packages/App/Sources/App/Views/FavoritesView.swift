@@ -6,6 +6,61 @@ import Chapters
 struct FavoritesView: View {
     @StateObject private var chaptersVM = ChaptersViewModel()
     @StateObject private var universitiesVM = UniversitiesViewModel()
+    @State private var chapterSortOption: ChapterSortOption = .name
+    @State private var universitySortOption: UniversitySortOption = .name
+    
+    enum ChapterSortOption {
+        case name
+        case state
+        case members
+        
+        var label: String {
+            switch self {
+            case .name:
+                return "Name"
+            case .state:
+                return "State"
+            case .members:
+                return "Members"
+            }
+        }
+    }
+    
+    enum UniversitySortOption {
+        case name
+        case state
+        
+        var label: String {
+            switch self {
+            case .name:
+                return "Name"
+            case .state:
+                return "State"
+            }
+        }
+    }
+    
+    var sortedFavoritedChapters: [Chapter] {
+        let favorites = chaptersVM.favoritedChapters
+        switch chapterSortOption {
+        case .name:
+            return favorites.sorted { $0.displayName < $1.displayName }
+        case .state:
+            return favorites.sorted { $0.state < $1.state }
+        case .members:
+            return favorites.sorted { $0.memberCount > $1.memberCount }
+        }
+    }
+    
+    var sortedFavoritedUniversities: [University] {
+        let favorites = universitiesVM.favoritedUniversities
+        switch universitySortOption {
+        case .name:
+            return favorites.sorted { $0.name < $1.name }
+        case .state:
+            return favorites.sorted { $0.state < $1.state }
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -47,8 +102,22 @@ struct FavoritesView: View {
                                 }
                                 .padding(.horizontal)
                                 
+                                // Sort Picker
+                                HStack {
+                                    Text("Sort by:")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    Picker("Sort Chapters", selection: $chapterSortOption) {
+                                        Text(ChapterSortOption.name.label).tag(ChapterSortOption.name)
+                                        Text(ChapterSortOption.state.label).tag(ChapterSortOption.state)
+                                        Text(ChapterSortOption.members.label).tag(ChapterSortOption.members)
+                                    }
+                                    .pickerStyle(.segmented)
+                                }
+                                .padding(.horizontal)
+                                
                                 VStack(spacing: 8) {
-                                    ForEach(chaptersVM.favoritedChapters, id: \.id) { chapter in
+                                    ForEach(sortedFavoritedChapters, id: \.id) { chapter in
                                         FavoriteChapterRow(chapter: chapter, viewModel: chaptersVM)
                                     }
                                 }
@@ -72,8 +141,21 @@ struct FavoritesView: View {
                                 }
                                 .padding(.horizontal)
                                 
+                                // Sort Picker
+                                HStack {
+                                    Text("Sort by:")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                    Picker("Sort Universities", selection: $universitySortOption) {
+                                        Text(UniversitySortOption.name.label).tag(UniversitySortOption.name)
+                                        Text(UniversitySortOption.state.label).tag(UniversitySortOption.state)
+                                    }
+                                    .pickerStyle(.segmented)
+                                }
+                                .padding(.horizontal)
+                                
                                 VStack(spacing: 8) {
-                                    ForEach(universitiesVM.favoritedUniversities, id: \.id) { university in
+                                    ForEach(sortedFavoritedUniversities, id: \.id) { university in
                                         FavoriteUniversityRow(university: university, viewModel: universitiesVM)
                                     }
                                 }
@@ -89,6 +171,7 @@ struct FavoritesView: View {
             .navigationTitle("Favorites")
             .refreshable {
                 Task {
+                    await chaptersVM.loadChapters()
                     await chaptersVM.loadFavorites()
                     await universitiesVM.loadFavorites()
                     HapticFeedbackManager.shared.successFeedback()
@@ -96,6 +179,7 @@ struct FavoritesView: View {
             }
             .onAppear {
                 Task {
+                    await chaptersVM.loadChapters()
                     await chaptersVM.loadFavorites()
                     await universitiesVM.loadFavorites()
                 }
