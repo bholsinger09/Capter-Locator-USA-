@@ -175,9 +175,14 @@ struct UniversitiesView: View {
 }
 
 struct UniversityDetailView: View {
-    let university: University
-    let viewModel: UniversitiesViewModel
+    public let university: University
+    public let viewModel: UniversitiesViewModel
     @Environment(\.dismiss) var dismiss
+    
+    public init(university: University, viewModel: UniversitiesViewModel) {
+        self.university = university
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         ScrollView {

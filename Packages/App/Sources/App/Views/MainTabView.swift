@@ -31,7 +31,7 @@ public struct MainTabView: View {
         #endif
     }
     
-    var body: some View {
+    public var body: some View {
         TabView {
             // Tab 1: Favorites
             FavoritesView()

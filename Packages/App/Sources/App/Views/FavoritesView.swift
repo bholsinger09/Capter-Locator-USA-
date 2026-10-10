@@ -48,36 +48,8 @@ struct FavoritesView: View {
                                 .padding(.horizontal)
                                 
                                 VStack(spacing: 8) {
-                                    ForEach(chaptersVM.favoritedChapters) { chapter in
-                                        NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: chaptersVM)) {
-                                            HStack(spacing: 12) {
-                                                VStack(alignment: .leading, spacing: 4) {
-                                                    Text(chapter.displayName)
-                                                        .fontWeight(.semibold)
-                                                        .foregroundColor(.primary)
-                                                    HStack(spacing: 8) {
-                                                        Label(chapter.city, systemImage: "mappin.circle.fill")
-                                                            .font(.caption)
-                                                            .foregroundColor(.secondary)
-                                                        Text("\(chapter.memberCount) members")
-                                                            .font(.caption)
-                                                            .foregroundColor(.secondary)
-                                                    }
-                                                }
-                                                Spacer()
-                                                Button(action: {
-                                                    HapticFeedbackManager.shared.tapFeedback()
-                                                    chaptersVM.toggleFavorite(chapter)
-                                                }) {
-                                                    Image(systemName: "heart.fill")
-                                                        .foregroundColor(.red)
-                                                        .font(.system(size: 16))
-                                                }
-                                            }
-                                            .padding()
-                                            .background(Color(red: 0.95, green: 0.95, blue: 0.95))
-                                            .cornerRadius(12)
-                                        }
+                                    ForEach(chaptersVM.favoritedChapters, id: \.id) { chapter in
+                                        FavoriteChapterRow(chapter: chapter, viewModel: chaptersVM)
                                     }
                                 }
                                 .padding(.horizontal)
@@ -101,38 +73,8 @@ struct FavoritesView: View {
                                 .padding(.horizontal)
                                 
                                 VStack(spacing: 8) {
-                                    ForEach(universitiesVM.favoritedUniversities) { university in
-                                        NavigationLink(destination: UniversityDetailView(university: university, viewModel: universitiesVM)) {
-                                            HStack(spacing: 12) {
-                                                VStack(alignment: .leading, spacing: 4) {
-                                                    Text(university.name)
-                                                        .fontWeight(.semibold)
-                                                        .foregroundColor(.primary)
-                                                    HStack(spacing: 8) {
-                                                        Text(university.displayLocation)
-                                                            .font(.caption)
-                                                            .foregroundColor(.secondary)
-                                                        if university.hasChapter {
-                                                            Label("Has Chapter", systemImage: "checkmark.circle.fill")
-                                                                .font(.caption2)
-                                                                .foregroundColor(.green)
-                                                        }
-                                                    }
-                                                }
-                                                Spacer()
-                                                Button(action: {
-                                                    HapticFeedbackManager.shared.tapFeedback()
-                                                    universitiesVM.toggleFavorite(university)
-                                                }) {
-                                                    Image(systemName: "heart.fill")
-                                                        .foregroundColor(.red)
-                                                        .font(.system(size: 16))
-                                                }
-                                            }
-                                            .padding()
-                                            .background(Color(red: 0.95, green: 0.95, blue: 0.95))
-                                            .cornerRadius(12)
-                                        }
+                                    ForEach(universitiesVM.favoritedUniversities, id: \.id) { university in
+                                        FavoriteUniversityRow(university: university, viewModel: universitiesVM)
                                     }
                                 }
                                 .padding(.horizontal)
@@ -164,4 +106,150 @@ struct FavoritesView: View {
 
 #Preview {
     FavoritesView()
+}
+
+// MARK: - Helper Views
+
+struct FavoriteChapterRow: View {
+    let chapter: Chapter
+    let viewModel: ChaptersViewModel
+    
+    @State private var isNavigating = false
+    
+    var body: some View {
+        ZStack {
+            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel), isActive: $isNavigating) {
+                EmptyView()
+            }
+            
+            Button(action: { isNavigating = true }) {
+                ChapterRowContent(chapter: chapter, viewModel: viewModel)
+            }
+        }
+    }
+}
+
+struct ChapterRowContent: View {
+    let chapter: Chapter
+    let viewModel: ChaptersViewModel
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            ChapterRowText(chapter: chapter)
+            Spacer()
+            ChapterRowButton(chapter: chapter, viewModel: viewModel)
+        }
+        .padding()
+        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+        .cornerRadius(12)
+    }
+}
+
+struct ChapterRowText: View {
+    let chapter: Chapter
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(chapter.displayName)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+            HStack(spacing: 8) {
+                Label(chapter.city, systemImage: "mappin.circle.fill")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Text("\(chapter.memberCount) members")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+}
+
+struct ChapterRowButton: View {
+    let chapter: Chapter
+    let viewModel: ChaptersViewModel
+    
+    var body: some View {
+        Button(action: {
+            HapticFeedbackManager.shared.tapFeedback()
+            viewModel.toggleFavorite(chapter)
+        }) {
+            Image(systemName: "heart.fill")
+                .foregroundColor(.red)
+                .font(.system(size: 16))
+        }
+    }
+}
+
+struct FavoriteUniversityRow: View {
+    let university: University
+    let viewModel: UniversitiesViewModel
+    
+    @State private var isNavigating = false
+    
+    var body: some View {
+        ZStack {
+            NavigationLink(destination: UniversityDetailView(university: university, viewModel: viewModel), isActive: $isNavigating) {
+                EmptyView()
+            }
+            
+            Button(action: { isNavigating = true }) {
+                UniversityRowContent(university: university, viewModel: viewModel)
+            }
+        }
+    }
+}
+
+struct UniversityRowContent: View {
+    let university: University
+    let viewModel: UniversitiesViewModel
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            UniversityRowText(university: university)
+            Spacer()
+            UniversityRowButton(university: university, viewModel: viewModel)
+        }
+        .padding()
+        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+        .cornerRadius(12)
+    }
+}
+
+struct UniversityRowText: View {
+    let university: University
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(university.name)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+            HStack(spacing: 8) {
+                Text(university.displayLocation)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                if university.hasChapter {
+                    Label("Has Chapter", systemImage: "checkmark.circle.fill")
+                        .font(.caption2)
+                        .foregroundColor(.green)
+                }
+            }
+        }
+    }
+}
+
+struct UniversityRowButton: View {
+    let university: University
+    let viewModel: UniversitiesViewModel
+    
+    var body: some View {
+        Button(action: {
+            HapticFeedbackManager.shared.tapFeedback()
+            viewModel.toggleFavorite(university)
+        }) {
+            Image(systemName: "heart.fill")
+                .foregroundColor(.red)
+                .font(.system(size: 16))
+        }
+    }
 }

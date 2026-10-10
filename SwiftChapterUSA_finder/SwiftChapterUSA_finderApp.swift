@@ -9,21 +9,15 @@ import Geospatial
 import Advocacy
 import Resources
 import Notifications
-
-#if os(iOS)
 import UIKit
-#endif
 
 @main
 struct SwiftChapterUSA_finderApp: App {
-    #if os(iOS)
-    // AppDelegate is defined in the App package
-    @UIApplicationDelegateAdaptor(App.AppDelegate.self) var appDelegate
-    #endif
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
-            App.ContentView()
+            ContentView()
         }
     }
 }

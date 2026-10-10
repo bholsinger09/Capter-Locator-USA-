@@ -189,9 +189,14 @@ public struct ChaptersView: View {
 
 // MARK: - Chapter Detail View
 public struct ChapterDetailView: View {
-    let chapter: Chapter
-    let viewModel: ChaptersViewModel
+    public let chapter: Chapter
+    public let viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
+    
+    public init(chapter: Chapter, viewModel: ChaptersViewModel) {
+        self.chapter = chapter
+        self.viewModel = viewModel
+    }
     
     public var body: some View {
         ScrollView {

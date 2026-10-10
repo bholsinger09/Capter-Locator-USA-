@@ -15,7 +15,7 @@ public class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCen
     // Temporarily disabled to debug crash
     // let notificationManager = NotificationManager()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         // Set notification delegate
         UNUserNotificationCenter.current().delegate = self
         
@@ -27,30 +27,30 @@ public class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCen
     
     // MARK: - Orientation Support
     
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    public func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return .allButUpsideDown
     }
     
     // MARK: - Remote Notification Registration
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // TODO: Implement device token registration when NotificationManager supports it
     }
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    public func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // TODO: Implement remote notification error handling
     }
     
     // MARK: - Notification Handling
     
     /// Called when notification is received while app is in foreground
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         // Show notification even when app is in foreground
         completionHandler([.banner, .badge, .sound])
     }
     
     /// Called when user taps on a notification
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    public func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         
         // Handle different notification types
