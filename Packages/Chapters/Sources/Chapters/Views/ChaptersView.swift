@@ -278,6 +278,8 @@ public struct ChapterDetailView: View {
                     .foregroundColor(.secondary)
                 Text(value)
                     .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.primary)
             }
             
             Spacer()
