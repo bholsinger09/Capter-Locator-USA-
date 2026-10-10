@@ -1,10 +1,10 @@
 import SwiftUI
 
-struct DisclaimerView: View {
+public struct DisclaimerView: View {
     @Binding var isPresented: Bool
     @State private var hasAgreed = false
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             // Gradient background
             LinearGradient(
@@ -96,5 +96,9 @@ struct DisclaimerView: View {
                     .frame(height: 30)
             }
         }
+    }
+    
+    public init(isPresented: Binding<Bool>) {
+        self._isPresented = isPresented
     }
 }

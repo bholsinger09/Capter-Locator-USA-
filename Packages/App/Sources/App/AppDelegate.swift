@@ -11,7 +11,7 @@ import UIKit
 #endif
 
 #if os(iOS)
-class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+public class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     // Temporarily disabled to debug crash
     // let notificationManager = NotificationManager()
     

@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+public struct ContentView: View {
     @State private var showDisclaimer = true
     @State private var isAuthenticated = false
     
-    var body: some View {
+    public var body: some View {
         Group {
             if showDisclaimer {
                 DisclaimerView(isPresented: $showDisclaimer)
@@ -22,4 +22,6 @@ struct ContentView: View {
             }
         }
     }
+    
+    public init() {}
 }

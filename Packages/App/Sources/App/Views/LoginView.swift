@@ -1,13 +1,13 @@
 import SwiftUI
 import AuthenticationServices
 
-struct LoginView: View {
+public struct LoginView: View {
     @Binding var isAuthenticated: Bool
     @State private var email = ""
     @State private var password = ""
     @State private var showPassword = false
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             // Gradient background
             LinearGradient(
@@ -153,6 +153,10 @@ struct LoginView: View {
                     .frame(height: 40)
             }
         }
+    }
+    
+    public init(isAuthenticated: Binding<Bool>) {
+        self._isAuthenticated = isAuthenticated
     }
 }
 

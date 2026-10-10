@@ -8,8 +8,8 @@ import Advocacy
 import UIKit
 #endif
 
-struct MainTabView: View {
-    init() {
+public struct MainTabView: View {
+    public init() {
         #if os(iOS)
         let appearance = UITabBarAppearance()
         appearance.configureWithDefaultBackground()
