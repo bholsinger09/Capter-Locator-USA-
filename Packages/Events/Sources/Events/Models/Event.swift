@@ -50,6 +50,21 @@ public struct Event: Identifiable, Codable, Hashable {
     }
 }
 
+// MARK: - Sample Data
+
+extension Event {
+    public static var sample: Event {
+        Event(
+            title: "Chapter Kickoff Meeting",
+            description: "Join us for our chapter's inaugural meeting where we'll discuss plans for the semester and meet fellow members.",
+            eventDate: Date().addingTimeInterval(86400),
+            location: "Student Center - Room 101",
+            organizerName: "Sarah Johnson",
+            capacity: 50
+        )
+    }
+}
+
 public struct EventRSVP: Identifiable, Codable, Hashable {
     public enum RSVPStatus: String, Codable {
         case confirmed

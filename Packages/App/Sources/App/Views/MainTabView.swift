@@ -33,31 +33,37 @@ struct MainTabView: View {
     
     var body: some View {
         TabView {
-            // Tab 1: Chapters
+            // Tab 1: Favorites
+            FavoritesView()
+                .tabItem {
+                    Label("Favorites", systemImage: "heart.fill")
+                }
+            
+            // Tab 2: Chapters
             ChaptersView()
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }
             
-            // Tab 2: Events
+            // Tab 3: Events
             EventsView()
                 .tabItem {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
-            // Tab 3: Nearby (Geospatial)
+            // Tab 4: Nearby (Geospatial)
             LocationAnalyticsView()
                 .tabItem {
                     Label("Nearby", systemImage: "location.fill")
                 }
             
-            // Tab 4: Advocacy
+            // Tab 5: Advocacy
             AdvocacyView()
                 .tabItem {
                     Label("Advocacy", systemImage: "hand.raised.fill")
                 }
             
-            // Tab 5: More
+            // Tab 6: More
             NavigationView {
                 List {
                     NavigationLink(destination: PathSelectionView()) {

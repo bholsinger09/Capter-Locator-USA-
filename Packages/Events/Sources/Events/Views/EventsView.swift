@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Common
+import AppUI
 
 public struct EventsView: View {
     @StateObject private var viewModel = EventsViewModel()
@@ -13,27 +14,58 @@ public struct EventsView: View {
     
     public var body: some View {
         NavigationView {
-            List {
-                Section(header: Text("Upcoming Events")) {
-                    if viewModel.filteredEvents.isEmpty {
-                        Text("No events scheduled")
-                            .foregroundColor(.secondary)
-                    } else {
-                        ForEach(viewModel.filteredEvents) { event in
-                            NavigationLink(destination: EventDetailView(event: event)) {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(event.title)
-                                        .fontWeight(.semibold)
-                                    Text(event.location)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
+            ZStack {
+                switch viewModel.loadingState {
+                case .idle:
+                    contentView
+                case .loading:
+                    LoadingView(message: "Loading events...")
+                case .success:
+                    contentView
+                case .failure(let error):
+                    ErrorView(
+                        title: "Failed to Load Events",
+                        message: error.errorDescription ?? "Unknown error",
+                        retryAction: {
+                            Task {
+                                await viewModel.loadEvents()
+                            }
+                        }
+                    )
+                }
+            }
+            .navigationTitle("Events")
+            .refreshable {
+                await viewModel.refresh()
+            }
+            .onAppear {
+                Task {
+                    await viewModel.loadEvents()
+                }
+            }
+        }
+    }
+    
+    private var contentView: some View {
+        List {
+            Section(header: Text("Upcoming Events")) {
+                if viewModel.filteredEvents.isEmpty {
+                    Text("No events scheduled")
+                        .foregroundColor(.secondary)
+                } else {
+                    ForEach(viewModel.filteredEvents) { event in
+                        NavigationLink(destination: EventDetailView(event: event)) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(event.title)
+                                    .fontWeight(.semibold)
+                                Text(event.location)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("Events")
         }
     }
 }
@@ -68,6 +100,9 @@ public struct EventDetailView: View {
             .padding()
         }
         .navigationTitle("Event Details")
+        #if os(iOS)
+        .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
     
     private func infoRow(icon: String, label: String, value: String) -> some View {

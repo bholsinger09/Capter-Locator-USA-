@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Common
+import AppUI
 
 public struct ChaptersView: View {
     @StateObject private var viewModel = ChaptersViewModel()
@@ -17,12 +18,75 @@ public struct ChaptersView: View {
     
     public var body: some View {
         NavigationView {
+            ZStack {
+                switch viewModel.loadingState {
+                case .idle:
+                    contentView
+                case .loading:
+                    LoadingView(message: "Loading chapters...")
+                case .success:
+                    contentView
+                case .failure(let error):
+                    ErrorView(
+                        title: "Failed to Load Chapters",
+                        message: error.errorDescription ?? "Unknown error",
+                        retryAction: {
+                            Task {
+                                HapticFeedbackManager.shared.tapFeedback()
+                                await viewModel.loadChapters()
+                            }
+                        }
+                    )
+                }
+            }
+            .navigationTitle("Chapters")
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        HapticFeedbackManager.shared.tapFeedback()
+                        showCreateSheet = true
+                    }) {
+                        Image(systemName: "plus.circle")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if viewModel.favoriteCount > 0 {
+                        Text("\(viewModel.favoriteCount)")
+                            .font(.caption)
+                            .foregroundColor(.red)
+                            .padding(4)
+                            .background(Color.red.opacity(0.1))
+                            .cornerRadius(6)
+                    }
+                }
+            }
+            .sheet(isPresented: $showCreateSheet) {
+                CreateChapterView(chaptersViewModel: viewModel)
+            }
+            .refreshable {
+                await viewModel.refresh()
+                HapticFeedbackManager.shared.successFeedback()
+            }
+            .onAppear {
+                Task {
+                    await viewModel.loadChapters()
+                    await viewModel.loadFavorites()
+                }
+            }
+        }
+    }
+    
+    private var contentView: some View {
+        VStack {
             List {
                 Section(header: Text("Find Your Chapter")) {
                     Picker("State", selection: $viewModel.selectedState) {
                         ForEach(viewModel.stateOptions, id: \.self) { state in
                             Text(state).tag(state)
                         }
+                    }
+                    .onChange(of: viewModel.selectedState) { _ in
+                        viewModel.resetPagination()
                     }
                     
                     HStack {
@@ -33,6 +97,9 @@ public struct ChaptersView: View {
                     .padding(10)
                     .background(Color(red: 0.95, green: 0.95, blue: 0.95))
                     .cornerRadius(10)
+                    .onChange(of: viewModel.searchText) { _ in
+                        viewModel.resetPagination()
+                    }
                 }
                 
                 if viewModel.filteredChapters.isEmpty {
@@ -42,30 +109,79 @@ public struct ChaptersView: View {
                     }
                 } else {
                     Section(header: Text("Chapters (\(viewModel.filteredChapters.count))")) {
-                        ForEach(viewModel.filteredChapters) { chapter in
-                            NavigationLink(destination: ChapterDetailView(chapter: chapter)) {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(chapter.displayName)
-                                        .fontWeight(.semibold)
-                                    Text("\(chapter.memberCount) members")
+                        ForEach(viewModel.paginatedChaptersFromFiltered) { chapter in
+                            ZStack(alignment: .trailing) {
+                                NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel)) {
+                                    HStack(spacing: 12) {
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text(chapter.displayName)
+                                                .fontWeight(.semibold)
+                                            Text("\(chapter.memberCount) members")
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        Spacer()
+                                    }
+                                }
+                                
+                                Button(action: {
+                                    HapticFeedbackManager.shared.tapFeedback()
+                                    viewModel.toggleFavorite(chapter)
+                                }) {
+                                    Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
+                                        .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
+                                        .font(.system(size: 16))
+                                }
+                                .padding(.trailing, 16)
+                            }
+                        }
+                        
+                        if viewModel.hasMoreData {
+                            HStack {
+                                Spacer()
+                                VStack(spacing: 12) {
+                                    if viewModel.loadingState == .loading {
+                                        ProgressView()
+                                    } else {
+                                        Button(action: {
+                                            Task {
+                                                HapticFeedbackManager.shared.mediumTapFeedback()
+                                                await viewModel.loadNextPage()
+                                            }
+                                        }) {
+                                            Text("Load More Chapters")
+                                                .font(.system(size: 14, weight: .semibold))
+                                                .foregroundColor(.white)
+                                                .frame(maxWidth: .infinity)
+                                                .padding(.vertical, 10)
+                                                .background(Color.blue)
+                                                .cornerRadius(8)
+                                        }
+                                    }
+                                    Text("Showing \(viewModel.paginatedChaptersFromFiltered.count + (viewModel.currentPage - 1) * viewModel.itemsPerPage) of \(viewModel.filteredChapters.count) chapters")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
+                                Spacer()
                             }
+                            .padding()
+                        } else if !viewModel.paginatedChaptersFromFiltered.isEmpty {
+                            HStack {
+                                Spacer()
+                                Text("All chapters loaded")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Spacer()
+                            }
+                            .padding()
                         }
                     }
                 }
             }
-            .navigationTitle("Chapters")
-            .toolbar {
-                ToolbarItem(placement: .automatic) {
-                    Button(action: { showCreateSheet = true }) {
-                        Image(systemName: "plus.circle")
-                    }
-                }
-            }
-            .sheet(isPresented: $showCreateSheet) {
-                CreateChapterView(chaptersViewModel: viewModel)
+        }
+        .onAppear {
+            Task {
+                await viewModel.loadFavorites()
             }
         }
     }
@@ -74,23 +190,35 @@ public struct ChaptersView: View {
 // MARK: - Chapter Detail View
 public struct ChapterDetailView: View {
     let chapter: Chapter
+    let viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
     
     public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
-                // Header
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(chapter.displayName)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    HStack {
-                        Image(systemName: "mappin.circle.fill")
-                            .foregroundColor(.blue)
-                        Text("\(chapter.city), \(chapter.state)")
+                // Header with favorite button
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(chapter.displayName)
+                            .font(.title)
+                            .fontWeight(.bold)
+                        
+                        HStack {
+                            Image(systemName: "mappin.circle.fill")
+                                .foregroundColor(.blue)
+                            Text("\(chapter.city), \(chapter.state)")
+                        }
+                        .font(.subheadline)
                     }
-                    .font(.subheadline)
+                    Spacer()
+                    Button(action: {
+                        HapticFeedbackManager.shared.mediumTapFeedback()
+                        viewModel.toggleFavorite(chapter)
+                    }) {
+                        Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
+                            .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
+                            .font(.system(size: 24))
+                    }
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)

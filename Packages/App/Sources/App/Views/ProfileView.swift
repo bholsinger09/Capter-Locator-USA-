@@ -1,4 +1,5 @@
 import SwiftUI
+import AppUI
 
 struct ProfileView: View {
     @State private var userName = "John Doe"
@@ -12,82 +13,47 @@ struct ProfileView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     // Profile Header
-                    VStack(spacing: 16) {
-                        // Profile Picture Circle
-                        Circle()
-                            .fill(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.blue, .purple]),
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                            .frame(width: 100, height: 100)
-                            .overlay(
-                                Image(systemName: "person.fill")
-                                    .font(.system(size: 50))
-                                    .foregroundColor(.white)
-                            )
-                        
-                        Text(userName)
-                            .font(.title2)
-                            .fontWeight(.bold)
-                        
-                        Text(userEmail)
-                            .font(.body)
-                            .foregroundColor(.secondary)
-                    }
-                    .padding(.vertical, 20)
+                    DetailHeaderCard(
+                        title: userName,
+                        subtitle: userEmail,
+                        icon: "person.circle.fill",
+                        iconColor: .blue
+                    )
+                    .padding(.horizontal)
                     
-                    // Profile Details
-                    VStack(spacing: 16) {
-                        ProfileDetailRow(label: "Chapter", value: userChapter)
-                        Divider()
-                        ProfileDetailRow(label: "Member Since", value: joinDate)
-                        Divider()
-                        ProfileDetailRow(label: "Status", value: "Active")
+                    // Profile Details using new component
+                    FormSection(title: "Profile Information") {
+                        VStack(spacing: 12) {
+                            DetailRow(label: "Chapter", value: userChapter, icon: "building.2.fill")
+                            Divider()
+                            DetailRow(label: "Member Since", value: joinDate, icon: "calendar")
+                            Divider()
+                            DetailRow(label: "Status", value: "Active", icon: "checkmark.circle.fill", valueColor: .green)
+                        }
                     }
-                    .padding(16)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(12)
                     .padding(.horizontal)
                     
                     // Edit Profile Button
-                    Button(action: { isEditingProfile = true }) {
-                        Label("Edit Profile", systemImage: "pencil")
-                            .font(.body)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding(12)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                    PrimaryButton("Edit Profile", icon: "pencil") {
+                        isEditingProfile = true
                     }
                     .padding(.horizontal)
                     
-                    // Account Settings
-                    VStack(spacing: 12) {
-                        SectionButton(label: "Change Password", icon: "lock")
-                        Divider()
-                        SectionButton(label: "Notification Settings", icon: "bell")
-                        Divider()
-                        SectionButton(label: "Privacy Settings", icon: "shield")
+                    // Account Settings using new FormSection
+                    FormSection(title: "Account Settings") {
+                        VStack(spacing: 12) {
+                            SettingsLink(label: "Change Password", icon: "lock")
+                            Divider()
+                            SettingsLink(label: "Notification Settings", icon: "bell")
+                            Divider()
+                            SettingsLink(label: "Privacy Settings", icon: "shield")
+                        }
                     }
-                    .padding(16)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(12)
                     .padding(.horizontal)
                     
                     // Logout Button
-                    Button(action: {}) {
-                        Label("Logout", systemImage: "arrowshape.turn.up.left")
-                            .font(.body)
-                            .fontWeight(.semibold)
-                            .frame(maxWidth: .infinity)
-                            .padding(12)
-                            .background(Color.red.opacity(0.8))
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                    DangerButton("Logout", icon: "arrowshape.turn.up.left") {
+                        print("Logout tapped")
                     }
                     .padding(.horizontal)
                     
@@ -103,35 +69,16 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileDetailRow: View {
-    let label: String
-    let value: String
-    
-    var body: some View {
-        HStack {
-            Text(label)
-                .font(.body)
-                .foregroundColor(.secondary)
-            
-            Spacer()
-            
-            Text(value)
-                .font(.body)
-                .fontWeight(.semibold)
-                .foregroundColor(.primary)
-        }
-    }
-}
-
-struct SectionButton: View {
+struct SettingsLink: View {
     let label: String
     let icon: String
     
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.body)
                 .foregroundColor(.blue)
+                .frame(width: 24)
             
             Text(label)
                 .font(.body)

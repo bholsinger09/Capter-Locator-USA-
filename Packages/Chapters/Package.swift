@@ -15,6 +15,7 @@ let package = Package(
     dependencies: [
         .package(path: "../Common"),
         .package(path: "../Authentication"),
+        .package(path: "../AppUI"),
     ],
     targets: [
         .target(
@@ -22,6 +23,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Common", package: "Common"),
                 .product(name: "Authentication", package: "Authentication"),
+                .product(name: "AppUI", package: "AppUI"),
             ],
             path: "Sources/Chapters"
         ),
@@ -32,3 +34,4 @@ let package = Package(
         ),
     ]
 )
+

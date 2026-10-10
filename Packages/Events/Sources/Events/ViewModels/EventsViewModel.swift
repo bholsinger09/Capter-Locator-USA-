@@ -8,12 +8,72 @@ import Common
 import Combine
 
 public class EventsViewModel: ObservableObject {
+    @Published public var loadingState: LoadingState<[Event]> = .idle
     @Published public var events: [Event] = []
     @Published public var selectedDate: Date = Date()
+    @Published public var selectedChapter: String? = nil
     @Published public var searchText: String = ""
     
-    public init() {
-        loadSampleData()
+    private let cacheService: CacheService
+    private let cacheKey = "events_cache"
+    
+    public init(cacheService: CacheService? = nil) {
+        if let cacheService = cacheService {
+            self.cacheService = cacheService
+        } else {
+            self.cacheService = UserDefaultsCacheService()
+        }
+    }
+    
+    // MARK: - Loading Events with LoadingState
+    public func loadEvents() async {
+        await MainActor.run {
+            self.loadingState = .loading
+        }
+        
+        do {
+            // Try to retrieve from cache first
+            if let cached: [Event] = try cacheService.retrieve(
+                key: cacheKey,
+                defaultValue: nil
+            ) {
+                await MainActor.run {
+                    self.events = cached
+                    self.loadingState = .success(cached)
+                }
+                return
+            }
+            
+            // If not in cache, use sample data
+            let events = [
+                Event(
+                    title: "Chapter Kickoff Meeting",
+                    description: "Welcome new members",
+                    eventDate: Date().addingTimeInterval(86400),
+                    location: "Student Center",
+                    organizerName: "John Smith",
+                    capacity: 50
+                )
+            ]
+            
+            try cacheService.save(key: cacheKey, value: events)
+            
+            await MainActor.run {
+                self.events = events
+                self.loadingState = .success(events)
+            }
+        } catch {
+            let appError = error as? AppError ?? .unknown(error.localizedDescription)
+            await MainActor.run {
+                self.loadingState = .failure(appError)
+            }
+        }
+    }
+    
+    // MARK: - Refresh
+    public func refresh() async {
+        cacheService.clear(key: cacheKey)
+        await loadEvents()
     }
     
     public var filteredEvents: [Event] {
@@ -30,15 +90,8 @@ public class EventsViewModel: ObservableObject {
     }
     
     public func loadSampleData() {
-        events = [
-            Event(
-                title: "Chapter Kickoff Meeting",
-                description: "Welcome new members",
-                eventDate: Date().addingTimeInterval(86400),
-                location: "Student Center",
-                organizerName: "John Smith",
-                capacity: 50
-            )
-        ]
+        Task {
+            await loadEvents()
+        }
     }
 }

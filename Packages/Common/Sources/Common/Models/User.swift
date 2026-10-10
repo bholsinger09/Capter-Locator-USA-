@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User: Identifiable, Codable {
+public struct User: Identifiable, Codable, Hashable {
     public var id: UUID = UUID()
     public var email: String
     public var firstName: String
