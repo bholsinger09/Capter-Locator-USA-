@@ -1,0 +1,354 @@
+{
+  "chapters": [
+    {
+      "state": "Arizona",
+      "presidentName": "Ashley Glasgow",
+      "title": "College Deputy Director at Turning Point USA",
+      "contactEmail": "ashley27g@gmail.com",
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "Alabama",
+      "presidentName": "Callie Curtis",
+      "title": "Field Representative",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "Alaska",
+      "presidentName": "Rachel Anderson",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "Arkansas",
+      "presidentName": "Kaylee Ford",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "California",
+      "presidentName": "David Llamas",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/davidcllamas/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bk09Tz8OCSe%2B0HX2KZsmHWw%3D%3D"
+    },
+    {
+      "state": "Colorado",
+      "presidentName": "Vega Stamatien",
+      "title": null,
+      "contactEmail": "vlynstam@gmail.com",
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/vega-stamatien-74456a346/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0EMA5O6hQGaT1WkFZNE33w%3D%3D"
+    },
+    {
+      "state": "Connecticut",
+      "presidentName": "Allegra Maloney",
+      "title": "Northeast Regional Manager",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/allegramaloney/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BB65PtkX2Tc%2BZ1MOytm0m1g%3D%3D"
+    },
+    {
+      "state": "Delaware",
+      "presidentName": "Allegra Maloney",
+      "title": "Northeast Regional Manager",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/allegramaloney/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BB65PtkX2Tc%2BZ1MOytm0m1g%3D%3D"
+    },
+    {
+      "state": "Florida",
+      "presidentName": "Gabrielle Szulc",
+      "title": null,
+      "contactEmail": "gabrielleszulc@gmail.com",
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/gabrielle-szulc/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bu9PFYT%2FVRzKmH2R63cJQLg%3D%3D"
+    },
+    {
+      "state": "Georgia",
+      "presidentName": "Christiana Corley",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/christiana-corley/"
+    },
+    {
+      "state": "Hawaii",
+      "presidentName": "Feel free to choose contact developer and let me know who would be a good contact for that state",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "Idaho",
+      "presidentName": "Kylie Johnson",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/kylie-johnson624/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BpNZA6Jm7SiW%2BMurBFYEQ9Q%3D%3D"
+    },
+    {
+      "state": "Illinois",
+      "presidentName": "Jess Burback",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "https://one.illinois.edu/turningpointusa/home/",
+      "linkedIn": null
+    },
+    {
+      "state": "Indiana",
+      "presidentName": "Nick Cocca",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/nick-cocca-07a1a922a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BCaQKad9%2FRYCG5DgZpe0r9Q%3D%3D"
+    },
+    {
+      "state": "Iowa",
+      "presidentName": "Jordyn Burkey",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/jordyn-burkey/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtD2LC3jhTqeNjO3zTmGnvA%3D%3D"
+    },
+    {
+      "state": "Kansas",
+      "presidentName": "Gavin Caldwell",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/gavincaldwellksu/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BLsr%2BnVglSV27R4ah1vTB9A%3D%3D"
+    },
+    {
+      "state": "Kentucky",
+      "presidentName": "Feel free to choose contact developer and let me know who would be a good contact for that state",
+      "title": null,
+      "contactEmail": "Basa245@uky.edu",
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "https://uky.campuslabs.com/engage/organization/tpusauk",
+      "linkedIn": null
+    },
+    {
+      "state": "Louisiana",
+      "presidentName": "Amanda Eberts",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/amanda-eberts-34a086248/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BKFnHKtQNR8mHoh1JobPw4Q%3D%3D"
+    },
+    {
+      "state": "Maine",
+      "presidentName": "Peter Bernaiche",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "https://tpusasmc.com/contact",
+      "linkedIn": null
+    },
+    {
+      "state": "Maryland",
+      "presidentName": "Lucas Baldwin",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/lucas-baldwin-246770350/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B5wm0VMUIQ%2FyQNdamJTQhJQ%3D%3D"
+    },
+    {
+      "state": "Massachusetts",
+      "presidentName": "Chris Gaffrey",
+      "title": "College Enterprise Director at Turning Point USA",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/christopher-gaffrey-0389a21a5/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bi3zKHegGQXCXlf4qtkb5zA%3D%3D"
+    },
+    {
+      "state": "Michigan",
+      "presidentName": "Collin Ridgway",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "https://www.northwood.edu/student-life/organizations/turning-point-usa/",
+      "linkedIn": null
+    },
+    {
+      "state": "Minnesota",
+      "presidentName": "Chris Gaffrey",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "Mississippi",
+      "presidentName": "Emily Bird McCutchan",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "https://x.com/embirdmccutchan",
+      "linkedIn": null
+    },
+    {
+      "state": "Missouri",
+      "presidentName": "Nate Vass",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/nathanrvass/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BebGuxHuwRLm8KpKDSZ9dVg%3D%3D"
+    },
+    {
+      "state": "Montana",
+      "presidentName": "Kayla C",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/kayla-c-904a1224a/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B56tPrJb9SWq47Jna894uDA%3D%3D"
+    },
+    {
+      "state": "Nebraska",
+      "presidentName": "Ethnie Barnhouse",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/ethnie-barnhouse-516581236/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bpc3U0araSFi2rBv%2FSxRZaA%3D%3D"
+    },
+    {
+      "state": "Nevada",
+      "presidentName": "Emily Bird McCutchan",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "New Hampshire",
+      "presidentName": "Emily Bird McCutchan",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": null
+    },
+    {
+      "state": "New Jersey",
+      "presidentName": "Zachary Vasile",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/zachary-vasile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BoFHz53PMSDWKXIzrgYrBAg%3D%3D"
+    },
+    {
+      "state": "New Mexico",
+      "presidentName": "Shannon Morlock",
+      "title": null,
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/shannon-morlock-724297259/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bo2k5oU%2BaTECxAPiq8Z4Kpg%3D%3D"
+    },
+    {
+      "state": "New York",
+      "presidentName": "Allegra Maloney",
+      "title": "Northeast Regional Manager",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/allegramaloney/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BB65PtkX2Tc%2BZ1MOytm0m1g%3D%3D"
+    },
+    {
+      "state": "Pennsylvania",
+      "presidentName": "Allegra Maloney",
+      "title": "Northeast Regional Manager",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/allegramaloney/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BB65PtkX2Tc%2BZ1MOytm0m1g%3D%3D"
+    },
+    {
+      "state": "Rhode Island",
+      "presidentName": "Allegra Maloney",
+      "title": "Northeast Regional Manager",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/allegramaloney/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BB65PtkX2Tc%2BZ1MOytm0m1g%3D%3D"
+    },
+    {
+      "state": "Vermont",
+      "presidentName": "Allegra Maloney",
+      "title": "Northeast Regional Manager",
+      "contactEmail": null,
+      "phoneNumber": null,
+      "memberCount": 0,
+      "description": "",
+      "linkedIn": "https://www.linkedin.com/in/allegramaloney/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BB65PtkX2Tc%2BZ1MOytm0m1g%3D%3D"
+    }
+  ]
+}

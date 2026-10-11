@@ -25,7 +25,10 @@ let package = Package(
                 .product(name: "Authentication", package: "Authentication"),
                 .product(name: "AppUI", package: "AppUI"),
             ],
-            path: "Sources/Chapters"
+            path: "Sources/Chapters",
+            resources: [
+                .process("Resources/")
+            ]
         ),
         .testTarget(
             name: "ChaptersTests",
