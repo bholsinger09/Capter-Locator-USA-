@@ -124,8 +124,8 @@ public struct LocationAnalyticsView: View {
                     locationManager.requestLocationPermission()
                 }
             }
-            .onChange(of: locationManager.userLocation) { oldValue, newValue in
-                if let location = newValue {
+            .onReceive(locationManager.$userLocation) { location in
+                if let location = location {
                     let chapters = chaptersVM.chapters
                     service.findNearbyChapters(
                         latitude: location.latitude,
