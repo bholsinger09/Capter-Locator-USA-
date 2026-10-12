@@ -8,7 +8,6 @@ struct MembersView: View {
     @StateObject private var chaptersVM = ChaptersViewModel()
     @State private var selectedChapter = "Texas State"
     @State private var chapterMembers: [String] = []
-    @State private var showChapterPicker = false
     @State private var showRemoveConfirmation = false
     
     var body: some View {
@@ -228,21 +227,8 @@ struct MembersView: View {
                 )
                 .padding(.horizontal)
                 
-                // Change Chapter Button
-                Button(action: {
-                    showChapterPicker = true
-                }) {
-                    HStack {
-                        Image(systemName: "plus.circle.fill")
-                        Text("Add Member (Change Chapter)")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue.opacity(0.1))
-                    .foregroundColor(.blue)
-                    .cornerRadius(10)
-                }
-                .padding()
+                // Change Chapter Button - NOW REMOVED, users manage from Chapters tab
+                // This was causing alert conflicts with ChaptersView
                 
                 // Remove Member Button
                 Button(action: {
@@ -292,48 +278,20 @@ struct MembersView: View {
             .padding(.vertical, 16)
         }
         .sheet(isPresented: $showChapterPicker) {
-            print("DEBUG: Chapter picker sheet appeared")
-            return VStack(spacing: 0) {
-                List {
-                    ForEach(chaptersVM.chapters, id: \.id) { chapter in
-                        Button(action: {
-                            print("DEBUG: Chapter selected from Members picker: \(chapter.displayName)")
-                            print("DEBUG: showChapterPicker before = \(showChapterPicker)")
-                            selectedChapter = chapter.displayName
-                            showChapterPicker = false
-                            print("DEBUG: showChapterPicker after = \(showChapterPicker)")
-                        }) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(chapter.displayName)
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                    
-                                    if !chapter.presidentName.isEmpty {
-                                        Text("President: \(chapter.presidentName)")
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                    }
-                                    
-                                    Text("\(chapter.memberCount) members")
-                                        .font(.caption2)
-                                        .foregroundColor(.secondary)
-                                }
-                                
-                                Spacer()
-                                
-                                if chapter.displayName == selectedChapter {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.green)
-                                }
-                            }
-                            .padding(.vertical, 8)
-                        }
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Select Chapter")
+                        .font(.headline)
+                    Spacer()
+                    Button("Done") {
+                        showChapterPicker = false
                     }
                 }
+                .padding()
+                
+                Spacer()
             }
-            .navigationTitle("Select Chapter")
-            .navigationBarTitleDisplayMode(.inline)
+            .padding(.vertical, 16)
         }
     }
 }
