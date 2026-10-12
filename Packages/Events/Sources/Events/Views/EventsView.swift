@@ -105,6 +105,7 @@ public struct AddEventView: View {
     @State private var eventName = ""
     @State private var place = ""
     @State private var details = ""
+    @State private var eventDate = Date()
     @State private var showDetails = false
     
     public var body: some View {
@@ -113,6 +114,10 @@ public struct AddEventView: View {
                 Section(header: Text("Event Information")) {
                     TextField("Event Name", text: $eventName)
                     TextField("Place", text: $place)
+                }
+                
+                Section(header: Text("Date & Time")) {
+                    DatePicker("Select Date & Time", selection: $eventDate, displayedComponents: [.date, .hourAndMinute])
                 }
                 
                 Section {
@@ -154,7 +159,7 @@ public struct AddEventView: View {
         let newEvent = Event(
             title: eventName,
             description: details,
-            eventDate: Date(),
+            eventDate: eventDate,
             location: place,
             organizerName: "",
             capacity: nil
@@ -168,6 +173,7 @@ public struct EventDetailView: View {
     let event: Event
     @ObservedObject var viewModel: EventsViewModel
     @Environment(\.dismiss) var dismiss
+    @State private var showEdit = false
     
     public var body: some View {
         ScrollView {
@@ -177,6 +183,7 @@ public struct EventDetailView: View {
                     .fontWeight(.bold)
                 
                 VStack(alignment: .leading, spacing: 10) {
+                    infoRow(icon: "calendar", label: "Date & Time", value: event.eventDate.formatted(date: .abbreviated, time: .shortened))
                     infoRow(icon: "mappin", label: "Location", value: event.location)
                     if !event.description.isEmpty {
                         infoRow(icon: "doc.text", label: "Details", value: event.description)
@@ -206,6 +213,18 @@ public struct EventDetailView: View {
         #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
         #endif
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: { showEdit = true }) {
+                    Image(systemName: "pencil.circle.fill")
+                        .font(.system(size: 20))
+                        .foregroundColor(.blue)
+                }
+            }
+        }
+        .sheet(isPresented: $showEdit) {
+            EditEventView(event: event, viewModel: viewModel, isPresented: $showEdit)
+        }
     }
     
     private func infoRow(icon: String, label: String, value: String) -> some View {
@@ -218,6 +237,83 @@ public struct EventDetailView: View {
             }
             Spacer()
         }
+    }
+}
+
+public struct EditEventView: View {
+    var event: Event
+    @ObservedObject var viewModel: EventsViewModel
+    @Binding var isPresented: Bool
+    
+    @State private var eventName: String = ""
+    @State private var place: String = ""
+    @State private var details: String = ""
+    @State private var eventDate: Date = Date()
+    @State private var showDetails: Bool = false
+    
+    public var body: some View {
+        NavigationView {
+            Form {
+                Section(header: Text("Event Information")) {
+                    TextField("Event Name", text: $eventName)
+                    TextField("Place", text: $place)
+                }
+                
+                Section(header: Text("Date & Time")) {
+                    DatePicker("Select Date & Time", selection: $eventDate, displayedComponents: [.date, .hourAndMinute])
+                }
+                
+                Section {
+                    Toggle("Add Details", isOn: $showDetails)
+                }
+                
+                if showDetails {
+                    Section(header: Text("Details")) {
+                        TextEditor(text: $details)
+                            .frame(height: 100)
+                    }
+                }
+                
+                Section {
+                    Button(action: updateEvent) {
+                        Text("Save Changes")
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(eventName.isEmpty || place.isEmpty ? Color.gray : Color.blue)
+                            .cornerRadius(8)
+                    }
+                    .disabled(eventName.isEmpty || place.isEmpty)
+                }
+            }
+            .navigationTitle("Edit Event")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel") {
+                        isPresented = false
+                    }
+                }
+            }
+            .onAppear {
+                eventName = event.title
+                place = event.location
+                details = event.description
+                eventDate = event.eventDate
+                showDetails = !event.description.isEmpty
+            }
+        }
+    }
+    
+    private func updateEvent() {
+        viewModel.updateEvent(
+            id: event.id,
+            title: eventName,
+            description: details,
+            location: place,
+            eventDate: eventDate
+        )
+        isPresented = false
     }
 }
 

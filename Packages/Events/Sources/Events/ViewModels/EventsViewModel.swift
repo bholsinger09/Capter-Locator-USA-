@@ -23,6 +23,8 @@ public class EventsViewModel: ObservableObject {
         } else {
             self.cacheService = UserDefaultsCacheService()
         }
+        // Clear any stale cache to start fresh
+        self.cacheService.clear(key: self.cacheKey)
     }
     
     // MARK: - Loading Events with LoadingState
@@ -88,6 +90,22 @@ public class EventsViewModel: ObservableObject {
             try cacheService.save(key: cacheKey, value: events)
         } catch {
             print("Error saving events: \(error)")
+        }
+    }
+    
+    // MARK: - Update Event
+    public func updateEvent(id: UUID, title: String, description: String, location: String, eventDate: Date) {
+        if let index = events.firstIndex(where: { $0.id == id }) {
+            events[index].title = title
+            events[index].description = description
+            events[index].location = location
+            events[index].eventDate = eventDate
+            
+            do {
+                try cacheService.save(key: cacheKey, value: events)
+            } catch {
+                print("Error saving event: \(error)")
+            }
         }
     }
     
