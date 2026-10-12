@@ -1,10 +1,25 @@
 import Foundation
 import CoreLocation
 
+public struct LocationCoordinate: Equatable {
+    public let latitude: Double
+    public let longitude: Double
+    
+    public init(latitude: Double, longitude: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
+    public init(from coordinate: CLLocationCoordinate2D) {
+        self.latitude = coordinate.latitude
+        self.longitude = coordinate.longitude
+    }
+}
+
 public class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     private let manager = CLLocationManager()
     
-    @Published public var userLocation: CLLocationCoordinate2D?
+    @Published public var userLocation: LocationCoordinate?
     @Published public var authorizationStatus: CLAuthorizationStatus = .notDetermined
     @Published public var errorMessage: String?
     
@@ -55,7 +70,7 @@ public class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObj
         guard let location = locations.last else { return }
         
         DispatchQueue.main.async {
-            self.userLocation = location.coordinate
+            self.userLocation = LocationCoordinate(from: location.coordinate)
         }
     }
     

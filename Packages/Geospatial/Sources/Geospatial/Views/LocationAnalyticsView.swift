@@ -126,10 +126,11 @@ public struct LocationAnalyticsView: View {
             }
             .onChange(of: locationManager.userLocation) { oldValue, newValue in
                 if let location = newValue {
+                    let chapters = chaptersVM.chapters
                     service.findNearbyChapters(
                         latitude: location.latitude,
                         longitude: location.longitude,
-                        chapters: chaptersVM.chapters,
+                        chapters: chapters,
                         radiusInMiles: 100
                     )
                 }
