@@ -44,17 +44,8 @@ public class EventsViewModel: ObservableObject {
                 return
             }
             
-            // If not in cache, use sample data
-            let events = [
-                Event(
-                    title: "Chapter Kickoff Meeting",
-                    description: "Welcome new members",
-                    eventDate: Date().addingTimeInterval(86400),
-                    location: "Student Center",
-                    organizerName: "John Smith",
-                    capacity: 50
-                )
-            ]
+            // Start with empty events array
+            let events: [Event] = []
             
             try cacheService.save(key: cacheKey, value: events)
             
@@ -67,6 +58,36 @@ public class EventsViewModel: ObservableObject {
             await MainActor.run {
                 self.loadingState = .failure(appError)
             }
+        }
+    }
+    
+    // MARK: - Add Event
+    public func addEvent(_ event: Event) {
+        var updatedEvents = events
+        updatedEvents.append(event)
+        events = updatedEvents
+        
+        do {
+            try cacheService.save(key: cacheKey, value: events)
+        } catch {
+            print("Error saving event: \(error)")
+        }
+    }
+    
+    // MARK: - Delete Event
+    public func deleteEvents(at indexSet: IndexSet) {
+        let sortedEvents = filteredEvents.sorted { $0.eventDate < $1.eventDate }
+        for index in indexSet {
+            if index < sortedEvents.count {
+                let eventToDelete = sortedEvents[index]
+                events.removeAll { $0.id == eventToDelete.id }
+            }
+        }
+        
+        do {
+            try cacheService.save(key: cacheKey, value: events)
+        } catch {
+            print("Error saving events: \(error)")
         }
     }
     
