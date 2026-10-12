@@ -224,7 +224,7 @@ struct ChapterRowContent: View {
             ChapterRowButton(chapter: chapter, viewModel: viewModel)
         }
         .padding()
-        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+        .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
         .cornerRadius(12)
     }
 }
@@ -295,7 +295,7 @@ struct UniversityRowContent: View {
             UniversityRowButton(university: university, viewModel: viewModel)
         }
         .padding()
-        .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+        .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
         .cornerRadius(12)
     }
 }
