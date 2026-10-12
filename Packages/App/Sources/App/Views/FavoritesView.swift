@@ -184,6 +184,12 @@ struct FavoritesView: View {
                     await universitiesVM.loadFavorites()
                 }
             }
+            .navigationDestination(for: Chapter.self) { chapter in
+                ChapterDetailView(chapter: chapter, viewModel: chaptersVM)
+            }
+            .navigationDestination(for: University.self) { university in
+                UniversityDetailView(university: university, viewModel: universitiesVM)
+            }
         }
     }
 }
@@ -198,14 +204,9 @@ struct FavoriteChapterRow: View {
     let chapter: Chapter
     let viewModel: ChaptersViewModel
     
-    @State private var selectedChapter: Chapter?
-    
     var body: some View {
-        Button(action: { selectedChapter = chapter }) {
+        NavigationLink(value: chapter) {
             ChapterRowContent(chapter: chapter, viewModel: viewModel)
-        }
-        .navigationDestination(item: $selectedChapter) { chapter in
-            ChapterDetailView(chapter: chapter, viewModel: viewModel)
         }
     }
 }
@@ -266,14 +267,9 @@ struct FavoriteUniversityRow: View {
     let university: University
     let viewModel: UniversitiesViewModel
     
-    @State private var selectedUniversity: University?
-    
     var body: some View {
-        Button(action: { selectedUniversity = university }) {
+        NavigationLink(value: university) {
             UniversityRowContent(university: university, viewModel: viewModel)
-        }
-        .navigationDestination(item: $selectedUniversity) { university in
-            UniversityDetailView(university: university, viewModel: viewModel)
         }
     }
 }
