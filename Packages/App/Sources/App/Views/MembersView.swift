@@ -1,9 +1,11 @@
 import SwiftUI
 import Common
 import AppUI
+import Chapters
 
 struct MembersView: View {
     @StateObject private var viewModel = ProfileViewModel()
+    @StateObject private var chaptersVM = ChaptersViewModel()
     @State private var selectedChapter = "Texas State"
     @State private var chapterMembers: [String] = []
     @State private var showChapterPicker = false
@@ -292,30 +294,30 @@ struct MembersView: View {
             NavigationView {
                 VStack(spacing: 0) {
                     List {
-                        ForEach(chapters, id: \.self) { chapter in
-                            Button(action: {
-                                selectedChapter = chapter
-                                showChapterPicker = false
-                            }) {
+                        ForEach(chaptersVM.chapters, id: \.id) { chapter in
+                            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: chaptersVM)) {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 4) {
-                                        Text(chapter)
+                                        Text(chapter.displayName)
                                             .font(.headline)
                                             .foregroundColor(.primary)
+                                        Text("\(chapter.memberCount) members")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
                                     }
                                     
                                     Spacer()
                                     
-                                    if chapter == selectedChapter {
+                                    if chapter.displayName == selectedChapter {
                                         Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(.green)
                                     }
                                 }
                                 .padding(.vertical, 8)
                             }
                         }
                     }
-                    .navigationTitle("Join Chapter")
+                    .navigationTitle("Select Chapter")
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .navigationBarTrailing) {
@@ -326,84 +328,12 @@ struct MembersView: View {
                     }
                 }
             }
+            .onAppear {
+                Task {
+                    await chaptersVM.loadChapters()
+                }
+            }
         }
-    }
-    
-    private var chapters: [String] {
-        [
-            "Arizona State",
-            "Alabama State",
-            "Arkansas State",
-            "Auburn University",
-            "Brigham Young University",
-            "University of California, Berkeley",
-            "Clemson University",
-            "Colorado State",
-            "University of Connecticut",
-            "Cornell University",
-            "Duke University",
-            "University of Florida",
-            "Georgia Tech",
-            "Harvard University",
-            "University of Illinois",
-            "Indiana University",
-            "University of Iowa",
-            "Kansas State",
-            "University of Kansas",
-            "University of Kentucky",
-            "Louisiana State",
-            "University of Maine",
-            "University of Maryland",
-            "MIT",
-            "University of Massachusetts",
-            "University of Michigan",
-            "Michigan State",
-            "University of Minnesota",
-            "Mississippi State",
-            "University of Mississippi",
-            "University of Missouri",
-            "University of Montana",
-            "University of Nebraska",
-            "University of Nevada, Las Vegas",
-            "University of New Hampshire",
-            "University of New Mexico",
-            "New York University",
-            "University of North Carolina",
-            "North Carolina State",
-            "University of North Dakota",
-            "Northwestern University",
-            "Ohio State",
-            "University of Oklahoma",
-            "Oklahoma State",
-            "University of Oregon",
-            "Pennsylvania State",
-            "University of Pennsylvania",
-            "Pepperdine University",
-            "Princeton University",
-            "University of Rhode Island",
-            "Rice University",
-            "Rutgers University",
-            "Stanford University",
-            "Southern Methodist University",
-            "University of South Carolina",
-            "South Dakota State",
-            "University of Tennessee",
-            "Texas A&M",
-            "Texas State",
-            "University of Texas at Austin",
-            "Texas Tech",
-            "University of Toledo",
-            "Tulane University",
-            "University of Utah",
-            "Vanderbilt University",
-            "University of Virginia",
-            "Virginia Tech",
-            "University of Washington",
-            "Washington State",
-            "University of Wisconsin",
-            "University of Wyoming",
-            "Yale University"
-        ]
     }
 }
 
