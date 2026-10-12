@@ -298,12 +298,10 @@ struct MembersView: View {
                     ForEach(chaptersVM.chapters, id: \.id) { chapter in
                         Button(action: {
                             print("DEBUG: Chapter selected from Members picker: \(chapter.displayName)")
-                            print("DEBUG: showJoinAlert before = \(showJoinAlert)")
                             print("DEBUG: showChapterPicker before = \(showChapterPicker)")
                             selectedChapter = chapter.displayName
                             showChapterPicker = false
                             print("DEBUG: showChapterPicker after = \(showChapterPicker)")
-                            print("DEBUG: showJoinAlert after = \(showJoinAlert)")
                         }) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
