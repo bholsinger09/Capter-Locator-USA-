@@ -198,17 +198,14 @@ struct FavoriteChapterRow: View {
     let chapter: Chapter
     let viewModel: ChaptersViewModel
     
-    @State private var isNavigating = false
+    @State private var selectedChapter: Chapter?
     
     var body: some View {
-        ZStack {
-            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel), isActive: $isNavigating) {
-                EmptyView()
-            }
-            
-            Button(action: { isNavigating = true }) {
-                ChapterRowContent(chapter: chapter, viewModel: viewModel)
-            }
+        Button(action: { selectedChapter = chapter }) {
+            ChapterRowContent(chapter: chapter, viewModel: viewModel)
+        }
+        .navigationDestination(item: $selectedChapter) { chapter in
+            ChapterDetailView(chapter: chapter, viewModel: viewModel)
         }
     }
 }
@@ -269,17 +266,14 @@ struct FavoriteUniversityRow: View {
     let university: University
     let viewModel: UniversitiesViewModel
     
-    @State private var isNavigating = false
+    @State private var selectedUniversity: University?
     
     var body: some View {
-        ZStack {
-            NavigationLink(destination: UniversityDetailView(university: university, viewModel: viewModel), isActive: $isNavigating) {
-                EmptyView()
-            }
-            
-            Button(action: { isNavigating = true }) {
-                UniversityRowContent(university: university, viewModel: viewModel)
-            }
+        Button(action: { selectedUniversity = university }) {
+            UniversityRowContent(university: university, viewModel: viewModel)
+        }
+        .navigationDestination(item: $selectedUniversity) { university in
+            UniversityDetailView(university: university, viewModel: viewModel)
         }
     }
 }
