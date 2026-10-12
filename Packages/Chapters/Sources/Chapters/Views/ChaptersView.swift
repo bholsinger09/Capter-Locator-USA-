@@ -122,20 +122,16 @@ public struct ChaptersView: View {
                                         }
                                         Spacer()
                                     }
-                                    .contentShape(Rectangle())
                                 }
-                                .simultaneousGesture(TapGesture().onEnded {})
                                 
-                                Button(action: {
-                                    HapticFeedbackManager.shared.tapFeedback()
-                                    viewModel.toggleFavorite(chapter)
-                                }) {
-                                    Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
-                                        .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
-                                        .font(.system(size: 16))
-                                }
-                                .padding(.trailing, 16)
-                                .zIndex(1)
+                                Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
+                                    .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
+                                    .font(.system(size: 16))
+                                    .padding(.trailing, 16)
+                                    .highPriorityGesture(TapGesture().onEnded {
+                                        HapticFeedbackManager.shared.tapFeedback()
+                                        viewModel.toggleFavorite(chapter)
+                                    })
                             }
                         }
                         
