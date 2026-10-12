@@ -67,8 +67,31 @@ public class ChaptersViewModel: ObservableObject {
                 return
             }
             
-            // If not in cache, use sample data
-            let chapters = ChapterData.sampleChapters
+            // Load sample data and merge with JSON contact info
+            var chapters = ChapterData.sampleChapters
+            let jsonContacts = ChaptersDataLoader.shared.loadChaptersData()
+            
+            // Merge JSON data with chapters
+            chapters = chapters.map { chapter in
+                var updatedChapter = chapter
+                if let contactInfo = jsonContacts.first(where: { $0.state.lowercased() == chapter.state.lowercased() }) {
+                    updatedChapter.presidentName = contactInfo.presidentName
+                    if let email = contactInfo.contactEmail {
+                        updatedChapter.contactEmail = email
+                    }
+                    if let phone = contactInfo.phoneNumber {
+                        updatedChapter.phoneNumber = phone
+                    }
+                    if let description = contactInfo.description, !description.isEmpty {
+                        updatedChapter.description = description
+                    }
+                    if let memberCount = contactInfo.memberCount {
+                        updatedChapter.memberCount = memberCount
+                    }
+                }
+                return updatedChapter
+            }
+            
             try cacheService.save(key: cacheKey, value: chapters)
             
             await MainActor.run {
