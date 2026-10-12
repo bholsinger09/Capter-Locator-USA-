@@ -125,21 +125,19 @@ public struct ChaptersView: View {
                 } else {
                     Section(header: Text("Chapters (\(viewModel.filteredChapters.count))")) {
                         ForEach(viewModel.paginatedChaptersFromFiltered) { chapter in
-                            ZStack(alignment: .trailing) {
-                                NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel)) {
-                                    HStack(spacing: 12) {
-                                        VStack(alignment: .leading, spacing: 4) {
-                                            Text(chapter.displayName)
-                                                .fontWeight(.semibold)
-                                            Text("\(chapter.memberCount) members")
-                                                .font(.caption)
-                                                .foregroundColor(.secondary)
-                                        }
-                                        Spacer()
-                                    }
-                                }
-                                
+                            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel)) {
                                 HStack(spacing: 12) {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(chapter.displayName)
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.primary)
+                                        Text("\(chapter.memberCount) members")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    Spacer()
+                                    
                                     // Join/Leave Button
                                     Button(action: {
                                         HapticFeedbackManager.shared.tapFeedback()
@@ -163,7 +161,6 @@ public struct ChaptersView: View {
                                             viewModel.toggleFavorite(chapter)
                                         })
                                 }
-                                .padding(.trailing, 16)
                             }
                         }
                         
