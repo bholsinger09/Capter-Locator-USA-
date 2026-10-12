@@ -124,15 +124,16 @@ public struct LocationAnalyticsView: View {
                     locationManager.requestLocationPermission()
                 }
             }
-            .onReceive(locationManager.$userLocation) { location in
+            .onReceive(locationManager.$userLocation) { [chaptersVM, service] location in
                 if let location = location {
-                    let chapters = chaptersVM.chapters
-                    service.findNearbyChapters(
-                        latitude: location.latitude,
-                        longitude: location.longitude,
-                        chapters: chapters,
-                        radiusInMiles: 100
-                    )
+                    DispatchQueue.main.async {
+                        service.findNearbyChapters(
+                            latitude: location.latitude,
+                            longitude: location.longitude,
+                            chapters: chaptersVM.chapters,
+                            radiusInMiles: 100
+                        )
+                    }
                 }
             }
         }
