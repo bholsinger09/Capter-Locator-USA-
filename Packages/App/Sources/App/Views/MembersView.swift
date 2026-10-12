@@ -277,22 +277,6 @@ struct MembersView: View {
             }
             .padding(.vertical, 16)
         }
-        .sheet(isPresented: $showChapterPicker) {
-            VStack(spacing: 0) {
-                HStack {
-                    Text("Select Chapter")
-                        .font(.headline)
-                    Spacer()
-                    Button("Done") {
-                        showChapterPicker = false
-                    }
-                }
-                .padding()
-                
-                Spacer()
-            }
-            .padding(.vertical, 16)
-        }
     }
 }
 
