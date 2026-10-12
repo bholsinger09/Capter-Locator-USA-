@@ -6,9 +6,9 @@ import Chapters
 struct MembersView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @StateObject private var chaptersVM = ChaptersViewModel()
-    @State private var selectedChapter = "Texas State"
-    @State private var chapterMembers: [String] = []
+    @EnvironmentObject var membershipManager: MembershipManager
     @State private var showRemoveConfirmation = false
+    @State private var chapterToRemove = ""
     
     var body: some View {
         NavigationView {
@@ -116,106 +116,81 @@ struct MembersView: View {
                     
                     // Membership Info with high contrast - all on dark background
                     VStack(alignment: .leading, spacing: 0) {
-                        Text("Your Membership")
+                        Text("Your Chapters")
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding(16)
                         
-                        VStack(spacing: 0) {
-                            // Email
-                            HStack(spacing: 12) {
-                                VStack(alignment: .center) {
-                                    Image(systemName: "envelope.fill")
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.white)
-                                }
-                                .frame(width: 40, height: 40)
-                                .background(Color.blue)
-                                .cornerRadius(8)
+                        if membershipManager.memberChapters.isEmpty {
+                            VStack(alignment: .center, spacing: 12) {
+                                Image(systemName: "building.2")
+                                    .font(.system(size: 32))
+                                    .foregroundColor(.gray)
                                 
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("Email")
-                                        .font(.caption2)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.gray)
-                                        .textCase(.uppercase)
-                                    
-                                    Text(user.email)
-                                        .font(.system(.body, design: .default))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                        .lineLimit(2)
-                                }
+                                Text("No chapters joined yet")
+                                    .font(.system(.body, design: .default))
+                                    .foregroundColor(.gray)
                                 
-                                Spacer()
+                                Text("Go to the Chapters tab and tap + to join")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
                             }
-                            .padding(16)
-                            
-                            Divider()
-                                .padding(.horizontal, 16)
-                            
-                            // Chapter
-                            HStack(spacing: 12) {
-                                VStack(alignment: .center) {
-                                    Image(systemName: "building.2.fill")
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(20)
+                            .background(Color(UIColor.systemGray5))
+                        } else {
+                            VStack(spacing: 0) {
+                                ForEach(Array(membershipManager.memberChapters).sorted(), id: \.self) { chapter in
+                                    VStack(spacing: 0) {
+                                        HStack(spacing: 12) {
+                                            VStack(alignment: .center) {
+                                                Image(systemName: "building.2.fill")
+                                                    .font(.system(size: 16))
+                                                    .foregroundColor(.white)
+                                            }
+                                            .frame(width: 40, height: 40)
+                                            .background(Color.blue)
+                                            .cornerRadius(8)
+                                            
+                                            VStack(alignment: .leading, spacing: 2) {
+                                                Text("Chapter")
+                                                    .font(.caption2)
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(.gray)
+                                                    .textCase(.uppercase)
+                                                
+                                                Text(chapter)
+                                                    .font(.system(.body, design: .default))
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(.white)
+                                                    .lineLimit(2)
+                                            }
+                                            
+                                            Spacer()
+                                            
+                                            // Remove button for each chapter
+                                            Button(action: {
+                                                chapterToRemove = chapter
+                                                showRemoveConfirmation = true
+                                            }) {
+                                                Image(systemName: "xmark.circle.fill")
+                                                    .foregroundColor(.red)
+                                                    .font(.system(size: 20))
+                                            }
+                                        }
+                                        .padding(16)
+                                        
+                                        if chapter != membershipManager.memberChapters.sorted().last {
+                                            Divider()
+                                                .padding(.horizontal, 16)
+                                        }
+                                    }
                                 }
-                                .frame(width: 40, height: 40)
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                                
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("Chapter")
-                                        .font(.caption2)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.gray)
-                                        .textCase(.uppercase)
-                                    
-                                    Text(selectedChapter)
-                                        .font(.system(.body, design: .default))
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                        .lineLimit(2)
-                                }
-                                
-                                Spacer()
                             }
-                            .padding(16)
-                            
-                            Divider()
-                                .padding(.horizontal, 16)
-                            
-                            // Status
-                            HStack(spacing: 12) {
-                                VStack(alignment: .center) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .font(.system(size: 16))
-                                        .foregroundColor(.white)
-                                }
-                                .frame(width: 40, height: 40)
-                                .background(Color.green)
-                                .cornerRadius(8)
-                                
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("Status")
-                                        .font(.caption2)
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.gray)
-                                        .textCase(.uppercase)
-                                    
-                                    Text("Active")
-                                        .font(.system(.body, design: .default))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.green)
-                                }
-                                
-                                Spacer()
-                            }
-                            .padding(16)
+                            .background(Color(UIColor.systemGray5))
                         }
-                        .background(Color(UIColor.systemGray5))
                     }
                     .background(Color(UIColor.systemGray5))
                 }
@@ -227,32 +202,14 @@ struct MembersView: View {
                 )
                 .padding(.horizontal)
                 
-                // Change Chapter Button - NOW REMOVED, users manage from Chapters tab
-                // This was causing alert conflicts with ChaptersView
-                
-                // Remove Member Button
-                Button(action: {
-                    showRemoveConfirmation = true
-                }) {
-                    HStack {
-                        Image(systemName: "xmark.circle.fill")
-                        Text("Remove Member")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.orange.opacity(0.1))
-                    .foregroundColor(.orange)
-                    .cornerRadius(10)
-                }
-                .padding(.horizontal)
-                .padding(.bottom)
-                .alert("Remove Membership", isPresented: $showRemoveConfirmation) {
+                // Manage chapters from the chapter list - remove buttons in each chapter card
+                .alert("Remove Chapter", isPresented: $showRemoveConfirmation) {
                     Button("Cancel", role: .cancel) { }
                     Button("Remove", role: .destructive) {
-                        selectedChapter = ""
+                        membershipManager.leaveChapter(chapterToRemove)
                     }
                 } message: {
-                    Text("Are you sure you want to remove your membership from \(selectedChapter)?")
+                    Text("Are you sure you want to remove your membership from \(chapterToRemove)?")
                 }
                 
                 // Logout Button

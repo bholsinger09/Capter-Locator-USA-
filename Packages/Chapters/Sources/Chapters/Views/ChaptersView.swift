@@ -13,7 +13,7 @@ public struct ChaptersView: View {
     @StateObject private var viewModel = ChaptersViewModel()
     @State private var selectedChapter: Chapter?
     @State private var showCreateSheet = false
-    @State private var memberChapters: Set<String> = ["Arizona State University", "Texas State"]
+    @EnvironmentObject var membershipManager: MembershipManager
     @State private var showJoinAlert = false
     @State private var chapterToJoin: Chapter?
     
@@ -70,7 +70,7 @@ public struct ChaptersView: View {
                 Button("Cancel", role: .cancel) { }
                 Button("Join") {
                     if let chapter = chapterToJoin {
-                        memberChapters.insert(chapter.displayName)
+                        membershipManager.joinChapter(chapter.displayName)
                     }
                 }
             } message: {
@@ -125,13 +125,13 @@ public struct ChaptersView: View {
                 } else {
                     Section(header: Text("Chapters (\(viewModel.filteredChapters.count))")) {
                         ForEach(viewModel.paginatedChaptersFromFiltered) { chapter in
-                            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel)) {
+                            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel).environmentObject(membershipManager)) {
                                 HStack(spacing: 12) {
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text(chapter.displayName)
                                             .fontWeight(.semibold)
                                             .foregroundColor(.primary)
-                                        Text("\(chapter.memberCount) members")
+                                        Text("\(membershipManager.getAppMemberCount(for: chapter.displayName)) members")
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                     }
@@ -139,13 +139,13 @@ public struct ChaptersView: View {
                                     Spacer()
                                     
                                     // Join/Leave Button
-                                    Image(systemName: memberChapters.contains(chapter.displayName) ? "checkmark.circle.fill" : "plus.circle")
-                                        .foregroundColor(memberChapters.contains(chapter.displayName) ? .green : .blue)
+                                    Image(systemName: membershipManager.isMember(of: chapter.displayName) ? "checkmark.circle.fill" : "plus.circle")
+                                        .foregroundColor(membershipManager.isMember(of: chapter.displayName) ? .green : .blue)
                                         .font(.system(size: 18))
                                         .simultaneousGesture(TapGesture().onEnded {
                                             HapticFeedbackManager.shared.tapFeedback()
-                                            if memberChapters.contains(chapter.displayName) {
-                                                memberChapters.remove(chapter.displayName)
+                                            if membershipManager.isMember(of: chapter.displayName) {
+                                                membershipManager.leaveChapter(chapter.displayName)
                                             } else {
                                                 chapterToJoin = chapter
                                                 showJoinAlert = true
@@ -219,6 +219,8 @@ public struct ChapterDetailView: View {
     public let chapter: Chapter
     public let viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var membershipManager: MembershipManager
+    @State private var showJoinAlert = false
     
     public init(chapter: Chapter, viewModel: ChaptersViewModel) {
         self.chapter = chapter
@@ -231,12 +233,20 @@ public struct ChapterDetailView: View {
             
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
-                // Header with favorite button
+                // Header with favorite button and membership status
                 HStack(alignment: .top) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(chapter.displayName)
-                            .font(.title)
-                            .fontWeight(.bold)
+                        HStack(spacing: 8) {
+                            Text(chapter.displayName)
+                                .font(.title)
+                                .fontWeight(.bold)
+                            
+                            if membershipManager.isMember(of: chapter.displayName) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(.green)
+                            }
+                        }
                         
                         HStack {
                             Image(systemName: "mappin.circle.fill")
@@ -264,7 +274,7 @@ public struct ChapterDetailView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     infoRow(icon: "person.fill", label: "President", value: chapter.presidentName)
                     infoRow(icon: "envelope.fill", label: "Email", value: chapter.contactEmail)
-                    infoRow(icon: "person.2.fill", label: "Members", value: "\(chapter.memberCount)")
+                    infoRow(icon: "person.2.fill", label: "Members", value: "\(membershipManager.getAppMemberCount(for: chapter.displayName))")
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -283,6 +293,35 @@ public struct ChapterDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.darkGray : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
                     .cornerRadius(12)
+                }
+                
+                // Join/Leave Button
+                Button(action: {
+                    HapticFeedbackManager.shared.tapFeedback()
+                    if membershipManager.isMember(of: chapter.displayName) {
+                        membershipManager.leaveChapter(chapter.displayName)
+                    } else {
+                        showJoinAlert = true
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: membershipManager.isMember(of: chapter.displayName) ? "checkmark.circle.fill" : "plus.circle.fill")
+                        Text(membershipManager.isMember(of: chapter.displayName) ? "Leave Chapter" : "Join Chapter")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(12)
+                    .background(membershipManager.isMember(of: chapter.displayName) ? Color.red.opacity(0.1) : Color.blue.opacity(0.1))
+                    .foregroundColor(membershipManager.isMember(of: chapter.displayName) ? .red : .blue)
+                    .cornerRadius(8)
+                }
+                .padding()
+                .alert("Join Chapter", isPresented: $showJoinAlert) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Join") {
+                        membershipManager.joinChapter(chapter.displayName)
+                    }
+                } message: {
+                    Text("Join \(chapter.displayName) as a member?")
                 }
                 
                 Spacer()

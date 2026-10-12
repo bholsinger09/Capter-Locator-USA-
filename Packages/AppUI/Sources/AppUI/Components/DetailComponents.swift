@@ -90,7 +90,7 @@ public struct DetailHeaderCard: View {
             }
         }
         .padding(16)
-        .background(Color.white)
+        .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)

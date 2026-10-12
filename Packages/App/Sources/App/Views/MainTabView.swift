@@ -1,6 +1,7 @@
 import SwiftUI
 import Chapters
 import Events
+import Blogs
 import Geospatial
 import Advocacy
 
@@ -9,6 +10,8 @@ import UIKit
 #endif
 
 public struct MainTabView: View {
+    @StateObject private var membershipManager = MembershipManager()
+    
     public init() {
         #if os(iOS)
         let appearance = UITabBarAppearance()
@@ -41,6 +44,7 @@ public struct MainTabView: View {
             
             // Tab 2: Chapters
             ChaptersView()
+                .environmentObject(membershipManager)
                 .tabItem {
                     Label("Chapters", systemImage: "building.2.fill")
                 }
@@ -51,7 +55,13 @@ public struct MainTabView: View {
                     Label("Events", systemImage: "calendar.badge.clock")
                 }
             
-            // Tab 4: Nearby (Geospatial)
+            // Tab 4: Blogs
+            BlogsView()
+                .tabItem {
+                    Label("Blogs", systemImage: "book.fill")
+                }
+            
+            // Tab 5: Nearby (Geospatial)
             LocationAnalyticsView()
                 .tabItem {
                     Label("Nearby", systemImage: "location.fill")
@@ -76,7 +86,8 @@ public struct MainTabView: View {
                         Label("Universities", systemImage: "graduationcap.fill")
                     }
                     
-                    NavigationLink(destination: MembersView()) {
+                    NavigationLink(destination: MembersView()
+                        .environmentObject(membershipManager)) {
                         Label("Members", systemImage: "person.3.fill")
                     }
                     
