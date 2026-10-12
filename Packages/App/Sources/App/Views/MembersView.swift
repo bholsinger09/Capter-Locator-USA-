@@ -40,6 +40,7 @@ struct MembersView: View {
             .onAppear {
                 Task {
                     await viewModel.loadProfile()
+                    await chaptersVM.loadChapters()
                 }
             }
         }
@@ -291,48 +292,44 @@ struct MembersView: View {
             .padding(.vertical, 16)
         }
         .sheet(isPresented: $showChapterPicker) {
-            NavigationView {
-                VStack(spacing: 0) {
-                    List {
-                        ForEach(chaptersVM.chapters, id: \.id) { chapter in
-                            NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: chaptersVM)) {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text(chapter.displayName)
-                                            .font(.headline)
-                                            .foregroundColor(.primary)
-                                        Text("\(chapter.memberCount) members")
+            VStack(spacing: 0) {
+                List {
+                    ForEach(chaptersVM.chapters, id: \.id) { chapter in
+                        Button(action: {
+                            selectedChapter = chapter.displayName
+                            showChapterPicker = false
+                        }) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(chapter.displayName)
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                    
+                                    if let president = chapter.president, !president.isEmpty {
+                                        Text("President: \(president)")
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                     }
                                     
-                                    Spacer()
-                                    
-                                    if chapter.displayName == selectedChapter {
-                                        Image(systemName: "checkmark.circle.fill")
-                                            .foregroundColor(.green)
-                                    }
+                                    Text("\(chapter.memberCount) members")
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
                                 }
-                                .padding(.vertical, 8)
+                                
+                                Spacer()
+                                
+                                if chapter.displayName == selectedChapter {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.green)
+                                }
                             }
-                        }
-                    }
-                    .navigationTitle("Select Chapter")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button("Done") {
-                                showChapterPicker = false
-                            }
+                            .padding(.vertical, 8)
                         }
                     }
                 }
             }
-            .onAppear {
-                Task {
-                    await chaptersVM.loadChapters()
-                }
-            }
+            .navigationTitle("Select Chapter")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
