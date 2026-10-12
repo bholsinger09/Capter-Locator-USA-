@@ -305,8 +305,8 @@ struct MembersView: View {
                                         .font(.headline)
                                         .foregroundColor(.primary)
                                     
-                                    if let president = chapter.president, !president.isEmpty {
-                                        Text("President: \(president)")
+                                    if !chapter.presidentName.isEmpty {
+                                        Text("President: \(chapter.presidentName)")
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                     }
