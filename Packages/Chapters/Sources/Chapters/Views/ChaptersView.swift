@@ -139,19 +139,18 @@ public struct ChaptersView: View {
                                     Spacer()
                                     
                                     // Join/Leave Button
-                                    Button(action: {
-                                        HapticFeedbackManager.shared.tapFeedback()
-                                        if memberChapters.contains(chapter.displayName) {
-                                            memberChapters.remove(chapter.displayName)
-                                        } else {
-                                            chapterToJoin = chapter
-                                            showJoinAlert = true
-                                        }
-                                    }) {
-                                        Image(systemName: memberChapters.contains(chapter.displayName) ? "checkmark.circle.fill" : "plus.circle")
-                                            .foregroundColor(memberChapters.contains(chapter.displayName) ? .green : .blue)
-                                            .font(.system(size: 18))
-                                    }
+                                    Image(systemName: memberChapters.contains(chapter.displayName) ? "checkmark.circle.fill" : "plus.circle")
+                                        .foregroundColor(memberChapters.contains(chapter.displayName) ? .green : .blue)
+                                        .font(.system(size: 18))
+                                        .simultaneousGesture(TapGesture().onEnded {
+                                            HapticFeedbackManager.shared.tapFeedback()
+                                            if memberChapters.contains(chapter.displayName) {
+                                                memberChapters.remove(chapter.displayName)
+                                            } else {
+                                                chapterToJoin = chapter
+                                                showJoinAlert = true
+                                            }
+                                        })
                                     
                                     Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
                                         .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
