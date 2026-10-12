@@ -405,7 +405,6 @@ struct MembersView: View {
             "Yale University"
         ]
     }
-    }
 }
 
 
