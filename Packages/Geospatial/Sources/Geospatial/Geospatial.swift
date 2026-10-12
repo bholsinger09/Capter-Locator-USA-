@@ -10,4 +10,8 @@ private struct GeospatialDebug {
     }()
 }
 
-// Placeholder for package compilation
+public protocol GeospatialProvider {
+    var userLocation: CLLocationCoordinate2D? { get }
+    func findNearbyChapters(latitude: Double, longitude: Double, chapters: [Chapter], radiusInMiles: Double)
+}
+

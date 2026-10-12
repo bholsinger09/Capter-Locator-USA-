@@ -11,8 +11,7 @@ import Common
 public struct LocationAnalyticsView: View {
     @StateObject private var service = GeospatialService()
     @StateObject private var chaptersVM = ChaptersViewModel()
-    @State private var locationManager = CLLocationManager()
-    @State private var hasRequestedPermission = false
+    @StateObject private var locationManager = LocationManager()
     
     public init() {}
     
@@ -21,7 +20,7 @@ public struct LocationAnalyticsView: View {
             ZStack {
                 List {
                     Section(header: Text("Your Location")) {
-                        if let location = service.userLocation {
+                        if let location = locationManager.userLocation {
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
                                     Image(systemName: "location.circle.fill")
@@ -52,7 +51,9 @@ public struct LocationAnalyticsView: View {
                                             .font(.caption)
                                     }
                                 }
-                                Button(action: requestLocationPermission) {
+                                Button(action: {
+                                    locationManager.requestLocationPermission()
+                                }) {
                                     Text("Enable Location")
                                         .frame(maxWidth: .infinity)
                                         .foregroundColor(.white)
@@ -120,40 +121,19 @@ public struct LocationAnalyticsView: View {
             .onAppear {
                 Task {
                     await chaptersVM.loadChapters()
-                    requestLocationPermission()
+                    locationManager.requestLocationPermission()
                 }
             }
-        }
-        .onReceive(service.$userLocation) { location in
-            if let location = location {
-                service.findNearbyChapters(
-                    latitude: location.latitude,
-                    longitude: location.longitude,
-                    chapters: chaptersVM.chapters,
-                    radiusInMiles: 100
-                )
-            }
-        }
-    }
-    
-    private func requestLocationPermission() {
-        if !hasRequestedPermission {
-            hasRequestedPermission = true
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if let location = locationManager.location {
-                    service.updateUserLocation(
-                        latitude: location.coordinate.latitude,
-                        longitude: location.coordinate.longitude
+            .onChange(of: locationManager.userLocation) { oldValue, newValue in
+                if let location = newValue {
+                    service.findNearbyChapters(
+                        latitude: location.latitude,
+                        longitude: location.longitude,
+                        chapters: chaptersVM.chapters,
+                        radiusInMiles: 100
                     )
                 }
             }
         }
     }
-}
-
-#Preview {
-    LocationAnalyticsView()
 }
