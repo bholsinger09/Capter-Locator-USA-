@@ -113,81 +113,111 @@ struct MembersView: View {
                     Divider()
                         .padding(.vertical, 0)
                     
-                    // Membership Info with improved readability
+                    // Membership Info with high contrast
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Your Membership")
                             .font(.headline)
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
-                            .padding(.top, 16)
+                            .padding(16)
+                            .padding(.bottom, 0)
                         
-                        VStack(spacing: 14) {
+                        VStack(spacing: 0) {
                             // Email
-                            VStack(alignment: .leading, spacing: 4) {
-                                HStack(spacing: 8) {
+                            HStack(spacing: 12) {
+                                VStack(alignment: .center) {
                                     Image(systemName: "envelope.fill")
-                                        .font(.body)
-                                        .foregroundColor(.blue)
-                                        .frame(width: 20)
-                                    
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 40, height: 40)
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                                
+                                VStack(alignment: .leading, spacing: 2) {
                                     Text("Email")
-                                        .font(.caption)
+                                        .font(.caption2)
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.gray)
+                                        .textCase(.uppercase)
+                                    
+                                    Text(user.email)
+                                        .font(.system(.body, design: .default))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.primary)
+                                        .lineLimit(2)
                                 }
                                 
-                                Text(user.email)
-                                    .font(.body)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.primary)
-                                    .lineLimit(1)
+                                Spacer()
                             }
+                            .padding(16)
+                            .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
                             
                             Divider()
+                                .padding(.horizontal, 16)
                             
                             // Chapter
-                            VStack(alignment: .leading, spacing: 4) {
-                                HStack(spacing: 8) {
+                            HStack(spacing: 12) {
+                                VStack(alignment: .center) {
                                     Image(systemName: "building.2.fill")
-                                        .font(.body)
-                                        .foregroundColor(.blue)
-                                        .frame(width: 20)
-                                    
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 40, height: 40)
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                                
+                                VStack(alignment: .leading, spacing: 2) {
                                     Text("Chapter")
-                                        .font(.caption)
+                                        .font(.caption2)
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.gray)
+                                        .textCase(.uppercase)
+                                    
+                                    Text(selectedChapter)
+                                        .font(.system(.body, design: .default))
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.primary)
+                                        .lineLimit(2)
                                 }
                                 
-                                Text(selectedChapter)
-                                    .font(.body)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.primary)
+                                Spacer()
                             }
+                            .padding(16)
+                            .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
                             
                             Divider()
+                                .padding(.horizontal, 16)
                             
                             // Status
-                            VStack(alignment: .leading, spacing: 4) {
-                                HStack(spacing: 8) {
+                            HStack(spacing: 12) {
+                                VStack(alignment: .center) {
                                     Image(systemName: "checkmark.circle.fill")
-                                        .font(.body)
-                                        .foregroundColor(.green)
-                                        .frame(width: 20)
-                                    
+                                        .font(.system(size: 16))
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 40, height: 40)
+                                .background(Color.green)
+                                .cornerRadius(8)
+                                
+                                VStack(alignment: .leading, spacing: 2) {
                                     Text("Status")
-                                        .font(.caption)
+                                        .font(.caption2)
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.secondary)
+                                        .foregroundColor(.gray)
+                                        .textCase(.uppercase)
+                                    
+                                    Text("Active")
+                                        .font(.system(.body, design: .default))
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.green)
                                 }
                                 
-                                Text("Active")
-                                    .font(.body)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.green)
+                                Spacer()
                             }
+                            .padding(16)
+                            .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
                         }
-                        .padding(16)
                     }
                 }
                 .background(Color.white)
