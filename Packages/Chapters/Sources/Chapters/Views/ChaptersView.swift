@@ -95,7 +95,7 @@ public struct ChaptersView: View {
                         TextField("Search chapters...", text: $viewModel.searchText)
                     }
                     .padding(10)
-                    .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                    .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.darkGray : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
                     .cornerRadius(10)
                     .onChange(of: viewModel.searchText) { _ in
                         viewModel.resetPagination()
@@ -199,7 +199,7 @@ public struct ChapterDetailView: View {
     
     public var body: some View {
         ZStack {
-            Color(red: 1, green: 1, blue: 1).ignoresSafeArea()
+            Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.black : UIColor.white }).ignoresSafeArea()
             
         ScrollView {
             VStack(alignment: .leading, spacing: 15) {
@@ -229,7 +229,7 @@ public struct ChapterDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.darkGray : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
                 .cornerRadius(12)
                 
                 // Info
@@ -240,7 +240,7 @@ public struct ChapterDetailView: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.darkGray : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
                 .cornerRadius(12)
                 
                 // Description
@@ -248,14 +248,12 @@ public struct ChapterDetailView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("About")
                             .font(.headline)
-                            .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                         Text(chapter.description)
                             .font(.caption)
-                            .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
                     }
                     .padding()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                    .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.darkGray : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
                     .cornerRadius(12)
                 }
                 
