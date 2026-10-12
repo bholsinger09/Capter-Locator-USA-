@@ -79,9 +79,6 @@ public class ChaptersViewModel: ObservableObject {
                     if let email = contactInfo.contactEmail {
                         updatedChapter.contactEmail = email
                     }
-                    if let phone = contactInfo.phoneNumber {
-                        updatedChapter.phoneNumber = phone
-                    }
                     if let description = contactInfo.description, !description.isEmpty {
                         updatedChapter.description = description
                     }

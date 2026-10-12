@@ -15,7 +15,6 @@ public class CreateChapterViewModel: ObservableObject {
     @Published public var university: String = ""
     @Published public var presidentName: String = ""
     @Published public var contactEmail: String = ""
-    @Published public var phoneNumber: String = ""
     @Published public var description: String = ""
     @Published public var meetingLocation: String = ""
     @Published public var meetingSchedule: String = ""
@@ -44,7 +43,6 @@ public class CreateChapterViewModel: ObservableObject {
             university: university.isEmpty ? nil : university,
             presidentName: presidentName,
             contactEmail: contactEmail,
-            phoneNumber: phoneNumber.isEmpty ? nil : phoneNumber,
             description: description,
             memberCount: 1,
             meetingLocation: meetingLocation.isEmpty ? nil : meetingLocation,
@@ -62,7 +60,6 @@ public class CreateChapterViewModel: ObservableObject {
         university = ""
         presidentName = ""
         contactEmail = ""
-        phoneNumber = ""
         description = ""
         meetingLocation = ""
         meetingSchedule = ""

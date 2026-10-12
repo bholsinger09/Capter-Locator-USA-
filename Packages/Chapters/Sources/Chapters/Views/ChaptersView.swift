@@ -237,9 +237,6 @@ public struct ChapterDetailView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     infoRow(icon: "person.fill", label: "President", value: chapter.presidentName)
                     infoRow(icon: "envelope.fill", label: "Email", value: chapter.contactEmail)
-                    if let phone = chapter.phoneNumber {
-                        infoRow(icon: "phone.fill", label: "Phone", value: phone)
-                    }
                     infoRow(icon: "person.2.fill", label: "Members", value: "\(chapter.memberCount)")
                 }
                 .padding()
@@ -315,7 +312,6 @@ public struct CreateChapterView: View {
                 Section(header: Text("Leadership")) {
                     TextField("President Name", text: $viewModel.presidentName)
                     TextField("Contact Email", text: $viewModel.contactEmail)
-                    TextField("Phone Number (Optional)", text: $viewModel.phoneNumber)
                 }
                 
                 Section(header: Text("Details")) {

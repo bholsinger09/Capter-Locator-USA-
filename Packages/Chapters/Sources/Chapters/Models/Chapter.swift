@@ -15,7 +15,6 @@ public struct Chapter: Identifiable, Codable, Hashable {
     public var university: String?
     public var presidentName: String
     public var contactEmail: String
-    public var phoneNumber: String?
     public var description: String
     public var memberCount: Int
     public var meetingLocation: String?
@@ -43,7 +42,6 @@ public struct Chapter: Identifiable, Codable, Hashable {
         university: String? = nil,
         presidentName: String,
         contactEmail: String,
-        phoneNumber: String? = nil,
         description: String,
         memberCount: Int,
         meetingLocation: String? = nil,
@@ -62,7 +60,6 @@ public struct Chapter: Identifiable, Codable, Hashable {
         self.university = university
         self.presidentName = presidentName
         self.contactEmail = contactEmail
-        self.phoneNumber = phoneNumber
         self.description = description
         self.memberCount = memberCount
         self.meetingLocation = meetingLocation

@@ -5,7 +5,6 @@ struct ChapterContactInfo: Codable {
     let presidentName: String
     let title: String?
     let contactEmail: String?
-    let phoneNumber: String?
     let memberCount: Int?
     let description: String?
     
@@ -14,7 +13,6 @@ struct ChapterContactInfo: Codable {
         case presidentName
         case title
         case contactEmail
-        case phoneNumber
         case memberCount
         case description
     }
