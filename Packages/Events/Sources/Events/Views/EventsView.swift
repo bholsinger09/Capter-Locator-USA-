@@ -80,12 +80,36 @@ public struct EventsView: View {
                 Section(header: Text("Upcoming Events")) {
                     ForEach(viewModel.filteredEvents) { event in
                         NavigationLink(destination: EventDetailView(event: event, viewModel: viewModel)) {
-                            VStack(alignment: .leading, spacing: 4) {
+                            VStack(alignment: .leading, spacing: 6) {
                                 Text(event.title)
                                     .fontWeight(.semibold)
-                                Text(event.location)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
+                                
+                                HStack(spacing: 8) {
+                                    Image(systemName: "calendar")
+                                        .font(.caption)
+                                    Text(event.eventDate.formatted(date: .abbreviated, time: .omitted))
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                HStack(spacing: 8) {
+                                    Image(systemName: "mappin.circle.fill")
+                                        .font(.caption)
+                                    Text(event.location)
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                                
+                                if !event.description.isEmpty {
+                                    HStack(spacing: 8) {
+                                        Image(systemName: "doc.text.fill")
+                                            .font(.caption)
+                                        Text(event.description)
+                                            .font(.caption2)
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(1)
+                                    }
+                                }
                             }
                         }
                     }
