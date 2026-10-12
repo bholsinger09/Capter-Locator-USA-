@@ -110,17 +110,13 @@ struct MembersView: View {
                     .padding(16)
                     .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray5 : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1) }))
                     
-                    Divider()
-                        .padding(.vertical, 0)
-                    
-                    // Membership Info with high contrast
-                    VStack(alignment: .leading, spacing: 16) {
+                    // Membership Info with high contrast - all on dark background
+                    VStack(alignment: .leading, spacing: 0) {
                         Text("Your Membership")
                             .font(.headline)
                             .fontWeight(.bold)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.white)
                             .padding(16)
-                            .padding(.bottom, 0)
                         
                         VStack(spacing: 0) {
                             // Email
@@ -144,14 +140,13 @@ struct MembersView: View {
                                     Text(user.email)
                                         .font(.system(.body, design: .default))
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.primary)
+                                        .foregroundColor(.white)
                                         .lineLimit(2)
                                 }
                                 
                                 Spacer()
                             }
                             .padding(16)
-                            .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
                             
                             Divider()
                                 .padding(.horizontal, 16)
@@ -177,14 +172,13 @@ struct MembersView: View {
                                     Text(selectedChapter)
                                         .font(.system(.body, design: .default))
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.primary)
+                                        .foregroundColor(.white)
                                         .lineLimit(2)
                                 }
                                 
                                 Spacer()
                             }
                             .padding(16)
-                            .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
                             
                             Divider()
                                 .padding(.horizontal, 16)
@@ -216,11 +210,12 @@ struct MembersView: View {
                                 Spacer()
                             }
                             .padding(16)
-                            .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray6 : UIColor.white }))
                         }
+                        .background(Color(UIColor.systemGray5))
                     }
+                    .background(Color(UIColor.systemGray5))
                 }
-                .background(Color.white)
+                .background(Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor.systemGray5 : UIColor.white }))
                 .cornerRadius(12)
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
