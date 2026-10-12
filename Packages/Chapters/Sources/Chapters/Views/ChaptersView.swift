@@ -13,6 +13,9 @@ public struct ChaptersView: View {
     @StateObject private var viewModel = ChaptersViewModel()
     @State private var selectedChapter: Chapter?
     @State private var showCreateSheet = false
+    @State private var memberChapters: Set<String> = ["Arizona State University", "Texas State"]
+    @State private var showJoinAlert = false
+    @State private var chapterToJoin: Chapter?
     
     public init() {}
     
@@ -62,6 +65,18 @@ public struct ChaptersView: View {
             }
             .sheet(isPresented: $showCreateSheet) {
                 CreateChapterView(chaptersViewModel: viewModel)
+            }
+            .alert("Join Chapter", isPresented: $showJoinAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Join") {
+                    if let chapter = chapterToJoin {
+                        memberChapters.insert(chapter.displayName)
+                    }
+                }
+            } message: {
+                if let chapter = chapterToJoin {
+                    Text("Join \(chapter.displayName) as a member?")
+                }
             }
             .refreshable {
                 await viewModel.refresh()
@@ -124,14 +139,31 @@ public struct ChaptersView: View {
                                     }
                                 }
                                 
-                                Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
-                                    .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
-                                    .font(.system(size: 16))
-                                    .padding(.trailing, 16)
-                                    .highPriorityGesture(TapGesture().onEnded {
+                                HStack(spacing: 12) {
+                                    // Join/Leave Button
+                                    Button(action: {
                                         HapticFeedbackManager.shared.tapFeedback()
-                                        viewModel.toggleFavorite(chapter)
-                                    })
+                                        if memberChapters.contains(chapter.displayName) {
+                                            memberChapters.remove(chapter.displayName)
+                                        } else {
+                                            chapterToJoin = chapter
+                                            showJoinAlert = true
+                                        }
+                                    }) {
+                                        Image(systemName: memberChapters.contains(chapter.displayName) ? "checkmark.circle.fill" : "plus.circle")
+                                            .foregroundColor(memberChapters.contains(chapter.displayName) ? .green : .blue)
+                                            .font(.system(size: 18))
+                                    }
+                                    
+                                    Image(systemName: viewModel.isFavorited(chapter) ? "heart.fill" : "heart")
+                                        .foregroundColor(viewModel.isFavorited(chapter) ? .red : .gray)
+                                        .font(.system(size: 16))
+                                        .highPriorityGesture(TapGesture().onEnded {
+                                            HapticFeedbackManager.shared.tapFeedback()
+                                            viewModel.toggleFavorite(chapter)
+                                        })
+                                }
+                                .padding(.trailing, 16)
                             }
                         }
                         

@@ -6,6 +6,8 @@ struct MembersView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @State private var selectedChapter = "Texas State"
     @State private var chapterMembers: [String] = []
+    @State private var showChapterPicker = false
+    @State private var showRemoveConfirmation = false
     
     var body: some View {
         NavigationView {
@@ -223,6 +225,47 @@ struct MembersView: View {
                 )
                 .padding(.horizontal)
                 
+                // Change Chapter Button
+                Button(action: {
+                    showChapterPicker = true
+                }) {
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Add Member (Change Chapter)")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue.opacity(0.1))
+                    .foregroundColor(.blue)
+                    .cornerRadius(10)
+                }
+                .padding()
+                
+                // Remove Member Button
+                Button(action: {
+                    showRemoveConfirmation = true
+                }) {
+                    HStack {
+                        Image(systemName: "xmark.circle.fill")
+                        Text("Remove Member")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.orange.opacity(0.1))
+                    .foregroundColor(.orange)
+                    .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
+                .alert("Remove Membership", isPresented: $showRemoveConfirmation) {
+                    Button("Cancel", role: .cancel) { }
+                    Button("Remove", role: .destructive) {
+                        selectedChapter = ""
+                    }
+                } message: {
+                    Text("Are you sure you want to remove your membership from \(selectedChapter)?")
+                }
+                
                 // Logout Button
                 Button(action: {
                     Task {
@@ -245,6 +288,123 @@ struct MembersView: View {
             }
             .padding(.vertical, 16)
         }
+        .sheet(isPresented: $showChapterPicker) {
+            NavigationView {
+                VStack(spacing: 0) {
+                    List {
+                        ForEach(chapters, id: \.self) { chapter in
+                            Button(action: {
+                                selectedChapter = chapter
+                                showChapterPicker = false
+                            }) {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(chapter)
+                                            .font(.headline)
+                                            .foregroundColor(.primary)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    if chapter == selectedChapter {
+                                        Image(systemName: "checkmark.circle.fill")
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                                .padding(.vertical, 8)
+                            }
+                        }
+                    }
+                    .navigationTitle("Join Chapter")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Done") {
+                                showChapterPicker = false
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private var chapters: [String] {
+        [
+            "Arizona State",
+            "Alabama State",
+            "Arkansas State",
+            "Auburn University",
+            "Brigham Young University",
+            "University of California, Berkeley",
+            "Clemson University",
+            "Colorado State",
+            "University of Connecticut",
+            "Cornell University",
+            "Duke University",
+            "University of Florida",
+            "Georgia Tech",
+            "Harvard University",
+            "University of Illinois",
+            "Indiana University",
+            "University of Iowa",
+            "Kansas State",
+            "University of Kansas",
+            "University of Kentucky",
+            "Louisiana State",
+            "University of Maine",
+            "University of Maryland",
+            "MIT",
+            "University of Massachusetts",
+            "University of Michigan",
+            "Michigan State",
+            "University of Minnesota",
+            "Mississippi State",
+            "University of Mississippi",
+            "University of Missouri",
+            "University of Montana",
+            "University of Nebraska",
+            "University of Nevada, Las Vegas",
+            "University of New Hampshire",
+            "University of New Mexico",
+            "New York University",
+            "University of North Carolina",
+            "North Carolina State",
+            "University of North Dakota",
+            "Northwestern University",
+            "Ohio State",
+            "University of Oklahoma",
+            "Oklahoma State",
+            "University of Oregon",
+            "Pennsylvania State",
+            "University of Pennsylvania",
+            "Pepperdine University",
+            "Princeton University",
+            "University of Rhode Island",
+            "Rice University",
+            "Rutgers University",
+            "Stanford University",
+            "Southern Methodist University",
+            "University of South Carolina",
+            "South Dakota State",
+            "University of Tennessee",
+            "Texas A&M",
+            "Texas State",
+            "University of Texas at Austin",
+            "Texas Tech",
+            "University of Toledo",
+            "Tulane University",
+            "University of Utah",
+            "Vanderbilt University",
+            "University of Virginia",
+            "Virginia Tech",
+            "University of Washington",
+            "Washington State",
+            "University of Wisconsin",
+            "University of Wyoming",
+            "Yale University"
+        ]
+    }
     }
 }
 
