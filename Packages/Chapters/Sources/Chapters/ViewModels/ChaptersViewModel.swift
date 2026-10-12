@@ -68,11 +68,11 @@ public class ChaptersViewModel: ObservableObject {
             }
             
             // Load sample data and merge with JSON contact info
-            var chapters = ChapterData.sampleChapters
+            let loadedChapters = ChapterData.sampleChapters
             let jsonContacts = ChaptersDataLoader.shared.loadChaptersData()
             
             // Merge JSON data with chapters
-            chapters = chapters.map { chapter in
+            let mergedChapters = loadedChapters.map { chapter -> Chapter in
                 var updatedChapter = chapter
                 if let contactInfo = jsonContacts.first(where: { $0.state.lowercased() == chapter.state.lowercased() }) {
                     updatedChapter.presidentName = contactInfo.presidentName
@@ -89,11 +89,11 @@ public class ChaptersViewModel: ObservableObject {
                 return updatedChapter
             }
             
-            try cacheService.save(key: cacheKey, value: chapters)
+            try cacheService.save(key: cacheKey, value: mergedChapters)
             
             await MainActor.run {
-                self.chapters = chapters
-                self.loadingState = .success(chapters)
+                self.chapters = mergedChapters
+                self.loadingState = .success(mergedChapters)
             }
         } catch {
             let appError = error as? AppError ?? .unknown(error.localizedDescription)
