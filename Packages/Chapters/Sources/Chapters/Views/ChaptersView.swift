@@ -122,7 +122,9 @@ public struct ChaptersView: View {
                                         }
                                         Spacer()
                                     }
+                                    .contentShape(Rectangle())
                                 }
+                                .simultaneousGesture(TapGesture().onEnded {})
                                 
                                 Button(action: {
                                     HapticFeedbackManager.shared.tapFeedback()
@@ -133,6 +135,7 @@ public struct ChaptersView: View {
                                         .font(.system(size: 16))
                                 }
                                 .padding(.trailing, 16)
+                                .zIndex(1)
                             }
                         }
                         
