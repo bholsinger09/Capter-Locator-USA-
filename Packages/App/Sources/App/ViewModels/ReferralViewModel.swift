@@ -78,11 +78,19 @@ public class ReferralViewModel: ObservableObject {
     }
     
     private func loadReferralCode() {
-        guard let user = currentUser else { return }
+        print("DEBUG loadReferralCode: currentUser = \(currentUser != nil ? currentUser!.email : "nil")")
+        guard let user = currentUser else { 
+            print("DEBUG loadReferralCode: user is nil")
+            return 
+        }
         
+        print("DEBUG loadReferralCode: user.referralCode = \(user.referralCode ?? "nil")")
         if let code = user.referralCode {
             referralCode = code
             referralLink = QRCodeGenerator.generateReferralLink(for: user.id)
+            print("DEBUG loadReferralCode: Set referralCode=\(code), referralLink=\(referralLink ?? "nil")")
+        } else {
+            print("DEBUG loadReferralCode: user has no referralCode")
         }
     }
     
@@ -102,8 +110,15 @@ public class ReferralViewModel: ObservableObject {
     }
     
     public func getQRImage() -> UIImage? {
-        guard let link = referralLink else { return nil }
-        return QRCodeGenerator.generateQRCode(from: link)
+        print("DEBUG getQRImage: referralLink = \(referralLink ?? "nil")")
+        print("DEBUG getQRImage: referralCode = \(referralCode ?? "nil")")
+        guard let link = referralLink else { 
+            print("DEBUG: referralLink is nil, cannot generate QR")
+            return nil 
+        }
+        let image = QRCodeGenerator.generateQRCode(from: link)
+        print("DEBUG: Generated QR image: \(image != nil ? "success" : "failed")")
+        return image
     }
     
     public func getShareText() -> String {

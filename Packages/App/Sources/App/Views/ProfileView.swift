@@ -15,7 +15,6 @@ struct ProfileView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    // Profile Header
                     DetailHeaderCard(
                         title: userName,
                         subtitle: userEmail,
@@ -80,11 +79,13 @@ struct ProfileView: View {
                     .padding(.bottom, 24)
                 }
             }
+            .background(Color(.systemBackground))
             .navigationTitle("Profile")
             .sheet(isPresented: $isEditingProfile) {
                 EditProfileView(userName: $userName, userEmail: $userEmail, userChapter: $userChapter)
             }
         }
+        .background(Color(.systemBackground))
     }
 }
 

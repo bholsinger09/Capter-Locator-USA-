@@ -119,6 +119,8 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
     private func loadUser() {
         // Load the last logged in user
         guard let lastEmail = UserDefaults.standard.string(forKey: lastLoggedInEmailKey) else {
+            // No saved user - create a test user for development/testing
+            createTestUser()
             return
         }
         
@@ -128,6 +130,24 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
             currentUser = savedUser
             isAuthenticated = true
         }
+    }
+    
+    private func createTestUser() {
+        // Create a test user so the referral feature can be tested immediately
+        let testUser = User(
+            email: "test@example.com",
+            firstName: "Test",
+            lastName: "User",
+            state: "California",
+            university: "Stanford University"
+        )
+        // Note: Do NOT generate referral code here - let user generate it via UI
+        
+        currentUser = testUser
+        isAuthenticated = true
+        
+        // Save the test user for persistence
+        saveUser()
     }
     
     public func updateUser(_ user: User) {

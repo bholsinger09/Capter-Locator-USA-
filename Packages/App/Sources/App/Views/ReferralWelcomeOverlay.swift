@@ -17,13 +17,14 @@ public struct ReferralWelcomeOverlay: View {
     }
     
     public var body: some View {
-        ZStack {
-            // Backdrop
-            Color.black.opacity(0.4)
-                .ignoresSafeArea()
-            
-            // Card
-            VStack(spacing: 20) {
+        if isPresented {
+            ZStack {
+                // Backdrop
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                
+                // Card
+                VStack(spacing: 20) {
                 VStack(spacing: 12) {
                     // Icon
                     Image(systemName: "qrcode.viewfinder")
@@ -106,8 +107,9 @@ public struct ReferralWelcomeOverlay: View {
             .padding(.horizontal, 30)
             .scaleEffect(isPresented ? 1 : 0.8)
             .opacity(isPresented ? 1 : 0)
+            }
+            .animation(.spring(response: 0.5, dampingFraction: 0.7), value: isPresented)
         }
-        .animation(.spring(response: 0.5, dampingFraction: 0.7), value: isPresented)
     }
 }
 

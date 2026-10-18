@@ -14,6 +14,7 @@ public class QRCodeGenerator {
         let data = string.data(using: .utf8)
         
         guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
+            print("DEBUG QRCodeGenerator: CIQRCodeGenerator filter failed")
             return nil
         }
         
@@ -21,6 +22,7 @@ public class QRCodeGenerator {
         filter.setValue("H", forKey: "inputCorrectionLevel")
         
         guard let ciImage = filter.outputImage else {
+            print("DEBUG QRCodeGenerator: outputImage is nil")
             return nil
         }
         
@@ -29,16 +31,26 @@ public class QRCodeGenerator {
                                          y: size.height / ciImage.extent.size.height)
         let scaledImage = ciImage.transformed(by: transform)
         
-        return UIImage(ciImage: scaledImage)
+        // Convert CIImage to CGImage and then to UIImage
+        let context = CIContext()
+        guard let cgImage = context.createCGImage(scaledImage, from: scaledImage.extent) else {
+            print("DEBUG QRCodeGenerator: createCGImage failed")
+            return nil
+        }
+        
+        let uiImage = UIImage(cgImage: cgImage)
+        print("DEBUG QRCodeGenerator: Successfully created QR code image")
+        return uiImage
     }
     
     public static func generateReferralLink(for userId: UUID) -> String {
-        // Format: tpusa-finder://join?referrer=USER_ID
-        "tpusa-finder://join?referrer=\(userId.uuidString)"
+        // Format: Link that opens App Store for ChapterFinderUSA
+        // App ID: 6755359527
+        "https://apps.apple.com/app/id6755359527?referrer=\(userId.uuidString)"
     }
     
     public static func generateChapterReferralLink(for userId: UUID, chapterId: UUID) -> String {
-        // Format: tpusa-finder://join?referrer=USER_ID&chapter=CHAPTER_ID
-        "tpusa-finder://join?referrer=\(userId.uuidString)&chapter=\(chapterId.uuidString)"
+        // Format: Link with referrer and chapter info
+        "https://apps.apple.com/app/id6755359527?referrer=\(userId.uuidString)&chapter=\(chapterId.uuidString)"
     }
 }

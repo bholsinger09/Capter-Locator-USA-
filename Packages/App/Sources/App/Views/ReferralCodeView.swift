@@ -25,7 +25,7 @@ public struct ReferralCodeView: View {
     
     public var body: some View {
         VStack(spacing: 0) {
-            // Gradient Header
+            // Gradient Header - Display Only (not clickable)
             VStack(alignment: .leading, spacing: 12) {
                 HStack(spacing: 10) {
                     Image(systemName: "person.2.circle.fill")
@@ -56,14 +56,15 @@ public struct ReferralCodeView: View {
                     )
                 )
                 .cornerRadius(16)
-                .padding(.horizontal)
-                .padding(.top, 16)
             }
+            .padding(.horizontal)
+            .padding(.top, 16)
             
             ScrollView {
                 VStack(spacing: 20) {
                     // QR Code Section
                     if let qrImage = viewModel.getQRImage() {
+
                         VStack(spacing: 16) {
                             // Header
                             HStack(spacing: 8) {
@@ -112,7 +113,7 @@ public struct ReferralCodeView: View {
                             .padding(.horizontal)
                         }
                         .padding(.vertical, 12)
-                        .background(Color(.systemGray6))
+                        .background(Color(.systemBackground))
                         .cornerRadius(16)
                         .padding(.horizontal)
                     } else {
@@ -149,7 +150,7 @@ public struct ReferralCodeView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .padding(24)
-                        .background(Color(.systemGray6))
+                        .background(Color(.systemBackground))
                         .cornerRadius(16)
                         .padding(.horizontal)
                     }
@@ -228,7 +229,7 @@ public struct ReferralCodeView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .padding(10)
-                            .background(Color(.systemGray6))
+                            .background(Color(.systemBackground))
                             .cornerRadius(8)
                             .padding(.horizontal)
                             .transition(.move(edge: .top).combined(with: .opacity))
@@ -294,7 +295,7 @@ public struct ReferralCodeView: View {
                                 .padding(.bottom, 8)
                             }
                         }
-                        .background(Color(.systemGray6))
+                        .background(Color(.systemBackground))
                         .cornerRadius(16)
                         .padding(.horizontal)
                     } else if viewModel.currentUser != nil {
@@ -328,7 +329,7 @@ public struct ReferralCodeView: View {
                                     ),
                                     lineWidth: 1
                                 )
-                                .background(Color(.systemGray6))
+                                .background(Color(.systemBackground))
                                 .cornerRadius(16)
                         )
                         .padding(.horizontal)
@@ -339,7 +340,9 @@ public struct ReferralCodeView: View {
                 }
             }
             .padding(.vertical, 8)
+            .background(Color(.systemBackground))
         }
+        .background(Color(.systemBackground))
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(
                 items: [viewModel.getShareText()],
@@ -354,8 +357,10 @@ public struct ReferralCodeView: View {
                 withAnimation {
                     viewModel.createPersonalReferralCode()
                 }
-            }
+            },
+            alignment: .center
         )
+        .allowsHitTesting(true)
     }
 }
 
