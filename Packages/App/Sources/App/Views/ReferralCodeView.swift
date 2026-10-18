@@ -25,318 +25,402 @@ public struct ReferralCodeView: View {
     
     public var body: some View {
         VStack(spacing: 0) {
-            // Gradient Header - Display Only (not clickable)
+            // Professional Gradient Header - Display Only (not clickable)
             VStack(alignment: .leading, spacing: 12) {
-                HStack(spacing: 10) {
+                HStack(spacing: 12) {
                     Image(systemName: "person.2.circle.fill")
-                        .font(.system(size: 28))
+                        .font(.system(size: 32))
                         .foregroundColor(.white)
                     
-                    VStack(alignment: .leading, spacing: 2) {
+                    VStack(alignment: .leading, spacing: 4) {
                         Text("Grow the Movement")
-                            .font(.headline)
+                            .font(.system(.headline, design: .default))
+                            .fontWeight(.semibold)
                             .foregroundColor(.white)
                         
-                        Text("Invite friends to join your chapter")
-                            .font(.caption)
-                            .foregroundColor(.white.opacity(0.8))
+                        Text("Build your chapter community through personal referrals")
+                            .font(.system(.caption, design: .default))
+                            .foregroundColor(.white.opacity(0.85))
                     }
                     
                     Spacer()
                 }
-                .padding(16)
+                .padding(20)
                 .background(
                     LinearGradient(
                         gradient: Gradient(colors: [
-                            Color.blue.opacity(0.8),
-                            Color.blue.opacity(0.6)
+                            Color(red: 0.0, green: 0.48, blue: 1.0),
+                            Color(red: 0.0, green: 0.35, blue: 0.8)
                         ]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                 )
-                .cornerRadius(16)
+                .cornerRadius(14)
             }
-            .padding(.horizontal)
-            .padding(.top, 16)
+            .padding(.horizontal, 16)
+            .padding(.top, 20)
+            .padding(.bottom, 8)
             
-            ScrollView {
-                VStack(spacing: 20) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 24) {
                     // QR Code Section
                     if let qrImage = viewModel.getQRImage() {
 
                         VStack(spacing: 16) {
-                            // Header
-                            HStack(spacing: 8) {
+                            // Section Header
+                            HStack(spacing: 10) {
                                 Image(systemName: "qrcode")
-                                    .font(.headline)
+                                    .font(.system(.headline, design: .default))
                                     .foregroundColor(.accentColor)
+                                
                                 Text("Your Referral Code")
-                                    .font(.headline)
+                                    .font(.system(.headline, design: .default))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.primary)
+                                
                                 Spacer()
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, 20)
+                            .padding(.top, 20)
                             
-                            // QR Code
-                            VStack(spacing: 16) {
-                                Image(uiImage: qrImage)
-                                    .interpolation(.none)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(height: 240)
-                                    .padding(20)
-                                    .background(Color.white)
-                                    .cornerRadius(16)
-                                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
-                                    .scaleEffect(qrAppeared ? 1 : 0.8)
-                                    .opacity(qrAppeared ? 1 : 0)
-                                    .onAppear {
-                                        withAnimation(.spring(response: 0.6, dampingFraction: 0.7)) {
-                                            qrAppeared = true
-                                        }
+                            // QR Code Container
+                            VStack(spacing: 20) {
+                                VStack(spacing: 0) {
+                                    Image(uiImage: qrImage)
+                                        .interpolation(.none)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 240)
+                                        .padding(24)
+                                        .background(Color.white)
+                                        .cornerRadius(14)
+                                        .shadow(
+                                            color: Color.black.opacity(0.08),
+                                            radius: 12,
+                                            x: 0,
+                                            y: 6
+                                        )
+                                }
+                                .scaleEffect(qrAppeared ? 1 : 0.85)
+                                .opacity(qrAppeared ? 1 : 0)
+                                .onAppear {
+                                    withAnimation(.spring(response: 0.5, dampingFraction: 0.75)) {
+                                        qrAppeared = true
                                     }
+                                }
                                 
-                                // Subtext
-                                VStack(spacing: 6) {
-                                    Text("Scan this QR code to invite friends")
-                                        .font(.caption)
+                                // Descriptive Text
+                                VStack(spacing: 8) {
+                                    Text("Share this code with your network")
+                                        .font(.system(.body, design: .default))
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.primary)
+                                    
+                                    Text("Anyone who scans this will be directed to download the app")
+                                        .font(.system(.caption, design: .default))
                                         .foregroundColor(.secondary)
+                                        .lineLimit(3)
+                                        .multilineTextAlignment(.center)
                                     
                                     if let code = viewModel.referralCode {
-                                        Text("Code: \(code)")
-                                            .font(.caption2)
-                                            .foregroundColor(.secondary)
-                                            .monospaced()
+                                        HStack(spacing: 6) {
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .font(.caption)
+                                                .foregroundColor(.green)
+                                            
+                                            Text("ID: \(code.uppercased())")
+                                                .font(.system(.caption, design: .monospaced))
+                                                .foregroundColor(.secondary)
+                                        }
+                                        .padding(.top, 4)
                                     }
                                 }
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 20)
                         }
-                        .padding(.vertical, 12)
-                        .background(Color(.systemBackground))
-                        .cornerRadius(16)
-                        .padding(.horizontal)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(Color(.systemBackground))
+                                .shadow(
+                                    color: Color.black.opacity(0.04),
+                                    radius: 8,
+                                    x: 0,
+                                    y: 2
+                                )
+                        )
+                        .padding(.horizontal, 16)
                     } else {
                         // Generate QR Button
-                        VStack(spacing: 16) {
+                        VStack(spacing: 20) {
                             Image(systemName: "qrcode.viewfinder")
-                                .font(.system(size: 40))
+                                .font(.system(size: 44))
                                 .foregroundColor(.accentColor)
-                                .opacity(0.6)
+                                .opacity(0.5)
                             
-                            VStack(spacing: 4) {
-                                Text("No QR Code Yet")
-                                    .font(.headline)
-                                Text("Create your personal referral code to start inviting friends")
-                                    .font(.caption)
+                            VStack(spacing: 8) {
+                                Text("Create Your Referral Code")
+                                    .font(.system(.headline, design: .default))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.primary)
+                                
+                                Text("Generate a unique QR code to start inviting friends to your chapter")
+                                    .font(.system(.caption, design: .default))
                                     .foregroundColor(.secondary)
                                     .multilineTextAlignment(.center)
+                                    .lineLimit(3)
                             }
                             
                             Button(action: {
                                 showWelcomeOverlay = true
                             }) {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "plus.circle.fill")
-                                    Text("Generate QR Code")
+                                HStack(spacing: 10) {
+                                    Image(systemName: "qrcode")
+                                        .font(.system(.body, design: .default))
+                                    Text("Generate Referral Code")
+                                        .font(.system(.body, design: .default))
                                         .fontWeight(.semibold)
                                 }
                                 .frame(maxWidth: .infinity)
-                                .padding(12)
+                                .padding(14)
                                 .background(Color.accentColor)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                             }
+                            .padding(.top, 8)
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(24)
-                        .background(Color(.systemBackground))
-                        .cornerRadius(16)
-                        .padding(.horizontal)
+                        .padding(32)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(Color(.systemBackground))
+                                .shadow(
+                                    color: Color.black.opacity(0.04),
+                                    radius: 8,
+                                    x: 0,
+                                    y: 2
+                                )
+                        )
+                        .padding(.horizontal, 16)
                     }
                     
-                    // Share & Copy Buttons
+                    // Share & Copy Action Buttons
                     if viewModel.referralCode != nil {
-                        HStack(spacing: 12) {
-                            // Share Button
-                            Button(action: {
-                                withAnimation {
-                                    shareButtonPressed = true
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    showShareSheet = true
-                                }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    withAnimation {
-                                        shareButtonPressed = false
-                                    }
-                                }
-                            }) {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "square.and.arrow.up.fill")
-                                    Text("Share")
-                                        .fontWeight(.semibold)
-                                }
-                                .frame(maxWidth: .infinity)
-                                .padding(12)
-                                .background(
-                                    shareButtonPressed ?
-                                    Color.accentColor.opacity(0.8) :
-                                    Color.accentColor
-                                )
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                            }
-                            
-                            // Copy Link Button
-                            if viewModel.referralLink != nil {
+                        VStack(spacing: 12) {
+                            HStack(spacing: 12) {
+                                // Share Button
                                 Button(action: {
-                                    UIPasteboard.general.string = viewModel.referralLink
-                                    showCopiedAlert = true
-                                    
-                                    // Haptic feedback
-                                    let impactFeedback = UIImpactFeedbackGenerator(style: .light)
-                                    impactFeedback.impactOccurred()
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                        showCopiedAlert = false
+                                    withAnimation(.easeInOut(duration: 0.1)) {
+                                        shareButtonPressed = true
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        showShareSheet = true
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        withAnimation(.easeInOut(duration: 0.1)) {
+                                            shareButtonPressed = false
+                                        }
                                     }
                                 }) {
-                                    HStack(spacing: 8) {
-                                        Image(systemName: "doc.on.doc.fill")
-                                        Text("Copy")
+                                    HStack(spacing: 10) {
+                                        Image(systemName: "square.and.arrow.up.fill")
+                                            .font(.system(.body, design: .default))
+                                        Text("Share")
+                                            .font(.system(.body, design: .default))
                                             .fontWeight(.semibold)
                                     }
                                     .frame(maxWidth: .infinity)
                                     .padding(12)
-                                    .background(Color(.systemGray5))
-                                    .foregroundColor(.primary)
+                                    .background(
+                                        shareButtonPressed ?
+                                        Color.accentColor.opacity(0.9) :
+                                        Color.accentColor
+                                    )
+                                    .foregroundColor(.white)
                                     .cornerRadius(10)
                                 }
-                            }
-                        }
-                        .padding(.horizontal)
-                        
-                        // Copied Toast
-                        if showCopiedAlert {
-                            VStack(spacing: 8) {
-                                HStack(spacing: 8) {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(.green)
-                                    Text("Link copied to clipboard!")
-                                        .font(.caption)
+                                .scaleEffect(shareButtonPressed ? 0.96 : 1.0)
+                                
+                                // Copy Link Button
+                                if viewModel.referralLink != nil {
+                                    Button(action: {
+                                        UIPasteboard.general.string = viewModel.referralLink
+                                        showCopiedAlert = true
+                                        
+                                        let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+                                        impactFeedback.impactOccurred()
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                                            showCopiedAlert = false
+                                        }
+                                    }) {
+                                        HStack(spacing: 10) {
+                                            Image(systemName: "doc.on.doc.fill")
+                                                .font(.system(.body, design: .default))
+                                            Text("Copy")
+                                                .font(.system(.body, design: .default))
+                                                .fontWeight(.semibold)
+                                        }
+                                        .frame(maxWidth: .infinity)
+                                        .padding(12)
+                                        .background(Color(.systemGray5))
+                                        .foregroundColor(.primary)
+                                        .cornerRadius(10)
+                                    }
                                 }
                             }
-                            .frame(maxWidth: .infinity)
-                            .padding(10)
-                            .background(Color(.systemBackground))
-                            .cornerRadius(8)
-                            .padding(.horizontal)
-                            .transition(.move(edge: .top).combined(with: .opacity))
-                        }
-                    }
-                    
-                    // People I've Invited Section
-                    if !viewModel.recruits.isEmpty {
-                        VStack(alignment: .leading, spacing: 12) {
-                            // Header with count
-                            HStack(spacing: 8) {
-                                Image(systemName: "person.2.fill")
-                                    .foregroundColor(.accentColor)
-                                
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("People You've Invited")
-                                        .font(.headline)
-                                    Text("Active members from your referrals")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                                
-                                Spacer()
-                                
-                                VStack(alignment: .trailing, spacing: 2) {
-                                    Text("\(viewModel.recruits.count)")
-                                        .font(.headline)
-                                        .foregroundColor(.accentColor)
-                                    Text("recruits")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                            }
-                            .padding(.horizontal)
-                            .padding(.top, 12)
                             
-                            Divider()
-                                .padding(.horizontal)
+                            // Copied Confirmation Toast
+                            if showCopiedAlert {
+                                HStack(spacing: 10) {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .font(.system(.body, design: .default))
+                                        .foregroundColor(.green)
+                                    
+                                    Text("Link copied to clipboard")
+                                        .font(.system(.caption, design: .default))
+                                        .fontWeight(.medium)
+                                    
+                                    Spacer()
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding(12)
+                                .background(
+                                    Color.green.opacity(0.1)
+                                )
+                                .foregroundColor(.green)
+                                .cornerRadius(8)
+                                .transition(.move(edge: .top).combined(with: .opacity))
+                            }
+                        }
+                        .padding(.horizontal, 16)
+                    
+                    // People You've Invited Section
+                    if !viewModel.recruits.isEmpty {
+                        VStack(alignment: .leading, spacing: 16) {
+                            // Header with Statistics
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack(spacing: 12) {
+                                    Image(systemName: "person.2.fill")
+                                        .font(.system(.headline, design: .default))
+                                        .foregroundColor(.accentColor)
+                                    
+                                    VStack(alignment: .leading, spacing: 3) {
+                                        Text("Your Network")
+                                            .font(.system(.headline, design: .default))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.primary)
+                                        
+                                        Text("Friends who joined through your referral")
+                                            .font(.system(.caption, design: .default))
+                                            .foregroundColor(.secondary)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing, spacing: 2) {
+                                        Text("\(viewModel.recruits.count)")
+                                            .font(.system(.headline, design: .default))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.accentColor)
+                                        
+                                        Text("recruit\(viewModel.recruits.count != 1 ? "s" : "")")
+                                            .font(.system(.caption, design: .default))
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.top, 20)
+                                
+                                Divider()
+                                    .padding(.horizontal, 20)
+                            }
                             
                             // Recruits List
-                            VStack(spacing: 8) {
+                            VStack(spacing: 10) {
                                 ForEach(Array(viewModel.recruits.prefix(5)), id: \.id) { recruit in
                                     RecruitRowView(recruit: recruit)
                                 }
                             }
-                            .padding(.horizontal)
-                            .padding(.bottom, 12)
+                            .padding(.horizontal, 20)
                             
-                            // View All button (if more than 5)
+                            // View All Button (if more than 5)
                             if viewModel.recruits.count > 5 {
                                 Button(action: { showExpandedRecruitList = true }) {
-                                    HStack(spacing: 6) {
-                                        Text("View all \(viewModel.recruits.count) recruits")
+                                    HStack(spacing: 8) {
+                                        Text("View all \(viewModel.recruits.count) members")
+                                            .font(.system(.body, design: .default))
                                             .fontWeight(.semibold)
+                                        
                                         Image(systemName: "chevron.right")
-                                            .font(.caption)
+                                            .font(.system(.caption, design: .default))
+                                            .fontWeight(.semibold)
                                     }
-                                    .frame(maxWidth: .infinity)
-                                    .padding(10)
+                                    .frame(maxWidth: .infinity, alignment: .center)
+                                    .padding(12)
                                     .foregroundColor(.accentColor)
                                 }
-                                .padding(.horizontal)
-                                .padding(.bottom, 8)
+                                .padding(.horizontal, 20)
                             }
-                        }
-                        .background(Color(.systemBackground))
-                        .cornerRadius(16)
-                        .padding(.horizontal)
-                    } else if viewModel.currentUser != nil {
-                        VStack(spacing: 12) {
-                            Image(systemName: "person.badge.plus")
-                                .font(.system(size: 32))
-                                .foregroundColor(.accentColor.opacity(0.6))
                             
-                            VStack(spacing: 4) {
-                                Text("Start Inviting")
-                                    .font(.headline)
+                            Spacer()
+                                .frame(height: 8)
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 14)
+                                .fill(Color(.systemBackground))
+                                .shadow(
+                                    color: Color.black.opacity(0.04),
+                                    radius: 8,
+                                    x: 0,
+                                    y: 2
+                                )
+                        )
+                        .padding(.horizontal, 16)
+                    } else if viewModel.currentUser != nil {
+                        VStack(spacing: 16) {
+                            Image(systemName: "person.badge.plus")
+                                .font(.system(size: 40))
+                                .foregroundColor(.accentColor)
+                                .opacity(0.7)
+                            
+                            VStack(spacing: 8) {
+                                Text("Ready to Grow Your Chapter?")
+                                    .font(.system(.headline, design: .default))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.primary)
                                 
-                                Text("Share your referral code to invite friends and watch your network grow")
-                                    .font(.caption)
+                                Text("Generate your referral code to invite friends and strengthen your community")
+                                    .font(.system(.caption, design: .default))
                                     .foregroundColor(.secondary)
                                     .multilineTextAlignment(.center)
+                                    .lineLimit(3)
                             }
                         }
                         .frame(maxWidth: .infinity)
-                        .padding(20)
+                        .padding(28)
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
+                            RoundedRectangle(cornerRadius: 14)
                                 .strokeBorder(
                                     LinearGradient(
                                         gradient: Gradient(colors: [
-                                            Color.accentColor.opacity(0.2),
-                                            Color.accentColor.opacity(0.1)
+                                            Color.accentColor.opacity(0.15),
+                                            Color.accentColor.opacity(0.08)
                                         ]),
                                         startPoint: .topLeading,
                                         endPoint: .bottomTrailing
                                     ),
-                                    lineWidth: 1
+                                    lineWidth: 1.5
                                 )
                                 .background(Color(.systemBackground))
-                                .cornerRadius(16)
+                                .cornerRadius(14)
                         )
-                        .padding(.horizontal)
+                        .padding(.horizontal, 16)
                     }
                     
                     Spacer()
-                        .frame(height: 16)
+                        .frame(height: 20)
                 }
             }
             .padding(.vertical, 8)
@@ -363,6 +447,7 @@ public struct ReferralCodeView: View {
         .allowsHitTesting(true)
     }
 }
+}
 
 // MARK: - Recruit Row Component
 
@@ -371,38 +456,41 @@ struct RecruitRowView: View {
     @State private var isHovering = false
     
     var body: some View {
-        HStack(spacing: 12) {
-            // Avatar
+        HStack(spacing: 14) {
+            // Avatar with Initial
             Circle()
                 .fill(
                     LinearGradient(
                         gradient: Gradient(colors: [
-                            Color.blue.opacity(0.3),
-                            Color.purple.opacity(0.3)
+                            Color.accentColor.opacity(0.3),
+                            Color.accentColor.opacity(0.15)
                         ]),
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
                 )
-                .frame(width: 36, height: 36)
+                .frame(width: 40, height: 40)
                 .overlay(
-                    Text(String(recruit.refereeName.prefix(1)))
-                        .font(.caption)
+                    Text(String(recruit.refereeName.prefix(1)).uppercased())
+                        .font(.system(.body, design: .default))
                         .fontWeight(.semibold)
                         .foregroundColor(.accentColor)
                 )
             
-            VStack(alignment: .leading, spacing: 3) {
+            VStack(alignment: .leading, spacing: 4) {
                 Text(recruit.refereeName)
-                    .font(.body)
+                    .font(.system(.body, design: .default))
                     .fontWeight(.medium)
+                    .foregroundColor(.primary)
                     .lineLimit(1)
                 
-                HStack(spacing: 4) {
+                HStack(spacing: 6) {
                     Image(systemName: "calendar")
-                        .font(.caption2)
+                        .font(.system(.caption2, design: .default))
+                        .foregroundColor(.secondary)
+                    
                     Text(recruit.joinDate.formatted(date: .abbreviated, time: .omitted))
-                        .font(.caption)
+                        .font(.system(.caption, design: .default))
                         .foregroundColor(.secondary)
                 }
             }
@@ -413,14 +501,16 @@ struct RecruitRowView: View {
             StatusBadge(status: recruit.status)
         }
         .padding(12)
-        .background(Color.white.opacity(0.5))
-        .cornerRadius(10)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(.systemGray6))
+        )
         .onHover { hovering in
             withAnimation(.easeInOut(duration: 0.2)) {
                 isHovering = hovering
             }
         }
-        .scaleEffect(isHovering ? 1.02 : 1.0)
+        .scaleEffect(isHovering ? 1.01 : 1.0)
     }
 }
 
