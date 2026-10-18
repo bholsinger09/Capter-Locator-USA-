@@ -14,7 +14,7 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack(spacing: 20) {
+                VStack(alignment: .leading, spacing: 24) {
                     // Profile Header
                     DetailHeaderCard(
                         title: userName,
@@ -23,8 +23,9 @@ struct ProfileView: View {
                         iconColor: .blue
                     )
                     .padding(.horizontal)
+                    .padding(.top, 16)
                     
-                    // Profile Details using new component
+                    // Profile Details
                     FormSection(title: "Profile Information") {
                         VStack(spacing: 12) {
                             DetailRow(label: "Chapter", value: userChapter, icon: "building.2.fill")
@@ -42,7 +43,7 @@ struct ProfileView: View {
                     }
                     .padding(.horizontal)
                     
-                    // Account Settings using new FormSection
+                    // Account Settings
                     FormSection(title: "Account Settings") {
                         VStack(spacing: 12) {
                             SettingsLink(label: "Change Password", icon: "lock")
@@ -53,29 +54,21 @@ struct ProfileView: View {
                         }
                     }
                     .padding(.horizontal)
-                    .zIndex(1)
-                    .clipped()
                     
-                    // Referral Section with explicit background
+                    // Referral Section - completely separate
                     VStack(spacing: 0) {
                         ReferralCodeView(viewModel: referralViewModel)
-                            .background(Color(.systemBackground))
                     }
-                    .zIndex(2)
-                    .background(Color(.systemBackground))
-                    
-                    Divider()
-                        .padding(.vertical, 8)
+                    .padding(.top, 16)
                     
                     // Logout Button
                     DangerButton("Logout", icon: "arrowshape.turn.up.left") {
                         print("Logout tapped")
                     }
                     .padding(.horizontal)
-                    
-                    Spacer()
+                    .padding(.top, 16)
+                    .padding(.bottom, 24)
                 }
-                .padding(.vertical)
             }
             .navigationTitle("Profile")
             .sheet(isPresented: $isEditingProfile) {
