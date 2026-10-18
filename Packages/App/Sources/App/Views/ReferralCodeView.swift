@@ -428,8 +428,9 @@ public struct ReferralCodeView: View {
         }
         .background(Color(.systemBackground))
         .sheet(isPresented: $showShareSheet) {
+            let referralIcon = ReferralIconGenerator.generateReferralIcon()
             ShareSheet(
-                items: [viewModel.getShareText()],
+                items: [viewModel.getShareText(), referralIcon],
                 excludedActivityTypes: [.addToReadingList, .print]
             )
         }

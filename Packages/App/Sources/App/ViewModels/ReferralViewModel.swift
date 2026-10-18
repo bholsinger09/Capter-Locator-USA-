@@ -148,6 +148,10 @@ public class ReferralViewModel: ObservableObject {
         """
     }
     
+    public func getReferralIcon() -> UIImage {
+        return ReferralIconGenerator.generateReferralIcon()
+    }
+    
     public func shareReferralCode() {
         // This will be called from the UI to trigger the native share sheet
         // Implementation will be in the SwiftUI view
