@@ -43,23 +43,33 @@ struct ProfileView: View {
                     }
                     .padding(.horizontal)
                     
-                    // Account Settings
-                    FormSection(title: "Account Settings") {
-                        VStack(spacing: 12) {
+                    // Account Settings - WITHOUT FormSection to avoid grey background
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Account Settings")
+                            .font(.headline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                        
+                        VStack(spacing: 0) {
                             SettingsLink(label: "Change Password", icon: "lock")
                             Divider()
                             SettingsLink(label: "Notification Settings", icon: "bell")
                             Divider()
                             SettingsLink(label: "Privacy Settings", icon: "shield")
                         }
+                        .padding(12)
                     }
                     .padding(.horizontal)
+                    
+                    // Clear spacing before Referral Section
+                    VStack { }
+                        .frame(height: 0)
                     
                     // Referral Section - completely separate
                     VStack(spacing: 0) {
                         ReferralCodeView(viewModel: referralViewModel)
                     }
-                    .padding(.top, 16)
+                    .padding(.top, 12)
                     
                     // Logout Button
                     DangerButton("Logout", icon: "arrowshape.turn.up.left") {
