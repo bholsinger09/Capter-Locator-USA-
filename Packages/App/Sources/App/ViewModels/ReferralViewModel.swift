@@ -124,15 +124,27 @@ public class ReferralViewModel: ObservableObject {
     public func getShareText() -> String {
         guard let user = currentUser else { return "" }
         
+        let greeting = """
+        Join me on the Chapter Locator USA! 🇺🇸
+        """
+        
+        let mainMessage = """
+        Connect with conservative students at your university and take action for freedom and constitutional principles.
+        """
+        
+        let callToAction = """
+        Use my referral link or scan my QR code to join:
+        """
+        
         return """
-        Join me on the TPUSA Chapter Locator! 🇺🇸
+        \(greeting)
         
-        Find local chapters, connect with students, and join the movement for freedom and constitutional conservatism.
+        \(mainMessage)
         
-        Scan my QR code or use my referral link:
+        \(callToAction)
         \(referralLink ?? "")
         
-        - \(user.firstName)
+        — \(user.firstName)
         """
     }
     
