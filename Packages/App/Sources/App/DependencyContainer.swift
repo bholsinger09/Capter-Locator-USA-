@@ -22,11 +22,13 @@ public class DependencyContainer: ObservableObject {
     public let authenticationManager: AuthenticationManager
     public let geospatialService: GeospatialService
     public let notificationManager: NotificationManager
+    public let referralService: ReferralService
     
     // MARK: - Package ViewModels
     public let chaptersViewModel: ChaptersViewModel
     public let eventsViewModel: EventsViewModel
     public let advocacyViewModel: AdvocacyViewModel
+    public let referralViewModel: ReferralViewModel
     
     // MARK: - Initialization
     public init() {
@@ -34,10 +36,15 @@ public class DependencyContainer: ObservableObject {
         self.authenticationManager = AuthenticationManager()
         self.geospatialService = GeospatialService()
         self.notificationManager = NotificationManager()
+        self.referralService = ReferralService()
         
         // Initialize package ViewModels (all take no parameters in package versions)
         self.chaptersViewModel = ChaptersViewModel()
         self.eventsViewModel = EventsViewModel()
         self.advocacyViewModel = AdvocacyViewModel()
+        self.referralViewModel = ReferralViewModel(
+            referralService: self.referralService,
+            authenticationManager: self.authenticationManager
+        )
     }
 }

@@ -4,6 +4,7 @@ import Events
 import Blogs
 import Geospatial
 import Advocacy
+import Common
 
 #if canImport(UIKit)
 import UIKit
@@ -11,6 +12,7 @@ import UIKit
 
 public struct MainTabView: View {
     @StateObject private var membershipManager = MembershipManager()
+    @EnvironmentObject var dependencyContainer: DependencyContainer
     
     public init() {
         #if os(iOS)
@@ -91,7 +93,7 @@ public struct MainTabView: View {
                         Label("Members", systemImage: "person.3.fill")
                     }
                     
-                    NavigationLink(destination: ProfileView()) {
+                    NavigationLink(destination: ProfileView(referralViewModel: dependencyContainer.referralViewModel)) {
                         Label("Profile", systemImage: "person.circle.fill")
                     }
                     

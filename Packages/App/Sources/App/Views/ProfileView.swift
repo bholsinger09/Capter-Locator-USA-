@@ -1,5 +1,7 @@
 import SwiftUI
 import AppUI
+import Common
+import Authentication
 
 struct ProfileView: View {
     @State private var userName = "John Doe"
@@ -7,6 +9,7 @@ struct ProfileView: View {
     @State private var userChapter = "Texas State"
     @State private var joinDate = "January 2024"
     @State private var isEditingProfile = false
+    @ObservedObject var referralViewModel: ReferralViewModel
     
     var body: some View {
         NavigationView {
@@ -50,6 +53,12 @@ struct ProfileView: View {
                         }
                     }
                     .padding(.horizontal)
+                    
+                    // Referral Section
+                    ReferralCodeView(viewModel: referralViewModel)
+                    
+                    Divider()
+                        .padding(.vertical, 8)
                     
                     // Logout Button
                     DangerButton("Logout", icon: "arrowshape.turn.up.left") {
@@ -124,5 +133,12 @@ struct EditProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    let referralService = ReferralService()
+    let authManager = AuthenticationManager()
+    let referralViewModel = ReferralViewModel(
+        referralService: referralService,
+        authenticationManager: authManager
+    )
+    
+    return ProfileView(referralViewModel: referralViewModel)
 }

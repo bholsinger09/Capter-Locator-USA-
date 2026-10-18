@@ -18,6 +18,9 @@ public struct User: Identifiable, Codable, Hashable {
     public var dateJoined: Date = Date()
     public var isMember: Bool = false
     public var appleUserID: String? // For Sign in with Apple
+    public var referredBy: UUID? // Who referred this user
+    public var referralCode: String? // This user's personal referral code
+    public var hideReferralStatus: Bool = false // Privacy option
     
     public var fullName: String {
         "\(firstName) \(lastName)"
@@ -33,7 +36,10 @@ public struct User: Identifiable, Codable, Hashable {
         chapterId: UUID? = nil,
         dateJoined: Date = Date(),
         isMember: Bool = false,
-        appleUserID: String? = nil
+        appleUserID: String? = nil,
+        referredBy: UUID? = nil,
+        referralCode: String? = nil,
+        hideReferralStatus: Bool = false
     ) {
         self.id = id
         self.email = email
@@ -45,5 +51,8 @@ public struct User: Identifiable, Codable, Hashable {
         self.dateJoined = dateJoined
         self.isMember = isMember
         self.appleUserID = appleUserID
+        self.referredBy = referredBy
+        self.referralCode = referralCode
+        self.hideReferralStatus = hideReferralStatus
     }
 }

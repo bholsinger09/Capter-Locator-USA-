@@ -9,6 +9,7 @@ import Foundation
 #if canImport(UIKit)
 import UIKit
 #endif
+import Common
 
 #if os(iOS)
 public class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -39,6 +40,46 @@ public class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCen
     
     public func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // TODO: Implement remote notification error handling
+    }
+    
+    // MARK: - Deep Link Handling
+    
+    public func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey: Any] = [:]
+    ) -> Bool {
+        // Handle referral deep links
+        if DeepLinkHandler.isReferralLink(url) {
+            if let referralLink = DeepLinkHandler.parseReferralLink(url) {
+                // Store the referral link for the next screen to pick up
+                UserDefaults.standard.set(
+                    referralLink.referrerId?.uuidString,
+                    forKey: "pendingReferrerId"
+                )
+                
+                if let chapterId = referralLink.chapterId {
+                    UserDefaults.standard.set(
+                        chapterId.uuidString,
+                        forKey: "pendingChapterId"
+                    )
+                }
+                
+                // Post notification that referral link was received
+                NotificationCenter.default.post(
+                    name: .referralLinkReceived,
+                    object: nil,
+                    userInfo: [
+                        "referrerId": referralLink.referrerId?.uuidString as Any,
+                        "chapterId": referralLink.chapterId?.uuidString as Any
+                    ]
+                )
+                
+                return true
+            }
+        }
+        
+        return false
     }
     
     // MARK: - Notification Handling
@@ -105,5 +146,6 @@ extension Notification.Name {
     static let navigateToEvents = Notification.Name("navigateToEvents")
     static let navigateToEvent = Notification.Name("navigateToEvent")
     static let navigateToChapter = Notification.Name("navigateToChapter")
+    static let referralLinkReceived = Notification.Name("referralLinkReceived")
 }
 #endif

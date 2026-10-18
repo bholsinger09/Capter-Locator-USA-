@@ -64,5 +64,16 @@
 	<string>We need your location to show nearby TPUSA chapters in your area.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We need your location to show nearby TPUSA chapters in your area.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tpusa-finder</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.holsinger.chapterfinder.referral</string>
+		</dict>
+	</array>
 </dict>
 </plist>

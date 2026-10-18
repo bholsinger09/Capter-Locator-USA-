@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Common
 
 public struct ContentView: View {
     @State private var showDisclaimer = true
     @State private var isAuthenticated = false
+    @StateObject private var dependencyContainer = DependencyContainer()
     
     public var body: some View {
         Group {
@@ -17,6 +19,7 @@ public struct ContentView: View {
                 DisclaimerView(isPresented: $showDisclaimer)
             } else if isAuthenticated {
                 MainTabView()
+                    .environmentObject(dependencyContainer)
             } else {
                 LoginView(isAuthenticated: $isAuthenticated)
             }

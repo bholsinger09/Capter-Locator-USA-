@@ -36,13 +36,25 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
             return
         }
         
-        let newUser = User(
+        // Check for pending referrer ID from deep link
+        var referredBy: UUID?
+        if let referrerIdString = UserDefaults.standard.string(forKey: "pendingReferrerId") {
+            referredBy = UUID(uuidString: referrerIdString)
+            UserDefaults.standard.removeObject(forKey: "pendingReferrerId")
+        }
+        
+        var newUser = User(
             email: normalizedEmail,
             firstName: firstName,
             lastName: lastName,
             state: state,
-            university: university
+            university: university,
+            referredBy: referredBy
         )
+        
+        // Generate a personal referral code for the new user
+        let referralService = ReferralService()
+        _ = referralService.createPersonalReferralCode(for: &newUser)
         
         currentUser = newUser
         isAuthenticated = true
