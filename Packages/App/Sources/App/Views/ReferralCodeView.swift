@@ -428,10 +428,9 @@ public struct ReferralCodeView: View {
         }
         .background(Color(.systemBackground))
         .sheet(isPresented: $showShareSheet) {
-            let referralIcon = ReferralIconGenerator.generateReferralIcon()
-            ShareSheet(
-                items: [viewModel.getShareText(), referralIcon],
-                excludedActivityTypes: [.addToReadingList, .print]
+            CustomShareView(
+                shareText: viewModel.getShareText(),
+                referralIcon: ReferralIconGenerator.generateTPIcon()
             )
         }
         .sheet(isPresented: $showExpandedRecruitList) {
@@ -569,29 +568,6 @@ struct StatusBadge: View {
     }
 }
 
-// MARK: - ShareSheet Wrapper
-struct ShareSheet: UIViewControllerRepresentable {
-    let items: [Any]
-    let excludedActivityTypes: [UIActivity.ActivityType]?
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ShareSheet>) -> UIActivityViewController {
-        let controller = UIActivityViewController(
-            activityItems: items,
-            applicationActivities: nil
-        )
-        
-        if let excluded = excludedActivityTypes {
-            controller.excludedActivityTypes = excluded
-        }
-        
-        return controller
-    }
-    
-    func updateUIViewController(
-        _ uiViewController: UIActivityViewController,
-        context: UIViewControllerRepresentableContext<ShareSheet>
-    ) {}
-}
 
 #Preview {
     let referralService = ReferralService()

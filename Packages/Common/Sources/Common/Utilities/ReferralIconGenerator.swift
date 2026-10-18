@@ -8,6 +8,42 @@
 import UIKit
 
 public class ReferralIconGenerator {
+    /// Generates a professional "TP" icon for the referral share sheet (512x512)
+    public static func generateTPIcon() -> UIImage {
+        let size = CGSize(width: 512, height: 512)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        
+        return renderer.image { context in
+            // Professional blue gradient background
+            for y in 0..<Int(size.height) {
+                let ratio = CGFloat(y) / size.height
+                let red: CGFloat = 0.0
+                let green = 0.48 - (ratio * 0.13)
+                let blue = 1.0 - (ratio * 0.2)
+                
+                context.cgContext.setFillColor(UIColor(red: red, green: green, blue: blue, alpha: 1.0).cgColor)
+                context.cgContext.fill(CGRect(x: 0, y: y, width: Int(size.width), height: 1))
+            }
+            
+            // White "TP" text - TURNING POINT
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.systemFont(ofSize: 200, weight: .bold),
+                .foregroundColor: UIColor.white
+            ]
+            
+            let text = "TP"
+            let textSize = text.size(withAttributes: attributes)
+            let textRect = CGRect(
+                x: (size.width - textSize.width) / 2,
+                y: (size.height - textSize.height) / 2,
+                width: textSize.width,
+                height: textSize.height
+            )
+            
+            text.draw(in: textRect, withAttributes: attributes)
+        }
+    }
+    
     /// Generates a professional referral/share icon (1024x1024)
     public static func generateReferralIcon() -> UIImage {
         let size = CGSize(width: 1024, height: 1024)
