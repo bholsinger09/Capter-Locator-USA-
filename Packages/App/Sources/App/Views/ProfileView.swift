@@ -53,9 +53,16 @@ struct ProfileView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .zIndex(1)
+                    .clipped()
                     
-                    // Referral Section
-                    ReferralCodeView(viewModel: referralViewModel)
+                    // Referral Section with explicit background
+                    VStack(spacing: 0) {
+                        ReferralCodeView(viewModel: referralViewModel)
+                            .background(Color(.systemBackground))
+                    }
+                    .zIndex(2)
+                    .background(Color(.systemBackground))
                     
                     Divider()
                         .padding(.vertical, 8)
@@ -99,6 +106,7 @@ struct SettingsLink: View {
                 .foregroundColor(.gray)
         }
         .padding(.vertical, 4)
+        .contentShape(Rectangle())
     }
 }
 
