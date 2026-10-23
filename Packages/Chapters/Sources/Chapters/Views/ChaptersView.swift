@@ -127,13 +127,14 @@ public struct ChaptersView: View {
                         ForEach(viewModel.paginatedChaptersFromFiltered) { chapter in
                             NavigationLink(destination: ChapterDetailView(chapter: chapter, viewModel: viewModel).environmentObject(membershipManager)) {
                                 HStack(spacing: 12) {
-                                    VStack(alignment: .leading, spacing: 4) {
+                                    VStack(alignment: .leading, spacing: 6) {
                                         Text(chapter.displayName)
                                             .fontWeight(.semibold)
                                             .foregroundColor(.primary)
                                         Text("\(membershipManager.getAppMemberCount(for: chapter.displayName)) members")
                                             .font(.caption)
                                             .foregroundColor(.secondary)
+                                        ChapterTagsView(chapter: chapter)
                                     }
                                     
                                     Spacer()
