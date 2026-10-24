@@ -16,6 +16,7 @@ public struct ChaptersView: View {
     @EnvironmentObject var membershipManager: MembershipManager
     @State private var showJoinAlert = false
     @State private var chapterToJoin: Chapter?
+    @State private var showAdminPanel = false
     
     public init() {}
     
@@ -53,18 +54,30 @@ public struct ChaptersView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if viewModel.favoriteCount > 0 {
-                        Text("\(viewModel.favoriteCount)")
-                            .font(.caption)
-                            .foregroundColor(.red)
-                            .padding(4)
-                            .background(Color.red.opacity(0.1))
-                            .cornerRadius(6)
+                    HStack(spacing: 12) {
+                        Button(action: {
+                            HapticFeedbackManager.shared.tapFeedback()
+                            showAdminPanel = true
+                        }) {
+                            Image(systemName: "tag.fill")
+                        }
+                        
+                        if viewModel.favoriteCount > 0 {
+                            Text("\(viewModel.favoriteCount)")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                                .padding(4)
+                                .background(Color.red.opacity(0.1))
+                                .cornerRadius(6)
+                        }
                     }
                 }
             }
             .sheet(isPresented: $showCreateSheet) {
                 CreateChapterView(chaptersViewModel: viewModel)
+            }
+            .sheet(isPresented: $showAdminPanel) {
+                ChapterTagsAdminView(viewModel: viewModel)
             }
             .alert("Join Chapter", isPresented: $showJoinAlert) {
                 Button("Cancel", role: .cancel) { }
