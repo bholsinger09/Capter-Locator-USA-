@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ChapterTag: String, CaseIterable {
+public enum ChapterTag: String, CaseIterable, Codable {
     case new = "new"
     case popular = "popular"
     
@@ -40,26 +40,25 @@ public enum ChapterTag: String, CaseIterable {
 }
 
 extension Chapter {
-    /// Determines which tags this chapter should display
+    /// Get tags that have been manually added to this chapter
     public func getTags() -> [ChapterTag] {
-        var tags: [ChapterTag] = []
-        
-        // Tag as "New" if established within the last 60 days
-        let twoMonthsAgo = Calendar.current.date(byAdding: .day, value: -60, to: Date())!
-        if dateEstablished >= twoMonthsAgo {
-            tags.append(.new)
-        }
-        
-        // Tag as "Popular" if member count is high (e.g., > 25 members)
-        if memberCount > 25 {
-            tags.append(.popular)
-        }
-        
-        return tags
+        return tags.compactMap { ChapterTag(rawValue: $0) }
     }
     
     /// Check if chapter has a specific tag
     public func hasTag(_ tag: ChapterTag) -> Bool {
-        return getTags().contains(tag)
+        return tags.contains(tag.rawValue)
+    }
+    
+    /// Add a tag to this chapter
+    public mutating func addTag(_ tag: ChapterTag) {
+        if !tags.contains(tag.rawValue) {
+            tags.append(tag.rawValue)
+        }
+    }
+    
+    /// Remove a tag from this chapter
+    public mutating func removeTag(_ tag: ChapterTag) {
+        tags.removeAll { $0 == tag.rawValue }
     }
 }

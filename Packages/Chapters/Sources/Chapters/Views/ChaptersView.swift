@@ -175,6 +175,35 @@ public struct ChaptersView: View {
                                         })
                                 }
                             }
+                            .contextMenu {
+                                Section("Add Tag") {
+                                    ForEach(ChapterTag.allCases, id: \.self) { tag in
+                                        if !chapter.hasTag(tag) {
+                                            Button(action: {
+                                                var updatedChapter = chapter
+                                                updatedChapter.addTag(tag)
+                                                viewModel.updateChapter(updatedChapter)
+                                                HapticFeedbackManager.shared.tapFeedback()
+                                            }) {
+                                                Label(tag.displayName, systemImage: "tag.fill")
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                Section("Remove Tag") {
+                                    ForEach(chapter.getTags(), id: \.self) { tag in
+                                        Button(role: .destructive, action: {
+                                            var updatedChapter = chapter
+                                            updatedChapter.removeTag(tag)
+                                            viewModel.updateChapter(updatedChapter)
+                                            HapticFeedbackManager.shared.tapFeedback()
+                                        }) {
+                                            Label(tag.displayName, systemImage: "xmark.circle.fill")
+                                        }
+                                    }
+                                }
+                            }
                         }
                         
                         if viewModel.hasMoreData {

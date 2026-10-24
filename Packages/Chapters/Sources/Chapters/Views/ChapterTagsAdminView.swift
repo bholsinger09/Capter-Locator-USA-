@@ -78,6 +78,15 @@ public struct ChapterTagAdminDetailView: View {
     let chapter: Chapter
     @ObservedObject var viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
+    @State private var selectedTagsToAdd: Set<String> = []
+    
+    var currentTags: [ChapterTag] {
+        chapter.getTags()
+    }
+    
+    var availableTags: [ChapterTag] {
+        ChapterTag.allCases
+    }
     
     public var body: some View {
         ScrollView {
@@ -102,7 +111,7 @@ public struct ChapterTagAdminDetailView: View {
                         .font(.system(.subheadline, design: .default))
                         .fontWeight(.semibold)
                     
-                    if chapter.getTags().isEmpty {
+                    if currentTags.isEmpty {
                         Text("No tags assigned")
                             .font(.system(.caption, design: .default))
                             .foregroundColor(.secondary)
@@ -111,11 +120,21 @@ public struct ChapterTagAdminDetailView: View {
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
                     } else {
-                        HStack(spacing: 6) {
-                            ForEach(chapter.getTags(), id: \.self) { tag in
-                                ChapterTagView(tag: tag)
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(currentTags, id: \.self) { tag in
+                                HStack {
+                                    ChapterTagView(tag: tag)
+                                    Spacer()
+                                    Button(action: {
+                                        var updatedChapter = chapter
+                                        updatedChapter.removeTag(tag)
+                                        viewModel.updateChapter(updatedChapter)
+                                    }) {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .foregroundColor(.red)
+                                    }
+                                }
                             }
-                            Spacer()
                         }
                         .padding(12)
                         .background(Color(.systemGray6))
@@ -123,36 +142,35 @@ public struct ChapterTagAdminDetailView: View {
                     }
                 }
                 
-                // Tag criteria info
+                // Available tags to add
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("How Tags Are Assigned")
-                        .font(.system(.subheadline, design: .default))
-                        .fontWeight(.semibold)
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        tagCriteriaRow("🆕 New", "Established within last 60 days")
-                        tagCriteriaRow("🔥 Popular", "25 or more members")
-                    }
-                }
-                .padding(12)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
-                
-                // Chapter stats
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Chapter Statistics")
+                    Text("Add Tags")
                         .font(.system(.subheadline, design: .default))
                         .fontWeight(.semibold)
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        statRow("Members", "\(chapter.memberCount)")
-                        statRow("Established", chapter.dateEstablished.formatted(date: .abbreviated, time: .omitted))
-                        statRow("Status", chapter.isActive ? "Active" : "Inactive")
+                        ForEach(availableTags, id: \.self) { tag in
+                            if !chapter.hasTag(tag) {
+                                Button(action: {
+                                    var updatedChapter = chapter
+                                    updatedChapter.addTag(tag)
+                                    viewModel.updateChapter(updatedChapter)
+                                }) {
+                                    HStack {
+                                        Text(tag.displayName)
+                                            .foregroundColor(.primary)
+                                        Spacer()
+                                        Image(systemName: "plus.circle.fill")
+                                            .foregroundColor(.green)
+                                    }
+                                    .padding(12)
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(8)
+                                }
+                            }
+                        }
                     }
                 }
-                .padding(12)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
                 
                 Spacer()
             }
@@ -160,36 +178,6 @@ public struct ChapterTagAdminDetailView: View {
         }
         .navigationTitle("Tag Details")
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    @ViewBuilder
-    private func tagCriteriaRow(_ tag: String, _ criteria: String) -> some View {
-        HStack(alignment: .top, spacing: 8) {
-            Text(tag)
-                .font(.system(.body, design: .default))
-            
-            VStack(alignment: .leading, spacing: 2) {
-                Text(criteria)
-                    .font(.system(.caption, design: .default))
-                    .foregroundColor(.secondary)
-            }
-            
-            Spacer()
-        }
-    }
-    
-    @ViewBuilder
-    private func statRow(_ label: String, _ value: String) -> some View {
-        HStack {
-            Text(label)
-                .font(.system(.caption, design: .default))
-                .foregroundColor(.secondary)
-            Spacer()
-            Text(value)
-                .font(.system(.caption, design: .default))
-                .fontWeight(.semibold)
-                .foregroundColor(.primary)
-        }
     }
 }
 

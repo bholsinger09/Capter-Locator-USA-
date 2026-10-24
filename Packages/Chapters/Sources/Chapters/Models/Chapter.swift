@@ -25,6 +25,7 @@ public struct Chapter: Identifiable, Codable, Hashable {
     public var longitude: Double?
     public var stateCoordinatorName: String?
     public var stateCoordinatorLinkedIn: String?
+    public var tags: [String] = []
     
     public var displayName: String {
         if let university = university {
@@ -51,7 +52,8 @@ public struct Chapter: Identifiable, Codable, Hashable {
         latitude: Double? = nil,
         longitude: Double? = nil,
         stateCoordinatorName: String? = nil,
-        stateCoordinatorLinkedIn: String? = nil
+        stateCoordinatorLinkedIn: String? = nil,
+        tags: [String] = []
     ) {
         self.id = id
         self.name = name
@@ -70,5 +72,6 @@ public struct Chapter: Identifiable, Codable, Hashable {
         self.longitude = longitude
         self.stateCoordinatorName = stateCoordinatorName
         self.stateCoordinatorLinkedIn = stateCoordinatorLinkedIn
+        self.tags = tags
     }
 }
