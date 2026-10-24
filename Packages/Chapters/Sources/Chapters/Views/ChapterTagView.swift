@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChapterTagView: View {
+public struct ChapterTagView: View {
     let tag: ChapterTag
     
     var body: some View {
@@ -33,7 +33,7 @@ struct ChapterTagView: View {
     }
 }
 
-struct ChapterTagsView: View {
+public struct ChapterTagsView: View {
     let chapter: Chapter
     
     var tags: [ChapterTag] {
