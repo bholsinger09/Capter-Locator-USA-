@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChapterTagsAdminView: View {
+public struct ChapterTagsAdminView: View {
     @ObservedObject var viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
     @State private var searchText = ""
@@ -74,7 +74,7 @@ struct ChapterTagsAdminView: View {
     }
 }
 
-struct ChapterTagAdminDetailView: View {
+public struct ChapterTagAdminDetailView: View {
     let chapter: Chapter
     @ObservedObject var viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
