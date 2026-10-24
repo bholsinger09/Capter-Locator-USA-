@@ -12,6 +12,10 @@ public struct ChapterTagsAdminView: View {
     @Environment(\.dismiss) var dismiss
     @State private var searchText = ""
     
+    public init(viewModel: ChaptersViewModel) {
+        self._viewModel = ObservedObject(initialValue: viewModel)
+    }
+    
     var filteredChapters: [Chapter] {
         if searchText.isEmpty {
             return viewModel.chapters

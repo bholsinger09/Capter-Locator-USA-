@@ -2,6 +2,7 @@ import SwiftUI
 import AppUI
 import Common
 import Authentication
+import Chapters
 
 struct ProfileView: View {
     @State private var userName = "John Doe"
@@ -9,7 +10,13 @@ struct ProfileView: View {
     @State private var userChapter = "Texas State"
     @State private var joinDate = "January 2024"
     @State private var isEditingProfile = false
+    @State private var showAdminTagEditor = false
     @ObservedObject var referralViewModel: ReferralViewModel
+    @EnvironmentObject var authenticationManager: AuthenticationManager
+    
+    private var isAdmin: Bool {
+        authenticationManager.currentUser?.email.lowercased() == "bholsinger@hotmail.com"
+    }
     
     var body: some View {
         NavigationView {
@@ -41,6 +48,39 @@ struct ProfileView: View {
                         isEditingProfile = true
                     }
                     .padding(.horizontal)
+                    
+                    // Admin Section - Only for admin user
+                    if isAdmin {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Admin Controls")
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.primary)
+                            
+                            Button(action: { showAdminTagEditor = true }) {
+                                HStack(spacing: 12) {
+                                    Image(systemName: "tag.fill")
+                                        .font(.body)
+                                        .foregroundColor(.blue)
+                                        .frame(width: 24)
+                                    
+                                    Text("Manage Chapter Tags")
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.body)
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(12)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(8)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
                     
                     // Account Settings - WITHOUT FormSection to avoid grey background
                     VStack(alignment: .leading, spacing: 12) {
@@ -84,8 +124,17 @@ struct ProfileView: View {
             .sheet(isPresented: $isEditingProfile) {
                 EditProfileView(userName: $userName, userEmail: $userEmail, userChapter: $userChapter)
             }
+            .sheet(isPresented: $showAdminTagEditor) {
+                AdminTagEditorView()
+            }
         }
         .background(Color(.systemBackground))
+        .onAppear {
+            if let user = authenticationManager.currentUser {
+                userName = "\(user.firstName) \(user.lastName)"
+                userEmail = user.email
+            }
+        }
     }
 }
 
@@ -139,6 +188,43 @@ struct EditProfileView: View {
                         dismiss()
                     }
                 }
+            }
+        }
+    }
+}
+
+struct AdminTagEditorView: View {
+    @Environment(\.dismiss) var dismiss
+    @StateObject private var viewModel = ChaptersViewModel()
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                if viewModel.chapters.isEmpty {
+                    VStack(spacing: 16) {
+                        Image(systemName: "books.vertical")
+                            .font(.system(size: 48))
+                            .foregroundColor(.gray)
+                        Text("No chapters available")
+                            .font(.headline)
+                            .foregroundColor(.gray)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    ChapterTagsAdminView(viewModel: viewModel)
+                }
+            }
+            .navigationTitle("Manage Tags")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") { dismiss() }
+                }
+            }
+        }
+        .onAppear {
+            Task {
+                await viewModel.loadChapters()
             }
         }
     }

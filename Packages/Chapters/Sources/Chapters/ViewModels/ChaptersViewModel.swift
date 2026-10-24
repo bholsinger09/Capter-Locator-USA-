@@ -60,9 +60,14 @@ public class ChaptersViewModel: ObservableObject {
                 key: cacheKey,
                 defaultValue: nil
             ) {
+                var chaptersWithTags = cached
+                
+                // Sync tags from CloudKit
+                await CloudKitTagService.shared.syncTags(for: &chaptersWithTags)
+                
                 await MainActor.run {
-                    self.chapters = cached
-                    self.loadingState = .success(cached)
+                    self.chapters = chaptersWithTags
+                    self.loadingState = .success(chaptersWithTags)
                 }
                 return
             }
@@ -91,9 +96,13 @@ public class ChaptersViewModel: ObservableObject {
             
             try cacheService.save(key: cacheKey, value: mergedChapters)
             
+            // Sync tags from CloudKit
+            var chaptersWithTags = mergedChapters
+            await CloudKitTagService.shared.syncTags(for: &chaptersWithTags)
+            
             await MainActor.run {
-                self.chapters = mergedChapters
-                self.loadingState = .success(mergedChapters)
+                self.chapters = chaptersWithTags
+                self.loadingState = .success(chaptersWithTags)
             }
         } catch {
             let appError = error as? AppError ?? .unknown(error.localizedDescription)
@@ -139,6 +148,15 @@ public class ChaptersViewModel: ObservableObject {
     public func updateChapter(_ chapter: Chapter) {
         if let index = chapters.firstIndex(where: { $0.id == chapter.id }) {
             chapters[index] = chapter
+        }
+        
+        // Save tags to CloudKit
+        Task {
+            do {
+                try await CloudKitTagService.shared.saveTags(chapter.tags, forChapterId: chapter.id)
+            } catch {
+                print("Error saving tags to CloudKit: \(error)")
+            }
         }
     }
     
