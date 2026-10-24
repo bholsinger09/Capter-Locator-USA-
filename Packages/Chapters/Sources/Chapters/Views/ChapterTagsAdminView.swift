@@ -194,32 +194,5 @@ struct ChapterTagAdminDetailView: View {
 }
 
 #Preview {
-    let sampleChapters = [
-        Chapter(
-            name: "New Chapter",
-            state: "CA",
-            city: "Berkeley",
-            university: "UC Berkeley",
-            presidentName: "John Doe",
-            contactEmail: "john@example.com",
-            description: "Test",
-            memberCount: 15,
-            dateEstablished: Date()
-        ),
-        Chapter(
-            name: "Popular Chapter",
-            state: "CA",
-            city: "Los Angeles",
-            university: "UCLA",
-            presidentName: "Jane Smith",
-            contactEmail: "jane@example.com",
-            description: "Test",
-            memberCount: 50,
-            dateEstablished: Date(timeIntervalSinceNow: -90 * 86400)
-        )
-    ]
-    
-    let viewModel = ChaptersViewModel()
-    
-    return ChapterTagsAdminView(viewModel: viewModel)
+    ChapterTagsAdminView(viewModel: ChaptersViewModel())
 }
