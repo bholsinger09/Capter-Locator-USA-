@@ -116,10 +116,13 @@ public struct LoginView: View {
                     request.requestedScopes = [.fullName, .email]
                 },
                 onCompletion: { result in
+                    print("🍎 [AuthenticationView] Apple Sign-In completion handler triggered")
                     switch result {
                     case .success(let authorization):
+                        print("🍎 [AuthenticationView] SUCCESS - calling signInWithApple")
                         authManager.signInWithApple(authorization: authorization)
                     case .failure(let error):
+                        print("🍎 [AuthenticationView] FAILURE - \(error.localizedDescription)")
                         authManager.errorMessage = error.localizedDescription
                     }
                 }

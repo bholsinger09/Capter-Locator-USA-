@@ -62,11 +62,10 @@ public class ChaptersViewModel: ObservableObject {
             ) {
                 var chaptersWithTags = cached
                 
-                // Sync tags from CloudKit
-                await CloudKitTagService.shared.syncTags(for: &chaptersWithTags)
-                
+                // Load tags from local storage
                 await MainActor.run {
                     self.chapters = chaptersWithTags
+                    self.loadTagsLocally()
                     self.loadingState = .success(chaptersWithTags)
                 }
                 return
@@ -96,13 +95,11 @@ public class ChaptersViewModel: ObservableObject {
             
             try cacheService.save(key: cacheKey, value: mergedChapters)
             
-            // Sync tags from CloudKit
-            var chaptersWithTags = mergedChapters
-            await CloudKitTagService.shared.syncTags(for: &chaptersWithTags)
-            
+            // Load tags from local storage
             await MainActor.run {
-                self.chapters = chaptersWithTags
-                self.loadingState = .success(chaptersWithTags)
+                self.chapters = mergedChapters
+                self.loadTagsLocally()
+                self.loadingState = .success(mergedChapters)
             }
         } catch {
             let appError = error as? AppError ?? .unknown(error.localizedDescription)
@@ -150,14 +147,32 @@ public class ChaptersViewModel: ObservableObject {
             chapters[index] = chapter
         }
         
-        // Save tags to CloudKit
-        Task {
-            do {
-                try await CloudKitTagService.shared.saveTags(chapter.tags, forChapterId: chapter.id)
-            } catch {
-                print("Error saving tags to CloudKit: \(error)")
+        // Save tags locally to UserDefaults
+        saveTagsLocally(chapter.tags, for: chapter.id)
+    }
+    
+    private func saveTagsLocally(_ tags: [String], for chapterId: UUID) {
+        var allTags = UserDefaults.standard.dictionary(forKey: "chapter_tags") as? [String: [String]] ?? [:]
+        allTags[chapterId.uuidString] = tags
+        UserDefaults.standard.set(allTags, forKey: "chapter_tags")
+        print("✅ Tags saved locally for chapter \(chapterId): \(tags)")
+    }
+    
+    private func loadTagsLocally() {
+        guard let allTags = UserDefaults.standard.dictionary(forKey: "chapter_tags") as? [String: [String]] else {
+            return
+        }
+        
+        // Apply saved tags to chapters
+        for var chapter in chapters {
+            if let savedTags = allTags[chapter.id.uuidString] {
+                chapter.tags = savedTags
+                if let index = chapters.firstIndex(where: { $0.id == chapter.id }) {
+                    chapters[index] = chapter
+                }
             }
         }
+        print("✅ Tags loaded locally from UserDefaults")
     }
     
     // MARK: - Pagination Methods

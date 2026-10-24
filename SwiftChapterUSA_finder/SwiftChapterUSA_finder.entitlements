@@ -8,7 +8,7 @@
 	</array>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.ChapterFinder</string>
+		<string>iCloud.com.holsinger.chapterfinder</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>
@@ -16,7 +16,7 @@
 	</array>
 	<key>com.apple.developer.ubiquity-container-identifiers</key>
 	<array>
-		<string>iCloud.ChapterFinder</string>
+		<string>iCloud.com.holsinger.chapterfinder</string>
 	</array>
 	<key>com.apple.security.app-sandbox</key>
 	<true/>

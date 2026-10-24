@@ -1,11 +1,12 @@
 import SwiftUI
 import AuthenticationServices
+import Authentication
 
 public struct LoginView: View {
-    @Binding var isAuthenticated: Bool
     @State private var email = ""
     @State private var password = ""
     @State private var showPassword = false
+    @ObservedObject var authenticationManager: AuthenticationManager
     
     public var body: some View {
         ZStack {
@@ -85,7 +86,8 @@ public struct LoginView: View {
                 Button(action: {
                     // Simple validation - in production, call auth service
                     if !email.isEmpty && !password.isEmpty {
-                        isAuthenticated = true
+                        // TODO: Implement email/password login with authenticationManager
+                        authenticationManager.errorMessage = "Email/password login not yet implemented"
                     }
                 }) {
                     Text("Login")
@@ -120,20 +122,25 @@ public struct LoginView: View {
                 
                 // Sign in with Apple Button
                 SignInWithAppleButton(
-                    onRequest: { _ in },
+                    .signIn,
+                    onRequest: { request in
+                        request.requestedScopes = [.fullName, .email]
+                    },
                     onCompletion: { result in
+                        print("🍎 [LoginView] Apple Sign-In completion handler triggered")
                         switch result {
-                        case .success:
-                            isAuthenticated = true
+                        case .success(let authorization):
+                            print("🍎 [LoginView] SUCCESS - calling authenticationManager.signInWithApple")
+                            authenticationManager.signInWithApple(authorization: authorization)
                         case .failure(let error):
-                            print("Apple Sign in failed: \(error)")
+                            print("🍎 [LoginView] FAILURE - \(error.localizedDescription)")
+                            authenticationManager.errorMessage = error.localizedDescription
                         }
                     }
                 )
                 .frame(height: 50)
                 .cornerRadius(10)
                 .padding(.horizontal, 20)
-                .signInWithAppleButtonStyle(.white)
                 
                 // Sign Up Link
                 HStack {
@@ -155,11 +162,11 @@ public struct LoginView: View {
         }
     }
     
-    public init(isAuthenticated: Binding<Bool>) {
-        self._isAuthenticated = isAuthenticated
+    public init(authenticationManager: AuthenticationManager) {
+        self.authenticationManager = authenticationManager
     }
 }
 
 #Preview {
-    LoginView(isAuthenticated: .constant(false))
+    LoginView(authenticationManager: AuthenticationManager())
 }

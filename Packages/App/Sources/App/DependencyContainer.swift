@@ -19,7 +19,7 @@ import SwiftUI
 /// Central dependency container for managing package-based services and ViewModels
 public class DependencyContainer: ObservableObject {
     // MARK: - Package Services
-    public let authenticationManager: AuthenticationManager
+    @Published public var authenticationManager: AuthenticationManager
     public let geospatialService: GeospatialService
     public let notificationManager: NotificationManager
     public let referralService: ReferralService
@@ -30,21 +30,33 @@ public class DependencyContainer: ObservableObject {
     public let advocacyViewModel: AdvocacyViewModel
     public let referralViewModel: ReferralViewModel
     
+    private var authManagerCancellable: AnyCancellable?
+    
     // MARK: - Initialization
     public init() {
-        // Initialize services
-        self.authenticationManager = AuthenticationManager()
+        // Initialize services FIRST
+        let authMgr = AuthenticationManager()
+        self.authenticationManager = authMgr
         self.geospatialService = GeospatialService()
         self.notificationManager = NotificationManager()
-        self.referralService = ReferralService()
+        let refService = ReferralService()
+        self.referralService = refService
         
-        // Initialize package ViewModels (all take no parameters in package versions)
+        // Initialize package ViewModels
         self.chaptersViewModel = ChaptersViewModel()
         self.eventsViewModel = EventsViewModel()
         self.advocacyViewModel = AdvocacyViewModel()
         self.referralViewModel = ReferralViewModel(
-            referralService: self.referralService,
-            authenticationManager: self.authenticationManager
+            referralService: refService,
+            authenticationManager: authMgr
         )
+        
+        print("📦 [DependencyContainer] Initialized")
+        
+        // NOW set up auth manager change forwarding AFTER all properties are initialized
+        authManagerCancellable = authMgr.objectWillChange.sink { [weak self] in
+            print("📦 [DependencyContainer] Auth state changed, forwarding to subscribers")
+            self?.objectWillChange.send()
+        }
     }
 }

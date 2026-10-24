@@ -14,17 +14,34 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
     @Published public var isAuthenticated = false
     @Published public var currentUser: User?
     @Published public var errorMessage: String?
+    @Published public var isOnline = true
     
     private let lastLoggedInEmailKey = "lastLoggedInEmail"
     
     public init() {
-        loadUser()
+        // Don't load user on init - let the app decide if they should auto-login
+        // This prevents the test user from being auto-created
+        restoreLastLoggedInUser()
+    }
+    
+    private func restoreLastLoggedInUser() {
+        // Only restore if user was previously logged in
+        guard let lastEmail = UserDefaults.standard.string(forKey: lastLoggedInEmailKey) else {
+            print("🔍 [DEBUG] No previously logged in user found")
+            return
+        }
+        
+        print("🔍 [DEBUG] Restoring previously logged in user: \(lastEmail)")
+        let userKey = "user_\(lastEmail)"
+        if let savedData = UserDefaults.standard.data(forKey: userKey),
+           let savedUser = try? JSONDecoder().decode(User.self, from: savedData) {
+            currentUser = savedUser
+            isAuthenticated = true
+            print("   ✅ User restored from local storage: \(savedUser.email)")
+        }
     }
     
     public func register(email: String, password: String, firstName: String, lastName: String, state: String, university: String?) {
-        // In a real app, this would connect to a backend API
-        // For now, we'll simulate registration
-        
         // Normalize email to lowercase
         let normalizedEmail = email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -59,6 +76,8 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
         currentUser = newUser
         isAuthenticated = true
         errorMessage = nil
+        
+        // Save to local storage
         saveUser()
     }
     
@@ -116,40 +135,6 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
         }
     }
     
-    private func loadUser() {
-        // Load the last logged in user
-        guard let lastEmail = UserDefaults.standard.string(forKey: lastLoggedInEmailKey) else {
-            // No saved user - create a test user for development/testing
-            createTestUser()
-            return
-        }
-        
-        let userKey = "user_\(lastEmail)"
-        if let savedData = UserDefaults.standard.data(forKey: userKey),
-           let savedUser = try? JSONDecoder().decode(User.self, from: savedData) {
-            currentUser = savedUser
-            isAuthenticated = true
-        }
-    }
-    
-    private func createTestUser() {
-        // Create a test user so the referral feature can be tested immediately
-        let testUser = User(
-            email: "test@example.com",
-            firstName: "Test",
-            lastName: "User",
-            state: "California",
-            university: "Stanford University"
-        )
-        // Note: Do NOT generate referral code here - let user generate it via UI
-        
-        currentUser = testUser
-        isAuthenticated = true
-        
-        // Save the test user for persistence
-        saveUser()
-    }
-    
     public func updateUser(_ user: User) {
         currentUser = user
         saveUser()
@@ -166,33 +151,89 @@ public class AuthenticationManager: ObservableObject, AuthenticationServiceProto
         let firstName = appleIDCredential.fullName?.givenName ?? "Apple"
         let lastName = appleIDCredential.fullName?.familyName ?? "User"
         
+        print("🔐 [DEBUG] Apple Sign-In:")
+        print("   userID: \(userID)")
+        print("   email (raw): \(appleIDCredential.email ?? "nil - will use stored email")")
+        print("   firstName: \(firstName)")
+        print("   lastName: \(lastName)")
+        print("   isOnline: \(Reachability.shared.isConnected)")
+        
         // Normalize email to lowercase
         let normalizedEmail = email.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        // Check if user already exists with this Apple ID
-        let userKey = "user_\(normalizedEmail)"
-        if let savedData = UserDefaults.standard.data(forKey: userKey),
-           let savedUser = try? JSONDecoder().decode(User.self, from: savedData),
-           savedUser.appleUserID == userID {
-            // Existing Apple Sign In user
-            currentUser = savedUser
+        print("   normalizedEmail: \(normalizedEmail)")
+        
+        // Check local storage for existing user by appleUserID
+        if let existingUser = fetchUserLocally(appleUserID: userID) {
+            print("   ✅ Found existing Apple user")
+            currentUser = existingUser
+            print("   📊 [DEBUG] currentUser set to existing: \(existingUser.email)")
+            print("   📊 [DEBUG] About to set isAuthenticated = true")
             isAuthenticated = true
+            print("   📊 [DEBUG] isAuthenticated is now: \(isAuthenticated)")
             errorMessage = nil
-        } else {
-            // New Apple Sign In user - create account with default state
-            let newUser = User(
-                email: normalizedEmail,
-                firstName: firstName,
-                lastName: lastName,
-                state: "California", // Default state, user can update in profile
-                university: nil,
-                appleUserID: userID
-            )
-            currentUser = newUser
-            isAuthenticated = true
-            saveUser()
-            errorMessage = nil
+            print("   ✅ currentUser updated to \(existingUser.email)")
+            return
         }
+        
+        // Check local storage for existing user by email
+        if let existingUser = fetchUserLocally(email: normalizedEmail) {
+            print("   ✅ Found existing user by email")
+            var updatedUser = existingUser
+            updatedUser.appleUserID = userID
+            currentUser = updatedUser
+            print("   📊 [DEBUG] currentUser set to updated: \(updatedUser.email)")
+            print("   📊 [DEBUG] About to set isAuthenticated = true")
+            isAuthenticated = true
+            print("   📊 [DEBUG] isAuthenticated is now: \(isAuthenticated)")
+            errorMessage = nil
+            print("   ✅ currentUser updated with appleUserID")
+            saveUser()
+            return
+        }
+        
+        // Create new Apple Sign-In user
+        print("   ✅ Creating new Apple user")
+        let newUser = User(
+            email: normalizedEmail,
+            firstName: firstName,
+            lastName: lastName,
+            state: "California",
+            university: nil,
+            appleUserID: userID
+        )
+        
+        currentUser = newUser
+        print("   📊 [DEBUG] currentUser set to new: \(newUser.email)")
+        print("   📊 [DEBUG] About to set isAuthenticated = true")
+        isAuthenticated = true
+        print("   📊 [DEBUG] isAuthenticated is now: \(isAuthenticated)")
+        errorMessage = nil
+        print("   ✅ currentUser set to new user: \(newUser.email)")
+        saveUser()
+    }
+    
+    private func fetchUserLocally(appleUserID: String) -> User? {
+        let defaults = UserDefaults.standard
+        for (key, value) in defaults.dictionaryRepresentation() {
+            if key.hasPrefix("user_"), let data = value as? Data,
+               let user = try? JSONDecoder().decode(User.self, from: data),
+               user.appleUserID == appleUserID {
+                print("   💾 User fetched from local storage by appleUserID")
+                return user
+            }
+        }
+        return nil
+    }
+    
+    private func fetchUserLocally(email: String) -> User? {
+        let userKey = "user_\(email)"
+        guard let savedData = UserDefaults.standard.data(forKey: userKey),
+              let user = try? JSONDecoder().decode(User.self, from: savedData) else {
+            return nil
+        }
+        print("   💾 User fetched from local storage: \(email)")
+        return user
     }
     
     public func deleteAccount() {

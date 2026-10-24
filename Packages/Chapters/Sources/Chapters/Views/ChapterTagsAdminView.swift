@@ -82,14 +82,29 @@ public struct ChapterTagAdminDetailView: View {
     let chapter: Chapter
     @ObservedObject var viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
-    @State private var selectedTagsToAdd: Set<String> = []
+    @State private var editedChapter: Chapter
+    
+    init(chapter: Chapter, viewModel: ChaptersViewModel) {
+        self.chapter = chapter
+        self.viewModel = viewModel
+        _editedChapter = State(initialValue: chapter)
+    }
     
     var currentTags: [ChapterTag] {
-        chapter.getTags()
+        editedChapter.getTags()
     }
     
     var availableTags: [ChapterTag] {
         ChapterTag.allCases
+    }
+    
+    var hasChanges: Bool {
+        editedChapter.getTags() != chapter.getTags()
+    }
+    
+    private func saveChanges() {
+        viewModel.updateChapter(editedChapter)
+        dismiss()
     }
     
     public var body: some View {
@@ -100,7 +115,7 @@ public struct ChapterTagAdminDetailView: View {
                     Text("Chapter")
                         .font(.system(.caption, design: .default))
                         .foregroundColor(.secondary)
-                    Text(chapter.displayName)
+                    Text(editedChapter.displayName)
                         .font(.system(.headline, design: .default))
                         .fontWeight(.semibold)
                 }
@@ -130,9 +145,7 @@ public struct ChapterTagAdminDetailView: View {
                                     ChapterTagView(tag: tag)
                                     Spacer()
                                     Button(action: {
-                                        var updatedChapter = chapter
-                                        updatedChapter.removeTag(tag)
-                                        viewModel.updateChapter(updatedChapter)
+                                        editedChapter.removeTag(tag)
                                     }) {
                                         Image(systemName: "xmark.circle.fill")
                                             .foregroundColor(.red)
@@ -154,11 +167,9 @@ public struct ChapterTagAdminDetailView: View {
                     
                     VStack(alignment: .leading, spacing: 8) {
                         ForEach(availableTags, id: \.self) { tag in
-                            if !chapter.hasTag(tag) {
+                            if !editedChapter.hasTag(tag) {
                                 Button(action: {
-                                    var updatedChapter = chapter
-                                    updatedChapter.addTag(tag)
-                                    viewModel.updateChapter(updatedChapter)
+                                    editedChapter.addTag(tag)
                                 }) {
                                     HStack {
                                         Text(tag.displayName)
@@ -182,6 +193,16 @@ public struct ChapterTagAdminDetailView: View {
         }
         .navigationTitle("Tag Details")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Done") {
+                    saveChanges()
+                }
+                .foregroundColor(hasChanges ? .blue : .gray)
+                .fontWeight(hasChanges ? .semibold : .regular)
+                .disabled(!hasChanges)
+            }
+        }
     }
 }
 

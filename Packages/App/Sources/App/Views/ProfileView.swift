@@ -5,8 +5,6 @@ import Authentication
 import Chapters
 
 struct ProfileView: View {
-    @State private var userName = "John Doe"
-    @State private var userEmail = "john@example.com"
     @State private var userChapter = "Texas State"
     @State private var joinDate = "January 2024"
     @State private var isEditingProfile = false
@@ -14,8 +12,17 @@ struct ProfileView: View {
     @ObservedObject var referralViewModel: ReferralViewModel
     @EnvironmentObject var authenticationManager: AuthenticationManager
     
+    private var userName: String {
+        authenticationManager.currentUser?.fullName ?? "Unknown User"
+    }
+    
+    private var userEmail: String {
+        authenticationManager.currentUser?.email ?? "No email"
+    }
+    
     private var isAdmin: Bool {
-        authenticationManager.currentUser?.email.lowercased() == "bholsinger@hotmail.com"
+        let appleUserID = authenticationManager.currentUser?.appleUserID ?? ""
+        return appleUserID == "000832.309eac005e8947f49cc100a8d29cd7bb.1828"
     }
     
     var body: some View {
@@ -112,7 +119,7 @@ struct ProfileView: View {
                     
                     // Logout Button
                     DangerButton("Logout", icon: "arrowshape.turn.up.left") {
-                        print("Logout tapped")
+                        authenticationManager.logout()
                     }
                     .padding(.horizontal)
                     .padding(.top, 16)
@@ -122,19 +129,13 @@ struct ProfileView: View {
             .background(Color(.systemBackground))
             .navigationTitle("Profile")
             .sheet(isPresented: $isEditingProfile) {
-                EditProfileView(userName: $userName, userEmail: $userEmail, userChapter: $userChapter)
+                EditProfileView(userChapter: $userChapter)
             }
             .sheet(isPresented: $showAdminTagEditor) {
                 AdminTagEditorView()
             }
         }
         .background(Color(.systemBackground))
-        .onAppear {
-            if let user = authenticationManager.currentUser {
-                userName = "\(user.firstName) \(user.lastName)"
-                userEmail = user.email
-            }
-        }
     }
 }
 
@@ -165,18 +166,11 @@ struct SettingsLink: View {
 
 struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var userName: String
-    @Binding var userEmail: String
     @Binding var userChapter: String
     
     var body: some View {
         NavigationView {
             Form {
-                Section("Personal Information") {
-                    TextField("Name", text: $userName)
-                    TextField("Email", text: $userEmail)
-                }
-                
                 Section("Chapter Information") {
                     TextField("Chapter", text: $userChapter)
                 }

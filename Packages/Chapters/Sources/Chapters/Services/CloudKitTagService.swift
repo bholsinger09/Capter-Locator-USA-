@@ -11,7 +11,7 @@ import CloudKit
 public class CloudKitTagService: NSObject, ObservableObject {
     public static let shared = CloudKitTagService()
     
-    private let container = CKContainer.default()
+    private let container: CKContainer
     private let database: CKDatabase
     private let recordType = "ChapterTags"
     
@@ -19,6 +19,7 @@ public class CloudKitTagService: NSObject, ObservableObject {
     @Published public var errorMessage: String?
     
     override init() {
+        self.container = CKContainer(identifier: "iCloud.com.holsinger.chapterfinder")
         self.database = container.privateCloudDatabase
         super.init()
         setupCloudKit()

@@ -93,7 +93,8 @@ public struct MainTabView: View {
                         Label("Members", systemImage: "person.3.fill")
                     }
                     
-                    NavigationLink(destination: ProfileView(referralViewModel: dependencyContainer.referralViewModel)) {
+                    NavigationLink(destination: ProfileView(referralViewModel: dependencyContainer.referralViewModel)
+                        .environmentObject(dependencyContainer.authenticationManager)) {
                         Label("Profile", systemImage: "person.circle.fill")
                     }
                     
