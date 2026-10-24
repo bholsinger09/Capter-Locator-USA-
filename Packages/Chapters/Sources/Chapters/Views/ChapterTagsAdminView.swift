@@ -21,7 +21,7 @@ public struct ChapterTagsAdminView: View {
         }
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 // Search bar
@@ -79,7 +79,7 @@ public struct ChapterTagAdminDetailView: View {
     @ObservedObject var viewModel: ChaptersViewModel
     @Environment(\.dismiss) var dismiss
     
-    var body: some View {
+    public var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 // Chapter info

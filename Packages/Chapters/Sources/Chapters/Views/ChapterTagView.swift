@@ -10,7 +10,7 @@ import SwiftUI
 public struct ChapterTagView: View {
     let tag: ChapterTag
     
-    var body: some View {
+    public var body: some View {
         HStack(spacing: 4) {
             Text(tag.displayName)
                 .font(.system(.caption2, design: .default))
@@ -40,7 +40,7 @@ public struct ChapterTagsView: View {
         chapter.getTags()
     }
     
-    var body: some View {
+    public var body: some View {
         if !tags.isEmpty {
             HStack(spacing: 6) {
                 ForEach(tags, id: \.self) { tag in
