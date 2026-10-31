@@ -1,12 +1,13 @@
 import Foundation
 
-struct ChapterContactInfo: Codable {
-    let state: String
-    let presidentName: String
-    let title: String?
-    let contactEmail: String?
-    let memberCount: Int?
-    let description: String?
+public struct ChapterContactInfo: Codable {
+    public let state: String
+    public let presidentName: String
+    public let title: String?
+    public let contactEmail: String?
+    public let memberCount: Int?
+    public let description: String?
+    public let linkedIn: String?
     
     enum CodingKeys: String, CodingKey {
         case state
@@ -15,6 +16,7 @@ struct ChapterContactInfo: Codable {
         case contactEmail
         case memberCount
         case description
+        case linkedIn
     }
 }
 
@@ -22,13 +24,13 @@ struct ChaptersDataFile: Codable {
     let chapters: [ChapterContactInfo]
 }
 
-class ChaptersDataLoader {
-    static let shared = ChaptersDataLoader()
+public class ChaptersDataLoader {
+    public static let shared = ChaptersDataLoader()
     
     private var cachedData: [ChapterContactInfo] = []
     private var isLoaded = false
     
-    func loadChaptersData() -> [ChapterContactInfo] {
+    public func loadChaptersData() -> [ChapterContactInfo] {
         if isLoaded {
             return cachedData
         }
@@ -50,7 +52,7 @@ class ChaptersDataLoader {
         }
     }
     
-    func getChapterContact(forState state: String) -> ChapterContactInfo? {
+    public func getChapterContact(forState state: String) -> ChapterContactInfo? {
         let data = loadChaptersData()
         return data.first { $0.state.lowercased() == state.lowercased() }
     }

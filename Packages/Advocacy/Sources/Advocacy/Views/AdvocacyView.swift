@@ -81,76 +81,102 @@ struct OfficialDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 15) {
-                // Official Info
+            VStack(alignment: .leading, spacing: 24) {
+                // Official Header Card
                 VStack(alignment: .leading, spacing: 8) {
                     Text(official.name)
                         .font(.title2)
                         .fontWeight(.bold)
+                        .foregroundColor(.primary)
                     
-                    Text(official.displayTitle)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    Text(official.locationText)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(official.displayTitle)
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.secondary)
+                        
+                        Text(official.locationText)
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
                 }
-                .padding()
+                .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                .background(Color.blue.opacity(0.1))
                 .cornerRadius(12)
                 
-                // Contact Info
-                VStack(alignment: .leading, spacing: 10) {
+                // Contact Information - Better Layout
+                VStack(alignment: .leading, spacing: 14) {
+                    Text("Contact Information")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                    
                     if let email = official.email {
-                        HStack {
-                            Image(systemName: "envelope.fill")
-                                .foregroundColor(.blue)
-                            Text(email)
-                                .font(.caption)
-                        }
+                        ContactRow(
+                            icon: "envelope.fill",
+                            label: "Email",
+                            value: email,
+                            isLink: true
+                        )
                     }
                     
                     if let phone = official.phone {
-                        HStack {
-                            Image(systemName: "phone.fill")
-                                .foregroundColor(.blue)
-                            Text(phone)
-                                .font(.caption)
-                        }
+                        ContactRow(
+                            icon: "phone.fill",
+                            label: "Phone",
+                            value: phone,
+                            isLink: true
+                        )
                     }
                     
                     if let website = official.website {
-                        HStack {
-                            Image(systemName: "globe")
-                                .foregroundColor(.blue)
-                            Text(website)
-                                .font(.caption)
-                        }
+                        ContactRow(
+                            icon: "globe",
+                            label: "LinkedIn",
+                            value: "View Profile",
+                            isLink: true
+                        )
+                    }
+                    
+                    if official.email == nil && official.phone == nil && official.website == nil {
+                        Text("No contact information available")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .italic()
                     }
                 }
-                .padding()
+                .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(12)
                 
-                // Message Preview
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Message Preview")
-                        .font(.headline)
+                // Message Preview - Improved
+                VStack(alignment: .leading, spacing: 12) {
+                    HStack {
+                        Text("Message Preview")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                        Spacer()
+                        Text("Issue: \(issue.rawValue)")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                            .padding(6)
+                            .background(Color.blue.opacity(0.1))
+                            .cornerRadius(6)
+                    }
                     
                     let body = viewModel.emailBody(for: issue, user: nil, university: nil, official: official)
                     Text(body)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                        .font(.body)
+                        .lineSpacing(2)
+                        .foregroundColor(.primary)
                 }
-                .padding()
+                .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+                .background(Color(UIColor.systemGray6))
                 .cornerRadius(12)
                 
-                // Send Button
+                // Send Button - Call to Action
                 if let email = official.email {
                     Button(action: {
                         let subject = viewModel.emailSubject(for: issue, official: official)
@@ -161,13 +187,28 @@ struct OfficialDetailView: View {
                             #endif
                         }
                     }) {
-                        Text("Send Email")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                        HStack(spacing: 12) {
+                            Image(systemName: "paperplane.fill")
+                                .font(.title3)
+                            Text("Send Email to \(official.name)")
+                                .font(.body)
+                                .fontWeight(.bold)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(16)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
                     }
+                } else {
+                    Text("No email address available to send message")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .italic()
+                        .frame(maxWidth: .infinity)
+                        .padding(14)
+                        .background(Color.gray.opacity(0.1))
+                        .cornerRadius(10)
                 }
                 
                 Spacer()
@@ -175,6 +216,53 @@ struct OfficialDetailView: View {
             .padding()
         }
         .navigationTitle("Contact Official")
+    }
+}
+
+// MARK: - Contact Row Component
+struct ContactRow: View {
+    let icon: String
+    let label: String
+    let value: String
+    let isLink: Bool
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .foregroundColor(.blue)
+                .frame(width: 32)
+                .font(.title2)
+            
+            VStack(alignment: .leading, spacing: 3) {
+                Text(label)
+                    .font(.caption2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .textCase(.uppercase)
+                
+                Text(value)
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.primary)
+                    .lineLimit(1)
+            }
+            
+            Spacer()
+            
+            if isLink {
+                Image(systemName: "chevron.right")
+                    .font(.body)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(UIColor.systemGray5))
+        .cornerRadius(8)
+        .overlay(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.gray.opacity(0.3), lineWidth: 1)
+        )
     }
 }
 

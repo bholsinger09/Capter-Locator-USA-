@@ -14,12 +14,14 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../Common"),
+        .package(path: "../Chapters"),
     ],
     targets: [
         .target(
             name: "Advocacy",
             dependencies: [
                 .product(name: "Common", package: "Common"),
+                .product(name: "Chapters", package: "Chapters"),
             ],
             path: "Sources/Advocacy"
         ),
